@@ -94,7 +94,7 @@
                         <img src="{{ post.image_url}}" alt="">
                       {% endif %} 
                       </a>
-                      <div class="media-body"> <a href="{% url product_detail' post.pk %}"class="catg_title"> {{ post.name }}</a>
+                      <div class="media-body"> <a href="{% url 'product_detail' post.pk %}"class="catg_title"> {{ post.name }}</a>
                       </div>
                     </div>
                   </li>
@@ -112,14 +112,14 @@
                   {% for post in merch_list|slice:":1"  %}    
                   <li>
                     <figure class="bsbig_fig">
-                      <a href="{% url product_detail' post.pk %}" class="featured_img">
+                      <a href="{% url 'product_detail' post.pk %}" class="featured_img">
                       {% if post.main_image %}
                         <img src="{{ post.main_image }}" alt="">
                       {% else %}
                         <img src="{{ post.image_url}}" alt="">
                       {% endif %}
                       <span class="overlay"></span> </a>
-                    <figcaption> <a href="{% url product_detail' post.pk %}" >{{ post.name }}</a> </figcaption>
+                    <figcaption> <a href="{% url 'product_detail' post.pk %}" >{{ post.name }}</a> </figcaption>
                       <p>{{ post.description |truncatechars:50}}</p>
                     </figure>
                   </li>
@@ -131,14 +131,14 @@
                   {% else %}
                   <li>
                     <div class="media wow fadeInDown">
-                      <a href="{% url product_detail' post.pk %}" class="media-left">
+                      <a href="{% url 'product_detail' post.pk %}" class="media-left">
                         {% if post.main_image%}
                         <img src="{{ post.main_image }}" alt="">
                       {% else %}
                         <img src="{{ post.image_url}}" alt="">
                       {% endif %} 
                       </a>
-                      <div class="media-body"> <a href="{% url product_detail' post.pk %}"class="catg_title"> {{ post.name }}</a>
+                      <div class="media-body"> <a href="{% url 'product_detail' post.pk %}"class="catg_title"> {{ post.name }}</a>
                       </div>
                     </div>
                   </li>
@@ -161,7 +161,7 @@
                   {% for post in popular_list|slice:":4" %}
                   <li>
                     <div class="media wow fadeInDown">             
-                      <a href="{% url product_detail' post.pk %}" class="media-left">              
+                      <a href="{% url 'product_detail' post.pk %}" class="media-left">              
                         {% if post.main_image%}
                           <img src="{{ post.main_image }}" alt="">
                         {% else %}
