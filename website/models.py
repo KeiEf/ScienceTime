@@ -5,6 +5,7 @@ from datetime import datetime, date
 from taggit.managers import TaggableManager
 import uuid
 
+'''
 class Tag(models.Model):
     tagname = models.CharField(max_length=50)
 #    slug = models.SlugField(blank=True)
@@ -28,7 +29,7 @@ class Category(models.Model):
     def get_absolute_url(self):
        return reverse('index')
 
-
+'''
 class Post(models.Model):
  
     title = models.CharField(max_length=100,  verbose_name='タイトル')
