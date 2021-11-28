@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Top{% endblock %}
+{% block content %}
+
+ 
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner header-text">
+      <div class="owl-banner owl-carousel">
+        <div class="banner-item-01">
+          <div class="text-content">
+            <h4>Take you to the frontline of knowledge</h4>
+            <h2>Latest Science News</h2>
+          </div>
+        </div>
+        <div class="banner-item-02">
+          <div class="text-content">
+            <h4>For your better science geek life</h4>
+            <h2>Science Products</h2>
+          </div>
+        </div>
+        <div class="banner-item-03">
+          <div class="text-content">
+            <h4>For the sake of the freedom of knowledge</h4>
+            <h2>Science & Maths Lectures</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <div class="latest-products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Latest Posts</h2>
+              <a class="nav-link" href="{% url 'posts' %}">view all posts <i class="fa fa-angle-right"></i></a>
+            </div>
+          </div>
+          {% for post in post_list|slice:":3" %}
+          <div class="col-md-4">
+            <div class="product-item">
+              <div class="image-content"> 
+              {% if post.main_image%}
+                <img src="{{ post.main_image }}" alt="">
+              {% else %}
+                <img src="{{ post.image_url}}" alt="">
+              {% endif %}
+              </div>
+              <div class="down-content">
+                <a href="{% url 'post_detail' post.pk %}"><h4>{{ post.title }}</h4></a>
+                <p>{{ post.abstract |truncatechars:50}}</p>
+                <span><a href="{% url 'post_detail' post.pk %}">詳細</a></span>
+              </div>
+            </div>
+          </div>
+         {% endfor %}
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Most popular products</h2>
+              <a class="nav-link" href="{% url 'products' %}">view all products <i class="fa fa-angle-right"></i></a>
+            </div>
+          </div>
+          {% for product in product_list|slice:":3" %}
+          <div class="col-md-4">
+            <div class="product-item">
+              <div class="image-content"> 
+              {% if product.main_image %}
+                <img src="{{ product.main_image }}" alt="">
+              {% else %}
+                <img src="{{ product.image_url}}" alt="">
+              {% endif %}
+              </div>
+              <div class="down-content">
+                <a href="{% url 'product_detail' product.pk %}"><h4>{{ product.name }}</h4></a>
+                <p>{{ product.description|safe |truncatechars:50}}</p>
+                <span><a href="{% url 'product_detail' product.pk %}">詳細</a></span>
+              </div>
+            </div>
+          </div>
+         {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="best-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>About ScienceTime</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>倫理的発展のための科学と技術の推進</h4>
+              <p>
+                We are promoting sciecne and technology for ethical development of human society.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiq5YaL8Nj_-e2VJ-TSYfUgmBbLVJaj5zDkcEUlmXRyNtZx-jXin5vwZUoWTUBS365x8V2dOR1-i19iJOLr8pWQlL34y4zLg7q5rrdhDtbcZzPVgX0Ovm6n3AgdaEBBzDsQngIlqG0JafUWWljl0jJKP-GsU815Aouz_YUtVTtaCF91aRWkli1rTczT=w400-h400" alt="" width="" height="" >
+              <!--<img src="{% static 'website/images/feature-image.jpg' %}" alt="">-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

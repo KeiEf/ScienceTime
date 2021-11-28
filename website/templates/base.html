@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>ScienceTime</title>
+
+    <script src="https://kit.fontawesome.com/b292ac796e.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'website/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    
+    <!-- Additional CSS Files -->
+    <!--<link rel="stylesheet" href="{% static 'website/css/fontawesome.css' %}">-->
+    <link rel="stylesheet" href="{% static 'website/css/ST.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/owl.css' %}">
+    <!--//<link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css' %}">-->
+ 
+    <link rel="stylesheet" href="{% static 'website/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/li-scroller.css' %}">  
+    <link rel="stylesheet" href="{% static 'website/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/jquery.fancybox.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/theme.css' %}">    
+    <link rel="stylesheet" href="{% static 'website/css/post.css' %}">
+
+  
+
+    <!--  Twitter  -->
+
+<meta name="description" content="自然科学" />
+    
+{% if post.title %}
+   <meta name="twitter:title" content="{{ post.title }}" />
+{% else %}
+   <meta name="twitter:title" content="ScienceTime" />
+{% endif %}
+
+<meta property="og:url" content="sciencetime.com" />
+
+{% if post.title %}
+   <meta property="og:title" content="{{ post.title }}" />
+{% else %}
+   <meta property="og:title" content="ScienceTime" /> 
+{% endif %}
+
+{% if post.body %}
+   <meta property="og:description" content="{{ post.body|safe }}" />
+{% else %}
+   <meta property="og:description" content="自然科学" />
+{% endif %} 
+
+{% if post.header_image %}
+   <meta property="og:image" content="{{ post.header_image.url }}" />
+{% else %}
+   <meta property="og:image" content="https://res.cloudinary.com/himxipihw/image/upload/v1636786848/static/theblog/images/headerAS_xrkpfb.png" />
+{% endif %}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="sciencetime_jp" />
+<meta property="og:site_name" content="ScienceTime" />
+<meta property="og:locale" content="ja_JP" />
+
+<!-- fav icon-->
+<link rel="icon" type="image/png" href="{% static 'theblog/images/fav.png' %}">
+
+
+
+    <title>
+        {% block title %}
+            ScienceTime
+        {% endblock %}
+      </title>
+    </head>
+    <body>
+
+   <!-- ***** Preloader Start ***** -->
+   <div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>  
+<!-- ***** Preloader End ***** -->
+
+<!-- Header -->
+<header class="">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'index' %}"><h2><i>ScienceTime</i></h2></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'posts' %}">ニュース & コラム</a>
+          </li>
+          <!--Merch-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               サイエンスグッズ
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'products' %}">全ジャンル</a></li>
+              <li><a class="dropdown-item" href="{% url 'genre' 'fashion' %}">ファッション</a></li>              
+              <li><a class="dropdown-item" href="{% url 'genre' 'toy' %}">おもちゃ</a></li>
+              <li><a class="dropdown-item" href="{% url 'genre' 'merch' %}">雑貨 他</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">レクチャー</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://afterschoolbbs.herokuapp.com/" target="_blank">掲示板</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    {% block content %}
+        
+    {% endblock %}
+        
+
+        <footer>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="inner-content">
+                    <p>Copyright &copy; 2022 ScienceTime</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+      
+      
+          <!-- Bootstrap core JavaScript -->
+          <script src="{% static 'website/jquery/jquery.min.js' %}"></script>
+          <script src="{% static 'website/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+      
+          <!-- Additional Scripts -->
+          <script src="{% static 'website/js/custom.js' %}"></script>
+          <script src="{% static 'website/js/owl.js' %}"></script>
+          <script src="{% static 'website/js/slick.js' %}"></script>
+          <script src="{% static 'website/js/isotope.js' %}"></script>
+          <script src="{% static 'website/js/accordions.js' %}"></script>
+          <script src="{% static 'website/js/jquery.min.js' %}"></script> 
+          <script src="{% static 'website/js/wow.min.js' %}"></script> 
+          <script src="{% static 'website/js/bootstrap.min.js' %}"></script> 
+          <script src="{% static 'website/js/slick.min.js' %}"></script> 
+          <script src="{% static 'website/js/jquery.li-scroller.1.0.js' %}"></script> 
+          <script src="{% static 'website/js/jquery.newsTicker.min.js' %}"></script> 
+          <script src="{% static 'website/js/jquery.fancybox.pack.js' %}"></script> 
+
+      
+          <script language = "text/Javascript"> 
+            cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+            function clearField(t){                   //declaring the array outside of the
+            if(! cleared[t.id]){                      // function makes it static and global
+                cleared[t.id] = 1;  // you could use true and false, but that's more typing
+                t.value='';         // with more chance of typos
+                t.style.color='#fff';
+                }
+            }
+          </script>
+
+
+    </body>
+</html>
