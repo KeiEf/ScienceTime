@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import Post, Product, Genre##, Category
+from .models import Post
 
-admin.site.register(Product)
+
 admin.site.register(Post)
-##admin.site.register(Category)
-admin.site.register(Genre)
