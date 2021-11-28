@@ -19,7 +19,7 @@ class Genre(models.Model):
              
     def get_absolute_url(self):
        return reverse('index')
-
+'''
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
@@ -28,6 +28,7 @@ class Category(models.Model):
              
     def get_absolute_url(self):
        return reverse('index')
+'''
 
 class Post(models.Model):
  
