@@ -1,8 +1,17 @@
 from django import forms
-from .models import Post, Product##, Genre, Category
+from .models import Post, Product, Genre
 
-choices = [('sports','sports'),('entertainment','entertainment')]
-#choices = Category.objects.all().values_list('name','name')
+#choices = [('sports','sports'),('entertainment','entertainment')]
+choices = {'physics and astronomy':'physics and astronomy',
+                     'environment':'environment',
+                     'medical and health':'medical and health',
+                     'biology':'biology',
+                     'information':'information',
+                     'biology':'biology',
+                     'politics':'politics',
+                     'anthropology': 'anthropology',
+                     'others':'others',
+        }
 choice_list = []
 
 state_list = [('published','published'),('private','private')]
@@ -20,7 +29,7 @@ class PostForm(forms.ModelForm):
             'abstract': forms.TextInput(attrs={'class': 'form-control'}),
             'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),
         #    'author': forms.Select(attrs={'class': 'form-control'}),
-        #    'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
+            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}),
   
@@ -34,7 +43,7 @@ class EditForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Thi is Title PlaceHolder'}),
             'abstract': forms.TextInput(attrs={'class': 'form-control'}),
             'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
-         #   'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
+            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}),
 
         }
