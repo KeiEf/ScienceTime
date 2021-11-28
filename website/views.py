@@ -3,7 +3,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Product, Post, Category, Genre
 from .forms import PostForm, EditForm
-from django.db.models import Max, Case, When, Sum,Count, Q, F
+from django.db.models import Max, Case, When, Sum, Count, Q, F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
