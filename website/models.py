@@ -10,7 +10,6 @@ class Tag(models.Model):
 #    slug = models.SlugField(blank=True)
     slug = models.SlugField(allow_unicode=True)
 
-
 class Genre(models.Model):
     name = models.CharField(max_length=255)
     
