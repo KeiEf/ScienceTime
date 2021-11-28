@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Products Top{% endblock %}
+
+{% block content %}
+
+
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+
+  <section id="postSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <!--Fashion-->
+          <div class="single_post_content">
+            <h2><span>Fashion</span></h2>
+            <div class="single_post_content_left">
+              <ul class="business_catgnav  wow fadeInDown">
+                {% for post in fashion_list|slice:":1"  %}    
+                <li>                 
+                  <figure class="bsbig_fig">
+                    <a href="{% url 'product_detail' post.pk %}" class="featured_img">
+                    {% if post.main_image%}
+                      <img src="{{ post.main_image }}" alt="">
+                    {% else %}
+                      <img src="{{ post.image_url}}" alt="">
+                    {% endif %}
+                    <span class="overlay"></span> </a>
+                    <figcaption> <a href="{% url 'product_detail' post.pk %}">{{ phys_latest.title }}</a>
+                    </figcaption>
+                    <p>{{ post.description |truncatechars:50}}</p>
+                  </figure>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="single_post_content_right">
+              <ul class="spost_nav">
+                {% for post in fashion_list|slice:":5"  %}
+                  {% if forloop.first %}
+                  {% else %}
+                  <li>
+                    <div class="media wow fadeInDown">
+                      <a href="{% url 'product_detail' post.pk %}" class="media-left">
+                        {% if post.main_image%}
+                        <img src="{{ post.main_image }}" alt="">
+                      {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                      {% endif %} 
+                      </a>
+                      <div class="media-body"> <a href="{% url 'product_detail' post.pk %}" class="catg_title"> {{ post.name }}</a>
+                      </div>
+                    </div>
+                  </li><!--x4-->
+                   {% endif %}
+                {% endfor %}
+                <li><a href="{% url 'genre' 'fashion' %}" >view all posts in this category</a></li>
+              </ul>
+            </div>
+          </div>
+
+           <!--Toy-->
+           <div class="fashion_technology_area">
+            <div class="fashion">
+              <div class="single_post_content">
+                <h2><span>Toy</span></h2>
+                <ul class="business_catgnav wow fadeInDown">
+                  {% for post in toy_list|slice:":1"  %}    
+                  <li>
+                    <figure class="bsbig_fig">
+                      <a href="{% url 'post_detail' post.pk %}" class="featured_img">
+                      {% if post.main_image %}
+                        <img src="{{ post.main_image }}" alt="">
+                      {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                      {% endif %}
+                      <span class="overlay"></span> </a>
+                    <figcaption> <a href="{% url 'post_detail' post.pk %}" >{{ post.name }}</a> </figcaption>
+                      <p>{{ post.description |truncatechars:50}}</p>
+                    </figure>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <ul class="spost_nav">
+                  {% for post in toy_list|slice:":5"  %}
+                  {% if forloop.first %}
+                  {% else %}
+                  <li>
+                    <div class="media wow fadeInDown">
+                      <a href="{% url 'post_detail' post.pk %}" class="media-left">
+                        {% if post.main_image%}
+                        <img src="{{ post.main_image }}" alt="">
+                      {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                      {% endif %} 
+                      </a>
+                      <div class="media-body"> <a href="{% url 'post_detail' post.pk %}"class="catg_title"> {{ post.name }}</a>
+                      </div>
+                    </div>
+                  </li>
+                   {% endif %}
+                {% endfor %}
+                <li><a href="{% url 'genre' 'toy' %}" >view all posts in this category</a></li>
+                </ul>
+              </div>
+            </div>
+            <!--Medical and Health-->
+            <div class="technology">
+              <div class="single_post_content">
+                <h2><span>Merch</span></h2>
+                <ul class="business_catgnav">
+                  {% for post in merch_list|slice:":1"  %}    
+                  <li>
+                    <figure class="bsbig_fig">
+                      <a href="{% url 'post_detail' post.pk %}" class="featured_img">
+                      {% if post.main_image %}
+                        <img src="{{ post.main_image }}" alt="">
+                      {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                      {% endif %}
+                      <span class="overlay"></span> </a>
+                    <figcaption> <a href="{% url 'post_detail' post.pk %}" >{{ post.name }}</a> </figcaption>
+                      <p>{{ post.description |truncatechars:50}}</p>
+                    </figure>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <ul class="spost_nav">
+                  {% for post in merch_list|slice:":5"  %}
+                  {% if forloop.first %}
+                  {% else %}
+                  <li>
+                    <div class="media wow fadeInDown">
+                      <a href="{% url 'post_detail' post.pk %}" class="media-left">
+                        {% if post.main_image%}
+                        <img src="{{ post.main_image }}" alt="">
+                      {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                      {% endif %} 
+                      </a>
+                      <div class="media-body"> <a href="{% url 'post_detail' post.pk %}"class="catg_title"> {{ post.name }}</a>
+                      </div>
+                    </div>
+                  </li>
+                   {% endif %}
+                {% endfor %}
+                <li><a href="{% url 'genre' 'merch' %}" >view all posts in this category</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>  
+        </div>
+
+
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <aside class="right_content">
+              <div class="single_sidebar">
+                <h2><span>Popular Items</span></h2>
+                <ul class="spost_nav">
+                  {% for post in popular_list|slice:":4" %}
+                  <li>
+                    <div class="media wow fadeInDown">             
+                      <a href="{% url 'post_detail' post.pk %}" class="media-left">              
+                        {% if post.main_image%}
+                          <img src="{{ post.main_image }}" alt="">
+                        {% else %}
+                          <img src="{{ post.image_url}}" alt="">
+                        {% endif %}
+                      </a>
+                      <div class="media-body">
+                        <a href="{% url 'product_detail' post.pk %}" class="catg_title">{{ post.name }}
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <!-- ads -->
+              <div class="single_sidebar wow fadeInDown">
+                <h2><span>Sponsor</span></h2>
+                {% include 'ads/ads1.php' %}
+              </div>
+              <!-- category -->
+              <div class="single_sidebar wow fadeInDown">
+                <h2><span>Category Archive</span></h2>
+                <select class="catgArchive" onChange="location.href=value;">
+                  <option>Select Category</option>
+                  {% for item in genre_menu %}              
+                  <option value="{% url 'genre' item %}">{{ item }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </aside>
+          </div>
+          
+        </div>
+      </div>
+      
+
+      {% if user.is_authenticated %}
+          <a href="{% url 'add_post' %}">add_post</a>
+      {% endif %}
+
+    </div>    
+  </section>
+
+
+
+    
+    {% endblock %}

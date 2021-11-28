@@ -9,7 +9,165 @@
   <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
   <div class="container">
 
- 
+    <section id="postSection">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+          <div class="left_content">
+            <div class="single_page">
+              <ol class="breadcrumb">
+                <li><a href="{% url 'posts' %}">All Posts</a></li>
+                <li><a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a></li>
+                <li class="active">Mobile</li>
+              </ol>
+              {% if post.state == "published" %}
+              <h1>{{ post.title }}</h1>
+              {% endif %}
+
+              <div class="post_commentbox">
+                {% if post.state == "published" %}
+                <span><i class="fa fa-user"></i>{{post.author.first_name }} {{post.author.last_name}}</span>
+                <span><i class="fa fa-calendar"></i>{{ post.post_date }}</span> 
+                <a href="{% url 'category' post.category|slugify %}"><i class="fas fa-folder"></i>{{ post.category }}</a>
+                <br>
+                <span><i class="fa fa-tags"></i>
+                  {% for tag in post.post_tags.all %}
+                  <a href="{% url 'post_by_tag' tag.slug %}">{{ tag }}</a>
+                  {% endfor %}
+                </span>
+                {% endif %}
+              </div>
+              <div class="single_page_content">
+              {% if post.state == "published" %}
+                {% if post.main_image%}
+                  <img src="{{ post.main_image }}" alt="">
+                {% else %}
+                  <img src="{{ post.image_url}}" alt="">
+                {% endif %}
+                <p>{{ post.content|safe }}</p>
+              {% else %}
+                <p>Sorry, this post is not published.</p>
+              {% endif %}               
+              </div>
+
+              <div class="social_link">
+                <ul class="sociallink_nav">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                </ul>
+              </div>
+              <!--related posts-->
+              <div class="related_post">
+                <h2>Related Posts</h2>
+                <ul class="spost_nav wow fadeInDown animated">
+                  {% for post in related_posts %}
+                  <li>
+                    <div class="media">
+                        {% if post.title %}
+                        <a class="media-left" href="{% url 'post_detail' post.pk %}">
+                        {% elif post.name %}
+                        <a class="media-left" href="{% url 'product_detail' post.pk %}">
+                        {% endif %}
+
+                        {% if post.main_image %}
+                        <img src="{{ post.main_image }}" alt="">
+                        {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                        {% endif %}
+                       </a>
+                      <div class="media-body">
+                        {% if post.title %}
+                        <a class="catg_title" href="{% url 'post_detail' post.pk %}"> {{ post.title}}</a>
+                        {% elif post.name %}
+                        <a class="catg_title" href="{% url 'product_detail' post.pk %}"> {{ post.name}}</a>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </li><!--3x-->
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+        <!-- popular posts-->
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <aside class="right_content">
+            <div class="single_sidebar">
+              <h2><span>Popular Posts</span></h2>
+              <ul class="spost_nav">
+                {% for post in popular_list|slice:":4" %}
+                <li>
+                  <div class="media wow fadeInDown">             
+                    <a href="{% url 'post_detail' post.pk %}" class="media-left">              
+                      {% if post.main_image%}
+                        <img src="{{ post.main_image }}" alt="">
+                      {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                      {% endif %}
+                    </a>
+                    <div class="media-body">
+                      <a href="{% url 'post_detail' post.pk %}" class="catg_title">{{ post.title }}
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            <!-- popular items-->
+            <div class="single_sidebar">
+              <h2><span>Popular Items</span></h2>
+              <ul class="spost_nav">
+                {% for post in popular_items|slice:":4" %}
+                <li>
+                  <div class="media wow fadeInDown">             
+                  <a href="{% url 'product_detail' post.pk %}" class="media-left">              
+                    {% if post.main_image%}
+                      <img src="{{ post.main_image }}" alt="">
+                    {% else %}
+                      <img src="{{ post.image_url}}" alt="">
+                    {% endif %}
+                  </a>
+                    <div class="media-body">
+                      <a href="{% url 'product_detail' post.pk %}" class="catg_title">{{ post.name }}
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>            
+
+          <!-- ads -->
+          <div class="single_sidebar wow fadeInDown">
+            <h2><span>Sponsor</span></h2>
+            {% include 'ads/ads1.php' %}
+          </div>
+          <!-- category -->
+          <div class="single_sidebar wow fadeInDown">
+            <h2><span>Category Archive</span></h2>
+            <select class="catgArchive" onChange="location.href=value;">
+              <option>Select Category</option>
+              {% for item in cat_menu %}              
+              <option value="{% url 'category' item|slugify %}">{{ item }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          </aside>
+        </div>
+      </div>
+      {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+          <a href="{% url 'update_post' post.pk %}">edit</a>
+        {% endif %}
+      {% else %}
+        
+        You're not allowed here.
+          
+      {% endif %}
+    </section>
   
   </div>
   <script src="{% static 'website/js/jquery.min.js' %}"></script> 

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ gens }}{% endblock %}
+{% block content %}
+
+
+    <!-- Page Content -->
+    <div class="page-heading products-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>科学グッズ</h4>
+              <h2>Science {{ gens }}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="filters">
+              <ul>
+                  <li class="active" data-filter="*">All Products</li>                 
+                  {% if gens|slugify == "fashion" %}
+                    {% for item in fashion_genre %}
+                      <li data-filter=".{{ item }}">{{ item }}</li>
+                    {% endfor %}
+                  {% elif gens|slugify == "toy" %}
+                    {% for item in toy_genre %}
+                      <li data-filter=".{{ item }}">{{ item}}</li>
+                    {% endfor %}
+                  {% else %}
+                    {% for item in merch_genre %}
+                      <li data-filter=".{{ item }}">{{ item }}</li>
+                    {% endfor %}
+                  {% endif %}
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="filters-content">
+                <div class="row grid">
+
+                  {% for product in genre_posts %}
+
+                    <div class="col-lg-4 col-md-4 {{ product.sub_genre }} all">
+                    <div class="product-item">
+                      <div class="image-content"> 
+                      {% if product.main_image %}
+                      <a href="{% url 'product_detail' product.pk %}"><img src="{{ name.main_image }}" alt=""></a>
+                      {% else %}
+                      <a href="{% url 'product_detail' product.pk %}"><img src="{{ product.image_url}}" alt=""></a>
+                      {% endif %}
+                      </div>
+                      <div class="down-content">
+                        <a href="{% url 'product_detail' product.pk %}"><h4>{{ product.name }}</h4></a>
+                        <!--<p class="tag_list">
+                          {% for tag in product.tags.all %}
+                             {% if tag.slug  %}
+                             <a href="{% url 'product_by_tag' tag.slug %}">{{ tag.name }}</a>
+                             {% else  %}
+                                {{ tag.name }}
+                             {% endif %}
+                          {% endfor %}
+                        </p>-->
+                        <p class="description">{{ product.description|truncatechars:200}}</p>
+                        <div class="link_buttons">
+                           {% if product.amazon_url %}
+                              <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
+                           {% endif %}
+                           {% if product.rakuten_url %}
+                              <a href="{{ product.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
+                           {% endif %}
+                           {% if product.suzuri_url %}
+                              <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
+                           {% endif %}                       
+                           
+                        </div>
+                        <span><a href="{% url 'product_detail' product.pk %}">詳細</a></span>
+                      </div>
+                    </div>
+                  </div>
+                    
+                  {% endfor %}
+                  
+                
+                    
+                </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+      
+    {% include 'pagination.php' %}
+
+    
+    {% endblock %}

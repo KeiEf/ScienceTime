@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+
+<div class="page-heading products-heading header-text">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="text-content">
+            <h4>{{ product.name }}</h4>
+           <h2>{{ product.eng_name }}</h2>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<div class="best-features">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="section-heading">
+            <h2>{{ product.name }}</h2>
+         </div>
+       </div>
+       <div class="col-md-6">
+         <div class="left-content">
+           <h4>Features</h4>
+           <!--<p>tags: 
+            {% for tag in product.tags.all %}
+                 {% if tag.slug  %}
+                    <a href="{% url 'product_by_tag' tag.slug %}">{{ tag.name }}</a>
+                 {% else  %}
+                    {{ tag.name }}
+                 {% endif %}
+            {% endfor %}</p>-->
+            <p><i class="fas fa-folder"></i><a href="{% url 'genre' product.genre %}" > {{ product.genre}}</a></p>
+            <p>{{ product.body|safe |linebreaksbr |urlize }}</p>
+            {% if product.video_url %}
+            <p>{{ product.video_url|safe }}</p>
+            {% endif %}
+           <h4>購入リンク：</h4>
+           <div class="link_buttons">
+            {% if product.amazon_url %}
+               <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
+            {% endif %}
+            {% if product.rakuten_url %}
+               <a href="{{ product.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
+            {% endif %}
+            {% if product.suzuri_url %}
+               <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
+            {% endif %}                       
+            
+         </div>
+         </div>
+       </div>
+
+       <div class="col-md-6">
+         <div class="right-image">
+            {% if item.main_image%}
+            <img src="{{ product.main_image }}" alt="">
+            {% else %}
+            <img src="{{ product.image_url}}" alt="">
+            {% endif %}
+         </div>
+       </div>
+     </div>
+
+
+<!--Twitter-->
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-via="sciencetime_jp" data-related="ST_phys_bot" class="twitter-share-button" data-show-count="false" data-hashtags="sciencetime{% for tag in product.tags.all %},{{ tag.name }}{% endfor %}" data-lang="ja">Tweet</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<!--LINE-->
+<script language="JavaScript">
+   function line_button_tag(){
+     var tag= "<div class='line-it-button' data-lang='ja' data-type='share-a' data-ver='2' data-url='{0}' style='display: none;'></div>";
+     tag = tag.replace(/\{0\}/g, location.href);
+     return tag;
+   }
+ </script>
+ <script language="JavaScript">document.write(line_button_tag());</script>
+ 
+ <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+<!--LINE -->
+    <hr>
+         <a href="{% url 'products' %}" class="btn btn-secondary">戻る</a>
+   </div>
+ </div>
+
+{% endblock %}

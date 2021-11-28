@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Posts Top{% endblock %}
+
+{% block content %}
+
+
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+
+  <section id="sliderSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="slick_slider">
+          {% for post in object_list|slice:":4" %}
+          <div class="single_iteam">
+            <a href="{% url 'post_detail' post.pk %}" >              
+            {% if post.main_image%}
+              <img src="{{ post.main_image }}" alt="">
+            {% else %}
+              <img src="{{ post.image_url}}" alt="">
+            {% endif %}
+            </a>
+            <div class="slider_article">
+              <h2><a class="slider_tittle" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+              <p>{{ post.abstract |truncatechars:50}}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="single_sidebar">
+          <h2><span>Latest posts</span></h2>
+          <div class="media wow fadeInDown">     
+            <ul class="spost_nav">
+              {% for post in object_list|slice:":5" %}
+              <li>
+                <div class="media">
+                  <a href="{% url 'post_detail' post.pk %}" class="media-left">              
+                    {% if post.main_image%}
+                      <img src="{{ post.main_image }}" alt="">
+                    {% else %}
+                      <img src="{{ post.image_url}}" alt="">
+                    {% endif %}
+                  </a>
+                  <div class="media-body">
+                    <a href="{% url 'post_detail' post.pk %}" class="catg_title">{{ post.title }}
+                    </a>
+                  </div>
+                </div>
+              </li>
+               {% endfor %}
+            </ul>          
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <!--Physics and Astronomy-->
+          <div class="single_post_content">
+            <h2><span>Physics & Astronomy</span></h2>
+            <div class="single_post_content_left">
+              <ul class="business_catgnav  wow fadeInDown">
+                <li>
+                  <figure class="bsbig_fig">
+                    <a href="{% url 'post_detail' phys_latest.pk %}" class="featured_img">
+                    {% if post.main_image%}
+                      <img src="{{ phys_latest.main_image }}" alt="">
+                    {% else %}
+                      <img src="{{ phys_latest.image_url}}" alt="">
+                    {% endif %}
+                    <span class="overlay"></span> </a>
+                    <figcaption> <a href="{% url 'post_detail' phys_latest.pk %}">{{ phys_latest.title }}</a>
+                    </figcaption>
+                    <p>{{ phys_latest.abstract |truncatechars:50}}</p>
+                  </figure>
+                </li>
+              </ul>
+            </div>
+            <div class="single_post_content_right">
+              <ul class="spost_nav">
+                {% for post in phys_list|slice:":5"  %}
+                  {% if forloop.first %}
+                  {% else %}
+                  <li>
+                    <div class="media wow fadeInDown">
+                      <a href="{% url 'post_detail' post.pk %}" class="media-left">
+                        {% if post.main_image%}
+                        <img src="{{ post.main_image }}" alt="">
+                      {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                      {% endif %} 
+                      </a>
+                      <div class="media-body"> <a href="{% url 'post_detail' post.pk %}" class="catg_title"> {{ post.title }}</a>
+                      </div>
+                    </div>
+                  </li><!--x4-->
+                   {% endif %}
+                {% endfor %}
+                <li><a href="{% url 'category' 'physics and astronomy' %}" >view all posts in this category</a></li>
+              </ul>
+            </div>
+          </div>
+          <!--Environement-->
+          <div class="fashion_technology_area">
+            <div class="fashion">
+              <div class="single_post_content">
+                <h2><span>Environment</span></h2>
+                <ul class="business_catgnav wow fadeInDown">
+                  <li>
+                    <figure class="bsbig_fig">
+                      <a href="{% url 'post_detail' env_latest.pk %}" class="featured_img">
+                      {% if post.main_image%}
+                        <img src="{{ env_latest.main_image }}" alt="">
+                      {% else %}
+                        <img src="{{ env_latest.image_url}}" alt="">
+                      {% endif %}
+                      <span class="overlay"></span> </a>
+                    <figcaption> <a href="{% url 'post_detail' env_latest.pk %}" >{{ env_latest.title }}</a> </figcaption>
+                      <p>{{ env_latest.abstract |truncatechars:50}}</p>
+                    </figure>
+                  </li>
+                </ul>
+                <ul class="spost_nav">
+                  {% for post in env_list|slice:":5"  %}
+                  {% if forloop.first %}
+                  {% else %}
+                  <li>
+                    <div class="media wow fadeInDown">
+                      <a href="{% url 'post_detail' post.pk %}" class="media-left">
+                        {% if post.main_image%}
+                        <img src="{{ post.main_image }}" alt="">
+                      {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                      {% endif %} 
+                      </a>
+                      <div class="media-body"> <a href="{% url 'post_detail' post.pk %}"class="catg_title"> {{ post.title }}</a>
+                      </div>
+                    </div>
+                  </li>
+                   {% endif %}
+                {% endfor %}
+                <li><a href="{% url 'category' 'environment' %}" >view all posts in this category</a></li>
+                </ul>
+              </div>
+            </div>
+            <!--Medical and Health-->
+            <div class="technology">
+              <div class="single_post_content">
+                <h2><span>Medical & Health</span></h2>
+                <ul class="business_catgnav">
+                  <li>
+                    <figure class="bsbig_fig">
+                      <a href="{% url 'post_detail' health_latest.pk %}" class="featured_img">
+                      {% if post.main_image%}
+                        <img src="{{ health_latest.main_image }}" alt="">
+                      {% else %}
+                        <img src="{{ health_latest.image_url}}" alt="">
+                      {% endif %}
+                      <span class="overlay"></span> </a>
+                    <figcaption> <a href="{% url 'post_detail' health_latest.pk %}">{{ health_latest.title }}</a> </figcaption>
+                      <p>{{ health_latest.abstract |truncatechars:50}}</p>
+                    </figure>
+                  </li>
+                </ul>
+                <ul class="spost_nav">
+                  {% for post in health_list|slice:":5"  %}
+                  {% if forloop.first %}
+                  {% else %}
+                  <li>
+                    <div class="media wow fadeInDown">
+                        <a href="{% url 'post_detail' post.pk %}" class="media-left">
+                        {% if post.main_image%}
+                          <img src="{{ post.main_image }}" alt="">
+                        {% else %}
+                          <img src="{{ post.image_url}}" alt="">
+                        {% endif %} 
+                        </a>
+                      <div class="media-body">
+                        <a href="{% url 'post_detail' post.pk %}" class="catg_title"> {{ post.title }}</a>
+                      </div>
+                    </div>
+                  </li>
+                   {% endif %}
+                {% endfor %}
+                <li><a href="{% url 'category' 'medical and health' %}" >view all posts in this category</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="single_sidebar">
+            <h2><span>Popular Posts</span></h2>
+            <ul class="spost_nav">
+              {% for post in popular_list|slice:":4" %}
+              <li>
+                <div class="media wow fadeInDown">             
+                  <a href="{% url 'post_detail' post.pk %}" class="media-left">              
+                    {% if post.main_image%}
+                      <img src="{{ post.main_image }}" alt="">
+                    {% else %}
+                      <img src="{{ post.image_url}}" alt="">
+                    {% endif %}
+                  </a>
+                  <div class="media-body">
+                    <a href="{% url 'post_detail' post.pk %}" class="catg_title">{{ post.title }}
+                    </a>
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <!-- ads -->
+          <div class="single_sidebar wow fadeInDown">
+            <h2><span>Sponsor</span></h2>
+            {% include 'ads/ads1.php' %}
+          </div>
+          <!-- category -->
+          <div class="single_sidebar wow fadeInDown">
+            <h2><span>Category Archive</span></h2>
+            <select class="catgArchive" onChange="location.href=value;">
+              <option>Select Category</option>
+              {% for item in cat_menu_list%}              
+              <option value="{% url 'category' item|slugify %}">{{ item }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </aside>
+      </div>
+
+      {% if user.is_authenticated %}
+          <a href="{% url 'add_post' %}">add_post</a>
+      {% endif %}
+
+    </div>    
+  </section>
+
+
+
+    
+    {% endblock %}
