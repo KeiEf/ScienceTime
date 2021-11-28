@@ -20,7 +20,6 @@ class Genre(models.Model):
     def get_absolute_url(self):
        return reverse('index')
 
-'''
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
@@ -29,17 +28,17 @@ class Category(models.Model):
              
     def get_absolute_url(self):
        return reverse('index')
-'''
 
 class Post(models.Model):
  
     title = models.CharField(max_length=100,  verbose_name='タイトル')
-    header_image = models.ImageField(null=True, blank=True, upload_to="images/post/", verbose_name='画像')
+    header_image = models.ImageField(null=True, blank=True, upload_to="images/post/header", verbose_name='ヘッダー画像')
+ #   body_image = models.ImageField(null=True, blank=True, upload_to="images/post/", verbose_name='画像')    
     image_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='画像url')
     author = models.ForeignKey(User, on_delete=models.CASCADE)     
     content = models.TextField(default='' , verbose_name='内容')
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
-    category = models.CharField(max_length=255, default='uncategorized')
+    category = models.CharField(max_length=255, default='others')
     post_date = models.DateTimeField()
     update_date = models.DateTimeField(verbose_name='更新日時', auto_now=True) 
     post_tags = TaggableManager(blank=True,verbose_name='タグ')
@@ -51,7 +50,7 @@ class Post(models.Model):
 
 class Product(models.Model):
  
-    name = models.CharField(max_length=50,  verbose_name='製品名')
+    name = models.CharField(max_length=50, verbose_name='製品名')
     eng_name = models.CharField(max_length=50, verbose_name='製品名（英語）')    
     url_title = models.SlugField(max_length=30,  verbose_name='urlタイトル', blank=True)   
     main_image = models.ImageField(null=True, blank=True, upload_to="images/product/", verbose_name='画像')
@@ -59,7 +58,7 @@ class Product(models.Model):
     video_url = models.TextField(null=True, blank = True, verbose_name='動画url')        
     body = models.TextField(default='' , verbose_name='解説')
     description = models.TextField(max_length=255, blank=True, verbose_name='概略')
-    genre = models.CharField(max_length=255, blank=True, default='merch')
+    genre = models.CharField(max_length=50, blank=True, default='merch')
     sub_genre = models.CharField(max_length=255, blank=True, default='others')   
     post_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(verbose_name='更新日時', auto_now=True)    
