@@ -1,8 +1,8 @@
 from django import forms
-from .models import Post, Category, Product, Genre
+from .models import Post, Product, Genre#, Category
 
-#choices = [('sports','sports'),('entertainment','entertainment')]
-choices = Category.objects.all().values_list('name','name')
+choices = [('sports','sports'),('entertainment','entertainment')]
+#choices = Category.objects.all().values_list('name','name')
 choice_list = []
 
 state_list = [('published','published'),('private','private')]

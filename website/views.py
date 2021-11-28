@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Product, Post, Category, Genre
+from .models import Product, Post, Genre#, Category
 from .forms import PostForm, EditForm
 from django.db.models import Max, Case, When, Sum, Count, Q, F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -91,6 +91,7 @@ class PostTagView(ListView):
         context["object_list"] = object_list           
         return context
 
+'''
 def CategoryView(request, cats):
     paginate_by = 20
     cat_menu = Category.objects.all()
@@ -105,6 +106,7 @@ def CategoryView(request, cats):
         'popular_list': popular_list,
         'popular_items': popular_items   
         })
+'''
 
 class PostDetailView(DetailView):
     model = Post

@@ -11,15 +11,6 @@ class Tag(models.Model):
     slug = models.SlugField(allow_unicode=True)
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-    
-    def __str__(self):
-       return self.name
-             
-    def get_absolute_url(self):
-       return reverse('index')
-
 class Genre(models.Model):
     name = models.CharField(max_length=255)
     
@@ -29,6 +20,16 @@ class Genre(models.Model):
     def get_absolute_url(self):
        return reverse('index')
 
+'''
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+       return self.name
+             
+    def get_absolute_url(self):
+       return reverse('index')
+'''
 
 class Post(models.Model):
  
