@@ -39,13 +39,9 @@ class PostView(ListView):
         popular_list = Post.objects.filter(state="published").order_by('-views')      
 
         phys_list = Post.objects.filter(category="physics and astronomy", state="published").order_by('-post_date')
-        phys_latest = Post.objects.filter(category="physics and astronomy", state="published").latest('post_date')
-
         env_list = Post.objects.filter(category="environment", state="published").order_by('-post_date')
-        env_latest = Post.objects.filter(category="environment", state="published").latest('post_date')
-
         health_list = Post.objects.filter(category="medical and health", state="published").order_by('-post_date')
-        health_latest = Post.objects.filter(category="medical and health", state="published").latest('post_date')
+
 
         cat_menu = Category.objects.all()
         cat_menu = super(PostView, self).get_context_data(*args, **kwargs)
@@ -58,11 +54,8 @@ class PostView(ListView):
         context["popular_list"] = popular_list
 
         context["phys_list"] = phys_list
-        context["phys_latest"] = phys_latest
-        context["env_list"] = env_list
-        context["env_latest"] = env_latest  
-        context["health_list"] = health_list
-        context["health_latest"] = health_latest              
+        context["env_list"] = env_list  
+        context["health_list"] = health_list           
         return context
 
 class AllPostView(ListView):

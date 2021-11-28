@@ -67,20 +67,22 @@
             <h2><span>Physics & Astronomy</span></h2>
             <div class="single_post_content_left">
               <ul class="business_catgnav  wow fadeInDown">
+                {% for post in phys_list|slice:":1"  %}
                 <li>
                   <figure class="bsbig_fig">
-                    <a href="{% url 'post_detail' phys_latest.pk %}" class="featured_img">
+                    <a href="{% url 'post_detail' post.pk %}" class="featured_img">
                     {% if post.main_image%}
-                      <img src="{{ phys_latest.main_image }}" alt="">
+                      <img src="{{ post.main_image }}" alt="">
                     {% else %}
-                      <img src="{{ phys_latest.image_url}}" alt="">
+                      <img src="{{ post.image_url}}" alt="">
                     {% endif %}
                     <span class="overlay"></span> </a>
-                    <figcaption> <a href="{% url 'post_detail' phys_latest.pk %}">{{ phys_latest.title }}</a>
+                    <figcaption> <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
                     </figcaption>
-                    <p>{{ phys_latest.abstract |truncatechars:50}}</p>
+                    <p>{{ post.abstract |truncatechars:50}}</p>
                   </figure>
                 </li>
+                {% endfor %}
               </ul>
             </div>
             <div class="single_post_content_right">
@@ -113,19 +115,21 @@
               <div class="single_post_content">
                 <h2><span>Environment</span></h2>
                 <ul class="business_catgnav wow fadeInDown">
+                  {% for post in env_list|slice:":1"  %}
                   <li>
                     <figure class="bsbig_fig">
-                      <a href="{% url 'post_detail' env_latest.pk %}" class="featured_img">
+                      <a href="{% url 'post_detail' post.pk %}" class="featured_img">
                       {% if post.main_image%}
-                        <img src="{{ env_latest.main_image }}" alt="">
+                        <img src="{{ post.main_image }}" alt="">
                       {% else %}
-                        <img src="{{ env_latest.image_url}}" alt="">
+                        <img src="{{ post.image_url}}" alt="">
                       {% endif %}
                       <span class="overlay"></span> </a>
-                    <figcaption> <a href="{% url 'post_detail' env_latest.pk %}" >{{ env_latest.title }}</a> </figcaption>
-                      <p>{{ env_latest.abstract |truncatechars:50}}</p>
+                    <figcaption> <a href="{% url 'post_detail' post.pk %}" >{{ post.title }}</a> </figcaption>
+                      <p>{{ post.abstract |truncatechars:50}}</p>
                     </figure>
                   </li>
+                  {% endfor %}
                 </ul>
                 <ul class="spost_nav">
                   {% for post in env_list|slice:":5"  %}
@@ -155,19 +159,21 @@
               <div class="single_post_content">
                 <h2><span>Medical & Health</span></h2>
                 <ul class="business_catgnav">
+                  {% for post in health_list|slice:":1"  %}
                   <li>
                     <figure class="bsbig_fig">
-                      <a href="{% url 'post_detail' health_latest.pk %}" class="featured_img">
+                      <a href="{% url 'post_detail' post.pk %}" class="featured_img">
                       {% if post.main_image%}
-                        <img src="{{ health_latest.main_image }}" alt="">
+                        <img src="{{ post.main_image }}" alt="">
                       {% else %}
-                        <img src="{{ health_latest.image_url}}" alt="">
+                        <img src="{{ post.image_url}}" alt="">
                       {% endif %}
                       <span class="overlay"></span> </a>
-                    <figcaption> <a href="{% url 'post_detail' health_latest.pk %}">{{ health_latest.title }}</a> </figcaption>
-                      <p>{{ health_latest.abstract |truncatechars:50}}</p>
+                    <figcaption> <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a> </figcaption>
+                      <p>{{ post.abstract |truncatechars:50}}</p>
                     </figure>
                   </li>
+                  {% endfor %}
                 </ul>
                 <ul class="spost_nav">
                   {% for post in health_list|slice:":5"  %}
