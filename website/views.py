@@ -71,18 +71,11 @@ class PostTagView(ListView):
     template_name ='post_all.html'
     paginate_by = 20
 
-    def get_context_data(self, *args, **kwargs):
-        context = {}
+    def get_queryset(self):
         object_list = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug'))
-        cat_menu = Category.objects.all()
-        popular_list = Post.objects.filter(state="published").order_by('-views')   
-        popular_items = Product.objects.order_by('-views') 
+        return object_list
 
-        context["popular_list"] = popular_list
-        context["popular_items"] = popular_items        
-        context["cat_menu"] = cat_menu
-        context["object_list"] = object_list           
-        return context
+
 
 def CategoryView(request, cats):
     paginate_by = 20
@@ -170,20 +163,42 @@ class ProductView(ListView):
 
 
 def GenreView(request, gens):
-    paginate_by = 20
+
     genre_menu = Genre.objects.all()
-    genre_posts = Product.objects.filter(genre=gens.replace('-',' ')) 
+    genre_posts = Product.objects.filter(genre=gens.replace('-',' '))
+
     popular_items = Product.objects.order_by('-views') 
-    fashion_genre = {'T-shirts' : 'T-shirts', 'hoodie': 'hoodie' }
-    toy_genre = {'mechanics' : 'mechanics', 'maths_and_others': 'maths_and_others' }             
+    fashion_genre = {'T-shirts' : 'T-shirts', 
+                      'hoodie': 'hoodie',
+                      'caps' : 'caps' }
+    toy_genre = {'mechanics' : 'mechanics',
+                 'electromagnetism' : 'electromagnetism',
+                 'thermodynamics' : 'thermodynamics',
+                 'maths_and_others': 'maths_and_others' }
+
+    paginator = Paginator(genre_posts, 10) # num per page
+    page = request.GET.get('page', 1)
+
+    try:
+    	pages = paginator.page(page)
+    except PageNotAnInteger:
+    	pages = paginator.page(1)
+    except EmptyPage:
+    	pages = paginator.page(1)
+               
     return render(request, 'genre.html', {
         'gens':gens.title().replace('-',' '), 
         'genre_posts':genre_posts, 
         'genre_menu':genre_menu,
         'popular_items': popular_items,
         'fashion_genre': fashion_genre,
-        'toy_genre': toy_genre        
+        'toy_genre': toy_genre,
+        'pages': pages
         })
+
+
+
+
 
 '''
    def get_context_data(self):

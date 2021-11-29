@@ -45,7 +45,7 @@
             <div class="filters-content">
                 <div class="row grid">
 
-                  {% for product in genre_posts %}
+                  {% for product in pages %}
 
                     <div class="col-lg-4 col-md-4 {{ product.sub_genre }} all">
                     <div class="product-item">
@@ -92,15 +92,13 @@
                 </div>
             </div>
           </div>
-
-
-
-
         </div>
       </div>
     </div>
       
-    {% include 'pagination.php' %}
+    {% include 'paginating.php' %}   
+
 
     
+
     {% endblock %}
