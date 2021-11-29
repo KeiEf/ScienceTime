@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'website','taggit',
 ]
 
@@ -129,6 +131,8 @@ ALLOW_UNICODE_SLUGS = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -148,3 +152,9 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(locals())
+
+CLOUDINARY_STORAGE  = {
+    'CLOUD_NAME':'hdeegrkdv',
+    'API_KEY':'env(681141196254344)',
+    'API_SECRET':'env(83q3j9T1hZ78G61kcXy4ulHMwPw)'
+}

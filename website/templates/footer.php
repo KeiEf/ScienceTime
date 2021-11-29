@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="inner-content">
-        <p>Copyright &copy; 2022 ScienceTime</p>
+        <p>Copyright &copy; 2021 ScienceTime</p>
       </div>
     </div>
   </div>
