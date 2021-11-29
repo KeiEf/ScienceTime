@@ -13,7 +13,7 @@ for item in choices:
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','image_url', 'abstract', 'author', 'category', 'post_tags','content', 'post_date', 'header_image', 'state')
+        fields = ('title','image_url', 'abstract', 'author', 'category', 'post_tags','content', 'post_date', 'main_image', 'state')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -29,7 +29,7 @@ class PostForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','image_url','abstract',  'category', 'post_tags', 'content', 'post_date', 'header_image', 'state')
+        fields = ('title','image_url','abstract',  'category', 'post_tags', 'content', 'post_date', 'main_image', 'state')
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Thi is Title PlaceHolder'}),
             'abstract': forms.TextInput(attrs={'class': 'form-control'}),

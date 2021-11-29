@@ -41,7 +41,7 @@ class Category(models.Model):
 class Post(models.Model):
  
     title = models.CharField(max_length=100,  verbose_name='タイトル')
-    header_image = models.ImageField(null=True, blank=True, upload_to=image_post, verbose_name='ヘッダー画像')
+    main_image = models.ImageField(null=True, blank=True, upload_to=image_post, verbose_name='ヘッダー画像')
  #   body_image = models.ImageField(null=True, blank=True, upload_to="images/post/", verbose_name='画像')    
     image_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='画像url')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
