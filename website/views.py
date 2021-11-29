@@ -230,7 +230,7 @@ def GenreView(request, gens):
                  'mug' : 'mug'
                   }                 
 
-    paginator = Paginator(genre_posts, 10) # num per page
+    paginator = Paginator(genre_posts, 9) # num per page
     page = request.GET.get('page', 1)
 
     try:

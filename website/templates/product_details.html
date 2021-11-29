@@ -1,8 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}{{ product.name }}{% endblock %}
-{% block content %}
 
+{% block social %}
+  <meta property="og:url" content="sciencetime.jp" />
+  <meta property="og:title" content="{{ product.name }}" />
+  <meta property="og:description" content="{{ product.description }}" />
+  {% if post.main_image %}
+  <meta property="og:image" content="{{ product.main_image.url }}" />
+  {% else %}
+  <meta property="og:image" content="{{ product.image_url }}" />
+  {% endif %}
+{% endblock %}
+
+
+{% block title %}
+ {{ product.name }}
+{% endblock %}
+
+{% block content %}
 <div class="page-heading products-heading header-text">
    <div class="container">
      <div class="row">
@@ -84,8 +99,7 @@
  
  <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 <!--LINE -->
-    <hr>
-         <a href="{% url 'products' %}" class="btn btn-secondary">戻る</a>
+
    </div>
  </div>
 
