@@ -103,8 +103,8 @@
                         {% endif %}
                        </a>
                       <div class="media-body">
+                        <small>                     
                         {% if post.title %}
-                        <small>
                         <a class="catg_title" href="{% url 'post_detail' post.pk %}"> {{ post.title}}</a>
                         {% elif post.name %}
                         <a class="catg_title" href="{% url 'product_detail' post.pk %}"> {{ post.name}}</a>
