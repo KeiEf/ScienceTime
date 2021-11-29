@@ -223,6 +223,10 @@ def GenreView(request, gens):
                  'electromagnetism' : 'electromagnetism',
                  'thermodynamics' : 'thermodynamics',
                  'maths_and_others': 'maths_and_others' }
+    merch_genre = {'tote-bag' : 'tote-bag',
+                 'tumbler' : 'tumbler',
+                 'mug' : 'mug'
+                  }                 
 
     paginator = Paginator(genre_posts, 10) # num per page
     page = request.GET.get('page', 1)
@@ -241,6 +245,7 @@ def GenreView(request, gens):
         'popular_items': popular_items,
         'fashion_genre': fashion_genre,
         'toy_genre': toy_genre,
+        'merch_genre': merch_genre,        
         'pages': pages
         })
 
