@@ -61,35 +61,83 @@ class PostView(ListView):
 class AllPostView(ListView):
    model = Post
    template_name = 'post_all.html'
-   paginate_by = 20
-   def get_queryset(self):
+
+   def get_context_data(self, *args, **kwargs):
+       context = {}
+       cat_menu = Category.objects.all()
+       popular_list = Post.objects.filter(state="published").order_by('-views')   
+       popular_items = Product.objects.order_by('-views')                   
        object_list =  Post.objects.filter(state="published").order_by('-post_date')
-       return object_list
+
+       paginator = Paginator(object_list, 20) # num per page
+       page = self.request.GET.get('page', 1)
+       try:
+         	pages = paginator.page(page)
+       except PageNotAnInteger:
+    	    pages = paginator.page(1)
+       except EmptyPage:
+          	pages = paginator.page(1)
+
+       context["popular_list"] = popular_list
+       context["popular_items"] = popular_items        
+       context["cat_menu"] = cat_menu
+       context["pages"] = pages
+       return context
+
 
 class PostTagView(ListView):
     model = Post
     template_name ='post_all.html'
-    paginate_by = 20
 
-    def get_queryset(self):
-        object_list = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug'))
-        return object_list
+    def get_context_data(self, *args, **kwargs):
+        context = {}
+        cat_menu = Category.objects.all()
+        popular_list = Post.objects.filter(state="published").order_by('-views')   
+        popular_items = Product.objects.order_by('-views')                   
+        tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug'))
+
+        paginator = Paginator(tag_posts, 20) # num per page
+        page = self.request.GET.get('page', 1)
+        try:
+         	pages = paginator.page(page)
+        except PageNotAnInteger:
+    	    pages = paginator.page(1)
+        except EmptyPage:
+          	pages = paginator.page(1)
+
+        context["popular_list"] = popular_list
+        context["popular_items"] = popular_items        
+        context["cat_menu"] = cat_menu
+        context["pages"] = pages
+        return context
 
 
 
 def CategoryView(request, cats):
-    paginate_by = 20
+
     cat_menu = Category.objects.all()
     category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published")
     total = category_posts.count()
     popular_list = Post.objects.filter(state="published").order_by('-views')   
-    popular_items = Product.objects.order_by('-views')                   
+    popular_items = Product.objects.order_by('-views') 
+
+    paginator = Paginator(category_posts, 20) # num per page
+    page = request.GET.get('page', 1)
+
+    try:
+    	pages = paginator.page(page)
+    except PageNotAnInteger:
+    	pages = paginator.page(1)
+    except EmptyPage:
+    	pages = paginator.page(1)
+
     return render(request, 'category.html', {
         'cats':cats.title().replace('-',' '), 
         'category_posts':category_posts, 
         'cat_menu':cat_menu,
         'popular_list': popular_list,
-        'popular_items': popular_items   
+        'popular_items': popular_items,
+        'pages': pages  
         })
 
 
