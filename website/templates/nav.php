@@ -21,9 +21,9 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="{% url 'products' %}">全ジャンル</a></li>
-              <li><a class="dropdown-item" href="{% url 'genre' 'fashion' %}">ファッション</a></li>              
-              <li><a class="dropdown-item" href="{% url 'genre' 'toy' %}">おもちゃ</a></li>
-              <li><a class="dropdown-item" href="{% url 'genre' 'merch' %}">雑貨 他</a></li>
+              <li><a class="dropdown-item" href="{% url 'genre' 'ファッション' %}">ファッション</a></li>              
+              <li><a class="dropdown-item" href="{% url 'genre' 'おもちゃ' %}">おもちゃ</a></li>
+              <li><a class="dropdown-item" href="{% url 'genre' '雑貨' %}">雑貨</a></li>
             </ul>
           </li>
 
