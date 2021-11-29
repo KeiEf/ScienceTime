@@ -11,7 +11,7 @@
                   <div class="media wow fadeInDown">             
                     <a href="{% url 'post_detail' post.pk %}" class="media-left">              
                       {% if post.main_image%}
-                        <img src="{{ post.main_image }}" alt="">
+                        <img src="{{ post.main_image.url }}" alt="">
                       {% else %}
                         <img src="{{ post.image_url}}" alt="">
                       {% endif %}
@@ -35,7 +35,7 @@
                   <div class="media wow fadeInDown">             
                   <a href="{% url 'product_detail' post.pk %}" class="media-left">              
                     {% if post.main_image%}
-                      <img src="{{ post.main_image }}" alt="">
+                      <img src="{{ post.main_image.url }}" alt="">
                     {% else %}
                       <img src="{{ post.image_url}}" alt="">
                     {% endif %}

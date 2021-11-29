@@ -51,7 +51,7 @@
                     <div class="product-item">
                       <div class="image-content"> 
                       {% if product.main_image %}
-                      <a href="{% url 'product_detail' product.pk %}"><img src="{{ name.main_image }}" alt=""></a>
+                      <a href="{% url 'product_detail' product.pk %}"><img src="{{ name.main_image.url }}" alt=""></a>
                       {% else %}
                       <a href="{% url 'product_detail' product.pk %}"><img src="{{ product.image_url}}" alt=""></a>
                       {% endif %}
