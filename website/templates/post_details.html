@@ -30,7 +30,7 @@
             <div class="single_page">
               <ol class="breadcrumb">
                 <li><a href="{% url 'posts' %}">All Posts</a></li>
-                <li><a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a></li>
+                <li><a href="{% url 'category' post.category %}">{{ post.category }}</a></li>
                 <li class="active">Mobile</li>
               </ol>
               {% if post.state == "published" %}

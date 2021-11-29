@@ -61,7 +61,7 @@
             <select class="catgArchive" onChange="location.href=value;">
               <option>Select Category</option>
               {% for item in cat_menu %}              
-              <option value="{% url 'category' item|slugify %}">{{ item }}</option>
+              <option value="{% url 'category' item %}">{{ item }}</option>
               {% endfor %}
             </select>
           </div>
