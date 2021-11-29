@@ -85,7 +85,7 @@
               <div class="related_post">
                 <h2>Related Posts</h2>
                 <ul class="spost_nav wow fadeInDown animated">
-                  {% for post in related_posts %}
+                  {% for post in related_posts|slice:":3" %}
                   <li>
                     <div class="media">
                         {% if post.title %}
