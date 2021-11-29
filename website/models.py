@@ -5,6 +5,15 @@ from datetime import datetime, date
 from taggit.managers import TaggableManager
 import uuid
 
+def image_profile(instance, filename):
+    return 'images/profile/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+
+def image_post(instance, filename):
+    return 'images/post/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+
+def image_product(instance, filename):
+    return 'images/product/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+
 class Tag(models.Model):
     tagname = models.CharField(max_length=50)
 #    slug = models.SlugField(blank=True)
@@ -32,7 +41,7 @@ class Category(models.Model):
 class Post(models.Model):
  
     title = models.CharField(max_length=100,  verbose_name='タイトル')
-    header_image = models.ImageField(null=True, blank=True, upload_to="images/post/header", verbose_name='ヘッダー画像')
+    header_image = models.ImageField(null=True, blank=True, upload_to=image_post, verbose_name='ヘッダー画像')
  #   body_image = models.ImageField(null=True, blank=True, upload_to="images/post/", verbose_name='画像')    
     image_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='画像url')
     author = models.ForeignKey(User, on_delete=models.CASCADE)     
@@ -54,7 +63,7 @@ class Product(models.Model):
     name = models.CharField(max_length=50, verbose_name='製品名')
     eng_name = models.CharField(max_length=50, verbose_name='製品名（英語）')    
     url_title = models.SlugField(max_length=30,  verbose_name='urlタイトル', blank=True)   
-    main_image = models.ImageField(null=True, blank=True, upload_to="images/product/", verbose_name='画像')
+    main_image = models.ImageField(null=True, blank=True, upload_to=image_product, verbose_name='画像')
     image_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='画像url')
     video_url = models.TextField(null=True, blank = True, verbose_name='動画url')        
     body = models.TextField(default='' , verbose_name='解説')
