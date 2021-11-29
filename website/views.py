@@ -38,9 +38,9 @@ class PostView(ListView):
         object_list = Post.objects.filter(state="published").order_by('-post_date')
         popular_list = Post.objects.filter(state="published").order_by('-views')      
 
-        phys_list = Post.objects.filter(category="physics and astronomy", state="published").order_by('-post_date')
-        env_list = Post.objects.filter(category="environment", state="published").order_by('-post_date')
-        health_list = Post.objects.filter(category="medicine and health", state="published").order_by('-post_date')
+        phys_list = Post.objects.filter(category="物理と天文", state="published").order_by('-post_date')
+        env_list = Post.objects.filter(category="環境", state="published").order_by('-post_date')
+        health_list = Post.objects.filter(category="医療と健康", state="published").order_by('-post_date')
 
 
         cat_menu = Category.objects.all()
@@ -193,7 +193,7 @@ class ProductView(ListView):
         object_list = Product.objects.all().order_by('-post_date')
         popular_list = Product.objects.all().order_by('-views')      
 
-        fashion_list = Product.objects.filter(genre="fashion").order_by('-post_date')
+        ファッション_list = Product.objects.filter(genre="ファッション").order_by('-post_date')
         toy_list = Product.objects.filter(genre="toy").order_by('-post_date')
         merch_list = Product.objects.filter(genre="merch").order_by('-post_date')
 
@@ -204,7 +204,7 @@ class ProductView(ListView):
         context["object_list"] = object_list
         context["popular_list"] = popular_list
 
-        context["fashion_list"] = fashion_list
+        context["ファッション_list"] = ファッション_list
         context["toy_list"] = toy_list 
         context["merch_list"] = merch_list             
         return context
@@ -216,7 +216,7 @@ def GenreView(request, gens):
     genre_posts = Product.objects.filter(genre=gens.replace('-',' '))
 
     popular_items = Product.objects.order_by('-views') 
-    fashion_genre = {'T-shirts' : 'T-shirts', 
+    ファッション_genre = {'T-shirts' : 'T-shirts', 
                       'hoodie': 'hoodie',
                       'caps' : 'caps' }
     toy_genre = {'mechanics' : 'mechanics',
@@ -245,7 +245,7 @@ def GenreView(request, gens):
         'genre_posts':genre_posts, 
         'genre_menu':genre_menu,
         'popular_items': popular_items,
-        'fashion_genre': fashion_genre,
+        'ファッション_genre': ファッション_genre,
         'toy_genre': toy_genre,
         'merch_genre': merch_genre,        
         'pages': pages
