@@ -155,6 +155,6 @@ django_heroku.settings(locals())
 
 CLOUDINARY_STORAGE  = {
     'CLOUD_NAME':'hdeegrkdv',
-    'API_KEY':'env(681141196254344)',
-    'API_SECRET':'env(83q3j9T1hZ78G61kcXy4ulHMwPw)'
+    'API_KEY':'681141196254344',
+    'API_SECRET':'83q3j9T1hZ78G61kcXy4ulHMwPw'
 }
