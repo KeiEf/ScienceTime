@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-1r_f8_+7s3#yd9d3c(#d!d_etkkq=n@)7s^q7r46hjot_&3zgw
 DEBUG = True
 
 ##ALLOWED_HOSTS = []
-ALLOWED_HOSTS = [ 'sciencetime.herokuapp.com' ]
+ALLOWED_HOSTS = [ 'sciencetime.jp' ]
 
 
 # Application definition
@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
     'cloudinary',
+    'cloudinary_storage',
     'website','taggit',
 ]
 
@@ -132,6 +132,8 @@ ALLOW_UNICODE_SLUGS = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
@@ -142,9 +144,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, 'static')
 ]
-
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
