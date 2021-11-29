@@ -86,6 +86,8 @@
                 <h2>Related Posts</h2>
                 <ul class="spost_nav wow fadeInDown animated">
                   {% for post in related_posts|slice:":3" %}
+                  {% if post.state == "private" %}
+                  {% else %}
                   <li>
                     <div class="media">
                         {% if post.title %}
@@ -102,13 +104,16 @@
                        </a>
                       <div class="media-body">
                         {% if post.title %}
+                        <small>
                         <a class="catg_title" href="{% url 'post_detail' post.pk %}"> {{ post.title}}</a>
                         {% elif post.name %}
                         <a class="catg_title" href="{% url 'product_detail' post.pk %}"> {{ post.name}}</a>
                         {% endif %}
+                        </small>
                       </div>
                     </div>
                   </li><!--3x-->
+                  {% endif %}
                   {% endfor %}
                 </ul>
               </div>
