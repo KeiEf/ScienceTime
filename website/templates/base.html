@@ -17,40 +17,42 @@
     {% include 'head_css.php' %}
   
 
-    <!--  Twitter  -->
-
-<meta name="description" content="自然科学" />
+    <!--  Social Media  -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="sciencetime_jp" />
+    <meta property="og:site_name" content="ScienceTime" />
+    <meta property="og:locale" content="ja_JP" />
+    {% block social %}
+      <meta name="description" content="自然科学" />
+      {% if post.title %}
+      <meta name="twitter:title" content="{{ post.title }}" />
+      {% else %}
+      <meta name="twitter:title" content="ScienceTime" />
+      {% endif %}
     
-{% if post.title %}
-   <meta name="twitter:title" content="{{ post.title }}" />
-{% else %}
-   <meta name="twitter:title" content="ScienceTime" />
-{% endif %}
+      <meta property="og:url" content="sciencetime.com" />
+    
+      {% if post.title %}
+      <meta property="og:title" content="{{ post.title }}" />
+      {% else %}
+      <meta property="og:title" content="ScienceTime" /> 
+      {% endif %}
+    
+      {% if post.body %}
+      <meta property="og:description" content="{{ post.body|safe }}" />
+      {% else %}
+      <meta property="og:description" content="自然科学" />
+      {% endif %} 
+    
+      {% if post.header_image %}
+      <meta property="og:image" content="{{ post.header_image.url }}" />
+      {% else %}
+      <meta property="og:image" content="https://res.cloudinary.com/himxipihw/image/upload/v1636786848/static/theblog/images/headerAS_xrkpfb.png" />
+     {% endif %}
+    
 
-<meta property="og:url" content="sciencetime.com" />
+    {% endblock %}
 
-{% if post.title %}
-   <meta property="og:title" content="{{ post.title }}" />
-{% else %}
-   <meta property="og:title" content="ScienceTime" /> 
-{% endif %}
-
-{% if post.body %}
-   <meta property="og:description" content="{{ post.body|safe }}" />
-{% else %}
-   <meta property="og:description" content="自然科学" />
-{% endif %} 
-
-{% if post.header_image %}
-   <meta property="og:image" content="{{ post.header_image.url }}" />
-{% else %}
-   <meta property="og:image" content="https://res.cloudinary.com/himxipihw/image/upload/v1636786848/static/theblog/images/headerAS_xrkpfb.png" />
-{% endif %}
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="sciencetime_jp" />
-<meta property="og:site_name" content="ScienceTime" />
-<meta property="og:locale" content="ja_JP" />
 
 <!-- fav icon-->
 

@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block social %}
+  <meta name="twitter:title" content="{{ post.title }}" />
+  <meta property="og:url" content="sciencetime.jp" />
+  <meta property="og:title" content="{{ post.title }}" />
+  <meta property="og:description" content="{{ post.content|safe }}" />
+  {% if post.header_image %}
+  <meta property="og:image" content="{{ post.main_image.url }}" />
+  {% else %}
+  <meta property="og:image" content="{{ post.image_url }}" />
+  {% endif %}
+{% endblock %}
+
 {% block title %}{{ post.title }}{% endblock %}
+
+
 {% block content %}
-
-
   <!-- Page Content -->
 
   <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
@@ -38,7 +51,7 @@
               </div>
               <div class="single_page_content">
               {% if post.state == "published" %}
-                {% if post.main_image%}
+                {% if post.main_image %}
                   <img src="{{ post.main_image }}" alt="">
                 {% else %}
                   <img src="{{ post.image_url}}" alt="">
@@ -52,10 +65,15 @@
 
               <div class="social_link">
                 <ul class="sociallink_nav">
-                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-facebook"></i></a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-via="sciencetime_jp" data-related="ST_phys_bot" class="twitter-share-button" data-show-count="false" data-hashtags="ScienceTime{% for tag in post.post_tags.all %},{{ tag.name }}{% endfor %}" data-lang="ja"></a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                  </li>
                 </ul>
               </div>
+
               <!--related posts-->
               <div class="related_post">
                 <h2>Related Posts</h2>
