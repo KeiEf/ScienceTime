@@ -1,4 +1,10 @@
 {% load static %}
+
+    <!--adsense-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7524603691208984"
+     crossorigin="anonymous"></script>
+
+    <!--fontawesome--> 
     <script src="https://kit.fontawesome.com/b292ac796e.js" crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
     <link href="{% static 'website/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">    
