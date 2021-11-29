@@ -222,7 +222,7 @@ def GenreView(request, gens):
     toy_genre = {'mechanics' : 'mechanics',
                  'electromagnetism' : 'electromagnetism',
                  'thermodynamics' : 'thermodynamics',
-                 'maths_and_others': 'maths_and_others' }
+                 'maths and others': 'maths and others' }
     merch_genre = {'tote-bag' : 'tote-bag',
                  'tumbler' : 'tumbler',
                  'mug' : 'mug'
