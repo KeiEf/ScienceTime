@@ -29,7 +29,7 @@
           <div class="left_content">
             <div class="single_page">
               <ol class="breadcrumb">
-                <li><a href="{% url 'posts' %}">All Posts</a></li>
+                <li><a href="{% url 'posts' %}">記事一覧</a></li>
                 <li><a href="{% url 'category' post.category %}">{{ post.category }}</a></li>
                 <li class="active">Mobile</li>
               </ol>
@@ -83,7 +83,7 @@
 
               <!--related posts-->
               <div class="related_post">
-                <h2>Related Posts</h2>
+                <h2>関連記事：</h2>
                 <ul class="spost_nav wow fadeInDown animated">
                   {% for post in related_posts|slice:":3" %}
                   {% if post.state == "private" %}
