@@ -245,7 +245,7 @@ def GenreView(request, gens):
         'genre_posts':genre_posts, 
         'genre_menu':genre_menu,
         'popular_items': popular_items,
-        'ファッション_genre': ファッション_genre,
+        'fashion_genre': fashion_genre,
         'toy_genre': toy_genre,
         'merch_genre': merch_genre,        
         'pages': pages

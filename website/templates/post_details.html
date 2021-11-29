@@ -41,7 +41,7 @@
                 {% if post.state == "published" %}
                 <span><i class="fa fa-user"></i>{{post.author.first_name }} {{post.author.last_name}}</span>
                 <span><i class="fa fa-calendar"></i>{{ post.post_date }}</span> 
-                <a href="{% url 'category' post.category|slugify %}"><i class="fas fa-folder"></i>{{ post.category }}</a>
+                <a href="{% url 'category' post.category %}"><i class="fas fa-folder"></i>{{ post.category }}</a>
                 <br>
                 <span><i class="fa fa-tags"></i>
                   {% for tag in post.post_tags.all %}
