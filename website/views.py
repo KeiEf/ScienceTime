@@ -40,7 +40,7 @@ class PostView(ListView):
 
         phys_list = Post.objects.filter(category="physics and astronomy", state="published").order_by('-post_date')
         env_list = Post.objects.filter(category="environment", state="published").order_by('-post_date')
-        health_list = Post.objects.filter(category="medical and health", state="published").order_by('-post_date')
+        health_list = Post.objects.filter(category="medicine and health", state="published").order_by('-post_date')
 
 
         cat_menu = Category.objects.all()
@@ -243,21 +243,6 @@ def GenreView(request, gens):
         'toy_genre': toy_genre,
         'pages': pages
         })
-
-
-
-
-
-'''
-   def get_context_data(self):
-        context={}
-        toy_list = Product.objects.filter(category="toy")
-        T_list = Product.objects.filter(category="T-shirts")
-
-        context["toy_list"] = toy_list
-        context["T_list"] = T_list
-        return context
-'''
 
 
 class ProductDetailView(DetailView):
