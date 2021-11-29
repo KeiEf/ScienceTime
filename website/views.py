@@ -193,9 +193,9 @@ class ProductView(ListView):
         object_list = Product.objects.all().order_by('-post_date')
         popular_list = Product.objects.all().order_by('-views')      
 
-        ファッション_list = Product.objects.filter(genre="ファッション").order_by('-post_date')
-        toy_list = Product.objects.filter(genre="toy").order_by('-post_date')
-        merch_list = Product.objects.filter(genre="merch").order_by('-post_date')
+        fashion_list = Product.objects.filter(genre="ファッション").order_by('-post_date')
+        toy_list = Product.objects.filter(genre="おもちゃ").order_by('-post_date')
+        merch_list = Product.objects.filter(genre="雑貨").order_by('-post_date')
 
         genre_menu = Genre.objects.all()
       #  genre_menu_list = Category.objects.all()
@@ -204,7 +204,7 @@ class ProductView(ListView):
         context["object_list"] = object_list
         context["popular_list"] = popular_list
 
-        context["ファッション_list"] = ファッション_list
+        context["fashion_list"] = fashion_list
         context["toy_list"] = toy_list 
         context["merch_list"] = merch_list             
         return context
@@ -216,7 +216,7 @@ def GenreView(request, gens):
     genre_posts = Product.objects.filter(genre=gens.replace('-',' '))
 
     popular_items = Product.objects.order_by('-views') 
-    ファッション_genre = {'T-shirts' : 'T-shirts', 
+    fashion_genre = {'T-shirts' : 'T-shirts', 
                       'hoodie': 'hoodie',
                       'caps' : 'caps' }
     toy_genre = {'mechanics' : 'mechanics',

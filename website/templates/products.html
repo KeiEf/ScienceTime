@@ -13,7 +13,7 @@
         <div class="left_content">
           <!--Fashion-->
           <div class="single_post_content">
-            <h2><span>Fashion</span></h2>
+            <h2><span>ファッション</span></h2>
             <div class="single_post_content_left">
               <ul class="business_catgnav  wow fadeInDown">
                 {% for post in fashion_list|slice:":1"  %}    
@@ -63,7 +63,7 @@
            <div class="fashion_technology_area">
             <div class="fashion">
               <div class="single_post_content">
-                <h2><span>Toy</span></h2>
+                <h2><span>おもちゃ</span></h2>
                 <ul class="business_catgnav wow fadeInDown">
                   {% for post in toy_list|slice:":1"  %}    
                   <li>
@@ -107,7 +107,7 @@
             <!--Medical and Health-->
             <div class="technology">
               <div class="single_post_content">
-                <h2><span>Merch</span></h2>
+                <h2><span>雑貨</span></h2>
                 <ul class="business_catgnav">
                   {% for post in merch_list|slice:":1"  %}    
                   <li>
@@ -156,7 +156,7 @@
           <div class="col-lg-4 col-md-4 col-sm-4">
             <aside class="right_content">
               <div class="single_sidebar">
-                <h2><span>Popular Items</span></h2>
+                <h2><span>人気のアイテム</span></h2>
                 <ul class="spost_nav">
                   {% for post in popular_list|slice:":4" %}
                   <li>
@@ -184,9 +184,9 @@
               </div>
               <!-- category -->
               <div class="single_sidebar wow fadeInDown">
-                <h2><span>Category Archive</span></h2>
+                <h2><span>カテゴリ別リスト</span></h2>
                 <select class="catgArchive" onChange="location.href=value;">
-                  <option>Select Category</option>
+                  <option>カテゴリ選択</option>
                   {% for item in genre_menu %}              
                   <option value="{% url 'genre' item %}">{{ item }}</option>
                   {% endfor %}

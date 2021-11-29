@@ -4,7 +4,7 @@
 <div class="col-lg-4 col-md-4 col-sm-4">
           <aside class="right_content">
             <div class="single_sidebar">
-              <h2><span>Popular Posts</span></h2>
+              <h2><span>人気の記事</span></h2>
               <ul class="spost_nav">
                 {% for post in popular_list|slice:":4" %}
                 <li>
@@ -28,7 +28,7 @@
 
             <!-- popular items-->
             <div class="single_sidebar">
-              <h2><span>Popular Items</span></h2>
+              <h2><span>人気のアイテム</span></h2>
               <ul class="spost_nav">
                 {% for post in popular_items|slice:":4" %}
                 <li>
@@ -57,9 +57,9 @@
           </div>
           <!-- category -->
           <div class="single_sidebar wow fadeInDown">
-            <h2><span>Category Archive</span></h2>
+            <h2><span>カテゴリ別リスト</span></h2>
             <select class="catgArchive" onChange="location.href=value;">
-              <option>Select Category</option>
+              <option>カテゴリ選択</option>
               {% for item in cat_menu %}              
               <option value="{% url 'category' item %}">{{ item }}</option>
               {% endfor %}

@@ -30,7 +30,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="single_sidebar">
-          <h2><span>Latest posts</span></h2>
+          <h2><span>最新記事</span></h2>
           <div class="media wow fadeInDown">     
             <ul class="spost_nav">
               {% for post in object_list|slice:":5" %}
@@ -64,7 +64,7 @@
         <div class="left_content">
           <!--物理と天文-->
           <div class="single_post_content">
-            <h2><span>Physics & Astronomy</span></h2>
+            <h2><span>物理と天文</span></h2>
             <div class="single_post_content_left">
               <ul class="business_catgnav  wow fadeInDown">
                 {% for post in phys_list|slice:":1"  %}
@@ -157,7 +157,7 @@
             <!--Medical and Health-->
             <div class="technology">
               <div class="single_post_content">
-                <h2><span>Medicine & Health</span></h2>
+                <h2><span>医療と健康</span></h2>
                 <ul class="business_catgnav">
                   {% for post in health_list|slice:":1"  %}
                   <li>
@@ -207,7 +207,7 @@
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
           <div class="single_sidebar">
-            <h2><span>Popular Posts</span></h2>
+            <h2><span>人気の投稿</span></h2>
             <ul class="spost_nav">
               {% for post in popular_list|slice:":4" %}
               <li>
@@ -235,9 +235,9 @@
           </div>
           <!-- category -->
           <div class="single_sidebar wow fadeInDown">
-            <h2><span>Category Archive</span></h2>
+            <h2><span>カテゴリ別リスト</span></h2>
             <select class="catgArchive" onChange="location.href=value;">
-              <option>Select Category</option>
+              <option>カテゴリ選択</option>
               {% for item in cat_menu_list%}              
               <option value="{% url 'category' item %}">{{ item }}</option>
               {% endfor %}
