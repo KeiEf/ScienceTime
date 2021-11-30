@@ -31,7 +31,6 @@
               <ol class="breadcrumb">
                 <li><a href="{% url 'posts' %}">記事一覧</a></li>
                 <li><a href="{% url 'category' post.category %}">{{ post.category }}</a></li>
-                <li class="active">Mobile</li>
               </ol>
               {% if post.state == "published" %}
               <h1>{{ post.title }}</h1>
@@ -40,7 +39,7 @@
               <div class="post_commentbox">
                 {% if post.state == "published" %}
                 <span><i class="fa fa-user"></i>{{post.author.first_name }} {{post.author.last_name}}</span>
-                <span><i class="fa fa-calendar"></i>{{ post.post_date }}</span> 
+                <span><i class="fa fa-calendar"></i>{{ post.post_date|date:"Y/m/d - H:i:s" }}</span> 
                 <a href="{% url 'category' post.category %}"><i class="fas fa-folder"></i>{{ post.category }}</a>
                 <br>
                 <span><i class="fa fa-tags"></i>
@@ -83,7 +82,7 @@
 
               <!--related posts-->
               <div class="related_post">
-                <h2>関連記事：</h2>
+                <h2>関連記事</h2>
                 <ul class="spost_nav wow fadeInDown animated">
                   {% for post in related_posts|slice:":3" %}
                   {% if post.state == "private" %}

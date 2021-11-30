@@ -26,7 +26,7 @@
                 </a>
                 <div class="media-body">
                   <a href="{% url 'post_detail' post.pk %}" class="catg_title"> {{ post.title }}</a>
-                  <p><small><i class="fa fa-calendar"></i>{{ post.post_date }}</small></p>
+                  <p><small><i class="fa fa-calendar"></i> {{ post.post_date|date:"Y/m/d"  }}</small></p>
                 </div>
             </div>
             </li>
