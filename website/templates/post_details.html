@@ -64,7 +64,7 @@
               <!--edit-->
               {% if user.is_authenticated %}
               {% if user.id == post.author.id %}
-                <a href="{% url 'update_post' post.pk %}">edit</a>
+                <a href="{% url 'update_post' post.pk %}">[edit]</a>
               {% endif %}
             {% endif %}               
               </div>
