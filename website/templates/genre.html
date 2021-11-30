@@ -11,7 +11,13 @@
           <div class="col-md-12">
             <div class="text-content">
               <h4>科学グッズ</h4>
-              <h2>Science {{ gens }}</h2>
+                {% if gens == "ファッション" %}
+                  <h2>Science Fashion</h2>
+                {% elif gens == "おもちゃ" %}
+                  <h2>Science Toys</h2>
+                {% elif gens == "雑貨" %}
+                  <h2>Science Merch</h2>
+                {% endif %}
             </div>
           </div>
         </div>
