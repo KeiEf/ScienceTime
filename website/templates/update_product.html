@@ -5,8 +5,7 @@
 <div class="container">
   <section id="postSection">
 
-  {% if user.is_authenticated %}
-    {% if user.id == post.author.id %}
+  {% if user.is_superuser %}
 
     <h1>Update Post</h1>
     <br/>
@@ -20,13 +19,8 @@
        <button class="btn btn-secondary">Update</button>
     </div>
     {% else %}
-   
-       You're not allowed here.
 
-  {% endif %}
-  {% else %}
-
-  You're not allowed here.
+    You're not allowed here.
 
   {% endif %}
   </section>  

@@ -5,6 +5,21 @@ from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse
 
 
+#choices = [('sports','sports'),('entertainment','entertainment')]
+choices = Category.objects.all().values_list('name','name')
+choice_list = []
+
+genres = Genre.objects.all().values_list('name','name')
+genre_list =[]
+state_list = [('published','published'),('private','private')]
+
+for item in choices:
+    choice_list.append(item)
+
+for item in genres:
+    genre_list.append(item)
+
+
 class ContactForm(forms.Form):
     name = forms.CharField(
         label='',
@@ -41,14 +56,6 @@ class ContactForm(forms.Form):
         except BadHeaderError:
             return HttpResponse("無効なヘッダが検出されました。")
 
-#choices = [('sports','sports'),('entertainment','entertainment')]
-choices = Category.objects.all().values_list('name','name')
-choice_list = []
-
-state_list = [('published','published'),('private','private')]
-
-for item in choices:
-    choice_list.append(item)
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -71,11 +78,23 @@ class EditForm(forms.ModelForm):
         model = Post
         fields = ('title','image_url','abstract',  'category', 'post_tags', 'content', 'post_date', 'main_image', 'state')
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Thi is Title PlaceHolder'}),
-            'abstract': forms.TextInput(attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'abstract': forms.Textarea(attrs={'class': 'form-control'}),
             'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}),
 
         }
-        
+
+
+class EditProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ('name','image_url','description', 'genre', 'sub_genre', 'tags', 'body', 'main_image')
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'body': forms.Textarea(attrs={'class': 'form-control'}),            
+            'genre': forms.Select(choices=genre_list, attrs={'class': 'form-control'}),
+            'sub_genre': forms.TextInput(attrs={'class': 'form-control'}),
+        }
