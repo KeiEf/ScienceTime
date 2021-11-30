@@ -590,6 +590,9 @@ body {
   
   /* Product Page */
   
+  .p_submit{border:none; background-color:transparent;text-transform: uppercase;}
+
+
   .products {
       margin-top: 100px;
   }
