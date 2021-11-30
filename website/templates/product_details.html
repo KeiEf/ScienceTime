@@ -41,7 +41,19 @@
             <h2>{{ product.name }}</h2>
          </div>
        </div>
-       <div class="col-md-6">
+
+
+        <div class="right-image">
+           {% if product.main_image %}
+           <img src="{{ product.main_image.url }}" alt="">
+           {% else %}
+           <img src="{{ product.image_url}}" alt="">
+           {% endif %}
+        </div>
+
+
+
+
          <div class="left-content">
            <h4>Features:</h4>
            <!--<p>tags: 
@@ -69,19 +81,11 @@
                <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
             {% endif %}                       
             
-         </div>
+
          </div>
        </div>
 
-       <div class="col-md-6">
-         <div class="right-image">
-            {% if product.main_image %}
-            <img src="{{ product.main_image.url }}" alt="">
-            {% else %}
-            <img src="{{ product.image_url}}" alt="">
-            {% endif %}
-         </div>
-       </div>
+
      </div>
 
 
