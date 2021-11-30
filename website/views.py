@@ -246,19 +246,32 @@ def GenreView(request, gens):
 
     genre_menu = Genre.objects.all()
     popular_items = Product.objects.order_by('-views') 
-    fashion_genre = {'T-shirts' : 'T-shirts', 
-                      'hoodie': 'hoodie',
-                      'caps' : 'caps' }
-    toy_genre = {'mechanics' : 'mechanics',
-                 'electromagnetism' : 'electromagnetism',
-                 'thermodynamics' : 'thermodynamics',
-                 'optics' : 'optics',
-                 'fluid_dynamics' : 'fluid_dynamics',
-                 'maths_and_others': 'maths_and_others' }
-    merch_genre = {'tote-bag' : 'tote-bag',
-                 'tumbler' : 'tumbler',
-                 'mug' : 'mug'
+    fashion_genre = {'Tシャツ' : 'Tシャツ', 
+                      'フーディ': 'フーディ',
+                      'キャップ' : 'キャップ' }
+    toy_genre = {'力学' : '力学',
+                 '光と電磁気' : '光と電磁気',
+                 '熱力学' : '熱力学',
+                 '流体' : '流体',
+                 '数学他': '数学他' }
+    merch_genre = {'トートバッグ' : 'トートバッグ',
+                 'タンブラー' : 'タンブラー',
+                 'マグカップ' : 'マグカップ'
                   }                 
+
+  #  fashion_genre = {'T-shirts' : 'T-shirts', 
+  #                    'hoodie': 'hoodie',
+  #                    'caps' : 'caps' }
+  #  toy_genre = {'mechanics' : 'mechanics',
+  #               'electromagnetism' : 'electromagnetism',
+  #               'thermodynamics' : 'thermodynamics',
+  #               'optics' : 'optics',
+  #               'fluid_dynamics' : 'fluid_dynamics',
+  #               'maths_and_others': 'maths_and_others' }
+  #  merch_genre = {'tote-bag' : 'tote-bag',
+  #               'tumbler' : 'tumbler',
+  #               'mug' : 'mug'
+  #                }   
 
     paginator = Paginator(genre_posts, 9) # num per page
     page = request.GET.get('page', 1)

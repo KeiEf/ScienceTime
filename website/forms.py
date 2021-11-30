@@ -13,6 +13,10 @@ genres = Genre.objects.all().values_list('name','name')
 genre_list =[]
 state_list = [('published','published'),('private','private')]
 
+sub_genre_list =[('Tシャツ','Tシャツ'),('フーディ','フーディ'),('キャップ','キャップ' ),
+('力学','力学'),('光と電磁気','光と電磁気'),('熱力学','熱力学'),('流体','流体'),('数学他','数学他'),
+('トートバッグ' ,'トートバッグ'),('タンブラー' ,'タンブラー'),('マグカップ','マグカップ')]
+
 for item in choices:
     choice_list.append(item)
 
@@ -96,5 +100,5 @@ class EditProductForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),            
             'genre': forms.Select(choices=genre_list, attrs={'class': 'form-control'}),
-            'sub_genre': forms.TextInput(attrs={'class': 'form-control'}),
+            'sub_genre': forms.Select(choices=sub_genre_list, attrs={'class': 'form-control'}),
         }
