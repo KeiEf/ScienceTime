@@ -578,11 +578,11 @@ body {
   
   /* Footer */
   
-  footer {
-      text-align: center;
-      background-color: black;
-  }
-  
+  #footer{display:inline; float:left; width:100%; margin-bottom:20px}
+  .footer_top{background-color:#252525; color:#ddd; display:inline; float:left; padding:10px 30px 48px; width:100%}
+  .footer_widget{display:inline; float:left; width:100%; min-height:310px}
+  .footer_widget > h2{border-bottom:3px solid #666; font-family:Oswald,arial,Georgia,serif; font-size:16px; padding:10px 0; text-transform:uppercase}
+ 
   footer .inner-content {
       border-top: 1px solid #eee;
       margin-top: 60px;
