@@ -33,7 +33,7 @@
                     {% for item in toy_genre %}
                       <li data-filter=".{{ item }}">{{ item}}</li>
                     {% endfor %}
-                  {% else %}
+                  {% elif gens == "雑貨" %}
                     {% for item in merch_genre %}
                       <li data-filter=".{{ item }}">{{ item }}</li>
                     {% endfor %}
