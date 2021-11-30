@@ -6,7 +6,7 @@
   <meta property="og:url" content="sciencetime.jp" />
   <meta property="og:title" content="{{ product.name }}" />
   <meta property="og:description" content="{{ product.description }}" />
-  {% if post.main_image %}
+  {% if product.main_image %}
   <meta property="og:image" content="{{ product.main_image.url }}" />
   {% else %}
   <meta property="og:image" content="{{ product.image_url }}" />
@@ -19,7 +19,12 @@
 {% endblock %}
 
 {% block content %}
-<div class="page-heading products-heading header-text">
+
+{% if product.main_image %}
+<div class="page-heading products-heading header-text" style="background-image: url({{ product.main_image.url }})">
+{% else %}
+<div class="page-heading products-heading header-text" style="background-image: url({{ product.image_url }})">
+{% endif %}
    <div class="container">
      <div class="row">
        <div class="col-md-12">
@@ -74,7 +79,7 @@
 
        <div class="col-md-6">
          <div class="right-image">
-            {% if item.main_image%}
+            {% if product.main_image %}
             <img src="{{ product.main_image.url }}" alt="">
             {% else %}
             <img src="{{ product.image_url}}" alt="">

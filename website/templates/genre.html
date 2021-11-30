@@ -5,7 +5,7 @@
 
 
     <!-- Page Content -->
-    <div class="page-heading products-heading header-text">
+    <div class="page-heading products-heading header-text" >
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -57,7 +57,7 @@
                     <div class="product-item">
                       <div class="image-content"> 
                       {% if product.main_image %}
-                      <a href="{% url 'product_detail' product.pk %}"><img src="{{ name.main_image.url }}" alt=""></a>
+                      <a href="{% url 'product_detail' product.pk %}"><img src="{{ product.main_image.url }}" alt=""></a>
                       {% else %}
                       <a href="{% url 'product_detail' product.pk %}"><img src="{{ product.image_url}}" alt=""></a>
                       {% endif %}
