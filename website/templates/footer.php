@@ -32,5 +32,5 @@
       </div>
     </div>
     <div class="footer_bottom">
-      <p class="copyright">Copyright &copy; 2021 ScienceTime</a></p>
+      <p class="copyright">Copyright &copy; 2021 ScienceTime</p>
     </div>

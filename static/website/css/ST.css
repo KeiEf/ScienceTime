@@ -578,29 +578,15 @@ body {
   
   /* Footer */
   
-  #footer{display:inline; float:left; width:100%; margin-bottom:20px}
+  #footer{display:inline; float:left; width:100%; margin-top:20px;  margin-bottom:20px; color:#ccc}
   .footer_top{background-color:#252525; color:#ddd; display:inline; float:left; padding:10px 30px 48px; width:100%}
-  .footer_widget{display:inline; float:left; width:100%; min-height:310px}
-  .footer_widget > h2{border-bottom:3px solid #666; font-family:Oswald,arial,Georgia,serif; font-size:16px; padding:10px 0; text-transform:uppercase}
+  .footer_widget{display:inline; float:left; width:100%;margin-bottom: 30px;}
+  .footer_widget > h2{border-bottom:3px solid #666; font-family:Oswald,arial,Georgia,serif; font-size:16px; padding:10px 0; text-transform:uppercase; }
+  .footer_bottom{float:left; display:inline; width:100%; padding:10px 30px; background-color:#303030; color:#ccc}
+  .copyright{float:left; width:50%; padding-top:5px; text-align:left; color:#ccc}
+
+  @media(max-width:991px ){}
  
-  footer .inner-content {
-      border-top: 1px solid #eee;
-      margin-top: 60px;
-      padding: 60px 0px;
-  }
-  
-  footer .inner-content p {
-      text-transform: uppercase;
-      color: white;
-  }
-  
-  footer .inner-content p a {
-      color: blue;
-      margin-left: 3px;
-  }
-  
-  
-  
   
   /* Product Page */
   
