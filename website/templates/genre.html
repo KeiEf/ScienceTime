@@ -28,40 +28,28 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="filters">
-              <ul>  
-                <li>
-                  <form method="GET" action="">
-                  <p><input class="p_submit" type="submit" name="sort" value="all"></p>
-                  </form>
-                </li>
-                {% if gens == "ファッション" %}
-                  {% for item in fashion_genre %}
-                  <li>
-                    <form method="GET" action="">
-                      <p><input class="p_submit" type="submit" name="sort" value="{{ item }}"></p>
-                    </form>
-                  </li>
-                  {% endfor %}
-                {% elif gens == "おもちゃ" %}
-                  {% for item in toy_genre %}
-                  <li>
-                    <form method="GET" action="">
-                      <p><input class="p_submit" type="submit" name="sort" value="{{ item }}"></p>
-                    </form>
-                  </li> 
-                  {% endfor %}
-                {% elif gens == "雑貨" %}
-                  {% for item in merch_genre %}
-                  <li>
-                    <form method="GET" action="">
-                      <p><input class="p_submit" type="submit" name="sort" value="{{ item }}"></p>
-                    </form>
-                  </li>
-                  {% endfor %}
-                {% endif %}
-              </ul>
-            </div>
+            <div class="select_area">
+              <form method="GET" action="">
+                 <select class="catgArchive" name="sort" method="GET" onChange="submit(this.form)">
+                   <option>カテゴリ選択</option>
+                   <option value="all">全アイテム</option>
+                   {% if gens == "ファッション" %}
+                     {% for item in fashion_genre %}
+                       <option  value="{{ item }}">{{item}}</option>
+                     {% endfor %}
+                   {% elif gens == "おもちゃ" %}
+                     {% for item in toy_genre %}
+                     <option  value="{{ item }}">{{item}}</option>
+                     {% endfor %}
+                   {% elif gens == "雑貨" %}
+                     {% for item in merch_genre %}
+                     <option  value="{{ item }}">{{item}}</option>
+                     {% endfor %}
+                   {% endif %}
+                 </select>
+                 </form>
+               </div>
+
           </div>
           <div class="col-md-12">
             <div class="filters-content">

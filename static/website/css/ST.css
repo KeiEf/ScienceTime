@@ -590,11 +590,8 @@ body {
   
   /* Product Page */
   
-  .p_submit{border:none; background-color:transparent;text-transform: uppercase;}
-
-
-  .products {
-      margin-top: 100px;
+   .products {
+      margin-top: 30px;
   }
   
   .products .filters {
@@ -606,14 +603,22 @@ body {
   
   .products .filters li {
       text-transform: uppercase;
+      text-align: center;
       font-size: 13px;
       font-weight: 700;
       color: #121212;
       display: inline-block;
-      margin: 0px 10px;
-      transition: all .3s;
+      margin: 0px 2px;
       cursor: pointer;
+
   }
+
+  .select_area{float: right; width: 30%; margin: 0px 10px 30px 10px;}
+
+  @media(max-width:800px ){
+    .select_area{float: right; width: 50%; margin: 0px 10px 30px 10px;}
+  }
+
   
   .products .filters ul li.active,
   .products .filters ul li:hover {
