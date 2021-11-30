@@ -94,7 +94,7 @@ class PostTagView(ListView):
         cat_menu = Category.objects.all()
         popular_list = Post.objects.filter(state="published").order_by('-views')   
         popular_items = Product.objects.order_by('-views')                   
-        tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug'))
+        tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
 
         paginator = Paginator(tag_posts, 20) # num per page
         page = self.request.GET.get('page', 1)
@@ -116,7 +116,7 @@ class PostTagView(ListView):
 def CategoryView(request, cats):
 
     cat_menu = Category.objects.all()
-    category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published")
+    category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('-post_date')
     total = category_posts.count()
     popular_list = Post.objects.filter(state="published").order_by('-views')   
     popular_items = Product.objects.order_by('-views') 
@@ -213,7 +213,7 @@ class ProductView(ListView):
 def GenreView(request, gens):
 
     genre_menu = Genre.objects.all()
-    genre_posts = Product.objects.filter(genre=gens.replace('-',' '))
+    genre_posts = Product.objects.filter(genre=gens.replace('-',' ')).order_by('-post_date')
 
     popular_items = Product.objects.order_by('-views') 
     fashion_genre = {'T-shirts' : 'T-shirts', 
