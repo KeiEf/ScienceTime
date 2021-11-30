@@ -145,6 +145,16 @@ STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, 'static')
 ]
 
+
+#問合せメール受信設定
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'symphonyofvirtuosity@gmail.com'
+EMAIL_HOST_PASSWORD = 'fnyoelahkqejiwvx'
+EMAIL_PORT = 587
+EMAIL_USE_SSL = True
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
