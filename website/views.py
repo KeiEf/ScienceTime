@@ -233,7 +233,7 @@ class ProductView(ListView):
 def GenreView(request, gens):
 
     genre_menu = Genre.objects.all()
-    genre_posts = Product.objects.filter(genre=gens.replace('-',' ')).order_by('-post_date')
+    genre_posts = Product.objects.filter(genre=gens.replace('-',' ')).order_by('-views')
 
     popular_items = Product.objects.order_by('-views') 
     fashion_genre = {'T-shirts' : 'T-shirts', 
