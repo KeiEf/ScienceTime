@@ -213,9 +213,9 @@ class ProductView(ListView):
         object_list = Product.objects.all().order_by('-post_date')
         popular_list = Product.objects.all().order_by('-views')      
 
-        fashion_list = Product.objects.filter(genre="ファッション").order_by('-post_date')
-        toy_list = Product.objects.filter(genre="おもちゃ").order_by('-post_date')
-        merch_list = Product.objects.filter(genre="雑貨").order_by('-post_date')
+        fashion_list = Product.objects.filter(genre="ファッション").order_by('-views')
+        toy_list = Product.objects.filter(genre="おもちゃ").order_by('-views')
+        merch_list = Product.objects.filter(genre="雑貨").order_by('-views')
 
         genre_menu = Genre.objects.all()
       #  genre_menu_list = Category.objects.all()
