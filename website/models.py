@@ -63,7 +63,7 @@ class Product(models.Model):
 
     name = models.CharField(max_length=50, verbose_name='製品名')
     eng_name = models.CharField(max_length=50, verbose_name='製品名（英語）')  
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+ #   author = models.ForeignKey(User, on_delete=models.CASCADE)
  #   url_title = models.SlugField(max_length=30,  verbose_name='urlタイトル', blank=True)   
     main_image = models.ImageField(null=True, blank=True, upload_to=image_product, verbose_name='画像')
     image_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='画像url')
