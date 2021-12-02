@@ -80,7 +80,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 .bsbig_fig figcaption{color:#333; font-family:"Oswald",sans-serif; font-size:23px; font-weight:300; margin-top:10px; margin-bottom:10px}
 .bsbig_fig_prod{width:100%; text-align: center;}
 .bsbig_fig_prod > a{display:block}
-.bsbig_fig_prod > a img{width:auto; height: 300px;}
+.bsbig_fig_prod > a img{width:auto; max-width:100%; height: 300px;overflow: hidden;}
 .bsbig_fig_prod figcaption{color:#333; font-family:"Oswald",sans-serif; font-size:23px; font-weight:300; margin-top:10px; margin-bottom:10px}
 
 .single_post_content_right{float:right; display:inline; width:48%}
