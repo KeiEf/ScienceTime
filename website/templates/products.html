@@ -18,7 +18,7 @@
               <ul class="business_catgnav  wow fadeInDown">
                 {% for post in fashion_list|slice:":1"  %}    
                 <li>                 
-                  <figure class="bsbig_fig">
+                  <figure class="bsbig_fig_prod">
                     <a href="{% url 'product_detail' post.pk %}" class="featured_img">
                     {% if post.main_image%}
                       <img src="{{ post.main_image.url }}" alt="">
@@ -67,7 +67,7 @@
                 <ul class="business_catgnav wow fadeInDown">
                   {% for post in toy_list|slice:":1"  %}    
                   <li>
-                    <figure class="bsbig_fig">
+                    <figure class="bsbig_fig_prod">
                       <a href="{% url 'product_detail' post.pk %}" class="featured_img">
                       {% if post.main_image %}
                         <img src="{{ post.main_image.url }}" alt="">
@@ -104,7 +104,7 @@
                 </ul>
               </div>
             </div>
-            <!--Medical and Health-->
+            <!--Merch-->
             <div class="technology">
               <div class="single_post_content">
                 <h2><span>雑貨</span></h2>
