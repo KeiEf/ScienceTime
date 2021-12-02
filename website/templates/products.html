@@ -111,7 +111,7 @@
                 <ul class="business_catgnav">
                   {% for post in merch_list|slice:":1"  %}    
                   <li>
-                    <figure class="bsbig_fig">
+                    <figure class="bsbig_fig_prod">
                       <a href="{% url 'product_detail' post.pk %}" class="featured_img">
                       {% if post.main_image %}
                         <img src="{{ post.main_image.url }}" alt="">
