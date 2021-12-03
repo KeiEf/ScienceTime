@@ -14,6 +14,9 @@ def image_post(instance, filename):
 def image_product(instance, filename):
     return 'images/product/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 
+def image_note(instance, filename):
+    return 'images/post/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+
 class Tag(models.Model):
     tagname = models.CharField(max_length=50)
 #    slug = models.SlugField(blank=True)
@@ -89,7 +92,7 @@ class Product(models.Model):
 class Note(models.Model):
 
     title = models.CharField(max_length=100,  verbose_name='タイトル')
-    main_image = models.ImageField(null=True, blank=True, upload_to=image_post, verbose_name='ヘッダー画像') 
+    main_image = models.ImageField(null=True, blank=True, upload_to=image_note, verbose_name='ヘッダー画像') 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
     content = models.TextField(default='' , verbose_name='内容')
@@ -101,3 +104,6 @@ class Note(models.Model):
     note_tags = TaggableManager(blank=True,verbose_name='タグ')
     views = models.PositiveIntegerField(default=0, null=True, blank=True)
     state = models.CharField(max_length=255, default='published')  
+
+    def __str__(self):
+       return self.subject + ' | ' + self.subject + ' | ' + self.title 

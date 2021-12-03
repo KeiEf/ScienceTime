@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from django.views.generic.edit import FormView
-from .models import Product, Post, Genre, Category
+from .models import Product, Post, Genre, Category, Note
 from .forms import PostForm, EditForm, EditProductForm, ContactForm
 from django.db.models import Max, Case, When, Sum, Count, Q, F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -322,3 +322,14 @@ class UpdateProductView(UpdateView):
     def get_success_url(self):
         #messages.success(self.request, '投稿を編集しました。')
         return reverse_lazy('product_detail', kwargs={'pk': self.kwargs['pk']})
+
+
+class NoteDetailView(DetailView):
+    model = Note
+    template_name = 'note_details.html'
+
+    def get(self, request, *args, **kwargs):
+        note = get_object_or_404(Note, id=self.kwargs['pk'])
+        note.views += 1
+        note.save()
+        return super().get(request, *args, **kwargs)

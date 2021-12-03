@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block social %}
+  <meta property="og:url" content="sciencetime.jp" />
+  <meta property="og:title" content="{{ note.title }}" />
+  <meta property="og:description" content="{{ note.abstract }}" />
+  {% if note.main_image %}
+  <meta property="og:image" content="{{ note.main_image.url }}" />
+  {% else %}
+  <meta property="og:image" content="{{ note.image_url }}" />
+  {% endif %}
+{% endblock %}
+
+{% block title %}
+   {{ note.title }}
+{% endblock %}
+
+
+{% block content %}
+  <!-- Page Content -->
+
+ 
+
+{% endblock %}
