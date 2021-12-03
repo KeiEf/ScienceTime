@@ -59,7 +59,6 @@ class Post(models.Model):
 
 
 class Product(models.Model):
- 
 
     name = models.CharField(max_length=50, verbose_name='製品名')
     eng_name = models.CharField(max_length=50, verbose_name='製品名（英語）')  
@@ -86,3 +85,19 @@ class Product(models.Model):
     def __str__(self):
        return self.name 
 
+
+class Note(models.Model):
+
+    title = models.CharField(max_length=100,  verbose_name='タイトル')
+    main_image = models.ImageField(null=True, blank=True, upload_to=image_post, verbose_name='ヘッダー画像') 
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
+    content = models.TextField(default='' , verbose_name='内容')
+    subject = models.CharField(max_length=255, default='None')
+    field1 = models.CharField(max_length=255, default='None')
+    field2 = models.CharField(max_length=255, default='None')    
+    post_date = models.DateTimeField()
+    update_date = models.DateTimeField(verbose_name='更新日時', auto_now=True) 
+    note_tags = TaggableManager(blank=True,verbose_name='タグ')
+    views = models.PositiveIntegerField(default=0, null=True, blank=True)
+    state = models.CharField(max_length=255, default='published')  
