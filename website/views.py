@@ -2,29 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from django.views.generic.edit import FormView
-from .models import Product, Post, Genre, Category, Note
+from .models import Product, Post, Genre, Category, Note, Field
 from .forms import PostForm, EditForm, EditProductForm, ContactForm
 from django.db.models import Max, Case, When, Sum, Count, Q, F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-
-class ContactFormView(FormView):
-    template_name = 'contact/contact_form.html'
-    form_class = ContactForm
-    success_url = reverse_lazy('contact_result')
-
-    def form_valid(self, form):
-        form.send_email()
-        return super().form_valid(form)
-
-
-class ContactResultView(TemplateView):
-    template_name = 'contact/contact_result.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['success'] = "お問い合わせは正常に送信されました。"
-        return context
 
 # Create your views here.
 
@@ -242,8 +224,6 @@ def GenreView(request, gens):
     if sort == 'all':
        genre_posts = Product.objects.filter(genre=gens.replace('-',' ')).order_by('-views')
 
-
-
     genre_menu = Genre.objects.all()
     popular_items = Product.objects.order_by('-views') 
     fashion_genre = {'Tシャツ' : 'Tシャツ', 
@@ -258,20 +238,6 @@ def GenreView(request, gens):
                  'タンブラー' : 'タンブラー',
                  'マグカップ' : 'マグカップ'
                   }                 
-
-  #  fashion_genre = {'T-shirts' : 'T-shirts', 
-  #                    'hoodie': 'hoodie',
-  #                    'caps' : 'caps' }
-  #  toy_genre = {'mechanics' : 'mechanics',
-  #               'electromagnetism' : 'electromagnetism',
-  #               'thermodynamics' : 'thermodynamics',
-  #               'optics' : 'optics',
-  #               'fluid_dynamics' : 'fluid_dynamics',
-  #               'maths_and_others': 'maths_and_others' }
-  #  merch_genre = {'tote-bag' : 'tote-bag',
-  #               'tumbler' : 'tumbler',
-  #               'mug' : 'mug'
-  #                }   
 
     paginator = Paginator(genre_posts, 9) # num per page
     page = request.GET.get('page', 1)
@@ -324,12 +290,52 @@ class UpdateProductView(UpdateView):
         return reverse_lazy('product_detail', kwargs={'pk': self.kwargs['pk']})
 
 
+#### Note 
+
+
+def FieldView(request, subj):
+
+    field_list = Field.objects.filter(subject=subj.replace('-',' '))
+ 
+
+    return render(request, 'subject.html', {
+        'field_list':field_list, 
+        'subj':subj,
+        })
+
 class NoteDetailView(DetailView):
     model = Note
     template_name = 'note_details.html'
+    
 
     def get(self, request, *args, **kwargs):
         note = get_object_or_404(Note, id=self.kwargs['pk'])
         note.views += 1
         note.save()
         return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(NoteDetailView, self).get_context_data(*args, **kwargs)
+        popular_items = Product.objects.all().order_by('-views') 
+        context["popular_items"] = popular_items
+        return context
+
+#### Contact form ####
+
+class ContactFormView(FormView):
+    template_name = 'contact/contact_form.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('contact_result')
+
+    def form_valid(self, form):
+        form.send_email()
+        return super().form_valid(form)
+
+
+class ContactResultView(TemplateView):
+    template_name = 'contact/contact_result.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['success'] = "お問い合わせは正常に送信されました。"
+        return context

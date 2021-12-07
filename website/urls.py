@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views 
-from .views import TestView, HomeView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView
+from .views import TestView, HomeView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView, FieldView
 
 
 urlpatterns = [
@@ -19,7 +19,9 @@ urlpatterns = [
 	path('products/tags/<slug:tag_slug>/', views.TagIndexView.as_view(), name='product_by_tag'),
 	path('products/<int:pk>', ProductDetailView.as_view(), name="product_detail"),
 	path('note/<int:pk>', NoteDetailView.as_view(), name="note_detail"),
+	path('subject/<str:subj>/', FieldView, name="subject"),	
 	path('contact/', ContactFormView.as_view(), name='contact_form'),
     path('contact/result/', ContactResultView.as_view(), name='contact_result'),
+
     ]
 

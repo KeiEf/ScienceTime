@@ -27,8 +27,14 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">レクチャー</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               レクチャー
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">全て</a></li>
+              <li><a class="dropdown-item" href="{% url 'subject' '物理' %}">物理</a></li>              
+            </ul>
           </li>
 
           <li class="nav-item">

@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+{% block additional_static %}
+   <!-- MathJax -->
+   <script>
+    MathJax = {
+    tex: {
+    tags: 'ams',
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    processEscapes: true,
+    macros: {
+              bm: ["{\\boldsymbol{#1}}",1],
+            }
+    }     
+    };
+ </script>
+
+ <script type="text/javascript" id="MathJax-script" async
+ src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+ </script>
+{% endblock %}
+
 {% block social %}
   <meta property="og:url" content="sciencetime.jp" />
   <meta property="og:title" content="{{ note.title }}" />
@@ -16,10 +37,146 @@
    {{ note.title }}
 {% endblock %}
 
-
 {% block content %}
   <!-- Page Content -->
 
- 
+
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+
+<div class="container">
+  <section id="postSection"></section>
+    <div class="row">
+
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content"> 
+          <div class="single_page">
+            <ol class="breadcrumb">
+              <li><a href="#">ノート一覧</a></li>
+              <li><a href="{% url  'subject' note.subject  %}">{{ note.subject}}</a></li>
+              <li><a href="#{{ note.id }}" >{{ note.field1 }}</a></li>
+            </ol>
+            {% if note.state == "published" %}
+            <h1>{{ note.title }}</h1>
+            {% endif %}
+
+            <div class="post_commentbox">
+              {% if note.state == "published" %}
+                <span><i class="fa fa-user"></i>{{ note.author.first_name }} {{ note.author.last_name}}</span>
+                <span><i class="fa fa-calendar"></i>{{ note.post_date|date:"Y/m/d - H:i:s" }}</span> 
+                <a href="#"><i class="fas fa-folder"></i>{{ note.field1 }}</a>
+              {% endif %}
+            </div>
+
+            <div class="single_page_content">
+              {% if note.state == "published" %}
+                {% if note.main_image %}
+                <img src="{{ note.main_image.url }}" alt="">
+                {% endif %}
+
+                <h4>はじめに</h4>
+                {{ note.intro|safe }}
+                <br>
+                <span>keywords: 
+                  {% for tag in note.note_tags.all %}
+                    {% if forloop.last %} 
+                      <a href="#">{{ tag }}</a>
+                    {% else %}
+                      <a href="#">{{ tag }}</a>,
+                    {% endif %}
+                  {% endfor %}
+                </span>
+                <br>
+                <ul class="content_table">
+                 {{ note.table|safe }}
+                </ul>
+                <br>
+                <!--post body-->
+                {{ note.content|safe }}
+                <br>
+                <h4 id="index_ref">参考文献</h4>
+                <ul>
+                {{ note.reference|safe}}
+                </ul>
+              {% else %}
+                <p>Sorry, this post is not published.</p>
+              {% endif %}
+              <hr>
+              <!--edit-->
+              {% if user.is_authenticated %}
+                {% if user.id == note.author.id %}
+                <a href="#">[edit]</a>
+                {% endif %}
+              {% endif %}               
+            </div>
+          </div>
+
+          <ol class="breadcrumb">
+            <li><a href="#">ノート一覧</a></li>
+            <li><a href="{% url  'subject' note.subject  %}">{{ note.subject}}</a></li>
+            <li><a href="#{{ note.id }}" >{{ note.field1 }}</a></li>
+          </ol>
+        </div>
+      </div>
+
+      <!--right contents-->
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="single_sidebar">
+            <h2><span>目次</span></h2>
+            {{ note.field1.index|safe}}   
+          </div>
+          <!-- ads -->
+          <div class="single_sidebar wow fadeInDown">
+            <h2><span>Sponsor</span></h2>
+            {% include 'ads/ads1.php' %}
+          </div>
+
+          <!-- popular items-->
+          <div class="single_sidebar">
+            <h2><span>人気のアイテム</span></h2>
+              <ul class="spost_nav">
+                {% for post in popular_items|slice:":4" %}
+                <li>
+                <div class="media wow fadeInDown">             
+                  <a href="{% url 'product_detail' post.pk %}" class="media-left">              
+                    {% if post.main_image%}
+                      <img src="{{ post.main_image.url }}" alt="">
+                    {% else %}
+                      <img src="{{ post.image_url}}" alt="">
+                    {% endif %}
+                  </a>
+                <div class="media-body">
+                  <a href="{% url 'product_detail' post.pk %}" class="catg_title">
+                    {{ post.name }}
+                  </a>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+            </ul>
+          </div>    
+
+
+        </aside>
+      </div>
+
+
+
+    </div>
+  </section>
+</div>
+
+  <div class="modal-wrapper" id="{{ note.id }}">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-window">
+      <div class="modal-content">
+        <p class="modal_title">目次</p>
+        <div class="modal-index">
+          {{ note.field1.index|safe}}     
+        </div>        
+      </div>
+      <a href="#!" class="modal-close"><i class="far fa-times-circle"></i></a>
+    </div>
+  </div>
 
 {% endblock %}

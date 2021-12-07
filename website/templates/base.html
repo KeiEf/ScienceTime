@@ -15,6 +15,10 @@
     <link rel="canonical" href="https://sciencetime.jp">
 
     {% include 'head_css_and_script.php' %}
+
+    {% block additional_static %}
+      <!--here additonal css or script like MathJax goes -->
+    {% endblock %}
     
     <!--  Social Media  -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -29,8 +33,6 @@
       <meta property="og:description" content="自然科学" />
       <meta property="og:image" content="" />
     {% endblock %}
-
-
 
    <!-- fav icon-->
    <link rel="icon" type="image/png" href="{% static 'website/images/fav.png' %}">

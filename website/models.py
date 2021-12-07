@@ -22,18 +22,18 @@ class Tag(models.Model):
 #    slug = models.SlugField(blank=True)
     slug = models.SlugField(allow_unicode=True)
 
-class Genre(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=255)
-    
+
     def __str__(self):
        return self.name
              
     def get_absolute_url(self):
        return reverse('index')
 
-class Category(models.Model):
+class Genre(models.Model):
     name = models.CharField(max_length=255)
-
+    
     def __str__(self):
        return self.name
              
@@ -88,6 +88,19 @@ class Product(models.Model):
     def __str__(self):
        return self.name 
 
+class Field(models.Model):
+
+    field = models.CharField(max_length=100,  verbose_name='分野')
+    field_eng = models.CharField(max_length=100,  verbose_name='英語')
+    subject = models.CharField(max_length=100,  verbose_name='科目')
+    cover_image = models.ImageField(null=True, blank=True, upload_to=image_note, verbose_name='カバー画像')
+    abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
+    ordering = models.PositiveIntegerField(default=0, null=True, blank=True)
+    index = models.TextField(default='' , verbose_name='目次')
+
+    def __str__(self):
+       return self.field
+
 
 class Note(models.Model):
 
@@ -95,9 +108,13 @@ class Note(models.Model):
     main_image = models.ImageField(null=True, blank=True, upload_to=image_note, verbose_name='ヘッダー画像') 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
+    intro = models.TextField(max_length=500, blank=True, verbose_name='導入')
+    table = models.TextField(max_length=500, blank=True, verbose_name='目次')
     content = models.TextField(default='' , verbose_name='内容')
+    reference =  models.TextField(default='' , verbose_name='参考文献')
     subject = models.CharField(max_length=255, default='None')
-    field1 = models.CharField(max_length=255, default='None')
+  #  field1 = models.CharField(max_length=255, default='None', blank=True)
+    field1 = models.ForeignKey(Field, on_delete=models.CASCADE, default="None")
     field2 = models.CharField(max_length=255, default='None')    
     post_date = models.DateTimeField()
     update_date = models.DateTimeField(verbose_name='更新日時', auto_now=True) 
@@ -106,4 +123,5 @@ class Note(models.Model):
     state = models.CharField(max_length=255, default='published')  
 
     def __str__(self):
-       return self.subject + ' | ' + self.subject + ' | ' + self.title 
+       return str(self.id) + ' | '  + self.title 
+
