@@ -14,7 +14,7 @@
 	content: "";
 }
 
-.subj_title {text-align: center; margin-top: 50px;}
+.subj_title {text-align: center; margin-top: 50px; text-transform: capitalize;}
 
 
 ul {

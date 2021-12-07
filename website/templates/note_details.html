@@ -52,7 +52,7 @@
           <div class="single_page">
             <ol class="breadcrumb">
               <li><a href="#">ノート一覧</a></li>
-              <li><a href="{% url  'subject' note.subject  %}">{{ note.subject}}</a></li>
+              <li><a href="{% url  'subject' note.subj_eng %}">{{ note.subject}}</a></li>
               <li><a href="#{{ note.id }}" >{{ note.field1 }}</a></li>
             </ol>
             {% if note.state == "published" %}
@@ -112,7 +112,7 @@
 
           <ol class="breadcrumb">
             <li><a href="#">ノート一覧</a></li>
-            <li><a href="{% url  'subject' note.subject  %}">{{ note.subject}}</a></li>
+            <li><a href="{% url  'subject' note.subj_eng  %}">{{ note.subject}}</a></li>
             <li><a href="#{{ note.id }}" >{{ note.field1 }}</a></li>
           </ol>
         </div>

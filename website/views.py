@@ -295,9 +295,7 @@ class UpdateProductView(UpdateView):
 
 def FieldView(request, subj):
 
-    field_list = Field.objects.filter(subject=subj.replace('-',' '))
- 
-
+    field_list = Field.objects.filter(subj_eng=subj.replace('-',' '))
     return render(request, 'subject.html', {
         'field_list':field_list, 
         'subj':subj,
