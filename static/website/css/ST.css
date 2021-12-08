@@ -1214,11 +1214,11 @@ body {
   }
   
   .modal_title {
-      font-size: 1.5em;
+      font-size: 1.4em;
       position: relative;
       overflow: hidden;
       padding: 5px;
-      min-height: 20px;
+      min-height: 30px;
   }
   
   .modal_title::before,
