@@ -1248,6 +1248,12 @@ body {
     padding: 8px;
   }
   
+
+  .modal-index ul{
+      margin:10px 5px;
+      padding:0;
+    }
+
   .modal-index li{
      padding-left:1.5em;
      position:relative;
