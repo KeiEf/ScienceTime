@@ -1218,7 +1218,7 @@ body {
       position: relative;
       overflow: hidden;
       padding: 5px;
-      min-height: 30px;
+      min-height: 50px;
   }
   
   .modal_title::before,
@@ -1249,8 +1249,12 @@ body {
   }
   
   .modal-index li{
-  padding-left: 10px;
+     padding-left: 10px;
   }
+
+  .modal-index li::before{
+     content: "●";
+ }
   
   .modal-index h5::before{
     content: "§. ";
