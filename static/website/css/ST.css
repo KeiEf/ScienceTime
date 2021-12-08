@@ -1249,11 +1249,13 @@ body {
   }
   
   .modal-index li{
-     padding-left: 10px;
+     padding-left:1.5em;
+     position:relative;
   }
 
   .modal-index li::before{
      content: "●";
+     position:absolute;top:0;left:0;
  }
   
   .modal-index h5::before{
