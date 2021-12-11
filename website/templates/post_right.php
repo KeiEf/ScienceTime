@@ -3,10 +3,10 @@
 <!-- popular posts-->
 <div class="col-lg-4 col-md-4 col-sm-4">
   <aside class="right_content">
-    <div class="content_sidebar">
+    <div class="single_sidebar">
       <h2><span>人気の記事</span></h2>
         <ul class="spost_nav">
-          {% for post in popular_list|slice:":8" %}
+          {% for post in popular_list|slice:":4" %}
           <li>
             <div class="media wow fadeInDown">             
               <a href="{% url 'post_detail' post.pk %}" class="media-left">              

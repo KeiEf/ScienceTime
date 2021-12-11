@@ -1307,7 +1307,6 @@ body {
 
   .ads {text-align: center;}
 
-
   .pc_area{
     display:block;
   }
@@ -1316,7 +1315,7 @@ body {
   }
 
   /*-- スマホ版表示CSS  --*/
-@media screen and (max-width: 720px){
+@media screen and (max-width: 800px){
     .pc_area{
       display:none;
     }
