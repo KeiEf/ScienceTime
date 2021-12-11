@@ -53,7 +53,7 @@
             <ol class="breadcrumb">
               <li><a href="#">ノート一覧</a></li>
               <li><a href="{% url  'subject' note.subj_eng %}">{{ note.subject}}</a></li>
-              <li><a href="#{{ note.id }}" >{{ note.field1 }}</a></li>
+              <li><a href="#" >{{ note.field1 }}</a></li>
             </ol>
             {% if note.state == "published" %}
             <h1>{{ note.title }}</h1>
@@ -110,10 +110,17 @@
             </div>
           </div>
 
+          <!--ads-->
+          <hr>
+          <div class="ads">
+            {% include 'ads/ads_vert.php' %}
+          </div>
+          <hr>
+
           <ol class="breadcrumb">
             <li><a href="#">ノート一覧</a></li>
             <li><a href="{% url  'subject' note.subj_eng  %}">{{ note.subject}}</a></li>
-            <li><a href="#{{ note.id }}" >{{ note.field1 }}</a></li>
+            <li><a href="#">{{ note.field1 }}</a></li>
           </ol>
         </div>
       </div>
@@ -121,21 +128,23 @@
       <!--right contents-->
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
-          <div class="single_sidebar">
+          <div class="content_sidebar">
             <h2><span>目次</span></h2>
             {{ note.field1.index|safe}}   
           </div>
           <!-- ads -->
           <div class="single_sidebar wow fadeInDown">
             <h2><span>Sponsor</span></h2>
+            <div class="ads">
             {% include 'ads/ads1.php' %}
+          </div>
           </div>
 
           <!-- popular items-->
           <div class="single_sidebar">
             <h2><span>人気のアイテム</span></h2>
               <ul class="spost_nav">
-                {% for post in popular_items|slice:":4" %}
+                {% for post in popular_items|slice:":8" %}
                 <li>
                 <div class="media wow fadeInDown">             
                   <a href="{% url 'product_detail' post.pk %}" class="media-left">              
@@ -165,18 +174,5 @@
     </div>
   </section>
 </div>
-
-  <div class="modal-wrapper" id="{{ note.id }}">
-    <a href="#!" class="modal-overlay"></a>
-    <div class="modal-window">
-      <div class="modal-content">
-        <p class="modal_title">目次</p>
-        <div class="modal-index">
-          {{ note.field1.index|safe}}     
-        </div>        
-      </div>
-      <a href="#!" class="modal-close"><i class="far fa-times-circle"></i></a>
-    </div>
-  </div>
 
 {% endblock %}

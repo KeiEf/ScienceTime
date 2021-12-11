@@ -31,7 +31,7 @@
     <div class="single_sidebar">
       <h2><span>人気のアイテム</span></h2>
         <ul class="spost_nav">
-          {% for post in popular_items|slice:":4" %}
+          {% for post in popular_items|slice:":8" %}
           <li>
             <div class="media wow fadeInDown">             
               <a href="{% url 'product_detail' post.pk %}" class="media-left">              
@@ -55,7 +55,9 @@
     <!-- ads -->
     <div class="single_sidebar wow fadeInDown">
       <h2><span>Sponsor</span></h2>
+      <div class="ads">
         {% include 'ads/ads1.php' %}
+      </div>
     </div>
     <!-- category -->
     <div class="single_sidebar wow fadeInDown">

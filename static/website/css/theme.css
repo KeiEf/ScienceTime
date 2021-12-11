@@ -13,12 +13,14 @@
 #next-button{color:#191970}
 .single_post_content > h2 span{background:none repeat scroll 0 0 #191970}
 .single_sidebar > h2 span{ background:none repeat scroll 0 0 #191970}
+.content_sidebar > h2 span{ background:none repeat scroll 0 0 #191970}
 .bsbig_fig figcaption a:hover{color:#191970}
 .spost_nav .media-body > a:hover{color:#191970}
 .cat-item a:hover{background-color:#191970}
 .nav-tabs > li > a:hover, .nav-tabs > li > a:focus{background-color:#191970}
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background-color:#191970}
 .single_sidebar > ul > li a:hover{color:#191970}
+.content_sidebar > ul > li a:hover{color:#191970}
 .footer_widget > h2:hover{color:#191970}
 .tag_nav li a:hover{color:#191970; border-color:#191970}
 .copyright a:hover{color:#191970}
