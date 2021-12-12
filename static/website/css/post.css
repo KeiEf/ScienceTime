@@ -92,6 +92,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 .spost_nav li{float:left; display:block; width:100%; margin-bottom:10px}
 .spost_nav .media-left{width:100px; height:80px}
 .media-left > img{height:70px; width:90px}
+.spost_nav .media-prod{width:100px; height:100px}
 .spost_nav .media-body > a{font-family:"Oswald",sans-serif}
 .featured_img{position:relative}
 .overlay:hover{ background:none repeat scroll 0 0 rgba(0,0,0,0.4)}

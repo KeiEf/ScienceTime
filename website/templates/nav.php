@@ -33,7 +33,8 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="#">全て</a></li>
-              <li><a class="dropdown-item" href="{% url 'subject' 'physics' %}">物理</a></li>              
+              <li><a class="dropdown-item" href="{% url 'subject' 'maths' %}">数学</a></li> 
+              <li><a class="dropdown-item" href="{% url 'subject' 'physics' %}">物理</a></li>          
             </ul>
           </li>
 
