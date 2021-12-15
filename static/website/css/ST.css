@@ -1333,12 +1333,12 @@ body {
     width: 15px;
     }
   .eq::-webkit-scrollbar-thumb{
-    background: #F70841;
+    background: #a9a9a9;
     border-radius: 10px;
     }
   .eq::-webkit-scrollbar-track-piece:start{
-    background: #ffa5ba;
+    background: #d3d3d3;
     }
   .eq::-webkit-scrollbar-track-piece:end{
-    background: #ffa5ba;
+    background: #d3d3d3;
     }
