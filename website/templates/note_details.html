@@ -72,6 +72,10 @@
                 {% if note.main_image %}
                 <img src="{{ note.main_image.url }}" alt="">
                 {% endif %}
+                {% if note.video %}
+                  {{ note.video }}
+                {% endif %}
+
 
                 <h4>はじめに</h4>
                 <p>{{ note.intro|safe }}</p>
