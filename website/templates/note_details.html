@@ -68,14 +68,11 @@
 
             <div class="single_page_content">
               {% if note.state == "published" %}
-                {% if note.main_image %}
-                <img src="{{ note.main_image.url }}" alt="">
-                {% endif %}
                 {% if note.video %}
                   {{ note.video|safe }}
+                {% elif note.main_image %}
+                  <img src="{{ note.main_image.url }}" alt="">
                 {% endif %}
-
-
                 <h4>はじめに</h4>
                 <p>{{ note.intro|safe }}</p>
                 <br>
