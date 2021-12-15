@@ -109,7 +109,7 @@ class Note(models.Model):
     main_image = models.ImageField(null=True, blank=True, upload_to=image_note, verbose_name='ヘッダー画像') 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
-    intro = models.TextField(max_length=500, blank=True, verbose_name='導入')
+    intro = models.TextField(blank=True, verbose_name='導入')
     table = models.TextField(max_length=500, blank=True, verbose_name='目次')
     content = models.TextField(default='' , verbose_name='内容')
     reference =  models.TextField(default='' , verbose_name='参考文献')
