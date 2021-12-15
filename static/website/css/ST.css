@@ -582,8 +582,6 @@ body {
   .footer_bottom{float:left; display:inline; width:100%; padding:10px 30px; background-color:#303030; color:#ccc}
   .copyright{float:left; width:50%; padding-top:5px; text-align:left; color:#ccc}
 
-  @media(max-width:991px ){}
- 
   
   /* Note Page */
 
