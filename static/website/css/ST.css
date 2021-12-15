@@ -1324,3 +1324,21 @@ body {
     }
   }
   
+  .eq{
+    overflow-x: auto;
+    overflow-y: hidden;
+    }
+
+  .eq::-webkit-scrollbar{
+    width: 15px;
+    }
+  .eq::-webkit-scrollbar-thumb{
+    background: #F70841;
+    border-radius: 10px;
+    }
+  .eq::-webkit-scrollbar-track-piece:start{
+    background: #ffa5ba;
+    }
+  .eq::-webkit-scrollbar-track-piece:end{
+    background: #ffa5ba;
+    }
