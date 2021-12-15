@@ -74,7 +74,7 @@
                 {% endif %}
 
                 <h4>はじめに</h4>
-                {{ note.intro|safe }}
+                <p>{{ note.intro|safe }}</p>
                 <br>
                 <span>keywords: 
                   {% for tag in note.note_tags.all %}
@@ -86,6 +86,8 @@
                   {% endfor %}
                 </span>
                 <br>
+                <br>
+                <h4>内容</h4>
                 <ul class="content_table">
                  {{ note.table|safe }}
                 </ul>
