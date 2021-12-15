@@ -68,6 +68,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 #contentSection{float:left; display:inline; width:100%; background-color:#fff; padding:0px 30px 0px 30px}
 #postSection{float:left; display:inline; width:100%; background-color:#fff; padding:100px 30px 0px 30px}
 .left_content{float:left; display:inline; width:100%}
+.left_note_content{float:left; display:inline; width:100%; border-right: 1px solid black; border-left: 1px solid black; padding: 0px 25px;}
+
+@media(max-width:500px )
+{.left_note_content{float:left; display:inline; width:100%; padding: none; border:none }}
+
 .single_post_content{float:left; display:inline; width:100%; margin-bottom:20px}
 .single_post_content > h2{background:none repeat scroll 0 0 #151515; color:#fff; font-family:'Oswald',sans-serif; font-size:18px; font-weight:400; margin-bottom:10px; margin-left:0; margin-top:5px; padding:0; position:relative; text-align:center; text-transform:uppercase; margin-bottom:20px}
 .single_post_content > h2 span{padding:4px 10px}
