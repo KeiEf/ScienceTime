@@ -112,7 +112,7 @@ class Note(models.Model):
     intro = models.TextField(blank=True, verbose_name='導入')
     table = models.TextField(max_length=500, blank=True, verbose_name='目次')
     content = models.TextField(default='' , verbose_name='内容')
-    reference =  models.TextField(default='' , verbose_name='参考文献')
+    reference =  models.TextField(default='' , verbose_name='参考文献', blank=True)
     subject = models.CharField(max_length=255, default='None')
     subj_eng = models.CharField(max_length=255, default='')
   #  field1 = models.CharField(max_length=255, default='None', blank=True)
