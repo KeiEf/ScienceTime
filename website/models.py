@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime, date
+from django.utils import timezone
 from taggit.managers import TaggableManager
 import uuid
 
@@ -51,7 +52,7 @@ class Post(models.Model):
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
     content = models.TextField(default='' , verbose_name='内容')
     category = models.CharField(max_length=255, default='others')
-    post_date = models.DateTimeField()
+    post_date = models.DateTimeField(default=timezone.now)
     update_date = models.DateTimeField(verbose_name='更新日時', auto_now=True) 
     post_tags = TaggableManager(blank=True,verbose_name='タグ')
     views = models.PositiveIntegerField(default=0, null=True, blank=True)
