@@ -73,7 +73,7 @@
                 <img src="{{ note.main_image.url }}" alt="">
                 {% endif %}
                 {% if note.video %}
-                  {{ note.video }}
+                  {{ note.video|safe }}
                 {% endif %}
 
 
