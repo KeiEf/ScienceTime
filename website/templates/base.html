@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!--canonical-->
-    <link rel="canonical" href="https://sciencetime.jp">
+  
 
     {% include 'head_css_and_script.php' %}
 
@@ -25,10 +25,12 @@
     <meta name="twitter:site" content="sciencetime_jp" />
     <meta property="og:site_name" content="ScienceTime" />
     <meta property="og:locale" content="ja_JP" />
-    {% block social %}    
+    <meta property="og:url" content="https://www.sciencetime.jp" />
+    {% block social %} 
+
+      <link rel="canonical" href="https://sciencetime.jp">
       <meta name="twitter:title" content="ScienceTime" />
       <meta name="description" content="自然科学" />  
-      <meta property="og:url" content="www.sciencetime.jp" />
       <meta property="og:title" content="ScienceTime" /> 
       <meta property="og:description" content="自然科学" />
       <meta property="og:image" content="" />
