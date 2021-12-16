@@ -306,7 +306,6 @@ class NoteDetailView(DetailView):
     model = Note
     template_name = 'note_details.html'
     
-
     def get(self, request, *args, **kwargs):
         note = get_object_or_404(Note, id=self.kwargs['pk'])
         note.views += 1
