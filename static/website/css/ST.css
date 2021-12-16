@@ -1428,6 +1428,6 @@ body {
     /*-- スマホ版表示CSS  --*/
 @media screen and (max-width: 800px){
     nav.globalMenuSp {
-      padding:none; width: 90%;
+      padding:none; width: 80%;
     }
   }
