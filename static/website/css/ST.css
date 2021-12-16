@@ -1422,12 +1422,12 @@ body {
     transform: translateX(0%);
   }
 
-  .side_ads{padding-top: 90px;}
+  .side_ads{padding: 2px;}
 
 
     /*-- スマホ版表示CSS  --*/
 @media screen and (max-width: 800px){
     nav.globalMenuSp {
-      padding:none; width: 60%;
+      padding:none; width: 90%;
     }
   }
