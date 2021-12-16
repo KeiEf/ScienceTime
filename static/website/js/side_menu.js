@@ -1,5 +1,5 @@
 $(function() {
-    $('.hamburger').click(function() {
+    $('.container').click(function() {
         $(this).toggleClass('active');
  
         if ($(this).hasClass('active')) {

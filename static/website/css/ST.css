@@ -1422,7 +1422,7 @@ body {
     transform: translateX(0%);
   }
 
-  .side_ads{padding: 2px;}
+  .side_ads{padding: 2px; text-align: center;}
 
 
     /*-- スマホ版表示CSS  --*/
