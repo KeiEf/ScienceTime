@@ -103,7 +103,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 .single_post_content_cat{float:left; display:inline; width:100%;}
 
-.spost_nav{}
+.spost_nav{overflow-y: scroll;}
 .spost_nav li{float:left; display:block; width:100%; margin-bottom:10px}
 .spost_nav .media-left{width:100px; height:80px}
 .media-left > img{height:70px; width:90px}
