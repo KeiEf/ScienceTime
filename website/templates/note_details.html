@@ -35,7 +35,7 @@
   {% if note.main_image %}
   <meta property="og:image" content="{{ note.main_image.url }}" />
   {% else %}
-  <meta property="og:image" content="{{ note.image_url }}" />
+  <meta property="og:image" content="{{ note.field1.cover_image.url }}" >
   {% endif %}
 {% endblock %}
 
