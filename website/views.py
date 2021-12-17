@@ -412,7 +412,7 @@ class NoteTagView(ListView):
         try:
          	pages = paginator.page(page)
         except PageNotAnInteger:
-    	      pages = paginator.page(1)
+    	    pages = paginator.page(1)
         except EmptyPage:
           	pages = paginator.page(1)
 
