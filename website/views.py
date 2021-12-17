@@ -350,6 +350,78 @@ class NoteDetailView(DetailView):
         context["popular_items"] = popular_items
         return context
 
+
+class AllNoteView(ListView):
+   model = Note
+   template_name = 'note_all.html'
+
+   def get_context_data(self, *args, **kwargs):
+       context = {}
+
+       sort = self.request.GET.get('sort')
+       if sort == "view":
+          object_list =  Note.objects.filter(state="published").order_by('-views')
+       elif sort == "inv_view":
+          object_list =  Note.objects.filter(state="published").order_by('views')
+       elif sort == "date":
+          object_list =  Note.filter(state="published").order_by('-post_date')
+       elif sort == "inv_date":
+          object_list =  Note.objects.filter(state="published").order_by('post_date')
+       else:        
+          object_list =  Note.objects.filter(state="published").order_by('-post_date')
+
+       paginator = Paginator(object_list, 20) # num per page
+       page = self.request.GET.get('page', 1)
+       try:
+           pages = paginator.page(page)
+       except PageNotAnInteger:
+    	     pages = paginator.page(1)
+       except EmptyPage:
+           pages = paginator.page(1)
+
+       popular_items = Product.objects.all().order_by('-views') 
+       context["popular_items"] = popular_items        
+       context["pages"] = pages
+       return context
+
+
+class NoteTagView(ListView):
+    model = Note
+    template_name ='note_all.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = {}
+        cat_menu = Category.objects.all()
+        popular_list = Post.objects.filter(state="published").order_by('-views')   
+        popular_items = Product.objects.order_by('-views')
+
+        sort = self.request.GET.get('sort')
+        if sort == "view":
+          tag_posts = Note.objects.filter(note_tags__slug=self.kwargs.get('tag_slug')).order_by('-views')
+        elif sort == "inv_view":
+          tag_posts = Note.objects.filter(note_tags__slug=self.kwargs.get('tag_slug')).order_by('views')
+        elif sort == "date":
+          tag_posts = Note.objects.filter(note_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
+        elif sort == "inv_date":
+          tag_posts = Note.objects.filter(note_tags__slug=self.kwargs.get('tag_slug')).order_by('post_date')
+        else: 
+          tag_posts = Note.objects.filter(note_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
+
+        paginator = Paginator(tag_posts, 20) # num per page
+        page = self.request.GET.get('page', 1)
+        try:
+         	pages = paginator.page(page)
+        except PageNotAnInteger:
+    	      pages = paginator.page(1)
+        except EmptyPage:
+          	pages = paginator.page(1)
+
+        context["popular_list"] = popular_list
+        context["popular_items"] = popular_items        
+        context["cat_menu"] = cat_menu
+        context["pages"] = pages
+        return context
+
 #### Contact form ####
 
 class ContactFormView(FormView):

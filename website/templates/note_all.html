@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}All Notes{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <section id="postSection">
+
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="single_post_content">
+        <h2><span>Notes</span></h2>
+
+        {% include 'php/post_sort_btn.php' %} 
+
+        <div class="single_post_content_cat">
+          <ul class="allpost_nav">
+            {% for post in pages %}
+            <li>
+              <div class="media wow fadeInDown">
+                <a href="{% url 'note_detail' post.pk %}" class="media-left">
+                  {% if post.main_image%}
+                    <img src="{{ post.main_image.url }}" alt="">
+                  {% else %}
+                    <img src="{{ post.image_url}}" alt="">
+                  {% endif %} 
+                </a>
+                <div class="media-body">
+                  【 <a href="{% url  'subject' post.subj_eng %}">{{ post.subject }}</a> | {{ post.field1 }} 】
+                  <a href="{% url 'note_detail' post.pk %}" class="catg_title"> {{ post.title }}</a>
+                  <p><small><i class="fa fa-calendar"></i> {{ post.post_date|date:"Y/m/d"  }}</small></p>
+                </div>
+            </div>
+            </li>
+            {% endfor %}
+          </ul>
+          {% include 'paginating.php' %}  
+          </div>
+        </div>
+      </div>
+
+   <!-- popular posts-->
+   {% include 'post_right.php' %}
+
+    </div>
+  </section>    
+
+  </section>
+</div>
+
+
+
+{% endblock %}
