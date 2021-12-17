@@ -11,7 +11,7 @@ $(function() {
 });
 
 $(function() {
-    $('.breadcrumb').click(function() {
+    $('.open_index').click(function() {
         $(this).toggleClass('active');
  
         if ($(this).hasClass('active')) {

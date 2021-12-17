@@ -117,7 +117,7 @@
             <ol class="breadcrumb">
               <li><a href="{% url  'all_notes'  %}">ノート一覧</a></li>
               <li><a href="{% url  'subject' note.subj_eng %}">{{ note.subject}}</a></li>
-              <li>{{ note.field1 }}</li>
+              <li class="open_index">{{ note.field1 }}</li>
             </ol>
             {% if note.state == "published" %}
             <h1>{{ note.title }}</h1>
@@ -227,7 +227,7 @@
           <ol class="breadcrumb">
             <li><a href="{% url  'all_notes'  %}">ノート一覧</a></li>
             <li><a href="{% url  'subject' note.subj_eng  %}">{{ note.subject}}</a></li>
-            <li>{{ note.field1 }}</li>
+            <li class="open_index">{{ note.field1 }}</li>
           </ol>
 
         </div>
