@@ -11,8 +11,21 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="single_post_content">
         <h2><span>{{ cats }}</span></h2>
+
+        <div class="select_area">
+          <form method="GET" action="">
+            <select class="catgArchive" name="sort" method="GET" onChange="submit(this.form)">
+              <option>並び替え</option>
+              <option value="date">投稿日（新しい）</option>
+              <option value="inv_date">投稿日（古い）</option>             
+              <option value="view">閲覧数（多い）</option>
+              <option value="inv_view">閲覧数（少ない）</option>
+            </select>
+          </form>
+        </div>
+
         <div class="single_post_content_cat">
-          <ul class="spost_nav">
+          <ul class="allpost_nav">
             {% for post in pages %}
             <li>
               <div class="media wow fadeInDown">

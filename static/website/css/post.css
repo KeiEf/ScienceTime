@@ -103,6 +103,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 .single_post_content_cat{float:left; display:inline; width:100%;}
 
+.allpost_nav{}
+.allpost_nav li{float:left; display:block; width:100%; margin-bottom:10px}
+.allpost_nav .media-left{width:100px; height:80px}
+.allpost_nav .media-prod{width:100px; height:100px}
+.allpost_nav .media-body > a{font-family:"Oswald",sans-serif}
+
 .spost_nav{overflow-y: scroll; max-height: 600px;}
 .spost_nav li{float:left; display:block; width:100%; margin-bottom:10px}
 .spost_nav .media-left{width:100px; height:80px}

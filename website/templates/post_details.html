@@ -91,8 +91,7 @@
                 <h2>関連記事</h2>
                 <ul class="spost_nav wow fadeInDown animated">
                   {% for post in related_posts|slice:":3" %}
-                  {% if post.state == "private" %}
-                  {% else %}
+                  {% if post.state == "published" %}
                   <li>
                     <div class="media">
                         {% if post.title %}
@@ -117,7 +116,8 @@
                         </small>
                       </div>
                     </div>
-                  </li><!--3x-->
+                  </li>
+                  {% else %}
                   {% endif %}
                   {% endfor %}
                 </ul>

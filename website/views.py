@@ -68,8 +68,19 @@ class AllPostView(ListView):
        context = {}
        cat_menu = Category.objects.all()
        popular_list = Post.objects.filter(state="published").order_by('-views')   
-       popular_items = Product.objects.order_by('-views')                   
-       object_list =  Post.objects.filter(state="published").order_by('-post_date')
+       popular_items = Product.objects.order_by('-views')
+
+       sort = self.request.GET.get('sort')
+       if sort == "view":
+          object_list =  Post.objects.filter(state="published").order_by('-views')
+       elif sort == "inv_view":
+          object_list =  Post.objects.filter(state="published").order_by('views')
+       elif sort == "date":
+          object_list =  Post.objects.filter(state="published").order_by('-post_date')
+       elif sort == "inv_date":
+          object_list =  Post.objects.filter(state="published").order_by('post_date')
+       else:        
+          object_list =  Post.objects.filter(state="published").order_by('-post_date')
 
        paginator = Paginator(object_list, 20) # num per page
        page = self.request.GET.get('page', 1)
@@ -95,8 +106,19 @@ class PostTagView(ListView):
         context = {}
         cat_menu = Category.objects.all()
         popular_list = Post.objects.filter(state="published").order_by('-views')   
-        popular_items = Product.objects.order_by('-views')                   
-        tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
+        popular_items = Product.objects.order_by('-views')
+
+        sort = self.request.GET.get('sort')
+        if sort == "view":
+          tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('-views')
+        elif sort == "inv_view":
+          tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('views')
+        elif sort == "date":
+          tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
+        elif sort == "inv_date":
+          tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('post_date')
+        else: 
+          tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
 
         paginator = Paginator(tag_posts, 20) # num per page
         page = self.request.GET.get('page', 1)
@@ -114,12 +136,22 @@ class PostTagView(ListView):
         return context
 
 
-
 def CategoryView(request, cats):
 
     cat_menu = Category.objects.all()
-    category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('-post_date')
-    total = category_posts.count()
+
+    sort = request.GET.get('sort')
+    if sort == "view":
+       category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('-views')
+    elif sort == "inv_view":
+       category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('views')
+    elif sort == "date":
+       category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('-post_date')
+    elif sort == "inv_date":
+       category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('post_date')
+    else:  
+       category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('-post_date')
+
     popular_list = Post.objects.filter(state="published").order_by('-views')   
     popular_items = Product.objects.order_by('-views') 
 
@@ -296,7 +328,7 @@ class UpdateProductView(UpdateView):
 
 def FieldView(request, subj):
 
-    field_list = Field.objects.filter(subj_eng=subj.replace('-',' '))
+    field_list = Field.objects.filter(subj_eng=subj.replace('-',' ')).order_by('-ordering')
     return render(request, 'subject.html', {
         'field_list':field_list, 
         'subj':subj,
