@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views 
-from .views import TestView, HomeView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView, FieldView, AllNoteView, NoteTagView, AddNoteView, UpdateNoteView, UpdateNoteContentView, UpdateNoteReferenceView
+from .views import TestView, HomeView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView, FieldView, AllNoteView, NoteTagView, AddNoteView, UpdateNoteView, UpdateNoteContentView, UpdateNoteReferenceView, UpdateFieldView
 
 
 urlpatterns = [
@@ -26,6 +26,7 @@ urlpatterns = [
     path('note/edit_content/<int:pk>', UpdateNoteContentView.as_view(), name="update_content_note"),
     path('note/edit_reference/<int:pk>', UpdateNoteReferenceView.as_view(), name="update_reference_note"),
 	path('subject/<str:subj>/', FieldView, name="subject"),	
+	path('subject/edit/<int:pk>/', UpdateFieldView.as_view(), name="update_field"),
 	path('contact/', ContactFormView.as_view(), name='contact_form'),
     path('contact/result/', ContactResultView.as_view(), name='contact_result'),
 

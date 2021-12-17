@@ -65,6 +65,9 @@
 
       <div class="content_sidebar">
         <h2><span>目次</span></h2>
+          {% if user.is_authenticated %}
+            <a href="{% url 'update_field' note.field1.pk %}">[edit]</a>
+          {% endif %} 
         <div class="content_slider">
           {{ note.field1.index|safe}}
         </div>
