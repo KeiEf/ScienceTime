@@ -75,16 +75,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 .note_content{float:left;display:inline; width:100%; padding: 10px 25px; background-color:#f0f8ff;}
 .note_content > p{font-size:18px;}
 .note_body ul li{line-height:25px; font-size:18px ;}
-.note_body img{max-width:90%;}
+.note_body img{max-width:90%; height: auto;}
 
 @media(max-width:580px )
 {
- #contentSection{padding:0px 5px 0px 5px}
+ #contentSection{padding:0px 10px}
  #noteSection{padding:100px 3px 0px 3px}
  .note_content{float:left; display:inline; width:100%; padding: none; border:none }
  .note_body > p{font-size:14px;}
  .note_image > img{width:95%; height: auto; }
- .note_body ul li{font-size:15px ;}
+ .note_body ul li{font-size:14px ;}
 }
 
 .single_post_content{float:left; display:inline; width:100%; margin-bottom:20px}
