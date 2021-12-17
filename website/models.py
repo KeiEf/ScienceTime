@@ -112,7 +112,7 @@ class Note(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
     intro = models.TextField(blank=True, verbose_name='導入')
-    table = models.TextField(max_length=500, blank=True, verbose_name='目次', default='<li><a href="#index1"></a></li>\n<li><a href="#index_ref">参考文献</a></li>')
+    table = models.TextField(blank=True, verbose_name='目次', default='<li><a href="#index1"></a></li>\n<li><a href="#index_ref">参考文献</a></li>')
     content = models.TextField(verbose_name='内容', default='<h4 id="index1"></h4>\n<p>\n</p>\n<div class="eq">\n\\begin{align}\n\n\end{align}\n</div>')
     reference =  models.TextField(verbose_name='参考文献', blank=True, default='<li></li>')
     subject = models.CharField(max_length=255, default='None')
