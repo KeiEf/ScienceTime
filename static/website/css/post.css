@@ -194,6 +194,7 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .post_commentbox a, .post_commentbox span{color:#798992; font-size:11px; margin-right:5px}
 .post_commentbox a > i, .post_commentbox span > i{margin-right:5px}
 .breadcrumb{background-color:#303030; border-radius:0}
+.breadcrumb li {color:#fff}
 .breadcrumb li a{color:#fff}
 .breadcrumb>li+li:before{padding:0 5px;color:#ccc;content:"/\00a0"}
 .single_page_content {display:inline; float:left; padding-top:20px; width:100%; border-bottom:1px solid #ddd; padding-bottom:20px;overflow-wrap: break-word;}
