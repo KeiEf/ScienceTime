@@ -159,15 +159,33 @@
                  {{ note.table|safe }}
                 </ul>
                 <br>
+                <!--edit-->
+                {% if user.is_authenticated %}
+                  {% if user.id == note.author.id %}
+                    <a href="{% url 'update_content_note' note.pk %}">[edit]</a>
+                  {% endif %}
+                {% endif %} 
                 <!--post body-->
                 <div class="note_body">
                 {{ note.content|safe }}
                 </div>
+                <!--edit-->
+                {% if user.is_authenticated %}
+                  {% if user.id == note.author.id %}
+                    <a href="{% url 'update_content_note' note.pk %}">[edit]</a>
+                  {% endif %}
+                {% endif %} 
                 <br>
                 <h4 id="index_ref">参考文献</h4>
                 <ul>
                 {{ note.reference|safe}}
                 </ul>
+                <!--edit-->
+                {% if user.is_authenticated %}
+                  {% if user.id == note.author.id %}
+                    <a href="{% url 'update_reference_note' note.pk %}">[edit]</a>
+                  {% endif %}
+                {% endif %} 
               {% else %}
                 <p>Sorry, this post is not published.</p>
               {% endif %}
