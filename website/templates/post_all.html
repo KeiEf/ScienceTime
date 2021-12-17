@@ -23,8 +23,10 @@
                 <a href="{% url 'post_detail' post.pk %}" class="media-left">
                   {% if post.main_image%}
                     <img src="{{ post.main_image.url }}" alt="">
-                  {% else %}
+                  {% elif post.image_url %}
                     <img src="{{ post.image_url}}" alt="">
+                  {% else %}
+                    <img src="{{ post.field1.cover_image.url}}" alt="">                    
                   {% endif %} 
                 </a>
                 <div class="media-body">

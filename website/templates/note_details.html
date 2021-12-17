@@ -143,7 +143,7 @@
                   {{ note.video|safe }}
                 {% elif note.main_image %}
                   <img src="{{ note.main_image.url }}" alt="">
-                {% elif %}
+                {% else %}
                   <img src="{{ note.field1.cover_image.url }}" alt="">
                 {% endif %}
               </div>
