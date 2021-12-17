@@ -206,7 +206,8 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .single_page_content h2{line-height:35px; border-left: solid 5px #191970;/*左線*/ padding: 0.25em 0.5em;/*上下 左右の余白*/}
 .single_page_content h3{line-height:30px; border-left: solid 5px #191970;/*左線*/ padding: 0.25em 0.5em;/*上下 左右の余白*/}
 .single_page_content h4{line-height:25px; border-left: solid 5px #191970;/*左線*/ padding: 0.25em 0.5em;/*上下 左右の余白*/}
-.single_page_content h5{line-height:20px; padding: 0.25em 0.5em;/*上下 左右の余白*/}
+.single_page_content h5{line-height:20px; padding: 0.3em ;/*上下 左右の余白*/}
+.single_page_content h5:before{content:"●";}
 .single_page_content p{font-size: 18px; line-height: 1.8em; margin: 1.2em 0px; font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;}
 .social_link{display:inline; float:left; margin-bottom:25px; margin-top:20px; width:100%}
 .sociallink_nav{text-align:center}
