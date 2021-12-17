@@ -178,6 +178,9 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .catgArchive{border:medium none; color:#fff; display:inline; float:left;  padding:10px 15px; width:100%; margin-top:15px; text-transform: capitalize; font-family:"Oswald",sans-serif; }
 .catgArchive option{background-color:#fff; font-weight:normal; padding:5px; color:#191970}
 
+.post_sort_btn{border:medium none; color:#fff; display:inline; float:left;  padding:10px 15px; font-size: small; margin-top:15px; text-transform: capitalize; font-family:"Oswald",sans-serif; background-color: #191970;}
+.post_sort_btn option{background-color:#fff; font-weight:normal; padding:5px; color:#191970}
+
 .nav-tabs > li{display:inline-block; float:none; width:32.55%}
 .nav-tabs{ text-align:center}
 .pagination > li > a, .pagination > li > span{background-color:#000; border:1px solid #000; color:#eee; margin-right:5px; -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}

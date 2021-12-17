@@ -13,17 +13,7 @@
         <div class="single_post_content">
         <h2><span>Posts</span></h2>
 
-        <div class="select_area">
-          <form method="GET" action="">
-            <select class="catgArchive" name="sort" method="GET" onChange="submit(this.form)">
-              <option>並び替え</option>
-              <option value="date">投稿日（新しい）</option>
-              <option value="inv_date">投稿日（古い）</option>             
-              <option value="view">閲覧数（多い）</option>
-              <option value="inv_view">閲覧数（少ない）</option>
-            </select>
-          </form>
-        </div>
+        {% include 'php/post_sort_btn.php' %} 
 
         <div class="single_post_content_cat">
           <ul class="allpost_nav">
