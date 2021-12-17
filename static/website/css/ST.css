@@ -1322,24 +1322,6 @@ body {
     }
   }
   
-  .eq{
-    overflow-x: auto;
-    overflow-y: hidden;
-    }
-
-  .eq::-webkit-scrollbar{
-    width: 15px;
-    }
-  .eq::-webkit-scrollbar-thumb{
-    background: #a9a9a9;
-    border-radius: 10px;
-    }
-  .eq::-webkit-scrollbar-track-piece:start{
-    background: #d3d3d3;
-    }
-  .eq::-webkit-scrollbar-track-piece:end{
-    background: #d3d3d3;
-    }
 
 
 
