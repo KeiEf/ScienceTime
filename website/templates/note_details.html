@@ -170,7 +170,7 @@
               <!--edit-->
               {% if user.is_authenticated %}
                 {% if user.id == note.author.id %}
-                <a href="#">[edit]</a>
+                <a href="{% url 'update_note' note.pk %}">[edit]</a>
                 {% endif %}
               {% endif %}               
             </div>

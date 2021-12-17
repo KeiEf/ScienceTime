@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Edit note{% endblock %}
+{% block content %}
+
+<div class="container">
+  <section id="postSection">
+
+  {% if user.is_authenticated %}
+    {% if user.id == note.author.id %}
+
+    <h1>Update Note</h1>
+    <br/>
+    <br/>
+    <div class="form-group">
+      <form method="POST" enctype="multipart/form-data">
+       {% csrf_token %}
+      <!-- {{ form.as_table }} -->
+       {{ form.media }}
+       {{ form.as_p }}
+       <button class="btn btn-secondary">Update</button>
+    </div>
+    {% else %}
+   
+       You're not allowed here.
+
+  {% endif %}
+  {% else %}
+
+  You're not allowed here.
+
+  {% endif %}
+  </section>  
+</div>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Product, Genre, Category
+from .models import Post, Product, Genre, Category, Note, Field
 from django.conf import settings
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse
@@ -11,8 +11,11 @@ choice_list = []
 
 genres = Genre.objects.all().values_list('name','name')
 genre_list =[]
+field = Field.objects.all().values_list('field','field')
+field_list =[]
 state_list = [('published','published'),('private','private')]
-
+subject_list = [('物理','物理'),('数学','数学')]
+subj_eng_list = [('physics','physics'),('maths','maths')]
 sub_genre_list =[('Tシャツ','Tシャツ'),('フーディ','フーディ'),('キャップ','キャップ' ),
 ('力学','力学'),('光と電磁気','光と電磁気'),('熱力学','熱力学'),('流体','流体'),('数学他','数学他'),
 ('トートバッグ' ,'トートバッグ'),('タンブラー' ,'タンブラー'),('マグカップ','マグカップ')]
@@ -22,6 +25,9 @@ for item in choices:
 
 for item in genres:
     genre_list.append(item)
+
+for item in field:
+    field_list.append(item)  
 
 
 class ContactForm(forms.Form):
@@ -101,4 +107,43 @@ class EditProductForm(forms.ModelForm):
             'body': forms.Textarea(attrs={'class': 'form-control'}),            
             'genre': forms.Select(choices=genre_list, attrs={'class': 'form-control'}),
             'sub_genre': forms.Select(choices=sub_genre_list, attrs={'class': 'form-control'}),
+        }
+
+
+class PostNoteForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields = ('title', 'main_image', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content','reference' , 'note_tags', 'post_date', 'state')
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),    
+            'subject': forms.Select(choices=subject_list, attrs={'class': 'form-control'}),
+            'subj_eng': forms.Select(choices=subj_eng_list, attrs={'class': 'form-control'}),    
+            'field1': forms.Select(choices=field_list, attrs={'class': 'form-control'}),              
+            'abstract': forms.Textarea(attrs={'class': 'form-control'}),
+            'intro': forms.Textarea(attrs={'class': 'form-control'}),
+            'table': forms.Textarea(attrs={'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'class': 'form-control'}),
+            'reference': forms.Textarea(attrs={'class': 'form-control'}),
+            'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
+        }
+
+class EditNoteForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields = ('title', 'main_image', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content','reference' , 'note_tags', 'post_date', 'state')
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),    
+            'subject': forms.Select(choices=subject_list, attrs={'class': 'form-control'}),
+            'subj_eng': forms.Select(choices=subj_eng_list, attrs={'class': 'form-control'}),    
+            'field1': forms.Select(choices=field_list, attrs={'class': 'form-control'}),              
+            'abstract': forms.Textarea(attrs={'class': 'form-control'}),
+            'intro': forms.Textarea(attrs={'class': 'form-control'}),
+            'table': forms.Textarea(attrs={'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'class': 'form-control'}),
+            'reference': forms.Textarea(attrs={'class': 'form-control'}),
+            'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
         }

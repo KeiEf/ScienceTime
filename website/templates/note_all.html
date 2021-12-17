@@ -31,6 +31,12 @@
                   【 <a href="{% url  'subject' post.subj_eng %}">{{ post.subject }}</a> | {{ post.field1 }} 】
                   <a href="{% url 'note_detail' post.pk %}" class="catg_title"> {{ post.title }}</a>
                   <p><small><i class="fa fa-calendar"></i> {{ post.post_date|date:"Y/m/d"  }}</small></p>
+
+                  {% if user.is_authenticated %}
+                  {% if user.id == post.author.id %}
+                    <small><a href="{% url 'update_note' post.pk %}">[edit]</a></small>
+                  {% endif %}
+                {% endif %}  
                 </div>
             </div>
             </li>
@@ -107,6 +113,10 @@
     </div>
   </section>    
 
+
+  {% if user.is_authenticated %}
+     <small><a href="{% url 'add_note'  %}">[add note]</a></small>
+  {% endif %}  
   </section>
 </div>
 

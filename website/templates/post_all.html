@@ -30,6 +30,11 @@
                 <div class="media-body">
                   <a href="{% url 'post_detail' post.pk %}" class="catg_title"> {{ post.title }}</a>
                   <p><small><i class="fa fa-calendar"></i> {{ post.post_date|date:"Y/m/d"  }}</small></p>
+                  {% if user.is_authenticated %}
+                  {% if user.id == post.author.id %}
+                    <small><a href="{% url 'update_post' post.pk %}">[edit]</a></small>
+                  {% endif %}
+                {% endif %}  
                 </div>
             </div>
             </li>
