@@ -135,6 +135,11 @@
             </div>
 
             <div class="single_page_content">
+              {% if note.quotes %}
+                <blockquote>
+                  {{ note.quotes|safe }}
+                </blockquote>
+              {% endif %}
               <div class="note_image">
               {% if note.state == "published" %}
                 {% if note.video %}

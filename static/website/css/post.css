@@ -198,6 +198,42 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .single_page_content h5:before{content:"●"; padding-right: 0.4em;}
 .single_page_content p{font-size: 18px; line-height: 1.8em; margin: 1.2em 0px; font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;}
 
+
+.single_page_content > blockquote {
+    position: relative;
+    padding: 30px 15px 8px 15px;
+    box-sizing: border-box;
+    font-style: italic;
+    background: #efefef;
+    color: #555;
+}
+
+.single_page_content >blockquote:before{
+    display: inline-block;
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    content: "\f10d";
+    font-family: FontAwesome;
+    color: #cfcfcf;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.single_page_content > blockquote p {
+    padding: 0;
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+.single_page_content > blockquote cite {
+    display: block;
+    text-align: right;
+    color: #888888;
+    font-size: 0.8em;
+}
+
 .eq{overflow-x: auto; overflow-y: hidden; font-size: 18px;}
 .eq::-webkit-scrollbar{width: 15px;}
 .eq::-webkit-scrollbar-thumb{background: #a9a9a9;border-radius: 10px;}

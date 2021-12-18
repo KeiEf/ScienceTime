@@ -134,10 +134,11 @@ class PostNoteForm(forms.ModelForm):
 class EditNoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('title', 'main_image', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content1','content2','reference' , 'note_tags', 'post_date', 'state')
+        fields = ('title', 'quotes', 'main_image', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content1','content2','reference' , 'note_tags', 'post_date', 'state')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'quotes': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'video' :  forms.Textarea(attrs={'class': 'form-control', 'rows':3}),
             'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),    
             'subject': forms.Select(choices=subject_list, attrs={'class': 'form-control'}),
@@ -155,9 +156,10 @@ class EditNoteForm(forms.ModelForm):
 class EditNoteContentForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('abstract','intro','table','content1', 'content2')
+        fields = ('quotes','abstract','intro','table','content1', 'content2')
 
-        widgets = {           
+        widgets = { 
+            'quotes': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'intro': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
