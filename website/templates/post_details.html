@@ -94,21 +94,27 @@
                   {% if post.state == "published" %}
                   <li>
                     <div class="media">
-                        {% if post.title %}
-                        <a class="media-left" href="{% url 'post_detail' post.pk %}">
+                        {% if post.field1 %}
+                          <a class="media-left" href="{% url 'note_detail' post.pk %}">
+                        {% elif post.title %}
+                          <a class="media-left" href="{% url 'post_detail' post.pk %}">
                         {% elif post.name %}
-                        <a class="media-left" href="{% url 'product_detail' post.pk %}">
+                          <a class="media-left" href="{% url 'product_detail' post.pk %}">
                         {% endif %}
 
                         {% if post.main_image %}
                         <img src="{{ post.main_image.url }}" alt="">
-                        {% else %}
+                        {% elif post.main_url %}
                         <img src="{{ post.image_url}}" alt="">
+                        {% else %}
+                        <img src="{{ post.field1.cover_image.url }}" alt="">                       
                         {% endif %}
                        </a>
                       <div class="media-body">
-                        <small>                     
-                        {% if post.title %}
+                        <small>
+                        {% if post.field1 %}
+                        <a class="catg_title" href="{% url 'note_detail' post.pk %}"> {{ post.title}}</a>
+                        {% elif post.title %}
                         <a class="catg_title" href="{% url 'post_detail' post.pk %}"> {{ post.title}}</a>
                         {% elif post.name %}
                         <a class="catg_title" href="{% url 'product_detail' post.pk %}"> {{ post.name}}</a>
