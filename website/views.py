@@ -364,7 +364,7 @@ class AllNoteView(ListView):
        elif sort == "inv_view":
           object_list =  Note.objects.filter(state="published").order_by('views')
        elif sort == "date":
-          object_list =  Note.filter(state="published").order_by('-post_date')
+          object_list =  Note.objects.filter(state="published").order_by('-post_date')
        elif sort == "inv_date":
           object_list =  Note.objects.filter(state="published").order_by('post_date')
        elif sort == "all":
