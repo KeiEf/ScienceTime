@@ -104,7 +104,7 @@
 
                         {% if post.main_image %}
                         <img src="{{ post.main_image.url }}" alt="">
-                        {% elif post.main_url %}
+                        {% elif post.image_url %}
                         <img src="{{ post.image_url}}" alt="">
                         {% else %}
                         <img src="{{ post.field1.cover_image.url }}" alt="">                       
