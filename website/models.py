@@ -4,7 +4,7 @@ from django.urls import reverse
 from datetime import datetime, date
 from django.utils import timezone
 from taggit.managers import TaggableManager
-from ckeditor.fields import RichTextField
+###from ckeditor.fields import RichTextField
 import uuid
 
 def image_profile(instance, filename):
