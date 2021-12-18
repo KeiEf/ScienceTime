@@ -163,7 +163,11 @@
                 <ul class="content_table">
                  {{ note.table|safe }}
                 </ul>
+                <div class="ads">
+                  {% include 'ads/ads_vert.php' %}
+                </div>
                 <br>
+                
                 <!--edit-->
                 {% if user.is_authenticated %}
                   {% if user.id == note.author.id %}
