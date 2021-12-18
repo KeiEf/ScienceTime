@@ -10,7 +10,7 @@
  #noteSection{padding:100px 3px 0px 3px}
  .note_content{float:left; display:inline; width:100%; padding: none; border:none }
  .note_body > p{font-size:14px;}
- .note_image > img{width:95%; height: auto; }
+ .note_image > img{width:95%; height: auto; text-align: center;}
  .note_body ul li{font-size:14px ;}
 }
 
