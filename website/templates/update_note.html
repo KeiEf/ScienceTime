@@ -13,11 +13,14 @@
     <br/>
     <div class="form-group">
       <form method="POST" enctype="multipart/form-data">
+
        {% csrf_token %}
       <!-- {{ form.as_table }} -->
        {{ form.media }}
        {{ form.as_p }}
+
        <button class="btn btn-secondary">Update</button>
+       </form>
     </div>
     {% else %}
    
@@ -29,6 +32,7 @@
   You're not allowed here.
 
   {% endif %}
+
   </section>  
 </div>
 {% endblock %}
