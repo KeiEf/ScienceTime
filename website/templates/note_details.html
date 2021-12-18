@@ -213,6 +213,7 @@
                 <p>Sorry, this post is not published.</p>
               {% endif %}
               <hr>
+
               <!--edit-->
               {% if user.is_authenticated %}
                 {% if user.id == note.author.id %}
