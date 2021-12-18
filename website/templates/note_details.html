@@ -172,7 +172,11 @@
                 {% endif %} 
                 <!--post body-->
                 <div class="note_body">
-                {{ note.content|safe }}
+                {{ note.content1|safe }}
+
+                {% if note.content2 %}
+                  {{ note.content2|safe }}
+                {% endif %}
                 </div>
                 <!--edit-->
                 {% if user.is_authenticated %}

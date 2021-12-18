@@ -113,27 +113,7 @@ class EditProductForm(forms.ModelForm):
 class PostNoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('title', 'main_image', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content','reference' , 'note_tags', 'post_date', 'state')
-
-        widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'video' :  forms.Textarea(attrs={'class': 'form-control', 'rows':3}),
-            'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),    
-            'subject': forms.Select(choices=subject_list, attrs={'class': 'form-control'}),
-            'subj_eng': forms.Select(choices=subj_eng_list, attrs={'class': 'form-control'}),    
-            'field1': forms.Select(choices=field_list, attrs={'class': 'form-control'}),              
-            'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3}),
-            'intro': forms.Textarea(attrs={'class': 'form-control', 'rows':3}),
-            'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5}),
-            'content': forms.Textarea(attrs={'class': 'form-control', 'rows':50}),
-            'reference': forms.Textarea(attrs={'class': 'form-control', 'rows':5}),
-            'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
-        }
-
-class EditNoteForm(forms.ModelForm):
-    class Meta:
-        model = Note
-        fields = ('title', 'main_image', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content','reference' , 'note_tags', 'post_date', 'state')
+        fields = ('title', 'main_image', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content1','content2', 'reference' , 'note_tags', 'post_date', 'state')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -145,7 +125,29 @@ class EditNoteForm(forms.ModelForm):
             'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'intro': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
-            'content': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
+            'content1': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
+            'content2': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),            
+            'reference': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
+            'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
+        }
+
+class EditNoteForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields = ('title', 'main_image', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content1','content2','reference' , 'note_tags', 'post_date', 'state')
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'video' :  forms.Textarea(attrs={'class': 'form-control', 'rows':3}),
+            'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),    
+            'subject': forms.Select(choices=subject_list, attrs={'class': 'form-control'}),
+            'subj_eng': forms.Select(choices=subj_eng_list, attrs={'class': 'form-control'}),    
+            'field1': forms.Select(choices=field_list, attrs={'class': 'form-control'}),              
+            'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
+            'intro': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
+            'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
+            'content1': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
+            'content2': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),            
             'reference': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
             'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
         }
@@ -153,13 +155,14 @@ class EditNoteForm(forms.ModelForm):
 class EditNoteContentForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('abstract','intro','table','content')
+        fields = ('abstract','intro','table','content1', 'content2')
 
         widgets = {           
             'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'intro': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
-            'content': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
+            'content1': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
+            'content2': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
         }
 
 class EditNoteReferenceForm(forms.ModelForm):
