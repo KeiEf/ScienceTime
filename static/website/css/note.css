@@ -1,0 +1,28 @@
+.note_image{text-align: center; align-items: center; margin-bottom:15px; width: 90%;}
+.note_image > img{max-width:90%; height:350px; }
+.note_content{float:left;display:inline; width:100%; padding: 10px 25px; background-color:#f0f8ff;}
+.note_content > p{font-size:18px;}
+.note_body ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);}
+.note_body img{max-width:90%; height: auto;}
+
+@media(max-width:580px )
+{
+ #noteSection{padding:100px 3px 0px 3px}
+ .note_content{float:left; display:inline; width:100%; padding: none; border:none }
+ .note_body > p{font-size:14px;}
+ .note_image > img{width:95%; height: auto; }
+ .note_body ul li{font-size:14px ;}
+}
+
+.note_summary{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.note_summary p {
+    margin: 0; 
+    padding: 0;
+}
