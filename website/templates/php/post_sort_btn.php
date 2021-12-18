@@ -6,6 +6,12 @@
       <option value="inv_date">投稿日（古い）</option>             
       <option value="view">閲覧数（多い）</option>
       <option value="inv_view">閲覧数（少ない）</option>
+      {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+        <option value="all">すべて</option> 
+        <option value="private">非公開</option>
+        {% endif %}
+      {% endif %}
     </select>
   </form>
 </div>

@@ -367,6 +367,10 @@ class AllNoteView(ListView):
           object_list =  Note.filter(state="published").order_by('-post_date')
        elif sort == "inv_date":
           object_list =  Note.objects.filter(state="published").order_by('post_date')
+       elif sort == "all":
+          object_list =  Note.objects.all.order_by('post_date') 
+       elif sort == "private":
+          object_list =  Note.objects.filter(state="private").order_by('post_date')         
        else:        
           object_list =  Note.objects.filter(state="published").order_by('-post_date')
 
