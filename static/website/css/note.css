@@ -3,10 +3,9 @@
 .note_image > img{max-width:90%; height:350px; }
 .note_content{float:left; width:100%; padding: 10px 25px; background-color:#f0f8ff;}
 .note_content > p{font-size:18px;}
-.note_content > img{width:100%;text-align: center;clear:both;}
 .note_body {width:100%}
 .note_body ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);}
-.note_body > img{width:100%; height: auto; text-align: center;}
+.note_body > img{width:100%; height: auto; text-align: center;clear:both;}
 
 @media(max-width:580px )
 {
@@ -14,7 +13,7 @@
  .note_content{float:left;  width:100%; padding: none; border:none }
  .note_body > p{font-size:14px;}
  .note_body ul li{font-size:14px ;}
- .note_image > img{width:95%; height: auto; text-align: center;}
+ .note_image > img{display:block; width:95%; height: auto; text-align: center;}
 }
 
 .note_summary{
