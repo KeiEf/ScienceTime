@@ -7,14 +7,14 @@
 .note_body ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);}
 .note_body > img{max-width:90%; height: auto; text-align: center;}
 
-@media(max-width:580px )
+@media(max-width:880px )
 {
  #noteSection{padding:100px 3px 0px 3px}
- .note_content{float:left;  width:100%; padding: none; border:none }
+ .note_content{float:left; padding: none;}
  .note_body > p{font-size:14px;}
  .note_body ul li{font-size:14px ;}
  .note_image > img{width:95%; height: auto; text-align: center;}
- .note_body > img{max-width:95%;}
+ .note_body > img{max-width:95%}
 }
 
 .note_summary{
