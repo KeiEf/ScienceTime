@@ -113,7 +113,7 @@ class EditProductForm(forms.ModelForm):
 class PostNoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('title', 'main_image', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content1','content2', 'reference' , 'note_tags', 'post_date', 'state')
+        fields = ('title', 'main_image', 'caption','video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content1','content2', 'reference' , 'note_tags', 'post_date', 'state')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -134,7 +134,7 @@ class PostNoteForm(forms.ModelForm):
 class EditNoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('title', 'quotes', 'main_image', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content1','content2','reference' , 'note_tags', 'post_date', 'state')
+        fields = ('title', 'quotes', 'main_image', 'caption', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content1','content2','reference' , 'note_tags', 'post_date', 'state')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
