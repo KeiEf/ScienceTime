@@ -177,6 +177,15 @@ class EditNoteReferenceForm(forms.ModelForm):
 
 #### Field ####
 
+class AddFieldForm(forms.ModelForm):
+    class Meta:
+        model = Field
+        fields = ('field', 'field_eng','subject','subj_eng','cover_image','abstract', 'index', 'ordering')
+        widgets = {    
+            'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),    
+            'index': forms.Textarea(attrs={'class': 'form-control', 'rows':30, 'style': 'font-size: small'}),
+        }
+
 class EditFieldForm(forms.ModelForm):
     class Meta:
         model = Field

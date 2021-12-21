@@ -3,7 +3,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from django.views.generic.edit import FormView
 from .models import Product, Post, Genre, Category, Note, Field
-from .forms import PostForm, EditForm, EditProductForm, ContactForm,PostNoteForm, EditNoteForm, EditNoteContentForm,  EditNoteReferenceForm, EditFieldForm
+from .forms import PostForm, EditForm, EditProductForm, ContactForm,PostNoteForm, EditNoteForm, EditNoteContentForm,  EditNoteReferenceForm, AddFieldForm,EditFieldForm
 from django.db.models import Max, Case, When, Sum, Count, Q, F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -462,6 +462,16 @@ class UpdateNoteReferenceView(UpdateView):
     def get_success_url(self):
         #messages.success(self.request, '投稿を編集しました。')
         return reverse_lazy('note_detail', kwargs={'pk': self.kwargs['pk']})
+
+class AddFieldView(CreateView):
+    model = Field
+    form_class = AddFieldForm
+    template_name = 'add_field.html'
+
+    def get_success_url(self):
+        #messages.success(self.request, '投稿を編集しました。')
+        return reverse_lazy('all_notes')
+
 
 class UpdateFieldView(UpdateView):
     model = Field
