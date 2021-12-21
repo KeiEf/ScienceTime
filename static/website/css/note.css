@@ -5,7 +5,7 @@
 .note_content > p{font-size:18px;}
 .note_body {width:100%}
 .note_body ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);}
-.note_body > img{max-width:90%; height: auto; text-align: center;}
+.note_body > img{max-width:90%; text-align: center;}
 
 @media(max-width:880px )
 {

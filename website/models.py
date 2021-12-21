@@ -99,7 +99,7 @@ class Field(models.Model):
     cover_image = models.ImageField(null=True, blank=True, upload_to=image_note, verbose_name='カバー画像')
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
     ordering = models.PositiveIntegerField(default=0, null=True, blank=True)
-    index = models.TextField(default='' , verbose_name='目次')
+    index = models.TextField(default='<h5></h5>\n<ul>\n<li></li>\n</ul>' , verbose_name='目次')
 
     def __str__(self):
        return self.field
