@@ -151,6 +151,7 @@
                 {% endif %}
                 <p>{{ note.caption|safe }}</p>
               </div>
+              <div class="note_body">
                 <h4>はじめに</h4>
                 <p>{{ note.intro|safe }}</p>
                 <br>
@@ -169,6 +170,7 @@
                 <ul class="content_table">
                  {{ note.table|safe }}
                 </ul>
+              </div>
                 <div class="ads">
                   {% include 'ads/ads_vert.php' %}
                 </div>
