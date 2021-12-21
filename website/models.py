@@ -110,6 +110,7 @@ class Note(models.Model):
     title = models.CharField(max_length=100,  verbose_name='タイトル')
     quotes =  models.TextField(default='', null=True, blank=True, verbose_name='引用') 
     main_image = models.ImageField(null=True, blank=True, upload_to=image_note, verbose_name='ヘッダー画像') 
+    caption = models.CharField(max_length=500, default='', null=True, blank=True, verbose_name='画像キャプション')
     video = models.TextField(null=True, blank=True, verbose_name='ビデオ')   
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
