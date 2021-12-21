@@ -14,6 +14,7 @@
  .note_body > p{font-size:14px;}
  .note_body ul li{font-size:14px ;}
  .note_image > img{width:95%; height: auto; text-align: center;}
+ .note_body > img{max-width:95%;}
 }
 
 .note_summary{
