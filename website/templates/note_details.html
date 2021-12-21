@@ -149,7 +149,7 @@
                 {% else %}
                   <img src="{{ note.field1.cover_image.url }}" alt="">
                 {% endif %}
-                <p>{{ note.caption }}</p>
+                <p>{{ note.caption|safe }}</p>
               </div>
                 <h4>はじめに</h4>
                 <p>{{ note.intro|safe }}</p>
