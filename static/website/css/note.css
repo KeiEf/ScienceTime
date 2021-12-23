@@ -8,6 +8,9 @@
 .note_body ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);}
 .note_body > img{max-width:90%; height: auto; text-align: center; margin: auto; display: block;}
 .caption{font-size: small; text-align: center;  display: block;}
+.note_figure {display: block;text-align: center;}
+.note_figure > img{max-width:90%; height: auto; text-align: center; margin: auto; display: block;}
+.note_figure > p{font-size: small; text-align: center;  display: block;}
 
 @media(max-width:880px )
 {
@@ -17,6 +20,18 @@
  .note_body ul li{font-size:14px ;}
  .note_image > img{width:95%; height: auto; }
 }
+
+
+.note_shadow {
+    margin: 2em auto;
+    padding: 1em;
+    width: 100%;
+    border: 1px solid #a9a9a9;
+    background-color: #fff;
+    box-shadow: 1.5px 1.5px 2px #696969;
+    }
+
+
 
 .note_summary{
     padding: 0.5em 1em 1em 1em;
