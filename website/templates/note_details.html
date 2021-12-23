@@ -150,7 +150,7 @@
                   <img src="{{ note.field1.cover_image.url }}" alt="">
                 {% endif %}
                 {% if note.caption %}
-                  <span class="caption">{{{ note.caption|safe }}</span>
+                  <span class="caption">{{ note.caption|safe }}</span>
                 {% endif %}
               </div>
               <div class="note_body">
