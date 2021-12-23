@@ -12,7 +12,7 @@
 @media(max-width:880px )
 {
  #noteSection{padding:100px 3px 0px 3px}
- .note_content{float:left; padding: none;}
+ .note_content{padding: none;}
  .note_body > p{font-size:14px;}
  .note_body ul li{font-size:14px ;}
  .note_image > img{width:95%; height: auto; }
