@@ -56,6 +56,9 @@
                 {% else %}
                   <img src="{{ post.image_url}}" alt="">
                 {% endif %}
+                {% if post.caption %}
+                  <span class="caption">{{ post.caption|safe }}</span>
+                {% endif %}
                 <!--post body-->
                 <p>{{ post.content|safe }}</p>
               {% else %}

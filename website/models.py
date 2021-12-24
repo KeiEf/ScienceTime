@@ -49,6 +49,7 @@ class Post(models.Model):
     main_image = models.ImageField(null=True, blank=True, upload_to=image_post, verbose_name='ヘッダー画像')
  #   body_image = models.ImageField(null=True, blank=True, upload_to="images/post/", verbose_name='画像')    
     image_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='画像url')
+    caption = models.CharField(max_length=500, default='', null=True, blank=True, verbose_name='画像キャプション')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
     content = models.TextField(default='' , verbose_name='内容')

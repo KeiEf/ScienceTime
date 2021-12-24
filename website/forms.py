@@ -70,10 +70,11 @@ class ContactForm(forms.Form):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','image_url', 'abstract', 'author', 'category', 'post_tags','content', 'post_date', 'main_image', 'state')
+        fields = ('title', 'main_image','image_url', 'caption','abstract', 'author', 'category', 'post_tags','content', 'post_date', 'state')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'caption': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'abstract': forms.TextInput(attrs={'class': 'form-control'}),
             'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),
         #    'author': forms.Select(attrs={'class': 'form-control'}),
@@ -86,9 +87,10 @@ class PostForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','image_url','abstract',  'category', 'post_tags', 'content', 'post_date', 'main_image', 'state')
+        fields = ('title', 'main_image','image_url', 'caption','abstract',  'category', 'post_tags', 'content', 'post_date', 'state')
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'caption': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'abstract': forms.Textarea(attrs={'class': 'form-control'}),
             'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
