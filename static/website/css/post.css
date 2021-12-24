@@ -185,7 +185,7 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .breadcrumb li a{color:#fff}
 .breadcrumb>li+li:before{padding:0 5px;color:#ccc;content:"/\00a0"}
 .single_page_content {display:inline; float:left; padding-top:20px; padding-bottom:20px;width:100%; border-bottom:1px solid #ddd; overflow-wrap: break-word;}
-.single_page_content > img{max-width:100%; width:320px; height:213px; margin:0px 15px 0px 0px; text-align: center;display: block;}
+.single_page_content > img{max-width:100%; width:320px; height:213px; margin:0px auto 15px auto; text-align: center;display: block;}
 .single_page_content ul{position:relative; padding-left:25px;}
 .single_page_content ul li{line-height:25px;list-style-type: disc; font-size: inherit;color: inherit;}
 
