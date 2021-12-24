@@ -44,7 +44,6 @@ class PostView(ListView):
         env_list = Post.objects.filter(category="環境", state="published").order_by('-post_date')
         health_list = Post.objects.filter(category="医療と健康", state="published").order_by('-post_date')
 
-
         cat_menu = Category.objects.all()
         cat_menu = super(PostView, self).get_context_data(*args, **kwargs)
         cat_menu_list = Category.objects.all()
