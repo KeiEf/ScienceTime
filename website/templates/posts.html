@@ -207,7 +207,7 @@
           <div class="fashion_technology_area">
             <div class="fashion">
               <div class="single_post_content">
-                <h2><span>生物学</span></h2>
+                <h2><span>生物</span></h2>
                 <ul class="business_catgnav wow fadeInDown">
                   {% for post in bio_list|slice:":1"  %}
                   <li>
@@ -294,10 +294,6 @@
               </div>
             </div>
           </div>
-
-
-
-          
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
@@ -327,7 +323,9 @@
           <!-- ads -->
           <div class="single_sidebar wow fadeInDown">
             <h2><span>Sponsor</span></h2>
-            {% include 'ads/ads1.php' %}
+            <div class="ads">
+              {% include 'ads/ads1.php' %}
+            </div>
           </div>
           <!-- category -->
           <div class="single_sidebar wow fadeInDown">
