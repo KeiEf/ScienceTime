@@ -203,6 +203,100 @@
             </div>
           </div>
           
+          <!--Biology-->
+          <div class="fashion_technology_area">
+            <div class="fashion">
+              <div class="single_post_content">
+                <h2><span>生物学</span></h2>
+                <ul class="business_catgnav wow fadeInDown">
+                  {% for post in bio_list|slice:":1"  %}
+                  <li>
+                    <figure class="bsbig_fig">
+                      <a href="{% url 'post_detail' post.pk %}" class="featured_img">
+                      {% if post.main_image%}
+                        <img src="{{ post.main_image.url }}" alt="">
+                      {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                      {% endif %}
+                      <span class="overlay"></span> </a>
+                    <figcaption> <a href="{% url 'post_detail' post.pk %}" >{{ post.title }}</a> </figcaption>
+                      <p>{{ post.abstract |truncatechars:50}}</p>
+                    </figure>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <ul class="spost_nav">
+                  {% for post in bio_list|slice:":5"  %}
+                  {% if forloop.first %}
+                  {% else %}
+                  <li>
+                    <div class="media wow fadeInDown">
+                      <a href="{% url 'post_detail' post.pk %}" class="media-left">
+                        {% if post.main_image%}
+                        <img src="{{ post.main_image.url }}" alt="">
+                      {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                      {% endif %} 
+                      </a>
+                      <div class="media-body"> <a href="{% url 'post_detail' post.pk %}"class="catg_title"> {{ post.title }}</a>
+                      </div>
+                    </div>
+                  </li>
+                   {% endif %}
+                {% endfor %}
+                <li><a href="{% url 'category' '生物' %}" >view all posts in this category</a></li>
+                </ul>
+              </div>
+            </div>
+            <!--Brain and Mind-->
+            <div class="technology">
+              <div class="single_post_content">
+                <h2><span>脳と心</span></h2>
+                <ul class="business_catgnav">
+                  {% for post in mind_list|slice:":1"  %}
+                  <li>
+                    <figure class="bsbig_fig">
+                      <a href="{% url 'post_detail' post.pk %}" class="featured_img">
+                      {% if post.main_image%}
+                        <img src="{{ post.main_image.url }}" alt="">
+                      {% else %}
+                        <img src="{{ post.image_url}}" alt="">
+                      {% endif %}
+                      <span class="overlay"></span> </a>
+                    <figcaption> <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a> </figcaption>
+                      <p>{{ post.abstract |truncatechars:50}}</p>
+                    </figure>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <ul class="spost_nav">
+                  {% for post in mind_list|slice:":5"  %}
+                  {% if forloop.first %}
+                  {% else %}
+                  <li>
+                    <div class="media wow fadeInDown">
+                        <a href="{% url 'post_detail' post.pk %}" class="media-left">
+                        {% if post.main_image%}
+                          <img src="{{ post.main_image.url }}" alt="">
+                        {% else %}
+                          <img src="{{ post.image_url}}" alt="">
+                        {% endif %} 
+                        </a>
+                      <div class="media-body">
+                        <a href="{% url 'post_detail' post.pk %}" class="catg_title"> {{ post.title }}</a>
+                      </div>
+                    </div>
+                  </li>
+                   {% endif %}
+                {% endfor %}
+                <li><a href="{% url 'category' '脳と心' %}" >view all posts in this category</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+
           
         </div>
       </div>
