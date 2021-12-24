@@ -72,16 +72,8 @@
               {% endif %}               
               </div>
 
-              <div class="social_link">
-                <ul class="sociallink_nav">
-                  <!--<li><a href="#"><i class="fa fa-facebook"></i></a>
-                  </li>-->
-                  <li>
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-via="sciencetime_jp" data-related="ST_phys_bot" class="twitter-share-button" data-show-count="false" data-hashtags="ScienceTime {% for tag in post.post_tags.all %},{{ tag.name }}{% endfor %}" data-lang="ja"></a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                  </li>
-                </ul>
-              </div>
+              <!--shere buttons-->
+              {% include 'php/share_btn.php' %}   
 
               <!--ads-->
 
