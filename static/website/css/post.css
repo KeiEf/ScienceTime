@@ -196,7 +196,7 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .single_page_content h4{line-height:25px; border-left: solid 5px #191970;/*左線*/ padding: 0.25em 0.5em;/*上下 左右の余白*/}
 .single_page_content h5{line-height:20px; padding: 0.4em 0;/*上下 左右の余白*/}
 .single_page_content h5:before{content:"●"; padding-right: 0.4em;}
-.single_page_content p{font-size: 18px; line-height: 1.8em; margin: 1.2em 0px; font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;}
+.single_page_content p{font-size: 17px; line-height: 1.8em; margin: 1.2em 0px; font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;}
 
 
 .single_page_content > blockquote {
@@ -234,7 +234,7 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
     font-size: 0.8em;
 }
 
-.eq{overflow-x: auto; overflow-y: hidden; font-size: 18px;}
+.eq{overflow-x: auto; overflow-y: hidden; font-size: 17px;}
 .eq::-webkit-scrollbar{width: 15px;}
 .eq::-webkit-scrollbar-thumb{background: #a9a9a9;border-radius: 10px;}
 .eq::-webkit-scrollbar-track-piece:start{background: #d3d3d3;}
