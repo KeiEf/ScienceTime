@@ -46,6 +46,7 @@ class PostView(ListView):
         bio_list = Post.objects.filter(category="生物", state="published").order_by('-post_date')
         mind_list = Post.objects.filter(category="脳と心", state="published").order_by('-post_date')
         anth_list = Post.objects.filter(category="人類学", state="published").order_by('-post_date')
+        math_list = Post.objects.filter(category="数学", state="published").order_by('-post_date')
 
         cat_menu = Category.objects.all()
         cat_menu = super(PostView, self).get_context_data(*args, **kwargs)
@@ -62,7 +63,8 @@ class PostView(ListView):
         context["health_list"] = health_list 
         context["bio_list"] = bio_list
         context["mind_list"] = mind_list  
-        context["anth_list"] = anth_list           
+        context["anth_list"] = anth_list 
+        context["math_list"] = math_list           
         return context
 
 class AllPostView(ListView):
