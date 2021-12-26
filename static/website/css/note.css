@@ -74,7 +74,7 @@
   }
 
   .book-slider-wrapper { 
-    width: 600px; 
+    width: 1200px; 
     position: relative; 
     left: 0; 
     will-change: transform; 
@@ -95,5 +95,5 @@
     #book-slider {width: 200px;} 
     .book-slider-item {width: 200px;}
     .book-slider-img {width: 180px;}
-    .book-slider-wrapper {width: 200px;}   
+    .book-slider-wrapper {width: 600px;}   
 }

@@ -1,7 +1,7 @@
 {% if related_books %}
 <div id="book-slider">
 	<div class="book-slider-wrapper">
-    {% for book in related_books|slice:":3" %}
+    {% for book in related_books|slice:":6" %}
 	  <div class="book-slider-item">
         <table>
           <thead>
