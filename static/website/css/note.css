@@ -47,3 +47,46 @@
 }
 
 .edit_note{font-size: 10px; font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;}
+
+
+#book-slider { 
+    width: 600px; 
+    height: 300px; 
+    overflow:hidden;
+
+    margin-left: auto;
+    margin-right: auto;
+  } 
+  .book-slider-item { 
+    width: 200px; 
+    height: 300px; 
+    float: left;
+    position: relative; 
+
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-left: 7px;
+  }
+
+  .book-slider-img { 
+    width: 180px; 
+    height: 220px; 
+  }
+
+  .book-slider-wrapper { 
+    width: 600px; 
+    position: relative; 
+    left: 0; 
+    will-change: transform; 
+    animation: slider 10s infinite; 
+  } 
+
+ 
+  @keyframes slider { 
+    0% { transform: translateX(0); } 
+    33% { transform: translateX(-200px); } 
+    66% { transform: translateX(-400px); } 
+    100% { transform: translateX(0); } 
+  }

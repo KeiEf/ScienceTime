@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from django.views.generic.edit import FormView
-from .models import Product, Post, Genre, Category, Note, Field
+from .models import Product, Post, Genre, Category, Note, Field, Book
 from .forms import PostForm, EditForm, EditProductForm, ContactForm,PostNoteForm, EditNoteForm, EditNoteContentForm,  EditNoteReferenceForm, AddFieldForm,EditFieldForm
 from django.db.models import Max, Case, When, Sum, Count, Q, F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -197,7 +197,9 @@ class PostDetailView(DetailView):
         context = super(PostDetailView, self).get_context_data(*args, **kwargs)
         popular_list = Post.objects.filter(state="published").order_by('-views')   
         popular_items = Product.objects.order_by('-views') 
-        related_entries = Post.objects.filter(state="published", post_tags__slug__in=list(self.object.post_tags.values_list('slug', flat=True))).exclude(id=self.object.id)        
+        related_entries = Post.objects.filter(state="published", post_tags__slug__in=list(self.object.post_tags.values_list('slug', flat=True))).exclude(id=self.object.id)
+        related_books = Book.objects.filter(book_tags__slug__in=list(self.object.post_tags.values_list('slug', flat=True))).distinct()   
+        context["related_books"] = related_books
         context["related_posts"] = self.object.post_tags.similar_objects()
         context["popular_list"] = popular_list
         context["popular_items"] = popular_items        
@@ -356,7 +358,9 @@ class NoteDetailView(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(NoteDetailView, self).get_context_data(*args, **kwargs)
         popular_items = Product.objects.all().order_by('-views') 
+        related_books = Book.objects.filter(book_tags__slug__in=list(self.object.note_tags.values_list('slug', flat=True))).distinct()   
         context["popular_items"] = popular_items
+        context["related_books"] = related_books
         return context
 
 

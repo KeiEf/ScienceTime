@@ -134,3 +134,22 @@ class Note(models.Model):
     def __str__(self):
        return str(self.id) + ' | '  + self.title 
 
+class Book(models.Model):
+
+    title = models.CharField(max_length=50, verbose_name='製品名')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)  
+    main_image = models.ImageField(null=True, blank=True, upload_to=image_product, verbose_name='画像')
+    image_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='画像url')
+    description = models.TextField(max_length=255, blank=True, verbose_name='概略')          
+    subject = models.CharField(max_length=50, blank=True, default='雑貨')  
+    book_tags = TaggableManager(blank=True,verbose_name='タグ')
+    views = models.PositiveIntegerField(default=0, null=True, blank=True)
+    main_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='メインリンク')    
+    amazon_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='Amazon')
+    rakuten_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='楽天')  
+    suzuri_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='suzuri')
+    other_url1 = models.CharField(max_length=255, null=True, blank = True, verbose_name='url1')
+    other_url2 = models.CharField(max_length=255, null=True, blank = True, verbose_name='url2')     
+
+    def __str__(self):
+       return self.title
