@@ -53,7 +53,6 @@
     width: 600px; 
     height: 300px; 
     overflow:hidden;
-
     margin-left: auto;
     margin-right: auto;
   } 
@@ -62,7 +61,6 @@
     height: 300px; 
     float: left;
     position: relative; 
-
     color: #fff;
     display: flex;
     align-items: center;
@@ -90,3 +88,12 @@
     66% { transform: translateX(-400px); } 
     100% { transform: translateX(0); } 
   }
+
+
+@media(max-width:1100px )
+{
+    #book-slider {width: 200px;} 
+    .book-slider-item {width: 200px;}
+    .book-slider-img {width: 180px;}
+    .book-slider-wrapper {width: 200px;}   
+}

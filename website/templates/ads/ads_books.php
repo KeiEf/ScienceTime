@@ -20,14 +20,12 @@
           <tbody>
             <tr>
               <td>
-                <div class="link_buttons">
                 {% if book.amazon_url %}
                 <a href="{{ book.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
                 {% endif %}
                 {% if book.rakuten_url %}
                 <a href="{{ book.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
                 {% endif %} 
-                </div>
               </td>
             </tr>
           </tbody>
