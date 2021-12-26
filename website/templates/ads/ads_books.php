@@ -7,7 +7,7 @@
           <thead>
             <tr>
               <th colspan="1">
-                <a href="{{ book.main_url }}">              
+                <a href="{{ book.main_url }}">
                 {% if book.main_image%}
                 <img src="{{ book.main_image.url }}" alt="" class="book-slider-img">
                 {% else %}

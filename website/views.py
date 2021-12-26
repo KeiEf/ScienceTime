@@ -6,7 +6,7 @@ from .models import Product, Post, Genre, Category, Note, Field, Book
 from .forms import PostForm, EditForm, EditProductForm, ContactForm,PostNoteForm, EditNoteForm, EditNoteContentForm,  EditNoteReferenceForm, AddFieldForm,EditFieldForm
 from django.db.models import Max, Case, When, Sum, Count, Q, F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -197,7 +197,7 @@ class PostDetailView(DetailView):
         context = super(PostDetailView, self).get_context_data(*args, **kwargs)
         popular_list = Post.objects.filter(state="published").order_by('-views')   
         popular_items = Product.objects.order_by('-views') 
-        related_entries = Post.objects.filter(state="published", post_tags__slug__in=list(self.object.post_tags.values_list('slug', flat=True))).exclude(id=self.object.id)
+        related_entries = Post.objects.filter(state="published", post_tags__slug__in=list(self.object.post_tags.values_list('slug', flat=True))).exclude(id=self.object.id).distinct()
         related_books = Book.objects.filter(book_tags__slug__in=list(self.object.post_tags.values_list('slug', flat=True))).distinct()   
         context["related_books"] = related_books
         context["related_posts"] = self.object.post_tags.similar_objects()
@@ -514,3 +514,16 @@ class ContactResultView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['success'] = "お問い合わせは正常に送信されました。"
         return context
+
+def BookView(request):
+    book = get_object_or_404(Book, id=request.POST.get['book_id'])
+    book.views += 1
+    book.save()
+    return super()
+
+
+
+        
+
+
+
