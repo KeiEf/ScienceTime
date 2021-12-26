@@ -196,11 +196,13 @@ class PostDetailView(DetailView):
         cat_menu = Category.objects.all()
         context = super(PostDetailView, self).get_context_data(*args, **kwargs)
         popular_list = Post.objects.filter(state="published").order_by('-views')   
-        popular_items = Product.objects.order_by('-views')              
+        popular_items = Product.objects.order_by('-views') 
+        related_entries = Post.objects.filter(state="published", post_tags__slug__in=list(self.object.post_tags.values_list('slug', flat=True))).exclude(id=self.object.id)        
         context["related_posts"] = self.object.post_tags.similar_objects()
         context["popular_list"] = popular_list
         context["popular_items"] = popular_items        
         context["cat_menu"] = cat_menu
+        context['related_entries'] = related_entries
         return context
 
 class AddPostView(CreateView):

@@ -85,41 +85,24 @@
               <div class="related_post">
                 <h2>関連記事</h2>
                 <ul class="spost_nav wow fadeInDown animated">
-                  {% for post in related_posts|slice:":3" %}
-                  {% if post.state == "published" %}
+                  {% for post in related_entries|slice:":3" %}
                   <li>
                     <div class="media">
-                        {% if post.field1 %}
-                          <a class="media-left" href="{% url 'note_detail' post.pk %}">
-                        {% elif post.title %}
-                          <a class="media-left" href="{% url 'post_detail' post.pk %}">
-                        {% elif post.name %}
-                          <a class="media-left" href="{% url 'product_detail' post.pk %}">
-                        {% endif %}
-
+                        <a class="media-left" href="{% url 'post_detail' post.pk %}">
                         {% if post.main_image %}
                         <img src="{{ post.main_image.url }}" alt="">
                         {% elif post.image_url %}
                         <img src="{{ post.image_url}}" alt="">
-                        {% else %}
-                        <img src="{{ post.field1.cover_image.url }}" alt="">                       
+                        {% else %}                   
                         {% endif %}
                        </a>
                       <div class="media-body">
                         <small>
-                        {% if post.field1 %}
-                        <a class="catg_title" href="{% url 'note_detail' post.pk %}"> {{ post.title}}</a>
-                        {% elif post.title %}
                         <a class="catg_title" href="{% url 'post_detail' post.pk %}"> {{ post.title}}</a>
-                        {% elif post.name %}
-                        <a class="catg_title" href="{% url 'product_detail' post.pk %}"> {{ post.name}}</a>
-                        {% endif %}
                         </small>
                       </div>
                     </div>
                   </li>
-                  {% else %}
-                  {% endif %}
                   {% endfor %}
                 </ul>
               </div>
