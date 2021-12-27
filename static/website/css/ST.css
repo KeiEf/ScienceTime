@@ -1305,7 +1305,7 @@ body {
   }
 
 
-  .ads {text-align: center; margin-left: auto;margin-right: auto; height: auto;}
+  .ads {text-align: center; margin-left: auto;margin-right: auto; min-height: 200px;}
 
   .pc_area{
     display:block;
