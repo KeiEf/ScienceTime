@@ -6,7 +6,7 @@
      data-ad-client="ca-pub-7524603691208984"
      data-ad-slot="6000788254"
      data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+     data-full-width-responsive="false"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
