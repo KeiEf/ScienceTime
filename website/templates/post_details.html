@@ -69,17 +69,20 @@
                 {% if user.id == post.author.id %}
                   <a href="{% url 'update_post' post.pk %}">[edit]</a>
                 {% endif %}
-              {% endif %}               
+              {% endif %}  
+              
+              <!--ads-->
+              <div class="ads">
+                {% include 'ads/ads_books.php' %}              
+              </div>
+              <hr>              
+
               </div>
 
               <!--shere buttons-->
               {% include 'php/share_btn.php' %}   
 
-              <!--ads-->
-              <div class="ads">
-                {% include 'ads/ads_books.php' %}              
-              </div>
-              <hr>
+
               <!--related posts-->
               <div class="related_post">
                 <h2>関連記事</h2>
