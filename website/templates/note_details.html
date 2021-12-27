@@ -207,6 +207,13 @@
                   {% endif %}
                 {% endif %} 
                 <br>
+
+                <!--ads-->
+                <hr>
+                  <div class="ads">
+                    {% include 'ads/ads_vert.php' %}
+                  </div>
+                <hr>
                 <h4 id="index_ref">参考文献</h4>
                 <ul>
                 {{ note.reference|safe}}
@@ -222,6 +229,7 @@
               {% endif %}
               <hr>
 
+
               <!--edit-->
               {% if user.is_authenticated %}
                 {% if user.id == note.author.id %}
@@ -230,12 +238,6 @@
               {% endif %}               
             </div>
 
-          <!--ads-->
-          <hr>
-            <div class="ads">
-              {% include 'ads/ads_vert.php' %}
-            </div>
-          <hr>
          <!--shere buttons-->
           {% include 'php/share_btn.php' %}
           </div>
