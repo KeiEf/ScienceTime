@@ -142,7 +142,7 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .cat-item a{background:none repeat scroll 0 0 #e4e4e4; color:#888; display:block; float:left; border-bottom:none !important; font-size:13px; line-height:12px; margin:0 2px 2px 0; padding:12px 17px; -webkit-transition:all 0.5s; -mz-transition:all 0.5s; -ms-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 .cat-item a:hover{color:#fff; text-decoration:none !important}
 
-.content_sidebar{float:left; display:inline; width:100%; margin-top:80px; margin-bottom:20px; max-height: 550px;}
+.content_sidebar{float:left; display:inline; width:100%; margin-top:10px; margin-bottom:20px; max-height: 550px;}
 .content_sidebar > h2{background:none repeat scroll 0 0 #151515; color:#fff; font-family:"Oswald",sans-serif; font-size:18px; font-weight:400; margin-bottom:10px; margin-left:0; margin-top:5px; padding:0; position:relative; text-align:center; text-transform:uppercase}
 .content_sidebar > h2 span{padding:4px 10px}
 .content_sidebar ul li a{border-bottom:1px solid #333; display:block;}
