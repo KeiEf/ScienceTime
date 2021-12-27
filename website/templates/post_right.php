@@ -6,7 +6,7 @@
     <div class="single_sidebar">
       <h2><span>人気の記事</span></h2>
         <ul class="spost_nav">
-          {% for post in popular_list|slice:":4" %}
+          {% for post in popular_list|slice:":5" %}
           <li>
             <div class="media wow fadeInDown">             
               <a href="{% url 'post_detail' post.pk %}" class="media-left">              
