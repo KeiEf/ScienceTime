@@ -49,6 +49,10 @@
                 </span>
                 {% endif %}
               </div>
+              <!--ads-->
+                <div class="ads">
+                  {% include 'ads/ads_vert.php' %}
+                </div>
               <div class="single_page_content">
               {% if post.state == "published" %}
                 {% if post.main_image %}
@@ -59,10 +63,7 @@
                 {% if post.caption %}
                   <span class="caption">{{ post.caption|safe }}</span>
                 {% endif %}
-                <!--ads-->
-                <div class="ads">
-                  {% include 'ads/ads_vert.php' %}
-                </div>
+                
                 <!--post body-->
                 <p>{{ post.content|safe }}</p>
               {% else %}
