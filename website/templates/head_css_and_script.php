@@ -3,7 +3,7 @@
     <!--adsense-->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7524603691208984"
      crossorigin="anonymous"></script>
-     <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+
 
 
 
