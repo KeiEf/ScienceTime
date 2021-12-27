@@ -152,4 +152,4 @@ class Book(models.Model):
     other_url2 = models.CharField(max_length=255, null=True, blank = True, verbose_name='url2')     
 
     def __str__(self):
-       return self.title
+       return '(' + str(self.views) + ') '  +self.title
