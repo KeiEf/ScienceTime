@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views 
-from .views import TestView, HomeView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView, FieldView, AllNoteView, NoteTagView, AddNoteView, UpdateNoteView, UpdateNoteContentView, UpdateNoteReferenceView, AddFieldView,UpdateFieldView, BookView
+from .views import TestView, HomeView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView, FieldView, AllNoteView, NoteTagView, AddNoteView, UpdateNoteView, UpdateNoteContentView, UpdateNoteReferenceView, AddFieldView,UpdateFieldView
 
 
 urlpatterns = [
@@ -30,6 +30,6 @@ urlpatterns = [
 	path('subject/edit/<int:pk>/', UpdateFieldView.as_view(), name="update_field"),
 	path('contact/', ContactFormView.as_view(), name='contact_form'),
     path('contact/result/', ContactResultView.as_view(), name='contact_result'),
-    path('book/<int:pk>', BookView, name="book_view"),
+    path("api/book/<int:pk>/click/", views.api_click, name="api_click"),
     ]
 

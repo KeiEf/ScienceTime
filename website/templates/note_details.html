@@ -135,10 +135,12 @@
             </div>
 
             <div class="single_page_content">
-              {% if note.quotes %}
-                <blockquote>
-                  <p>{{ note.quotes|safe }}</p>
-                </blockquote>
+              {% if note.state == "published" %}
+                {% if note.quotes %}
+                  <blockquote>
+                    <p>{{ note.quotes|safe }}</p>
+                  </blockquote>
+                {% endif %}
               {% endif %}
               <div class="note_image">
               {% if note.state == "published" %}
