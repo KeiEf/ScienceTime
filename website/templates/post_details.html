@@ -59,6 +59,10 @@
                 {% if post.caption %}
                   <span class="caption">{{ post.caption|safe }}</span>
                 {% endif %}
+                <!--ads-->
+                <div class="ads">
+                  {% include 'ads/ads_vert.php' %}
+                </div>
                 <!--post body-->
                 <p>{{ post.content|safe }}</p>
               {% else %}
