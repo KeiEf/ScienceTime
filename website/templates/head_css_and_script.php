@@ -5,14 +5,7 @@
      crossorigin="anonymous"></script>
      <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 
-    <amp-ad width="100vw" height="320"
-      type="adsense"
-      data-ad-client="ca-pub-7524603691208984"
-      data-ad-slot="6000788254"
-      data-auto-format="rspv"
-      data-full-width="">
-      <div overflow=""></div>
-    </amp-ad>
+
 
     <!--fontawesome--> 
     <script src="https://kit.fontawesome.com/b292ac796e.js" crossorigin="anonymous"></script>
