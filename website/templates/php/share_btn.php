@@ -4,7 +4,7 @@
     </li>-->
     <li>
       {% if post.title %}
-      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-via="sciencetime_jp" data-related="ST_phys_bot" class="twitter-share-button" data-show-count="false" data-hashtags="ScienceTime {% for tag in note.note_tags.all %},{{ tag.name }}{% endfor %}" data-lang="ja"></a>
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-via="sciencetime_jp" data-related="ST_phys_bot" class="twitter-share-button" data-show-count="false" data-hashtags="ScienceTime {% for tag in post.post_tags.all %},{{ tag.name }}{% endfor %}" data-lang="ja"></a>
       {% elif note.title %}
       <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-via="sciencetime_jp" data-related="ST_phys_bot" class="twitter-share-button" data-show-count="false" data-hashtags="ScienceTime {% for tag in note.note_tags.all %},{{ tag.name }}{% endfor %}" data-lang="ja"></a>
       {% elif product.name %}
