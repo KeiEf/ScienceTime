@@ -340,7 +340,7 @@ class UpdateProductView(UpdateView):
 
 def FieldView(request, subj):
 
-    field_list = Field.objects.filter(subj_eng=subj.replace('-',' ')).order_by('-ordering')
+    field_list = Field.objects.filter(subj_eng=subj.replace('-',' ')).order_by('ordering')
     return render(request, 'subject.html', {
         'field_list':field_list, 
         'subj':subj,
