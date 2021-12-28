@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block additional_static %}
+   {% include 'php/mathjax.php' %}
+{% endblock %}
+
 {% block social %}
   <meta property="og:title" content="{{ post.title }}" />
   <meta property="og:description" content="{{ post.abstract }}" />
