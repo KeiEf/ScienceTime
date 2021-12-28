@@ -102,7 +102,7 @@ class EditForm(forms.ModelForm):
 class EditProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('name','image_url','description', 'genre', 'sub_genre', 'tags', 'body', 'main_image')
+        fields = ('name','image_url','description', 'genre', 'sub_genre', 'tags', 'body', 'main_image', 'video_url')
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
