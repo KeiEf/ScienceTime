@@ -17,7 +17,7 @@ def image_product(instance, filename):
     return 'images/product/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 
 def image_note(instance, filename):
-    return 'images/post/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+    return 'images/note/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 
 class Tag(models.Model):
     tagname = models.CharField(max_length=50)
