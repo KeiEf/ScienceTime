@@ -52,16 +52,6 @@
       </div>
 
       <div class="left-content">
-        <h4>Features:</h4>
-           <!--<p>tags: 
-            {% for tag in product.tags.all %}
-                 {% if tag.slug  %}
-                    <a href="{% url 'product_by_tag' tag.slug %}">{{ tag.name }}</a>
-                 {% else  %}
-                    {{ tag.name }}
-                 {% endif %}
-            {% endfor %}</p>-->
-        <p><i class="fas fa-folder"></i><a href="{% url 'genre' product.genre %}" > {{ product.genre}}</a></p>
         <h4>購入リンク：</h4>
         <div class="link_buttons">
           {% if product.amazon_url %}
@@ -75,6 +65,17 @@
           {% endif %}                                   
         </div>
         <hr>
+        <h4>Features:</h4>
+           <!--<p>tags: 
+            {% for tag in product.tags.all %}
+                 {% if tag.slug  %}
+                    <a href="{% url 'product_by_tag' tag.slug %}">{{ tag.name }}</a>
+                 {% else  %}
+                    {{ tag.name }}
+                 {% endif %}
+            {% endfor %}</p>-->
+        <p><i class="fas fa-folder"></i><a href="{% url 'genre' product.genre %}" > {{ product.genre}}</a></p>
+        
         <p>{{ product.body|safe }}</p>
           {% if product.video_url %}
             <p>{{ product.video_url|safe }}</p>
