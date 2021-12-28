@@ -49,9 +49,6 @@
         {% else %}
         <img src="{{ product.image_url}}" alt="">
         {% endif %}
-      </div>
-
-      <div class="left-content">
         <h4>購入リンク：</h4>
         <div class="link_buttons">
           {% if product.amazon_url %}
@@ -65,6 +62,9 @@
           {% endif %}                                   
         </div>
         <hr>
+      </div>
+
+      <div class="left-content">
         <h4>Features:</h4>
            <!--<p>tags: 
             {% for tag in product.tags.all %}
