@@ -192,18 +192,17 @@
 
                 {% if note.content2 %}
                 <hr>
-                
                   <div class="ads">
                     {% include 'ads/ads_books.php' %}              
                   </div>
                 <hr>
                   {{ note.content2|safe }}
                 {% endif %}
+                <!--ads-->
                 <hr>
                   <div class="ads">
                     {% include 'ads/ads_vert.php' %}
                   </div>
-                <hr>
                 </div>
                 <!--edit-->
                 {% if user.is_authenticated %}
@@ -211,10 +210,6 @@
                     <a href="{% url 'update_content_note' note.pk %}">[edit content]</a>
                   {% endif %}
                 {% endif %} 
-                <br>
-
-                <!--ads-->
-
                 <h4 id="index_ref">参考文献</h4>
                 <ul>
                 {{ note.reference|safe}}
