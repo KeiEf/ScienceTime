@@ -80,7 +80,7 @@ class PostForm(forms.ModelForm):
         #    'author': forms.Select(attrs={'class': 'form-control'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
-            'content': forms.Textarea(attrs={'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'class': 'form-control','style': 'font-size: small'}),
   
         }
 
@@ -94,7 +94,7 @@ class EditForm(forms.ModelForm):
             'abstract': forms.Textarea(attrs={'class': 'form-control'}),
             'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
-            'content': forms.Textarea(attrs={'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'class': 'form-control','style': 'font-size: small'}),
 
         }
 
