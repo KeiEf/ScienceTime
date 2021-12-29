@@ -93,7 +93,7 @@
               <li><a href="{% url  'all_notes'  %}">ノート一覧</a></li>
               <li><a href="{% url  'subject' note.subj_eng %}">{{ note.subject}}</a></li>
               <li class="open_index">{{ note.field1 }}</li>
-              <li class="open_index"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-via="sciencetime_jp" data-related="ST_phys_bot" class="twitter-share-button" data-show-count="false" data-hashtags="ScienceTime {% for tag in note.note_tags.all %},{{ tag.name }}{% endfor %}" data-lang="ja"></a></li>
+
             </ol>
             {% if note.state == "published" %}
             <h1>{{ note.title }}</h1>
@@ -109,6 +109,7 @@
                 <span><i class="fa fa-user"></i>{{ note.author.first_name }} {{ note.author.last_name}}</span>
                 <span><i class="fa fa-calendar"></i>{{ note.post_date|date:"Y/m/d - H:i:s" }}</span> 
                 <a href="#" class="open_index"><i class="fas fa-folder"></i>{{ note.field1 }}</a>
+                <li class="open_index"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-via="sciencetime_jp" data-related="ST_phys_bot" class="twitter-share-button" data-show-count="false" data-hashtags="ScienceTime {% for tag in note.note_tags.all %},{{ tag.name }}{% endfor %}" data-lang="ja"></a></li>
               {% endif %}
             </div>
 
