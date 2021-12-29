@@ -97,7 +97,6 @@
             {% if note.state == "published" %}
             <h1>{{ note.title }}</h1>
             {% endif %}
-            {% include 'php/share_btn.php' %}
               <!--edit-->
               {% if user.is_authenticated %}
                 {% if user.id == note.author.id %}
@@ -137,7 +136,7 @@
                 <h4>はじめに</h4>
                 <p>{{ note.intro|safe }}</p>
                 <br>
-                <span>keywords: 
+                <span><small>keywords: 
                   {% for tag in note.note_tags.all %}
                     {% if forloop.last %} 
                     <a href="{% url 'note_by_tag' tag.slug %}">{{ tag }}</a>
@@ -145,8 +144,9 @@
                     <a href="{% url 'note_by_tag' tag.slug %}">{{ tag }}</a>,
                     {% endif %}
                   {% endfor %}
+                </small>
                 </span>
-                <br>
+                {% include 'php/share_btn.php' %}
                 <br>
                 <h4>内容</h4>
                 <ul class="content_table">
