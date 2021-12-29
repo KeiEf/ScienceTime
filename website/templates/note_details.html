@@ -145,14 +145,14 @@
                     {% endif %}
                   {% endfor %}
                 </small>
-                
                 </span>
-                <span>{% include 'php/share_btn.php' %}</span>
+                
                 <br>
                 <h4>内容</h4>
                 <ul class="content_table">
                  {{ note.table|safe }}
                 </ul>
+                {% include 'php/share_btn.php' %}
               </div>
                 <div class="ads">
                   {% include 'ads/ads_vert.php' %}
