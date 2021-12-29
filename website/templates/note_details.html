@@ -97,6 +97,7 @@
             {% if note.state == "published" %}
             <h1>{{ note.title }}</h1>
             {% endif %}
+            {% include 'php/share_btn.php' %}
               <!--edit-->
               {% if user.is_authenticated %}
                 {% if user.id == note.author.id %}
