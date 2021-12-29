@@ -30,7 +30,7 @@
                 <div class="media-body">
                   【 <a href="{% url  'subject' post.subj_eng %}">{{ post.subject }}</a> | {{ post.field1 }} 】
                   <a href="{% url 'note_detail' post.pk %}" class="catg_title"> {{ post.title }}</a>
-                  <p><small></small> <i class="fas fa-eye"></i>{{ post.views }}</small></p>
+                  <small> <i class="fas fa-eye"></i>{{ post.views }}</small>
                   <p><small><i class="fa fa-calendar"></i> {{ post.post_date|date:"Y/m/d"  }}</small></p>
 
                   {% if user.is_authenticated %}
