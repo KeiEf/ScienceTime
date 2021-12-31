@@ -312,13 +312,15 @@ class ProductDetailView(DetailView):
 
     def get(self, request, *args, **kwargs):
         product = get_object_or_404(Product, id=self.kwargs['pk'])
-        product.views += 1
-        product.save()
         return super().get(request, *args, **kwargs)
 
 class TestProductDetailView(DetailView):
     model = Product
     template_name = 'product_details_test.html'
+
+    def get(self, request, *args, **kwargs):
+        product = get_object_or_404(Product, id=self.kwargs['pk'])
+        return product
 
     def get_context_data(self, *args, **kwargs):
        context = {}
