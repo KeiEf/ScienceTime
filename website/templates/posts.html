@@ -9,6 +9,11 @@
 
   <section id="sliderSection">
     <div class="row">
+
+      <div class="ads_top">
+        {% include 'ads/ads_vert.php' %}
+      </div>
+
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="slick_slider">
           {% for post in object_list|slice:":4" %}
@@ -202,7 +207,14 @@
               </div>
             </div>
           </div>
-          
+
+          <!--ads-->
+          <div class="fashion_technology_area">
+            <div class="ads_mid">
+              {% include 'ads/ads_vert.php' %}
+            </div>
+          </div>
+
           <!--Biology-->
           <div class="fashion_technology_area">
             <div class="fashion">
@@ -295,6 +307,7 @@
             </div>
           </div>
 
+          <!--ads-->
           <div class="fashion_technology_area">
             <div class="ads_mid">
               {% include 'ads/ads_vert.php' %}
