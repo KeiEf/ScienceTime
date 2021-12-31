@@ -37,6 +37,13 @@
               </div>
             </div>
             </li>
+            {% if forloop.counter == 10 %}
+            <li>
+              <div class="ads_mid">
+                {% include 'ads/ads_vert.php' %}
+              </div>
+            </li>
+            {% endif %}
             {% endfor %}
           </ul>
 
