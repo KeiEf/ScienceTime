@@ -22,34 +22,24 @@
 
 
 <div class="container">
-  <section id="postSection">
+  <section id="ProductSection">
     <div class="row">
-      <div class="col-lg-5 col-md-5 col-sm-5">
-
-        {% if product.main_image %}
-        <img src="{{ product.main_image.url }}" alt="">
-        {% else %}
-        <img src="{{ product.image_url}}" alt="">
-        {% endif %}
-        <h4>購入リンク：</h4>
-        <div class="link_buttons">
-          {% if product.amazon_url %}
-            <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="product_left">
+          {% if product.main_image %}
+            <img src="{{ product.main_image.url }}" alt="">
+          {% else %}
+            <img src="{{ product.image_url}}" alt="">
           {% endif %}
-          {% if product.rakuten_url %}
-            <a href="{{ product.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
-          {% endif %}
-          {% if product.suzuri_url %}
-            <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
-          {% endif %}                                   
-        </div>
-        <hr>
-      </div>
-    </div>
+            </div>
+          </div>
 
-    <div class="col-lg-5 col-md-5 col-sm-5">
-        <h4>Features:</h4>
-           <!--<p>tags: 
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="product_right">
+            <h4>Features:</h4>
+            <!--<p>tags: 
             {% for tag in product.tags.all %}
                  {% if tag.slug  %}
                     <a href="{% url 'product_by_tag' tag.slug %}">{{ tag.name }}</a>
@@ -57,38 +47,55 @@
                     {{ tag.name }}
                  {% endif %}
             {% endfor %}</p>-->
-        <p><i class="fas fa-folder"></i><a href="{% url 'genre' product.genre %}" > {{ product.genre}}</a></p>
+            <p><i class="fas fa-folder"></i><a href="{% url 'genre' product.genre %}" > {{ product.genre}}</a></p>
+            <p>{{ product.description|safe }}</p>
         
-        <p>{{ product.body|safe }}</p>
-          {% if product.video_url %}
+            {% if product.video_url %}
             <p>{{ product.video_url|safe }}</p>
-          {% endif %}
-        <h4>購入リンク：</h4>
-        <div class="link_buttons">
-          {% if product.amazon_url %}
-            <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
-          {% endif %}
-          {% if product.rakuten_url %}
-            <a href="{{ product.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
-          {% endif %}
-          {% if product.suzuri_url %}
-            <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
-          {% endif %}                                   
+            {% endif %}
+            <h4>購入リンク：</h4>
+              <div class="link_buttons">
+              {% if product.amazon_url %}
+              <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
+              {% endif %}
+              {% if product.rakuten_url %}
+              <a href="{{ product.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
+              {% endif %}
+              {% if product.suzuri_url %}
+              <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
+              {% endif %}
+              </div>   
+            </div>                                
+          </div>
         </div>
+
+         <div class="product_detail">
+           <h4>解説</h4>
+           <p>{{ product.body|safe }}</p>
+         </div>
+
+        <!--shere buttons-->
+        {% include 'php/share_btn.php' %}
+
+        <!--edit-->
+        {% if user.is_superuser %}
+          <a href="{% url 'update_product' product.pk %}">[edit]</a>
+        {% endif %} 
+
       </div>
+
+    <!-- popular posts-->
+    {% include 'post_right.php' %}
 
 
     </div>
 
-    <!--shere buttons-->
-    {% include 'php/share_btn.php' %}
-
-    <!--edit-->
-    {% if user.is_superuser %}
-      <a href="{% url 'update_product' product.pk %}">[edit]</a>
-    {% endif %}    
 
   </div>
+  <hr>
+   
+
+  </section>
 </div>
 
 {% endblock %}

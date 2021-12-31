@@ -542,10 +542,18 @@ body {
       margin-top: 20px;
   }
   
+  #ProductSection{float:left; display:inline; width:100%; background-color:#fff; padding:100px 30px 0px 30px}
+  #ProductSection h4{font-size: 18px; margin:10px 0;}
+  .product_left{float: left; width: 100%; display:inline;}
+  .product_right{float: left; width: 100%; display:inline;}
+  .product_detail{float: left; width: 100%; display:inline;margin-top: 20px;border-top: gray;border-top-style: groove; border-width: 1px;}
   
+  .product_left > img {background-color: black; height:200px; width: auto; margin-left: auto; margin-right: auto; display: block;}
+  .product_right > p {font-size: 14px;}
+  .product_detail > p {font-size: 15px;}
   
-  
-  
+
+
   /* Call To Action */
   
   .call-to-action .inner-content {
@@ -1324,10 +1332,7 @@ body {
     .phone_area{
       display:block;
     }
-  }
-  
-
-
+  } 
 
 /* ---------- */
 
