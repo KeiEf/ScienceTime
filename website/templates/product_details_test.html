@@ -27,12 +27,13 @@
         {% include 'ads/ads_free.php' %}
       </div>
       <div class="col-lg-8 col-md-8 col-sm-8">
+        <ol class="breadcrumb">
+          <li><a href="{% url 'products' %}">全ジャンル</a></li>
+          <li><a href="{% url 'genre' product.genre %}" > {{ product.genre}}</a></li>
+        </ol>
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
-            <ol class="breadcrumb">
-              <li><a href="{% url 'products' %}">全ジャンル</a></li>
-              <li><a href="{% url 'genre' product.genre %}" > {{ product.genre}}</a></li>
-            </ol>
+            
             <div class="product_left">
             {% if product.main_image %}
             <img src="{{ product.main_image.url }}" alt="">
