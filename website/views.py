@@ -312,6 +312,8 @@ class ProductDetailView(DetailView):
 
     def get(self, request, *args, **kwargs):
         product = get_object_or_404(Product, id=self.kwargs['pk'])
+        product.views += 1
+        product.save()
         return super().get(request, *args, **kwargs)
 
 class TestProductDetailView(DetailView):
@@ -320,8 +322,10 @@ class TestProductDetailView(DetailView):
 
     def get(self, request, *args, **kwargs):
         product = get_object_or_404(Product, id=self.kwargs['pk'])
-        return product
-
+        product.views += 1
+        product.save()
+        return super().get(request, *args, **kwargs)
+        
     def get_context_data(self, *args, **kwargs):
        context = {}
        popular_list = Post.objects.filter(state="published").order_by('-views')   
