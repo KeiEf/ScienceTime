@@ -28,62 +28,15 @@
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="product_left">
-          {% if product.main_image %}
+            {% if product.main_image %}
             <img src="{{ product.main_image.url }}" alt="">
-          {% else %}
+            {% else %}
             <img src="{{ product.image_url}}" alt="">
-          {% endif %}
+            {% endif %}
             </div>
           </div>
 
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="product_right">
-            <h4>Features:</h4>
-            <!--<p>tags: 
-            {% for tag in product.tags.all %}
-                 {% if tag.slug  %}
-                    <a href="{% url 'product_by_tag' tag.slug %}">{{ tag.name }}</a>
-                 {% else  %}
-                    {{ tag.name }}
-                 {% endif %}
-            {% endfor %}</p>-->
-            
-            <p>{{ product.description|safe }}</p>
-        
-
-            <h4>購入リンク：</h4>
-              <div class="link_buttons">
-              {% if product.amazon_url %}
-              <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
-              {% endif %}
-              {% if product.rakuten_url %}
-              <a href="{{ product.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
-              {% endif %}
-              {% if product.suzuri_url %}
-              <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
-              {% endif %}
-              </div>   
-            </div>                                
-          </div>
-        </div>
-
-         <div class="product_detail">
-           {% if product.body %}
-             <h4>解説</h4>
-             <p>{{ product.body|safe }}</p>
-           {% endif %}
-           {% if product.video_url %}
-             <p>{{ product.video_url|safe }}</p>
-           {% endif %}
-         </div>
-
-        <!--shere buttons-->
-        {% include 'php/share_btn.php' %}
-
-        <!--edit-->
-        {% if user.is_superuser %}
-          <a href="{% url 'update_product' product.pk %}">[edit]</a>
-        {% endif %} 
+          
 
       </div>
 
