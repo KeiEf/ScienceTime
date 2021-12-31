@@ -33,6 +33,9 @@
     <div class="latest-products">
       <div class="container">
         <div class="row">
+          <div class="ads_top">
+            {% include 'ads/ads_vert.php' %}
+          </div>
           <div class="col-md-12">
             <div class="section-heading">
               <h2>最新記事</h2>
@@ -86,6 +89,9 @@
             </div>
           </div>
          {% endfor %}
+        </div>
+        <div class="ads_top">
+          {% include 'ads/ads_free.php' %}
         </div>
       </div>
     </div>
