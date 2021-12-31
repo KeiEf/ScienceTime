@@ -20,13 +20,19 @@
 
 {% block content %}
 
-
 <div class="container">
   <section id="ProductSection">
     <div class="row">
+      <div class="ads_top">
+        {% include 'ads/ads_free.php' %}
+      </div>
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
+            <ol class="breadcrumb">
+              <li><a href="{% url 'products' %}">全ジャンル</a></li>
+              <li><a href="{% url 'genre' product.genre %}" > {{ product.genre}}</a></li>
+            </ol>
             <div class="product_left">
             {% if product.main_image %}
             <img src="{{ product.main_image.url }}" alt="">
@@ -69,7 +75,7 @@
 
          <div class="product_detail">
            {% if product.body %}
-             <h4>解説</h4>
+             <h4>解説：</h4>
              <p>{{ product.body|safe }}</p>
            {% endif %}
            {% if product.video_url %}
@@ -113,7 +119,13 @@
               {% endfor %}
             </ul>
           </div>
-
+          <!-- ads -->
+          <div class="single_sidebar wow fadeInDown">
+          <h2><span>Sponsor</span></h2>
+            <div class="ads">
+            {% include 'ads/ads1.php' %}
+            </div>
+          </div>
           <!-- popular items-->
           <div class="content_sidebar">
           <h2><span>人気のアイテム</span></h2>
@@ -139,13 +151,7 @@
             </ul>
           </div>            
 
-          <!-- ads -->
-          <div class="single_sidebar wow fadeInDown">
-          <h2><span>Sponsor</span></h2>
-            <div class="ads">
-            {% include 'ads/ads1.php' %}
-            </div>
-          </div>
+
           <!-- category -->
           <div class="single_sidebar wow fadeInDown">
           <h2><span>ジャンル別リスト</span></h2>
