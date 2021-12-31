@@ -306,6 +306,17 @@ def GenreView(request, gens):
         })
 
 
+##class ProductDetailView(DetailView):
+##   model = Product
+##    template_name = 'product_details.html'
+
+##    def get(self, request, *args, **kwargs):
+##        product = get_object_or_404(Product, id=self.kwargs['pk'])
+##        product.views += 1
+##        product.save()
+##        return super().get(request, *args, **kwargs)
+
+
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'product_details.html'
@@ -315,19 +326,9 @@ class ProductDetailView(DetailView):
         product.views += 1
         product.save()
         return super().get(request, *args, **kwargs)
-
-class TestProductDetailView(DetailView):
-    model = Product
-    template_name = 'product_details_test.html'
-
-    def get(self, request, *args, **kwargs):
-        product = get_object_or_404(Product, id=self.kwargs['pk'])
-        product.views += 1
-        product.save()
-        return super().get(request, *args, **kwargs)
         
     def get_context_data(self, *args, **kwargs):
-        context = super(TestProductDetailView, self).get_context_data(*args, **kwargs)
+        context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
         popular_list = Post.objects.filter(state="published").order_by('-views')   
         popular_items = Product.objects.all().order_by('-views') 
         context["popular_items"] = popular_items        

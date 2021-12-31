@@ -552,6 +552,8 @@ body {
   .product_right > p {font-size: 14px;}
   .product_detail > p {font-size: 15px;}
   
+  @media(max-width:991px )
+  {#ProductSection{padding:100px 10px 0px 10px} }
 
 
   /* Call To Action */
