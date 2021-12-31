@@ -64,6 +64,7 @@
       <h2><span>カテゴリ別リスト</span></h2>
         <select class="catgArchive" onChange="location.href=value;">
           <option>カテゴリ選択</option>
+              <option value="{% url 'all_posts' %}">全記事</option>
             {% for item in cat_menu %}              
               <option value="{% url 'category' item %}">{{ item }}</option>
             {% endfor %}
