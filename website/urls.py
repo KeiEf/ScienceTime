@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views 
-from .views import TestView, HomeView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView, FieldView, AllNoteView, NoteTagView, AddNoteView, UpdateNoteView, UpdateNoteContentView, UpdateNoteReferenceView, AddFieldView, UpdateFieldView, TestProductDetailView,
+from .views import TestView, HomeView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView, FieldView, AllNoteView, NoteTagView, AddNoteView, UpdateNoteView, UpdateNoteContentView, UpdateNoteReferenceView, AddFieldView, UpdateFieldView, TestProductDetailView
 from django.views.generic import TemplateView
 
 
