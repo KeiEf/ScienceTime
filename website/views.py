@@ -320,6 +320,10 @@ class TestProductDetailView(DetailView):
     model = Product
     template_name = 'product_details_test.html'
 
+    def get(self, request, *args, **kwargs):
+        product = get_object_or_404(Product, id=self.kwargs['pk'])
+        return super().get(request, *args, **kwargs)
+
     def get_context_data(self, *args, **kwargs):
        context = {}
        popular_list = Post.objects.filter(state="published").order_by('-views')   
