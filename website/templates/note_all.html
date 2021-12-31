@@ -43,8 +43,13 @@
                   {% endif %}
                 {% endif %}  
                 </div>
-            </div>
+              </div>
             </li>
+              {% if forloop.counter == 10 %}
+              <div class="ads_mid">
+                {% include 'ads/ads_vert.php' %}
+              </div>
+              {% endif %}
             {% endfor %}
           </ul>
           {% include 'paginating.php' %}  
