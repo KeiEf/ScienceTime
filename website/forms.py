@@ -75,7 +75,7 @@ class PostForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'caption': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
-            'abstract': forms.TextInput(attrs={'class': 'form-control'}),
+            'abstract': forms.Textarea(attrs={'class': 'form-control','rows':3, 'style': 'font-size: small'}),
             'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),
         #    'author': forms.Select(attrs={'class': 'form-control'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
@@ -91,7 +91,7 @@ class EditForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'caption': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
-            'abstract': forms.Textarea(attrs={'class': 'form-control'}),
+            'abstract': forms.Textarea(attrs={'class': 'form-control','rows':3, 'style': 'font-size: small'}),
             'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control','style': 'font-size: small'}),
