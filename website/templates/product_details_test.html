@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block social %}
+  <meta name="twitter:title" content="{{ product.name }}" />
+  <meta property="og:url" content="sciencetime.jp" />
+  <meta property="og:title" content="{{ product.name }}" />
+  <meta property="og:description" content="{{ product.description }}" />
+  {% if product.main_image %}
+  <meta property="og:image" content="{{ product.main_image.url }}" />
+  {% else %}
+  <meta property="og:image" content="{{ product.image_url }}" />
+  {% endif %}
+{% endblock %}
+
+
+{% block title %}
+ {{ product.name }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+  <section id="postSection">
+    <div class="row">
+      <div class="col-lg-5 col-md-5 col-sm-5">
+
+        {% if product.main_image %}
+        <img src="{{ product.main_image.url }}" alt="">
+        {% else %}
+        <img src="{{ product.image_url}}" alt="">
+        {% endif %}
+        <h4>購入リンク：</h4>
+        <div class="link_buttons">
+          {% if product.amazon_url %}
+            <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
+          {% endif %}
+          {% if product.rakuten_url %}
+            <a href="{{ product.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
+          {% endif %}
+          {% if product.suzuri_url %}
+            <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
+          {% endif %}                                   
+        </div>
+        <hr>
+      </div>
+    </div>
+
+    <div class="col-lg-5 col-md-5 col-sm-5">
+        <h4>Features:</h4>
+           <!--<p>tags: 
+            {% for tag in product.tags.all %}
+                 {% if tag.slug  %}
+                    <a href="{% url 'product_by_tag' tag.slug %}">{{ tag.name }}</a>
+                 {% else  %}
+                    {{ tag.name }}
+                 {% endif %}
+            {% endfor %}</p>-->
+        <p><i class="fas fa-folder"></i><a href="{% url 'genre' product.genre %}" > {{ product.genre}}</a></p>
+        
+        <p>{{ product.body|safe }}</p>
+          {% if product.video_url %}
+            <p>{{ product.video_url|safe }}</p>
+          {% endif %}
+        <h4>購入リンク：</h4>
+        <div class="link_buttons">
+          {% if product.amazon_url %}
+            <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
+          {% endif %}
+          {% if product.rakuten_url %}
+            <a href="{{ product.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
+          {% endif %}
+          {% if product.suzuri_url %}
+            <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
+          {% endif %}                                   
+        </div>
+      </div>
+
+
+    </div>
+
+    <!--shere buttons-->
+    {% include 'php/share_btn.php' %}
+
+    <!--edit-->
+    {% if user.is_superuser %}
+      <a href="{% url 'update_product' product.pk %}">[edit]</a>
+    {% endif %}    
+
+  </div>
+</div>
+
+{% endblock %}

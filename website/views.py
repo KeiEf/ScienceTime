@@ -316,6 +316,12 @@ class ProductDetailView(DetailView):
         product.save()
         return super().get(request, *args, **kwargs)
 
+class TestProductDetailView(DetailView):
+    model = Product
+    template_name = 'product_details_test.html'
+
+
+
 class TagIndexView(ListView):
     model = Product
     template_name ='genre.html'
