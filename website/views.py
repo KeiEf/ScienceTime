@@ -325,8 +325,14 @@ class TestProductDetailView(DetailView):
         product.views += 1
         product.save()
         return super().get(request, *args, **kwargs)
-
-
+        
+    def get_context_data(self, *args, **kwargs):
+        context = super(TestProductDetailView, self).get_context_data(*args, **kwargs)
+        popular_list = Post.objects.filter(state="published").order_by('-views')   
+        popular_items = Product.objects.all().order_by('-views') 
+        context["popular_items"] = popular_items        
+        context["popular_list"] = popular_list
+        return context
 
 class TagIndexView(ListView):
     model = Product
