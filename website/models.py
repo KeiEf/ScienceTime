@@ -74,7 +74,7 @@ class Product(models.Model):
     image_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='画像url')
     video_url = models.TextField(null=True, blank = True, verbose_name='動画url')
     description = models.TextField(max_length=255, blank=True, verbose_name='概略')          
-    body = models.TextField(default='' , verbose_name='解説')
+    body = models.TextField(default='' ,blank=True ,verbose_name='解説')
     genre = models.CharField(max_length=50, blank=True, default='雑貨')
     sub_genre = models.CharField(max_length=255, blank=True, default='others')   
     post_date = models.DateTimeField(auto_now_add=True)
