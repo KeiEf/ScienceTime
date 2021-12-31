@@ -24,73 +24,86 @@
 <div class="container">
   <section id="ProductSection">
     <div class="row">
-      <div class="col-lg-8 col-md-8 col-sm-8">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="product_left">
-          {% if product.main_image %}
-            <img src="{{ product.main_image.url }}" alt="">
-          {% else %}
-            <img src="{{ product.image_url}}" alt="">
-          {% endif %}
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="product_right">
-            <h4>Features:</h4>
-            <!--<p>tags: 
-            {% for tag in product.tags.all %}
-                 {% if tag.slug  %}
-                    <a href="{% url 'product_by_tag' tag.slug %}">{{ tag.name }}</a>
-                 {% else  %}
-                    {{ tag.name }}
-                 {% endif %}
-            {% endfor %}</p>-->
-            <p><i class="fas fa-folder"></i><a href="{% url 'genre' product.genre %}" > {{ product.genre}}</a></p>
-            <p>{{ product.description|safe }}</p>
-        
-
-            <h4>購入リンク：</h4>
-              <div class="link_buttons">
-              {% if product.amazon_url %}
-              <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
-              {% endif %}
-              {% if product.rakuten_url %}
-              <a href="{{ product.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
-              {% endif %}
-              {% if product.suzuri_url %}
-              <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
-              {% endif %}
-              </div>   
-            </div>                                
-          </div>
-        </div>
-
-         <div class="product_detail">
-           {% if product.body %}
-             <h4>解説</h4>
-             <p>{{ product.body|safe }}</p>
-           {% endif %}
-           {% if product.video_url %}
-             <p>{{ product.video_url|safe }}</p>
-           {% endif %}
-         </div>
-
-        <!--shere buttons-->
-        {% include 'php/share_btn.php' %}
-
-        <!--edit-->
-        {% if user.is_superuser %}
-          <a href="{% url 'update_product' product.pk %}">[edit]</a>
-        {% endif %} 
-
-      </div>
+      
 
       <!-- popular posts-->
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
-          
+          <div class="single_sidebar">
+            <h2><span>人気の記事</span></h2>
+            <ul class="spost_nav">
+              {% for post in popular_list|slice:":5" %}
+              <li>
+              <div class="media wow fadeInDown">             
+                <a href="{% url 'post_detail' post.pk %}" class="media-left">              
+                {% if post.main_image%}
+                  <img src="{{ post.main_image.url }}" alt="">
+                {% else %}
+                  <img src="{{ post.image_url}}" alt="">
+                {% endif %}
+                </a>
+                <div class="media-body">
+                <a href="{% url 'post_detail' post.pk %}" class="catg_title">
+                  {{ post.title }}
+                </a>
+                </div>
+              </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!-- popular items-->
+          <div class="content_sidebar">
+          <h2><span>人気のアイテム</span></h2>
+            <ul class="spost_nav">
+              {% for post in popular_items|slice:":6" %}
+              <li>
+                <div class="media wow fadeInDown">             
+                <a href="{% url 'product_detail' post.pk %}" class="media-left">              
+                {% if post.main_image%}
+                  <img src="{{ post.main_image.url }}" alt="">
+                {% else %}
+                  <img src="{{ post.image_url}}" alt="">
+                {% endif %}
+                </a>
+                  <div class="media-body">
+                  <a href="{% url 'product_detail' post.pk %}" class="catg_title">
+                  {{ post.name }}
+                  </a>
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>            
+
+          <!-- ads -->
+          <div class="single_sidebar wow fadeInDown">
+          <h2><span>Sponsor</span></h2>
+            <div class="ads">
+            {% include 'ads/ads1.php' %}
+            </div>
+          </div>
+          <!-- category -->
+          <div class="single_sidebar wow fadeInDown">
+          <h2><span>ジャンル別リスト</span></h2>
+            <select class="catgArchive" onChange="location.href=value;">
+              <option>ジャンル選択</option>
+              <option value="{% url 'products' %}">全ジャンル</option>
+              <option value="{% url 'genre' 'ファッション' %}">ファッション</option>              
+              <option value="{% url 'genre' 'おもちゃ' %}">おもちゃ</option>       
+              <option value="{% url 'genre' '雑貨' %}">雑貨</option>       
+            </select>
+          </div>
+
+          <!-- ads -->
+          <div class="single_sidebar wow fadeInDown">
+          <h2><span>Sponsor</span></h2>
+            <div class="ads">
+            {% include 'ads/ads1.php' %}
+            </div>
+          </div>
         </aside>
       </div>
 
