@@ -397,9 +397,11 @@ class AllNoteView(ListView):
        except EmptyPage:
            pages = paginator.page(1)
 
+       popular_list = Post.objects.filter(state="published").order_by('-views')   
        popular_items = Product.objects.all().order_by('-views') 
        context["popular_items"] = popular_items        
        context["pages"] = pages
+       context["popular_list"] = popular_list
        return context
 
 
