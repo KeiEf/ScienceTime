@@ -5,27 +5,8 @@
 
 
     <!-- Page Content -->
-    <div class="page-heading products-heading header-text" >
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="text-content">
-              <h4>科学グッズ</h4>
-                {% if gens == "ファッション" %}
-                  <h2>Science Fashion</h2>
-                {% elif gens == "おもちゃ" %}
-                  <h2>Science Toys</h2>
-                {% elif gens == "雑貨" %}
-                  <h2>Science Merch</h2>
-                {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="products">
-      <div class="container">
+    <div class="container">
+      <section id="ProductSection">
         <div class="row">
           <div class="col-md-12">
             <div class="select_area">
@@ -103,7 +84,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
       
     {% include 'paginating.php' %}   
