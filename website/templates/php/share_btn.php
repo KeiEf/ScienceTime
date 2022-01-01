@@ -1,3 +1,5 @@
+{% load replace %}
+
 <div class="social_link">
   <ul class="sociallink_nav">
     <!--<li><a href="#"><i class="fa fa-facebook"></i></a>
