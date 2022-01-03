@@ -43,15 +43,14 @@
               </div>
             </li>
             {% if forloop.counter|divisibleby:10 %}
-              <li>
-                <div class="ads_mid">
-                  {% include 'ads/ads_vert.php' %}
-                </div>
-              </li>
-              {% endif %}
+            <li>
+              <div class="ads_mid">
+                {% include 'ads/ads_vert.php' %}
+              </div>
+            </li>
+            {% endif %}
             {% endfor %}
           </ul>
-          
         </div>
         {% include 'paginating.php' %}  
       </div>
