@@ -142,6 +142,7 @@ class PostTagView(ListView):
         context["popular_items"] = popular_items        
         context["cat_menu"] = cat_menu
         context["pages"] = pages
+        context["sort"] = sort
         return context
 
 
@@ -180,7 +181,8 @@ def CategoryView(request, cats):
         'cat_menu':cat_menu,
         'popular_list': popular_list,
         'popular_items': popular_items,
-        'pages': pages  
+        'pages': pages,
+        'sort': sort
         })
 
 
@@ -422,6 +424,7 @@ class AllNoteView(ListView):
        context["popular_items"] = popular_items        
        context["pages"] = pages
        context["popular_list"] = popular_list
+       context["sort"] = sort
        return context
 
 
@@ -460,6 +463,7 @@ class NoteTagView(ListView):
         context["popular_items"] = popular_items        
         context["cat_menu"] = cat_menu
         context["pages"] = pages
+        context["sort"] = sort
         return context
 
 
