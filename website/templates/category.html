@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
+
+
+{% block social %}
+  <meta property="og:title" content="{{ cats }}" />
+  <meta property="og:description" content="{{ cats }}に関するニュースとコラム一覧" />
+  {% for post in pages|slice:":1" %}
+    {% if post.main_image %}
+    <meta property="og:image" content="{{ post.main_image.url }}" />
+    {% else %}
+    <meta property="og:image" content="{{ post.image_url }}" />
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
 {% block content %}
+
+
 
 <div class="container">
   <section id="postSection">
