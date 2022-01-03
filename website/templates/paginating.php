@@ -5,7 +5,7 @@
     <nav aria-label="">
       <ul class="pagination">
         {% if pages.has_previous %}
-        <li class="page-item"><a class="page-link"  href="?page={{pages.previous_page_number}}" tabindex="-1" aria-disabled="true">Prev</a></li>
+        <li class="page-item"><a class="page-link"  href="?page={{pages.previous_page_number}}{% if sort %}&sort={{ sort }}{% endif %}" tabindex="-1" aria-disabled="true">Prev</a></li>
         {% else %}
         <li class="page-item disabled"><a class="page-link"  href="#" tabindex="-1" aria-disabled="true">Prev</a></li>        
         {% endif %}
@@ -14,7 +14,7 @@
             {% if page_num == pages.number %}
             <li class="page-item disabled"><a class="page-link" href="#">{{page_num}}</a></li>
             {% else %}
-              <li class="page-item"><a class="page-link"  href="?page={{page_num }}">{{page_num}}</a></li>
+              <li class="page-item"><a class="page-link"  href="?page={{page_num }}{% if sort %}&sort={{ sort }}{% endif %}">{{page_num}}</a></li>
             {% endif %}
           {% else %}
           <li class="page-item"><a class="page-link"  href="#">...</a></li>
