@@ -103,6 +103,7 @@ class AllPostView(ListView):
        context["popular_items"] = popular_items        
        context["cat_menu"] = cat_menu
        context["pages"] = pages
+       context["sort"] = sort
        return context
 
 
