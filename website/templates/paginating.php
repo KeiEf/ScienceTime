@@ -1,3 +1,5 @@
+{% load extra %}
+
 <div class="paginating">
 
     <nav aria-label="">
@@ -21,7 +23,7 @@
 
         {% if pages.has_next %}
         <li class="page-item">
-          <a class="page-link" href="?page={{pages.next_page_number}}">Next</a>
+          <a class="page-link" href="?{% url_replace request 'page' paginator.next_page_number %}">Next</a>
         </li>
         {% else %}
         <li class="page-item disabled">
