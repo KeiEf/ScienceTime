@@ -2,6 +2,18 @@
 {% load static %}
 {% block title %}All Notes{% endblock %}
 
+{% block social %}
+  <meta property="og:title" content="レクチャーノート一覧" />
+  <meta property="og:description" content="自然科学とテクノロジーの諸分野に関するレクチャーノー。" />
+  {% for post in pages|slice:":1" %}
+    {% if post.main_image %}
+    <meta property="og:image" content="{{ post.main_image.url }}" />
+    {% else %}
+    <meta property="og:image" content="{{ post.field1.cover_image.url}}" />
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
 {% block content %}
 
 <div class="container">
