@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load replace %}
 
 {% block additional_static %}
   {% include 'php/mathjax.php' %}
@@ -140,7 +140,7 @@
               </div>
               <div class="note_body">
                 <h4>はじめに</h4>
-                <p>{{ note.intro|safe }}</p>
+                <p>{{ note.intro|math_scroll|safe }}</p>
                 <br>
                 <span><small>keywords: 
                   {% for tag in note.note_tags.all %}
@@ -172,7 +172,7 @@
                 {% endif %} 
                 <!--post body-->
                 <div class="note_body">
-                {{ note.content1|safe }}
+                {{ note.content1|math_scroll|safe }}
 
                 {% if note.content2 %}
                 <hr>
@@ -180,7 +180,7 @@
                     {% include 'ads/ads_books.php' %}              
                   </div>
                 <hr>
-                  {{ note.content2|safe }}
+                  {{ note.content2|math_scroll|safe }}
                 {% endif %}
                 <!--ads-->
                 <hr>
