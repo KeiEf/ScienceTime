@@ -164,7 +164,7 @@ class PostTagView(ListView):
 def CategoryView(request, cats):
 
     cat_menu = Category.objects.all()
-    q_word = self.request.GET.get('query')
+    q_word = request.GET.get('query')
     sort = request.GET.get('sort')
     if sort == "view":
        category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('-views')
