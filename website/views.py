@@ -77,7 +77,8 @@ class AllPostView(ListView):
        cat_menu = Category.objects.all()
        popular_list = Post.objects.filter(state="published").order_by('-views')   
        popular_items = Product.objects.order_by('-views')
-
+       
+       q_word = self.request.GET.get('query')
        sort = self.request.GET.get('sort')
        if sort == "view":
           object_list =  Post.objects.filter(state="published").order_by('-views')
@@ -87,6 +88,12 @@ class AllPostView(ListView):
           object_list =  Post.objects.filter(state="published").order_by('-post_date')
        elif sort == "inv_date":
           object_list =  Post.objects.filter(state="published").order_by('post_date')
+
+       elif q_word:
+          object_list = Post.objects.filter(
+                Q(title__icontains=q_word) | Q(author__username__icontains=q_word) 
+                | Q(post_tags__name__icontains=q_word)  | Q(content__icontains=q_word) 
+                ).distinct()
        else:        
           object_list =  Post.objects.filter(state="published").order_by('-post_date')
 
@@ -117,6 +124,7 @@ class PostTagView(ListView):
         popular_list = Post.objects.filter(state="published").order_by('-views')   
         popular_items = Product.objects.order_by('-views')
 
+        q_word = self.request.GET.get('query')
         sort = self.request.GET.get('sort')
         if sort == "view":
           tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('-views')
@@ -126,6 +134,13 @@ class PostTagView(ListView):
           tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
         elif sort == "inv_date":
           tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('post_date')
+
+        elif q_word:
+          tag_posts = Post.objects.filter(
+                Q(title__icontains=q_word) | Q(author__username__icontains=q_word) 
+                | Q(post_tags__name__icontains=q_word)  | Q(content__icontains=q_word) 
+                ).distinct()
+
         else: 
           tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
 
@@ -149,7 +164,7 @@ class PostTagView(ListView):
 def CategoryView(request, cats):
 
     cat_menu = Category.objects.all()
-
+    q_word = self.request.GET.get('query')
     sort = request.GET.get('sort')
     if sort == "view":
        category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('-views')
@@ -159,6 +174,13 @@ def CategoryView(request, cats):
        category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('-post_date')
     elif sort == "inv_date":
        category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('post_date')
+
+    elif q_word:
+       category_posts = Post.objects.filter(
+                Q(title__icontains=q_word) | Q(author__username__icontains=q_word) 
+                | Q(post_tags__name__icontains=q_word)  | Q(content__icontains=q_word) 
+                ).distinct()
+
     else:  
        category_posts = Post.objects.filter(category=cats.replace('-',' '), state="published").order_by('-post_date')
 
@@ -394,6 +416,7 @@ class AllNoteView(ListView):
    def get_context_data(self, *args, **kwargs):
        context = {}
 
+       q_word = self.request.GET.get('query')
        sort = self.request.GET.get('sort')
        if sort == "view":
           object_list =  Note.objects.filter(state="published").order_by('-views')
@@ -407,8 +430,20 @@ class AllNoteView(ListView):
           object_list =  Note.objects.all.order_by('post_date') 
        elif sort == "private":
           object_list =  Note.objects.filter(state="private").order_by('post_date')         
+
+       elif q_word:
+          object_list = Note.objects.filter(
+                Q(title__icontains=q_word) 
+                | Q(note_tags__name__icontains=q_word)  | Q(content1__icontains=q_word) 
+                | Q(content2__icontains=q_word) 
+                | Q(quotes__icontains=q_word) | Q(reference__icontains=q_word) 
+                | Q(subject__icontains=q_word) | Q(intro__icontains=q_word)
+                | Q(abstract__icontains=q_word) | Q(caption__icontains=q_word)
+                ).distinct()
+
        else:        
           object_list =  Note.objects.filter(state="published").order_by('-post_date')
+
 
        paginator = Paginator(object_list, 20) # num per page
        page = self.request.GET.get('page', 1)
@@ -437,7 +472,8 @@ class NoteTagView(ListView):
         cat_menu = Category.objects.all()
         popular_list = Post.objects.filter(state="published").order_by('-views')   
         popular_items = Product.objects.order_by('-views')
-
+        
+        q_word = self.request.GET.get('query')
         sort = self.request.GET.get('sort')
         if sort == "view":
           tag_posts = Note.objects.filter(note_tags__slug=self.kwargs.get('tag_slug')).order_by('-views')
@@ -447,6 +483,17 @@ class NoteTagView(ListView):
           tag_posts = Note.objects.filter(note_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
         elif sort == "inv_date":
           tag_posts = Note.objects.filter(note_tags__slug=self.kwargs.get('tag_slug')).order_by('post_date')
+
+        elif q_word:
+          object_list = Note.objects.filter(
+                Q(title__icontains=q_word) 
+                | Q(note_tags__name__icontains=q_word)  | Q(content1__icontains=q_word) 
+                | Q(content2__icontains=q_word) 
+                | Q(quotes__icontains=q_word) | Q(reference__icontains=q_word) 
+                | Q(subject__icontains=q_word) | Q(intro__icontains=q_word)
+                | Q(abstract__icontains=q_word) | Q(caption__icontains=q_word)
+                ).distinct()
+
         else: 
           tag_posts = Note.objects.filter(note_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
 

@@ -1,5 +1,3 @@
-{% load extra %}
-
 <div class="paginating">
 
     <nav aria-label="">
