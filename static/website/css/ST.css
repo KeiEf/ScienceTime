@@ -1475,6 +1475,6 @@ body {
   .post_sort_btn option{background-color:#fff; font-weight:normal; padding:5px; color:#191970}
 
   @media (max-width: 768px) {
-    .search_area{width: 50%;}
-    .select_area{width: 20%; }
+    .search_area{width: 95%; margin-bottom: 5px;}
+    .select_area{width: 50%; margin-left: 50%;}
   }
