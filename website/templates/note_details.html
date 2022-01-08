@@ -176,18 +176,16 @@
               {% endif %} 
               <!--post body-->
               <div class="note_body" id="note_id-1">
-                
                 {{ note.content1|math_scroll|safe }}
-
               </div>
               {% if note.content2 %}
               <hr>
               <div class="ads">
-              {% include 'ads/ads_vert.php' %}              
+                {% include 'ads/ads_vert.php' %}              
               </div>
               <hr>
               <div class="note_body" id="note_id-2">
-              {{ note.content2|math_scroll|safe }}
+                {{ note.content2|math_scroll|safe }}
               {% endif %}
               </div>
               <!--ads-->
