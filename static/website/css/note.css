@@ -4,6 +4,9 @@
 .note_image > p{font-size: small;}
 .note_content{float:left; width:100%; padding: 10px 25px; background-color:#f0f8ff;}
 .note_content > p{font-size:18px;}
+.note_body > h4, h5 {pointer-events: none;}
+.note_body h4 a{color:#191970;}
+.note_body h5 a{color:#191970;}
 .note_body {width:100%}
 .note_body ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);}
 .note_body > img{max-width:90%; height: auto; text-align: center; margin: auto; display: block;}
@@ -11,6 +14,11 @@
 .note_figure {display: block;text-align: center;}
 .note_figure > img{max-width:90%; height: auto; text-align: center; margin: auto; display: block;}
 .note_figure > p{font-size: small; text-align: center;  display: block;}
+
+.thm {padding: 0.5em 1em; margin: 2em 0; background: #fff8e8; border-left: solid 10px #191970;
+}
+.thm p {margin: 0; padding: 0;}
+.eq_border {padding: 0.5em 1em; margin: 2em 0; font-weight: bold; border: solid 3px #191970;}
 
 @media(max-width:880px )
 {
@@ -30,8 +38,6 @@
     background-color: #fff;
     box-shadow: 1.5px 1.5px 2px #696969;
     }
-
-
 
 .note_summary{
     padding: 0.5em 1em 1em 1em;

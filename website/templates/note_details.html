@@ -140,7 +140,9 @@
               </div>
               <div class="note_body">
                 <h4>はじめに</h4>
+                <div id="note_id-0">
                 <p>{{ note.intro|math_scroll|safe }}</p>
+                </div>
                 <br>
                 <span><small>keywords: 
                   {% for tag in note.note_tags.all %}
@@ -159,42 +161,46 @@
                  {{ note.table|safe }}
                 </ul>
               </div>
-                <div class="ads">
-                  {% include 'ads/ads_vert.php' %}
-                </div>
-                <br>
+
+              <div class="ads">
+                {% include 'ads/ads_vert.php' %}
+              </div>
+              
+              <br>
                 
-                <!--edit-->
-                {% if user.is_authenticated %}
-                  {% if user.id == note.author.id %}
-                    <a href="{% url 'update_content_note' note.pk %}">[edit content]</a>
-                  {% endif %}
-                {% endif %} 
-                <!--post body-->
-                <div class="note_body">
+              <!--edit-->
+              {% if user.is_authenticated %}
+                {% if user.id == note.author.id %}
+                  <a href="{% url 'update_content_note' note.pk %}">[edit content]</a>
+                {% endif %}
+              {% endif %} 
+              <!--post body-->
+              <div class="note_body" id="note_id-1">
+                
                 {{ note.content1|math_scroll|safe }}
 
                 {% if note.content2 %}
                 <hr>
-                  <div class="ads">
-                    {% include 'ads/ads_books.php' %}              
-                  </div>
+                <div class="ads">
+                  {% include 'ads/ads_books.php' %}              
+                </div>
                 <hr>
                   {{ note.content2|math_scroll|safe }}
                 {% endif %}
+                
                 <!--ads-->
                 <hr>
-                  <div class="ads">
-                    {% include 'ads/ads_vert.php' %}
-                  </div>
+                <div class="ads">
+                  {% include 'ads/ads_vert.php' %}
                 </div>
-                <!--edit-->
-                {% if user.is_authenticated %}
-                  {% if user.id == note.author.id %}
-                    <a href="{% url 'update_content_note' note.pk %}">[edit content]</a>
-                  {% endif %}
-                {% endif %} 
-                <h4 id="index_ref">参考文献</h4>
+              </div>
+              <!--edit-->
+              {% if user.is_authenticated %}
+                {% if user.id == note.author.id %}
+                  <a href="{% url 'update_content_note' note.pk %}">[edit content]</a>
+                {% endif %}
+              {% endif %} 
+              <h4 id="index_ref">参考文献</h4>
                 <ul>
                 {{ note.reference|safe}}
                 </ul>
@@ -233,8 +239,6 @@
 </section>
 
 
-
-
-
+<script src="{% static 'website/js/note_link_replace.js' %}"></script>
 
 {% endblock %}
