@@ -21,7 +21,7 @@
               <li><a href="#" >{{ gens }}</a></li>
             </ol>
 
-            <div class="select_area">
+            <div class="prod_select_area">
               <form method="GET" action="">
                  <select class="catgArchive" name="sort" method="GET" onChange="submit(this.form)">
                    <option>絞り込み</option>
@@ -95,11 +95,13 @@
                 </div>
             </div>
           </div>
+
+          {% include 'paginating.php' %}   
         </div>
       </section>
     </div>
       
-    {% include 'paginating.php' %}   
+    
 
 
     
