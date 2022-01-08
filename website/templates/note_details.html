@@ -179,31 +179,34 @@
                 
                 {{ note.content1|math_scroll|safe }}
 
-                {% if note.content2 %}
-                <hr>
-                <div class="ads">
-                  {% include 'ads/ads_vert.php' %}              
-                </div>
-                <hr>
-                  {{ note.content2|math_scroll|safe }}
-                {% endif %}
-                
-                <!--ads-->
-                <hr>
-                <div class="ads">
-                  {% include 'ads/ads_vert.php' %}
-                </div>
+              </div>
+              {% if note.content2 %}
+              <hr>
+              <div class="ads">
+              {% include 'ads/ads_vert.php' %}              
+              </div>
+              <hr>
+              <div class="note_body" id="note_id-2">
+              {{ note.content2|math_scroll|safe }}
+              {% endif %}
+              </div>
+              <!--ads-->
+              <hr>
+              <div class="ads">
+                {% include 'ads/ads_vert.php' %}
               </div>
               <!--edit-->
               {% if user.is_authenticated %}
                 {% if user.id == note.author.id %}
                   <a href="{% url 'update_content_note' note.pk %}">[edit content]</a>
                 {% endif %}
-              {% endif %} 
+              {% endif %}
+              <div class="note_body">
               <h4 id="index_ref">参考文献</h4>
                 <ul>
                 {{ note.reference|safe}}
                 </ul>
+              </div>
                 <!--edit-->
                 {% if user.is_authenticated %}
                   {% if user.id == note.author.id %}
@@ -214,8 +217,6 @@
                 <p>Sorry, this post is not published.</p>
               {% endif %}
               <hr>
-
-
               <!--edit-->
               {% if user.is_authenticated %}
                 {% if user.id == note.author.id %}
