@@ -551,6 +551,7 @@ body {
   .product_left > img {background-color: black; height:200px; width: auto; margin-left: auto; margin-right: auto; display: block;}
   .product_right > p {font-size: 14px;}
   .product_detail > p {font-size: 15px;}
+  .product_detail h3 {padding: 0.5em 0; border-top: solid 3px #191970; border-bottom: solid 3px #191970;}
   .product_detail h4{line-height:25px; border-left: solid 5px #191970;/*左線*/ padding: 0.25em 0.5em;/*上下 左右の余白*/}
   .product_detail h5{line-height:20px; padding: 0.4em 0;/*上下 左右の余白*/}
   .product_detailh5:before{content:"●"; padding-right: 0.4em;}
