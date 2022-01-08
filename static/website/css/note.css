@@ -17,8 +17,8 @@
 
 .thm {padding: 0.5em 1em; margin: 2em 0; border-left: solid 10px #191970;
 }
-.thm p {margin: 0; padding: 0;}
-.eq_border {padding: 0.5em 1em; border: solid 1px #191970;}
+.thm p {margin: 0; padding: 0; background-color: white;}
+.eq_border {padding: 0.5em 1em; border: solid 2px #191970;}
 
 @media(max-width:880px )
 {
