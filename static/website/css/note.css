@@ -15,9 +15,9 @@
 .note_figure > img{max-width:90%; height: auto; text-align: center; margin: auto; display: block;}
 .note_figure > p{font-size: small; text-align: center;  display: block;}
 
-.thm {padding: 0.5em 1em; margin: 2em 0; border-left: solid 10px #191970;
+.thm {padding: 0.5em 1em; margin: 2em 0; border-left: solid 10px #191970; background-color:white;
 }
-.thm p {margin: 0; padding: 0; background-color: white;}
+.thm p {margin: 0; padding: 0;  }
 .eq_border {padding: 0.5em 1em; border: solid 2px #191970;}
 
 @media(max-width:880px )
