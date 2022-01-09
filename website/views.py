@@ -40,6 +40,7 @@ class PostView(ListView):
         context={}
         object_list = Post.objects.filter(state="published").order_by('-post_date')
         popular_list = Post.objects.filter(state="published").order_by('-views')      
+        popular_items = Product.objects.order_by('-views')
 
         phys_list = Post.objects.filter(category="物理と天文", state="published").order_by('-post_date')
         env_list = Post.objects.filter(category="環境", state="published").order_by('-post_date')
@@ -58,6 +59,7 @@ class PostView(ListView):
 
         context["object_list"] = object_list
         context["popular_list"] = popular_list
+        context["popular_items"] = popular_items  
 
         context["phys_list"] = phys_list
         context["env_list"] = env_list  
