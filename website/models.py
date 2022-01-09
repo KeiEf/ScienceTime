@@ -8,16 +8,16 @@ from taggit.managers import TaggableManager
 import uuid
 
 def image_profile(instance, filename):
-    return 'images/profile/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+    return 'images/profile/f_auto/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 
 def image_post(instance, filename):
-    return 'images/post/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+    return 'images/post/f_auto/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 
 def image_product(instance, filename):
-    return 'images/product/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+    return 'images/product/f_auto/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 
 def image_note(instance, filename):
-    return 'images/note/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+    return 'images/note/f_auto/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 
 class Tag(models.Model):
     tagname = models.CharField(max_length=50)
