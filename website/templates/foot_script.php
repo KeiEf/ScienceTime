@@ -18,7 +18,7 @@
           <script src="{% static 'website/js/jquery.li-scroller.1.0.js' %}"></script> 
           <script src="{% static 'website/js/jquery.newsTicker.min.js' %}"></script> 
           <script src="{% static 'website/js/jquery.fancybox.pack.js' %}"></script> 
-
+          <script src="{% static 'website/js/blockadblock.js' %}"></script>
       
           <script language = "text/Javascript"> 
             cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
@@ -30,3 +30,4 @@
                 }
             }
           </script>
+
