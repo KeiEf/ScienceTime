@@ -23,7 +23,7 @@ class HomeView(ListView):
    def get_context_data(self):
         context={}
         product_list = Product.objects.all().order_by('-views')
-        post_list = Post.objects.all().order_by('-post_date')
+        post_list = Post.objects.filter(state="published").order_by('-post_date')
 
         context["product_list"] = product_list
         context["post_list"] = post_list
