@@ -90,6 +90,8 @@ class AllPostView(ListView):
           object_list =  Post.objects.filter(state="published").order_by('-post_date')
        elif sort == "inv_date":
           object_list =  Post.objects.filter(state="published").order_by('post_date')
+       elif sort == "private":
+          object_list =  Post.objects.filter(state="private").order_by('-post_date')
 
        elif q_word:
           object_list = Post.objects.filter(
