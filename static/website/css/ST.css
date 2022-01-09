@@ -26,7 +26,7 @@ body {
   img {max-width: 100%;}
 
   .youtube { position: relative; padding-bottom: 56.25%; /*アスペクト比 16:9の場合の縦幅*/ height: 0; overflow: hidden;}
-  .youtube iframe {position: absolute; top: 0; left: 0; width: 90%; height: 90%;}
+  .youtube iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 
   h1,h2,h3,h4,h5,h6 {
       margin: 0px;
