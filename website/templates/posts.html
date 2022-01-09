@@ -440,6 +440,32 @@
               {% include 'ads/ads1.php' %}
             </div>
           </div>
+
+          <!-- popular items-->
+          <div class="content_sidebar">
+            <h2><span>人気のアイテム</span></h2>
+            <ul class="spost_nav">
+            {% for post in popular_items|slice:":6" %}
+              <li>
+              <div class="media wow fadeInDown">             
+                <a href="{% url 'product_detail' post.pk %}" class="media-left">              
+                {% if post.main_image%}
+                <img src="{{ post.main_image.url }}" alt="">
+                {% else %}
+                <img src="{{ post.image_url}}" alt="">
+                {% endif %}
+                </a>
+                <div class="media-body">
+                  <a href="{% url 'product_detail' post.pk %}" class="catg_title">
+                  {{ post.name }}
+                  </a>
+                </div>
+              </div>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>  
+
           <!-- category -->
           <div class="single_sidebar wow fadeInDown">
             <h2><span>カテゴリ別リスト</span></h2>
