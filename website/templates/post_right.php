@@ -27,6 +27,14 @@
         </ul>
     </div>
 
+    <!-- ads -->
+    <div class="single_sidebar wow fadeInDown">
+      <h2><span>Sponsor</span></h2>
+      <div class="ads">
+        {% include 'ads/ads1.php' %}
+      </div>
+    </div>
+
     <!-- popular items-->
     <div class="content_sidebar">
       <h2><span>人気のアイテム</span></h2>
@@ -52,13 +60,6 @@
         </ul>
     </div>            
 
-    <!-- ads -->
-    <div class="single_sidebar wow fadeInDown">
-      <h2><span>Sponsor</span></h2>
-      <div class="ads">
-        {% include 'ads/ads1.php' %}
-      </div>
-    </div>
     <!-- category -->
     <div class="single_sidebar wow fadeInDown">
       <h2><span>カテゴリ別リスト</span></h2>
