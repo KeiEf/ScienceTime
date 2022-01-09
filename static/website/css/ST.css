@@ -25,6 +25,9 @@ body {
   
   img {max-width: 100%;}
 
+  .youtube {width: 100%; aspect-ratio: 16 / 9;}
+  .youtube iframe {width: 100%;}
+
   h1,h2,h3,h4,h5,h6 {
       margin: 0px;
   }

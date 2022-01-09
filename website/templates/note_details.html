@@ -128,7 +128,9 @@
               <div class="note_image">
               {% if note.state == "published" %}
                 {% if note.video %}
+                <div class="youtube">
                   {{ note.video|safe }}
+                </div>  
                 {% elif note.main_image %}
                   <img src="{{ note.main_image.url }}" alt="">
                 {% else %}
