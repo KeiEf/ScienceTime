@@ -78,9 +78,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 .single_post_content_left{float:left; display:inline; width:49%}
 .business_catgnav{}
 .business_catgnav li{float:left; display:block; width:100%}
-.bsbig_fig{width:100%; background-color: #000;}
-.bsbig_fig > a{display:block}
-.bsbig_fig > a img{width:auto; height: 250px; margin-left: auto; margin-right: auto;}
+.bsbig_fig{width:100%;}
+.bsbig_fig > a{display:block; background-color: #000;}
+.bsbig_fig > a img{width:auto; height: 250px; margin-left: auto; margin-right: auto; }
 .bsbig_fig figcaption{color:#333; font-family:"Oswald",sans-serif; font-size:23px; font-weight:300; margin-top:10px; margin-bottom:10px}
 .bsbig_fig_prod{width:100%; text-align: center;}
 .bsbig_fig_prod > a{display:block}
