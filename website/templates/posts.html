@@ -409,59 +409,8 @@
         </div>
       </div>
       
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <aside class="right_content">
-          <div class="single_sidebar">
-            <h2><span>人気の投稿</span></h2>
-            <ul class="spost_nav">
-              {% for post in popular_list|slice:":5" %}
-              <li>
-                <div class="media wow fadeInDown">             
-                  <a href="{% url 'post_detail' post.pk %}" class="media-left">              
-                    {% if post.main_image%}
-                      <img src="{{ post.main_image.url }}" alt="">
-                    {% else %}
-                      <img src="{{ post.image_url}}" alt="">
-                    {% endif %}
-                  </a>
-                  <div class="media-body">
-                    <a href="{% url 'post_detail' post.pk %}" class="catg_title">{{ post.title }}
-                    </a>
-                  </div>
-                </div>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-          <!-- ads -->
-          <div class="single_sidebar wow fadeInDown">
-            <h2><span>Sponsor</span></h2>
-            <div class="ads">
-              {% include 'ads/ads1.php' %}
-            </div>
-          </div>
-          <!-- category -->
-          <div class="single_sidebar wow fadeInDown">
-            <h2><span>カテゴリ別リスト</span></h2>
-            <select class="catgArchive" onChange="location.href=value;">
-              <option>カテゴリ選択</option>
-              <option value="{% url 'all_posts' %}">全記事</option>
-              {% for item in cat_menu_list %}              
-              <option value="{% url 'category' item %}">{{ item }}</option>
-              {% endfor %}
-            </select>
-          </div>
-
-          <!-- ads -->
-          <div class="single_sidebar wow fadeInDown">
-            <h2><span>Sponsor</span></h2>
-            <div class="ads">
-              {% include 'ads/ads1.php' %}
-            </div>
-          </div>
-          
-        </aside>
-      </div>
+ <!-- popular posts-->
+ {% include 'post_right.php' %}
 
       {% if user.is_authenticated %}
           <a href="{% url 'add_post' %}">add_post</a>
