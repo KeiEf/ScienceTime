@@ -1,5 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block social %}
+  <meta property="og:title" content="{{ gens }}" />
+  <meta property="og:description" content="科学グッズ > {{ gens }}" />
+  {% for product in pages|slice:":1" %}
+    {% if product.main_image %}
+    <meta property="og:image" content="{{ product.main_image.url }}" />
+    {% else %}
+    <meta property="og:image" content="{{ product.image_url }}" />
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
 {% block title %}{{ gens }}{% endblock %}
 {% block content %}
 
