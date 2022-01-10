@@ -8,7 +8,11 @@
 .note_body h4 a{color:#191970;}
 .note_body h5 a{color:#191970;}
 .note_body {width:100%}
-.note_body ol ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);}
+.note_body ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);}
+
+ ol.list_parentheses{padding: 0;}
+ ol.list_parentheses > li{list-style-type:none; counter-increment: cnt; line-height:25px; font-size:18px; color: rgb(74, 74, 74); text-indent: -1em; padding-left: 1em; display: block; }
+ ol.list_parentheses > li:before{content: "(" counter(cnt) ") ";}
 
 .note_body > img{max-width:90%; height: auto; text-align: center; margin: auto; display: block;}
 .caption{font-size: small; text-align: center;  display: block;}
@@ -26,6 +30,7 @@
  #noteSection{padding:100px 3px 0px 3px}
  .note_content{padding: none;}
  .note_body > p{font-size:14px;}
+  ol.list_parentheses > li{font-size:14px;} 
  .note_body ol ul li{font-size:14px;}
  .note_image > img{width:95%; height: auto; }
 }
