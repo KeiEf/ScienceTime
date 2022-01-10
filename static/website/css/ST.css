@@ -23,8 +23,7 @@ body {
       list-style: none;
   }
 
-  ol.list_parentheses li{list-style-type:none; list-style-position:inside; counter-increment: cnt;}
-  ol.list_parentheses li:before{display: marker; content: "(" counter(cnt) ") ";}
+
   
   img {max-width: 100%;}
 
