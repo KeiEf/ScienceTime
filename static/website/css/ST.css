@@ -702,6 +702,8 @@ body {
     align-items: left;
   }
 
+  .prod_frame {margin: 5px;}
+
   .btn_amazon {
     width: 90px;
     height: 30px;
