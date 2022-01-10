@@ -740,12 +740,9 @@ body {
 
   .prod_frame {margin: 5px; width: 100%;}
   .prod_left{float: left;  width: 50%;}
-  .prod_right{float:right; width: 50%;}
+  .prod_right{width: 50%;}
   .prod_frame > p {font-size: small;}
   .buy_btn {text-align: center;}
-
-
-
   
   /* Team Members */
   
@@ -1494,4 +1491,6 @@ body {
     .search_area{width: 95%; margin-bottom: 5px;}
     .select_area{width: 50%; margin-left: 50%;}
     .prod_frame {width: 100%;}
+    .prod_left{width: 100%;}
+    .prod_right{width: 100%;}
   }
