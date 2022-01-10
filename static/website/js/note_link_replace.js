@@ -18,11 +18,20 @@ for (var i = 0; i < 3; ++i) {
 
   var or72 = "有効放射温度"
   var rp72 = "<a href='https://www.sciencetime.jp/note/72' target='_blank'>" + or72 +"<\/a>"
-
+  
   var or73 = "Stefan-Boltzmannの法則"
   var rp73 = "<a href='https://www.sciencetime.jp/note/73' target='_blank'>" + or73 +"<\/a>"
 
-  var replaced = str.replaceAll(or3, rp3).replaceAll(or64, rp64).replaceAll(or66, rp66).replaceAll(or68,rp68).replaceAll(or69, rp69).replaceAll(or72,rp72).replaceAll(or73, rp73); 
+  var or74 = "双一次形式"
+  var rp74 = "<a href='https://www.sciencetime.jp/note/74' target='_blank'>" + or74 +"<\/a>"
+
+  var or75 = "温室効果"
+  var rp75 = "<a href='https://www.sciencetime.jp/note/75' target='_blank'>" + or75 +"<\/a>"
+
+  var replaced = str.replaceAll(or3, rp3)
+                    .replaceAll(or64, rp64).replaceAll(or66, rp66).replaceAll(or68,rp68).replaceAll(or69, rp69)
+                    .replaceAll(or72,rp72).replaceAll(or73, rp73).replaceAll(or74,rp74).replaceAll(or75, rp75)
+                    ; 
 //document.getElementsByTagName("p").innerHTML = replaced;
   document.getElementById("note_id-" + i).innerHTML = replaced;
 }
