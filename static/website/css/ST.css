@@ -739,6 +739,8 @@ body {
 
 
   .prod_frame {margin: 5px; width: 80%;}
+  .prod_left{float: left; width: 60%;}
+  .prod_right{width: 40%;}
   .prod_frame > p {font-size: small;}
   .buy_btn {text-align: center;}
 
