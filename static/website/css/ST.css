@@ -702,8 +702,6 @@ body {
     align-items: left;
   }
 
-  .prod_frame {margin: 5px;}
-
   .btn_amazon {
     width: 90px;
     height: 30px;
@@ -738,6 +736,13 @@ body {
       height: 120px;
       overflow: hidden;
   }
+
+
+  .prod_frame {margin: 5px;}
+  .prod_frame p {font-size: small;}
+  .buy_btn {text-align: center;}
+
+
 
   
   /* Team Members */
