@@ -62,13 +62,13 @@
             <h4>購入リンク：</h4>
               <div class="link_buttons">
               {% if product.amazon_url %}
-              <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
+              <button onclick="window.open('{{ product.amazon_url }}','_blank')" type="button" class="btn_amazon">amazon</button>
               {% endif %}
               {% if product.rakuten_url %}
-              <a href="{{ product.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
+              <button onclick="window.open('{{ product.rakuten_url }}','_blank')" type="button" class="btn_rakuten">楽天</button>
               {% endif %}
               {% if product.suzuri_url %}
-              <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
+              <button onclick="window.open('{{ product.suzuri_url }}','_blank')" type="button" class="btn_suzuri">SP</button>
               {% endif %}
               </div>   
             </div>                                
