@@ -738,7 +738,7 @@ body {
   }
 
 
-  .prod_frame {margin: 5px 15px; padding: 5px; width: 100%; border: 1px solid #191970;}
+  .prod_frame {margin: 5px 15px; padding: 5px; width: 80%; border: 1px solid #191970;}
   .prod_left{float: left; text-align: center;  width: 50%; margin-left: auto; margin-right: auto;}
   .prod_right{width: 50%; float:left;  margin-left: auto; margin-right: auto;}
   .prod_frame > p {font-size: small;}
