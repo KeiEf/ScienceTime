@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block social %}
-  <meta property="og:title" content="{{ gens }}" />
-  <meta property="og:description" content="科学グッズ > {{ gens }}" />
+  <meta property="og:title" content="科学グッズ > {{ gens }}" />
+  <meta property="og:description" content="科学好きにはたまらない科学グッズを紹介。" />
   {% for product in pages|slice:":1" %}
     {% if product.main_image %}
     <meta property="og:image" content="{{ product.main_image.url }}" />
