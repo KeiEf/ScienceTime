@@ -1,6 +1,9 @@
 for (var i = 0; i < 3; ++i) {
   var str = document.getElementById("note_id-" + i ).innerHTML;
 
+  var or64 = "Hamilton-Jacobi方程式"
+  var rp64 = "<a href='https://www.sciencetime.jp/note/66' target='_blank'>" + or64 +"<\/a>"
+
   var or66 = "Lorentz変換"
   var rp66 = "<a href='https://www.sciencetime.jp/note/66' target='_blank'>" + or66 +"<\/a>"
 
