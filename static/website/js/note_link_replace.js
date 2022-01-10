@@ -28,9 +28,15 @@ for (var i = 0; i < 3; ++i) {
   var or75 = "温室効果"
   var rp75 = "<a href='https://www.sciencetime.jp/note/75' target='_blank'>" + or75 +"<\/a>"
 
+  var or76 = "Russelのパラドックス"
+  var rp76 = "<a href='https://www.sciencetime.jp/note/76' target='_blank'>" + or76 +"<\/a>"
+
+  var or77 = "二項定理"
+  var rp77 = "<a href='https://www.sciencetime.jp/note/77' target='_blank'>" + or77 +"<\/a>"
+
   var replaced = str.replaceAll(or3, rp3)
                     .replaceAll(or64, rp64).replaceAll(or66, rp66).replaceAll(or68,rp68).replaceAll(or69, rp69)
-                    .replaceAll(or72,rp72).replaceAll(or73, rp73).replaceAll(or74,rp74).replaceAll(or75, rp75)
+                    .replaceAll(or72,rp72).replaceAll(or73, rp73).replaceAll(or74,rp74).replaceAll(or75, rp75).replaceAll(or76,rp76).replaceAll(or77, rp77)
                     ; 
 //document.getElementsByTagName("p").innerHTML = replaced;
   document.getElementById("note_id-" + i).innerHTML = replaced;
