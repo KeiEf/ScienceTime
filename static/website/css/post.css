@@ -189,14 +189,8 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .single_page_content ol{position:relative; padding-left:25px;}
 .single_page_content ol li{line-height:25px; font-size: 17px;color: #4a4a4a;}
 
-ol.ref li {
-	list-style-type: none;
-	counter-increment: cnt;
-}
-
-ol.ref li::before {
-	content: "[" counter(cnt) "] ";
-}
+ol.ref li {	list-style-type: none; counter-increment: cnt;}
+ol.ref li::before {	content: "[" counter(cnt) "] ";}
 
 /*.single_page_content ul li:before{content:""; height:5px; left:5px; position:absolute; width:9px; margin-top:8px}*/
 .single_page_content ul li:hover{opacity:0.75}
