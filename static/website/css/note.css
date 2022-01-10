@@ -28,6 +28,7 @@
  .note_content{padding: none;}
  .note_body > p{font-size:14px;}
  .note_body ol ul li{font-size:14px ;}
+  ol.list_parentheses li{font-size:14px ;}
  .note_image > img{width:95%; height: auto; }
 }
 
