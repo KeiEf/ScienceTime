@@ -10,8 +10,8 @@
 .note_body {width:100%}
 .note_body ol ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);}
 
- ol.list_parentheses{padding-left:20px;display: block;}
- ol.list_parentheses li{list-style-type:none; counter-increment: cnt; line-height:25px; font-size:18px; color: rgb(74, 74, 74);}
+
+ ol.list_parentheses li{list-style-type:none; counter-increment: cnt; line-height:25px; font-size:18px; color: rgb(74, 74, 74); text-indent: -1em; padding-left: 1em;}
  ol.list_parentheses li:before{content: "(" counter(cnt) ") ";}
 
  .note_body > img{max-width:90%; height: auto; text-align: center; margin: auto; display: block;}
