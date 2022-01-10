@@ -700,6 +700,7 @@ body {
 
   .link_buttons{
     align-items: left;
+    width: 100%;
   }
 
   .btn_amazon {
@@ -710,7 +711,6 @@ body {
     border: 1px solid #FF9900;
     border-radius: 5px;/*角の丸み*/
     text-align: center;
-    display: block;
   }
 
   .btn_rakuten {
@@ -721,7 +721,6 @@ body {
     border: 1px solid #bf0000;
     border-radius: 5px;/*角の丸み*/
     text-align: center;
-    display: block;
   }
 
   .btn_suzuri {
@@ -732,7 +731,6 @@ body {
     border: 1px solid black;
     border-radius: 5px;/*角の丸み*/
     text-align: center;
-    display: block;
   } 
 
   .description{
