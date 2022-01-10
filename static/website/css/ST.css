@@ -738,8 +738,8 @@ body {
   }
 
 
-  .prod_frame {margin: 5px 10px; width: 100%; border: 2px #000;}
-  .prod_left{float: left;  width: 50%; margin-left: auto; margin-right: auto;}
+  .prod_frame {margin: 5px 15px; width: 100%; border: 2px solid #000;}
+  .prod_left{float: left; text-align: center;  width: 50%; margin-left: auto; margin-right: auto;}
   .prod_right{width: 50%; margin-left: auto; margin-right: auto;}
   .prod_frame > p {font-size: small;}
   .buy_btn {text-align: center;}
