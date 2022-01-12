@@ -331,7 +331,8 @@ def GenreView(request, gens):
         'fashion_genre': fashion_genre,
         'toy_genre': toy_genre,
         'merch_genre': merch_genre,        
-        'pages': pages
+        'pages': pages,
+        'sort': sort
         })
 
 
