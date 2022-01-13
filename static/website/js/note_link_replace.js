@@ -14,7 +14,9 @@
   var or77 = "二項定理"
 
   for (var i = 0; i < 300; ++i) {
-  var bf + i = "<" + or + i + ">"
+  var ori = "or" + i
+  var bf + i = "<" + ori + ">"
+  var rp + i = "<a href='https://www.sciencetime.jp/note/"+ i + "' target='_blank'>" ori +"<\/a>"
   var replaced = str.replaceAll(bf + i, rp + i)
       };
   document.getElementById("note_body" ).innerHTML = replaced;
