@@ -41,3 +41,46 @@ for (var i = 0; i < 3; ++i) {
 //document.getElementsByTagName("p").innerHTML = replaced;
   document.getElementById("note_id-" + i).innerHTML = replaced;
 }
+
+
+  for (var i = 0; i < 300; ++i) {
+    ori = "or" + i;
+    bf = "<" + ori + ">"l
+    var rp = "<a href='https://www.sciencetime.jp/note/" + i + "' target='_blank'>" + ori +"</a>";
+    var replaced = str.replaceAll(bf, rp);
+      };
+
+
+
+
+
+
+
+
+
+  var str = document.getElementById("note_body").innerHTML;
+
+  var or3 = "Planckの放射式";
+  var or64 = "Hamilton-Jacobi方程式";
+  var or65 = "";
+  var or66 = "Lorentz変換";
+  var or67 = "";  
+  var or68 = "連続の式";
+  var or69 = "熱力学第一法則";
+  var or70 = "";
+  var or71 = "";  
+  var or72 = "有効放射温度";
+  var or73 = "Stefan-Boltzmannの法則";
+  var or74 = "双一次形式";
+  var or75 = "温室効果";
+  var or76 = "Russelのパラドックス";
+  var or77 = "二項定理";
+  
+  for (var i = 0; i <= 69; ++i) {
+    org = eval("or"+ i);
+    var bf = "&lt;" + org + "&gt;";
+    var rp = "<a href='https://www.sciencetime.jp/note/" + i + "' target='_blank'>" + org +"<\/a>";
+    var replaced = str.replaceAll(bf, rp);
+    document.getElementById("note_body").innerHTML = replaced;
+  };
+  

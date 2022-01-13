@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block additional_static %}
+  {% include 'php/mathjax.php' %}
+{% endblock %}
+
+
 {% block social %}
   <meta name="twitter:title" content="{{ product.name }}" />
   <meta property="og:url" content="sciencetime.jp" />
