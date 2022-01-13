@@ -3,7 +3,7 @@
 .note_image > img{max-width:90%; height:350px; text-align: center; display: block;margin: auto;}
 .note_image > p{font-size: small;}
 
-.note_commentbox{display:inline; float:left; width:100%; border-top:1px solid #000; border-bottom:1px solid #000; margin-top:20px; padding:5px 0px}
+.note_commentbox{display:inline; float:left; width:100%; border-top:1px solid #555; border-bottom:1px solid #555; margin-top:20px; padding:5px 0px}
 .note_commentbox a, .note_commentbox span{color:#798992; font-size:11px; margin-right:5px}
 .note_commentbox a > i, .note_commentbox span > i{margin-right:5px}
 
