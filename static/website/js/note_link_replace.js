@@ -13,7 +13,7 @@
   var or76 = "Russelのパラドックス"
   var or77 = "二項定理"
 
-  for (var i = 0; i < 3; ++i) {
+  for (var i = 0; i < 300; ++i) {
   var bf + i = "<" + or + i + ">"
   var replaced = str.replaceAll(bf + i, rp + i)
       };
