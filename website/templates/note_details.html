@@ -106,7 +106,7 @@
                 <a href="{% url 'update_note' note.pk %}">[edit all]</a>
                 {% endif %}
               {% endif %}  
-            <div class="post_commentbox">
+            <div class="note_commentbox">
               {% if note.state == "published" %}
                 <span><i class="fa fa-user"></i>{{ note.author.first_name }} {{ note.author.last_name}}</span>
                 <span><i class="fa fa-calendar"></i>{{ note.post_date|date:"Y/m/d - H:i:s" }}</span> 
