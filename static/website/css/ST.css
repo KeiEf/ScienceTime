@@ -651,7 +651,7 @@ body {
     width: 90%;
     color: #555555; /* 文字色 */
     background-color: #fff;
-    border: 2px solid #8FBC8F; /* 枠線の太さ・色 */
+    border: 2px solid #191970; /* 枠線の太さ・色 */
     box-shadow: 2px 2px 1px #ccc;/* 影の色 */
    }
    .kakomi-title {
@@ -661,7 +661,7 @@ body {
     top: -15px;
     font-weight: bold;
     background-color: #fff; /* タイトル背景色 */
-    color: #8FBC8F; /* タイトル文字色 */
+    color: #191970; /* タイトル文字色 */
    }
 
 
