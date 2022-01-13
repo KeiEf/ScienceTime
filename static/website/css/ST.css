@@ -644,6 +644,26 @@ body {
   .right-image{float: right; width: 50%; order: 2;}  
   .prod_select_area{width: 30%; float: right;  margin: 0px 10px 30px 10px;}
 
+  .kakomi {
+    position: relative;
+    margin: 2em auto;
+    padding: 1.2em;
+    width: 90%;
+    color: #555555; /* 文字色 */
+    background-color: #fff;
+    border: 2px solid #8FBC8F; /* 枠線の太さ・色 */
+    box-shadow: 2px 2px 1px #ccc;/* 影の色 */
+   }
+   .kakomi-title {
+    position: absolute;
+    padding: 0 .5em;
+    left: 20px;
+    top: -15px;
+    font-weight: bold;
+    background-color: #fff; /* タイトル背景色 */
+    color: #8FBC8F; /* タイトル文字色 */
+   }
+
 
   @media(max-width:800px ){
     .prod_select_area{ width: 50%;}
