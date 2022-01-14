@@ -10,8 +10,8 @@
     display:none;
   }
 
-  .pc_area iframe {width: 100%; height: 100%;}
-  .phone_area iframe {width: 100%; height: 100%;}
+  .pc_area iframe {width: 100%; }
+  .phone_area iframe {width: 100%; }
 
   /*-- スマホ版表示CSS  --*/
 @media screen and (max-width: 800px){
