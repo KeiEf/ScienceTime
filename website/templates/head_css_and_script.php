@@ -27,3 +27,4 @@
     <link rel="stylesheet" href="{% static 'website/css/theme.css' %}">    
     <link rel="stylesheet" href="{% static 'website/css/post.css' %}">
     <link rel="stylesheet" href="{% static 'website/css/note.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/ads.css' %}">
