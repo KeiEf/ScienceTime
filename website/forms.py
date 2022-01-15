@@ -115,7 +115,7 @@ class EditProductForm(forms.ModelForm):
 class PostNoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('title', 'quotes','main_image', 'caption','video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content1','content2', 'reference' , 'note_tags', 'post_date', 'state')
+        fields = ('title', 'quotes','main_image', 'caption','video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','content1','content2', 'reference' , 'note_tags', 'post_date', 'state')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -128,7 +128,7 @@ class PostNoteForm(forms.ModelForm):
             'field1': forms.Select(choices=field_list, attrs={'class': 'form-control'}),              
             'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'intro': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
-            'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
+            #'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
             'content1': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
             'content2': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),            
             'reference': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
@@ -138,7 +138,7 @@ class PostNoteForm(forms.ModelForm):
 class EditNoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('title', 'quotes', 'main_image', 'caption', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','table','content1','content2','reference' , 'note_tags', 'post_date', 'state')
+        fields = ('title', 'quotes', 'main_image', 'caption', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','content1','content2','reference' , 'note_tags', 'post_date', 'state')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -150,7 +150,7 @@ class EditNoteForm(forms.ModelForm):
             'field1': forms.Select(choices=field_list, attrs={'class': 'form-control'}),              
             'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'intro': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
-            'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
+           # 'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
             'content1': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
             'content2': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),            
             'reference': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
@@ -160,13 +160,13 @@ class EditNoteForm(forms.ModelForm):
 class EditNoteContentForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('quotes','abstract','intro','table','content1', 'content2')
+        fields = ('quotes','abstract','intro','content1', 'content2')
 
         widgets = { 
             'quotes': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'intro': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
-            'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
+         #   'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
             'content1': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
             'content2': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
         }
