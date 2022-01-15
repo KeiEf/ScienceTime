@@ -12,6 +12,16 @@
 .note_body > h4, h5 {pointer-events: none;}
 .note_body h4 a{color:#191970;}
 .note_body h5 a{color:#191970;}
+
+
+.note_heading {font-weight: 500; color:#191970; font-size:  22px; pointer-events: none; line-height:25px; border-left: solid 5px #191970;/*左線*/ padding: 0.25em 0.5em;/*上下 左右の余白*/ }
+
+ /* Note Page */
+
+ #toc {color: #1e366a; border-top: solid #1e366a 1px;/*上のボーダー*/ border-bottom: solid #1e366a 1px;/*下のボーダー*/ padding: 0.5em 0 0.5em 1.5em;   margin: 15px 0px 15px 0px;}
+ .content_table {color: #1e366a; border-top: solid #1e366a 1px;/*上のボーダー*/ border-bottom: solid #1e366a 1px;/*下のボーダー*/ padding: 0.5em 0 0.5em 1.5em;   margin: 15px 0px 15px 0px;}
+
+
 .note_body {width:100%}
 .note_body ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);}
 .note_body ol li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);}

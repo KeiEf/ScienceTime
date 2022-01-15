@@ -141,7 +141,7 @@
                 {% endif %}
               </div>
               <div class="note_body">
-                <h4>はじめに</h4>
+                <span class="note_heading">はじめに</span>
                 <div id="note_id-0">
                 <p>{{ note.intro|math_scroll|safe }}</p>
                 </div>
@@ -156,12 +156,11 @@
                   {% endfor %}
                 </small>
                 </span>
-                
                 <br>
-                <h4>内容</h4>
-                <ul class="content_table">
-                 {{ note.table|safe }}
-                </ul>
+                <br>
+                <span class="note_heading">内容</span>           
+                 <div id="toc"></div>
+                
               </div>
 
               <div class="ads">
@@ -240,7 +239,7 @@
   </div>
 </section>
 
-
+<script src="{% static 'website/js/index_table.js' %}"></script>
 <script src="{% static 'website/js/note_link_replace.js' %}"></script>
 
 {% endblock %}
