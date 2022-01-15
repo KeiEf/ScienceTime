@@ -3,5 +3,5 @@
 </div>
          
 <div class="phone_area">
-    <script type="text/javascript" src="//rot2.a8.net/jsa/ffe20b5e1d34af433378dac471206fd3/c6f057b86584942e415435ffb1fa93d4.js"></script>
+<script type="text/javascript" src="//rot6.a8.net/jsa/ffe20b5e1d34af433378dac471206fd3/c6f057b86584942e415435ffb1fa93d4.js"></script>
 </div>
