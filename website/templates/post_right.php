@@ -76,7 +76,7 @@
     <div class="single_sidebar wow fadeInDown">
       <h2><span>Sponsor</span></h2>
       <div class="ads">
-        {% include 'ads/ads_300x250.php' %}
+      {% include 'ads/ads1.php' %}
       </div>
     </div>
 
