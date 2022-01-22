@@ -549,11 +549,20 @@ body {
   #ProductSection h1 {padding: 0.2em 0; border-top: solid 3px #191970; border-bottom: solid 3px #191970;}
   #ProductSection h4 {font-size: 18px; margin:10px 0;}
   .product_left{ float: left; width: 100%; display:inline; margin-top: 15px;}
+.product_left > img {background-color: black; height:200px; width: auto; margin-left: auto; margin-right: auto; display: block;}
   .product_right{float: left; width: 100%; display:inline; margin-top: 15px;}
   .product_detail{float: left; width: 100%; display:inline; margin-top: 20px;}
   
-  .product_left > img {background-color: black; height:200px; width: auto; margin-left: auto; margin-right: auto; display: block;}
   .product_right > p {font-size: 14px;}
+  .product_right ul{position:relative; padding-left:25px;}
+  .product_right ul li{line-height:25px;list-style-type: disc; color:#4a4a4a;font-size: 14px;}
+  .product_right ol{position:relative; padding-left:25px;}
+  .product_right ol li{line-height:25px;color: #4a4a4a;font-size: 14px;}
+
+
+  
+
+
   .product_detail > p {font-size: 15px;}
   .product_detail h3 {padding: 0.5em 0; border-top: solid 3px #191970; border-bottom: solid 3px #191970;}
   .product_detail h4{line-height:25px; border-left: solid 5px #191970;/*左線*/ padding: 0.25em 0.5em;/*上下 左右の余白*/}
