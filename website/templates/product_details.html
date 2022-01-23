@@ -109,7 +109,7 @@
         <div class="related_post">
           <h3>関連アイテム</h3>
           <ul class="spost_nav wow fadeInDown animated">
-            {% for post in related_products|slice:":3" %}
+            {% for post in related_product|slice:":3" %}
             <li>
               <div class="media">
                   <a class="media-left" href="{% url 'post_detail' post.pk %}">
