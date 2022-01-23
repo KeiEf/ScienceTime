@@ -105,6 +105,33 @@
         <!--shere buttons-->
         {% include 'php/share_btn.php' %}
 
+
+        <div class="related_post">
+          <h3>関連アイテム</h3>
+          <ul class="spost_nav wow fadeInDown animated">
+            {% for post in related_products|slice:":3" %}
+            <li>
+              <div class="media">
+                  <a class="media-left" href="{% url 'post_detail' post.pk %}">
+                  {% if post.main_image %}
+                  <img src="{{ post.main_image.url }}" alt="">
+                  {% elif post.image_url %}
+                  <img src="{{ post.image_url}}" alt="">
+                  {% else %}                   
+                  {% endif %}
+                 </a>
+                <div class="media-body">
+                  <small>
+                  <a class="catg_title" href="{% url 'product_detail' post.pk %}"> {{ post.name}}</a>
+                  </small>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+
         <!--edit-->
         {% if user.is_superuser %}
           <a href="{% url 'update_product' product.pk %}">[edit]</a>

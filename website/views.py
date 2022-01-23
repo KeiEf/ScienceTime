@@ -359,10 +359,12 @@ class ProductDetailView(DetailView):
         
     def get_context_data(self, *args, **kwargs):
         context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
-        popular_list = Post.objects.filter(state="published").order_by('-views')   
+        popular_list = Post.objects.filter(state="published").order_by('-views')
+        related_product = Product.objects.filter(tags__slug__in=list(self.object.tags.values_list('slug', flat=True))).exclude(id=self.object.id).distinct()
         popular_items = Product.objects.all().order_by('-views') 
         context["popular_items"] = popular_items        
         context["popular_list"] = popular_list
+        context["related_product"] = related_product
         return context
 
 class TagIndexView(ListView):
