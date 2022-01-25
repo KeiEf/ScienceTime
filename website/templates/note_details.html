@@ -97,7 +97,10 @@
               <li class="open_index">{{ note.field1 }}</li>
 
             </ol>
-            {% if note.state == "published" %}
+            {% if note.state == "published" or user.id == note.author.id %}
+              {% if note.state == "private" %}
+                ※非公開
+              {% endif %}
             <h1>{{ note.title }}</h1>
             {% endif %}
               <!--edit-->
@@ -107,18 +110,18 @@
                 {% endif %}
               {% endif %}  
             <div class="note_commentbox">
-              {% if note.state == "published" %}
+            {% if note.state == "published"  or user.id == note.author.id %}
                 <span><i class="fa fa-user"></i>{{ note.author.first_name }} {{ note.author.last_name}}</span>
                 <span><i class="fa fa-calendar"></i>{{ note.post_date|date:"Y/m/d - H:i:s" }}</span> 
                 <a href="#" class="open_index"><i class="fas fa-folder"></i>{{ note.field1 }}</a>
                 <br>
                 <!--share btn -->
                 {% include 'php/share_btn_list.php' %}  
-              {% endif %}
+            {% endif %}
             </div>
 
             <div class="single_page_content" id="note_body">
-              {% if note.state == "published" %}
+              {% if note.state == "published" or user.id == note.author.id %}
                 {% if note.quotes %}
                   <blockquote>
                     <p>{{ note.quotes|safe }}</p>
@@ -126,7 +129,7 @@
                 {% endif %}
               {% endif %}
               <div class="note_image">
-              {% if note.state == "published" %}
+              {% if note.state == "published" or user.id == note.author.id %}
                 {% if note.video %}
                 <div class="youtube">
                   {{ note.video|safe }}
