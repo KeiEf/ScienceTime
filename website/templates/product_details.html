@@ -131,10 +131,8 @@
             {% endfor %}
           </ul>
 
-        <div class="ads">
-          {% include 'ads/ads_post_square.php' %}                
-        </div>   
 
+          
         </div>
 
         <!--edit-->
@@ -142,7 +140,9 @@
           <a href="{% url 'update_product' product.pk %}">[edit]</a>
         {% endif %} 
 
-
+        <div class="ads">
+          {% include 'ads/ads_vert.php' %}
+        </div>
 
       </div>
 
