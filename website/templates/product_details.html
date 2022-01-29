@@ -31,6 +31,7 @@
       <div class="ads_top">
         {% include 'ads/ads_free.php' %}
       </div>
+
       <div class="col-lg-8 col-md-8 col-sm-8">
         <ol class="breadcrumb">
           <li><a href="{% url 'products' %}">全ジャンル</a></li>
@@ -80,15 +81,15 @@
           </div>
         </div>
 
-         <div class="product_detail">
-           {% if product.body %}
-             <h3>解説</h3>
-             <p>{{ product.body|safe }}</p>
-           {% endif %}
-           {% if product.video_url %}
-             <p>{{ product.video_url|safe }}</p>
-             <h4>購入リンク：</h4>
-              <div class="link_buttons">
+        <div class="product_detail">
+          {% if product.body %}
+            <h3>解説</h3>
+            <p>{{ product.body|safe }}</p>
+          {% endif %}
+            {% if product.video_url %}
+            <p>{{ product.video_url|safe }}</p>
+            <h4>購入リンク：</h4>
+            <div class="link_buttons">
               {% if product.amazon_url %}
               <button onclick="window.open('{{ product.amazon_url }}','_blank')" type="button" class="btn_amazon">amazon</button>
               {% endif %}
@@ -98,9 +99,9 @@
               {% if product.suzuri_url %}
               <button onclick="window.open('{{ product.suzuri_url }}','_blank')" type="button" class="btn_suzuri">SP</button>
               {% endif %}
-              </div> 
-           {% endif %}
-         </div>
+            </div> 
+         {% endif %}
+        </div>
 
         <!--shere buttons-->
         {% include 'php/share_btn.php' %}
@@ -112,14 +113,14 @@
             {% for post in related_product|slice:":3" %}
             <li>
               <div class="media">
-                  <a class="media-left" href="{% url 'post_detail' post.pk %}">
-                  {% if post.main_image %}
+                <a class="media-left" href="{% url 'post_detail' post.pk %}">
+                {% if post.main_image %}
                   <img src="{{ post.main_image.url }}" alt="">
-                  {% elif post.image_url %}
+                {% elif post.image_url %}
                   <img src="{{ post.image_url}}" alt="">
-                  {% else %}                   
-                  {% endif %}
-                 </a>
+                {% else %}                   
+                {% endif %}
+                </a>
                 <div class="media-body">
                   <small>
                   <a class="catg_title" href="{% url 'product_detail' post.pk %}"> {{ post.name}}</a>
@@ -129,8 +130,12 @@
             </li>
             {% endfor %}
           </ul>
-        </div>
 
+        <div class="ads">
+          {% include 'ads/ads_post_square.php' %}                
+        </div>   
+
+        </div>
 
         <!--edit-->
         {% if user.is_superuser %}
@@ -138,9 +143,6 @@
         {% endif %} 
 
 
-        <div class="ads">
-          {% include 'ads/ads_post_square.php' %}                
-        </div>   
 
       </div>
 
