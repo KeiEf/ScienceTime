@@ -310,7 +310,8 @@ def GenreView(request, gens):
                  '化学': '化学'}
     merch_genre = {'トートバッグ' : 'トートバッグ',
                  'タンブラー' : 'タンブラー',
-                 'マグカップ' : 'マグカップ'
+                 'マグカップ' : 'マグカップ',
+                 'インテリア' : 'インテリア',
                   }                 
 
     paginator = Paginator(genre_posts, 9) # num per page
