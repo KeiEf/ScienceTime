@@ -101,7 +101,7 @@ class AllPostView(ListView):
        else:        
           object_list =  Post.objects.filter(state="published").order_by('-post_date')
 
-       paginator = Paginator(object_list, 20) # num per page
+       paginator = Paginator(object_list, 30) # num per page
        page = self.request.GET.get('page', 1)
        try:
          	pages = paginator.page(page)
@@ -148,7 +148,7 @@ class PostTagView(ListView):
         else: 
           tag_posts = Post.objects.filter(post_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
 
-        paginator = Paginator(tag_posts, 20) # num per page
+        paginator = Paginator(tag_posts, 30) # num per page
         page = self.request.GET.get('page', 1)
         try:
          	pages = paginator.page(page)
@@ -191,7 +191,7 @@ def CategoryView(request, cats):
     popular_list = Post.objects.filter(state="published").order_by('-views')   
     popular_items = Product.objects.order_by('-views') 
 
-    paginator = Paginator(category_posts, 20) # num per page
+    paginator = Paginator(category_posts, 30) # num per page
     page = request.GET.get('page', 1)
 
     try:
@@ -398,6 +398,23 @@ def FieldView(request, subj):
         'subj':subj,
         })
 
+class FieldDetailView(DetailView):
+    model = Field
+    template_name = 'field_details.html'
+    slug_url_kwarg = 'field_eng'
+    slug_field = 'field_eng'
+
+    def get(self, request, *args, **kwargs):
+    #    field = get_object_or_404(Field, id=self.kwargs['pk'])
+        field = get_object_or_404(Field, field_eng=self.kwargs['field_eng'])
+     #   field_eng = field.field_eng.replace(' ', '_')
+    #field = field.field_eng.replace(' ', '_')
+
+#        eng = field.field_eng
+        return super().get(request, *args, **kwargs)
+
+
+
 class NoteDetailView(DetailView):
     model = Note
     template_name = 'note_details.html'
@@ -453,7 +470,7 @@ class AllNoteView(ListView):
           object_list =  Note.objects.filter(state="published").order_by('-post_date')
 
 
-       paginator = Paginator(object_list, 20) # num per page
+       paginator = Paginator(object_list, 30) # num per page
        page = self.request.GET.get('page', 1)
        try:
            pages = paginator.page(page)
@@ -505,7 +522,7 @@ class NoteTagView(ListView):
         else: 
           tag_posts = Note.objects.filter(note_tags__slug=self.kwargs.get('tag_slug')).order_by('-post_date')
 
-        paginator = Paginator(tag_posts, 20) # num per page
+        paginator = Paginator(tag_posts, 30) # num per page
         page = self.request.GET.get('page', 1)
         try:
          	pages = paginator.page(page)

@@ -224,9 +224,11 @@
                 {% if user.id == note.author.id %}
                 <a href="{% url 'update_note' note.pk %}">[edit all]</a>
                 {% endif %}
-              {% endif %}               
+              {% endif %}
+              
+              自然科学に関する質問やノート作りは『<a href="https://afterschoolbbs.herokuapp.com/">AfterSchool</a>』で。
             </div>
-
+            
          <!--shere buttons-->
           {% include 'php/share_btn.php' %}
           </div>
@@ -242,6 +244,7 @@
 </section>
 
 <script src="{% static 'website/js/index_table.js' %}"></script>
+{% comment %}
 <script src="{% static 'website/js/note_link_replace.js' %}"></script>
-
+{% endcomment %}
 {% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block additional_static %}
+  {% include 'php/mathjax.php' %}
+{% endblock %}
+
+{% block social %}
+
+{% endblock %}
+
+{% block title %}
+  {{ field.field }}
+{% endblock %}
+
+
+{% block content %}
+  <!-- Page Content -->
+
+  <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+  
+  <div class="container">
+    <section id="postSection">
+
+      {{ field.field }}
+    </section>
+  
+  </div>
+
+
+{% endblock %}
