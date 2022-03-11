@@ -13,6 +13,7 @@
               varep: "{\\varepsilon}",
               bm: ["{\\boldsymbol{#1}}",1],
               sL: ["{\\mathcal{L}}"],
+              sJ: ["{\\mathcal{J}}"],
             }
     }     
     };
