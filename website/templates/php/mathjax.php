@@ -12,6 +12,7 @@
               ep: "{\\epsilon}",
               varep: "{\\varepsilon}",
               bm: ["{\\boldsymbol{#1}}",1],
+              sL: ["{\\mathcal{L}}"],
             }
     }     
     };
