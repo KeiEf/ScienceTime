@@ -101,10 +101,18 @@ class Field(models.Model):
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
     ordering = models.PositiveIntegerField(default=0, null=True, blank=True)
     index = models.TextField(default='<h5></h5>\n<ul>\n<li></li>\n</ul>' , verbose_name='目次')
+    slug = models.SlugField(allow_unicode=True ,null=True, blank = True)
 
     def __str__(self):
-       return self.field
+        return self.field
 
+    def save(self, *args, **kwargs): # new
+        if not self.slug:
+            self.slug = self.field_eng.replace(' ','_')
+        return super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse( 'field_details.html', kwargs={'slug': self.slug})
 
 class Note(models.Model):
 

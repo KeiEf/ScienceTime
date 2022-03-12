@@ -403,8 +403,8 @@ def FieldView(request, subj):
 class FieldDetailView(DetailView):
     model = Field
     template_name = 'field_details.html'
-    slug_url_kwarg = 'field_eng'
-    slug_field = 'field_eng'.replace(' ', '_')
+  #  slug_url_kwarg = 'slug_field_eng'
+   # slug_field = 'field_eng'
 
  #   def subject(self, request, *args, **kwargs):
  #     field = get_object_or_404(Field, field_eng=self.kwargs['field_eng'])
@@ -412,6 +412,7 @@ class FieldDetailView(DetailView):
  #     return render(request, 'field_details.html', {
  #       'subj':subj,
  #       }) 
+
     def get_context_data(self, *args, **kwargs):
         context = super(FieldDetailView, self).get_context_data(*args, **kwargs)
         popular_list = Post.objects.filter(state="published").order_by('-views')   
@@ -420,11 +421,9 @@ class FieldDetailView(DetailView):
         context["popular_items"] = popular_items        
         return context
 
- #   def get(self, request, *args, **kwargs):
-  #      field = get_object_or_404(Field, field_eng=self.kwargs['field_eng'])
-      #  subj = field.subj_eng
-      #  field = get_object_or_404(Field, field_eng=self.kwargs['field_eng'])
-     #   field_eng = field.field_eng.replace(' ', '_')
+   # def get(self, request, *args, **kwargs):
+     #   field = get_object_or_404(Field, field_eng=self.kwargs['field_eng'])
+   #     field = get_object_or_404(Field, field_eng=self.kwargs['field_eng'])
     #field = field.field_eng.replace(' ', '_')
 #        eng = field.field_eng
    #     return super().get(request, *args, **kwargs)
