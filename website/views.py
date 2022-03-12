@@ -413,6 +413,7 @@ class FieldDetailView(DetailView):
  #       'subj':subj,
  #       }) 
     def get_context_data(self, *args, **kwargs):
+        context={}
         popular_list = Post.objects.filter(state="published").order_by('-views')   
         popular_items = Product.objects.order_by('-views') 
         context["popular_list"] = popular_list
