@@ -406,12 +406,19 @@ class FieldDetailView(DetailView):
     slug_url_kwarg = 'field_eng'
     slug_field = 'field_eng'
 
+ #   def subject(self, request, *args, **kwargs):
+ #     field = get_object_or_404(Field, field_eng=self.kwargs['field_eng'])
+ #     subj = field.subj_eng
+ #     return render(request, 'field_details.html', {
+ #       'subj':subj,
+ #       })      
+
     def get(self, request, *args, **kwargs):
-    #    field = get_object_or_404(Field, id=self.kwargs['pk'])
         field = get_object_or_404(Field, field_eng=self.kwargs['field_eng'])
+      #  subj = field.subj_eng
+      #  field = get_object_or_404(Field, field_eng=self.kwargs['field_eng'])
      #   field_eng = field.field_eng.replace(' ', '_')
     #field = field.field_eng.replace(' ', '_')
-
 #        eng = field.field_eng
         return super().get(request, *args, **kwargs)
 

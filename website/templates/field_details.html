@@ -6,13 +6,18 @@
 {% endblock %}
 
 {% block social %}
-
+  <meta property="og:title" content="{{ post.title }}" />
+  <meta property="og:description" content="{{ post.abstract }}" />
+  {% if post.main_image %}
+  <meta property="og:image" content="{{ post.main_image.url }}" />
+  {% else %}
+  <meta property="og:image" content="{{ post.image_url }}" />
+  {% endif %}
 {% endblock %}
 
 {% block title %}
   {{ field.field }}
 {% endblock %}
-
 
 {% block content %}
   <!-- Page Content -->
@@ -22,7 +27,64 @@
   <div class="container">
     <section id="postSection">
 
-      {{ field.field }}
+
+      <div class="row">
+        <div class="ads_top">
+          {% include 'ads/ads_free.php' %}
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8">
+          <div class="left_content">
+            <div class="single_page">
+              <ol class="breadcrumb">
+                <li><a href="#">レクチャー</a></li>
+                <li><a href="{% url 'subject' field.subj_eng %}">{{field.subject}}</a></li>
+              </ol>
+              <h1>{{field.field}}</h1>
+              <div class="post_commentbox">
+                <!--share btn -->
+                {% include 'php/share_btn_list.php' %}  
+              </div>
+              <!--ads-->
+
+              <div class="single_page_content">
+                <div class="note_image">
+                  <img src="{{ field.cover_image.url }}" alt="">
+                </div>
+
+                <h2><span>概要</span></h2>
+                {{ field.abstract}}
+
+                <div class="ads">
+                  {% include 'ads/ads_vert.php' %}
+                </div>
+                <h2><span>目次</span></h2>
+                {{ field.index|safe}}
+              
+
+              <!--edit-->
+              {% if user.is_authenticated %}
+                <a href="{% url 'update_field' field.pk %}">[edit]</a>
+              {% endif %}  
+              
+                <!--ads-->
+                <div class="ads">
+                  {% include 'ads/ads_post_square.php' %}   
+                             
+                </div>         
+               <!--shere buttons-->
+                {% include 'php/share_btn.php' %}  
+              </div>
+              
+            </div>
+          </div>
+        </div>
+     
+        <!-- popular posts-->
+        {% include 'post_right.php' %}
+
+      </div>
+
+
     </section>
   
   </div>
