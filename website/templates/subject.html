@@ -31,8 +31,8 @@
           <!-- Pages -->        
           <ul class='page'>
             <li></li>
-            <li><a href="#{{ item.id }}" class="modal-button">
-                目次を開く 
+            <li><a href="{% url 'field_detail' item.slug %}" class="modal-button">
+                詳細 
                 </a>    
             </li>
             <li></li>
