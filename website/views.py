@@ -411,7 +411,13 @@ class FieldDetailView(DetailView):
  #     subj = field.subj_eng
  #     return render(request, 'field_details.html', {
  #       'subj':subj,
- #       })      
+ #       }) 
+    def get_context_data(self, *args, **kwargs):
+        popular_list = Post.objects.filter(state="published").order_by('-views')   
+        popular_items = Product.objects.order_by('-views') 
+        context["popular_list"] = popular_list
+        context["popular_items"] = popular_items        
+        return context
 
     def get(self, request, *args, **kwargs):
         field = get_object_or_404(Field, field_eng=self.kwargs['field_eng'])
