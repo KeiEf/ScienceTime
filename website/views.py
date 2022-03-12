@@ -404,7 +404,7 @@ class FieldDetailView(DetailView):
     model = Field
     template_name = 'field_details.html'
     slug_url_kwarg = 'field_eng'
-    slug_field = 'field_eng'
+    slug_field = 'field_eng'.replace(' ', '_')
 
  #   def subject(self, request, *args, **kwargs):
  #     field = get_object_or_404(Field, field_eng=self.kwargs['field_eng'])
