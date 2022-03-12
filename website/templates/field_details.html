@@ -6,13 +6,9 @@
 {% endblock %}
 
 {% block social %}
-  <meta property="og:title" content="{{ post.title }}" />
-  <meta property="og:description" content="{{ post.abstract }}" />
-  {% if post.main_image %}
-  <meta property="og:image" content="{{ post.main_image.url }}" />
-  {% else %}
-  <meta property="og:image" content="{{ post.image_url }}" />
-  {% endif %}
+  <meta property="og:title" content="{{ field.field }}" />
+  <meta property="og:description" content="{{ field.abstract }}" />
+  <meta property="og:image" content="{{ field.cover_image.url }}" />
 {% endblock %}
 
 {% block title %}
@@ -68,8 +64,7 @@
               
                 <!--ads-->
                 <div class="ads">
-                  {% include 'ads/ads_post_square.php' %}   
-                             
+                  {% include 'ads/ads_post_square.php' %}        
                 </div>         
                <!--shere buttons-->
                 {% include 'php/share_btn.php' %}  
