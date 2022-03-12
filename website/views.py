@@ -301,7 +301,8 @@ def GenreView(request, gens):
     popular_items = Product.objects.order_by('-views') 
     fashion_genre = {'Tシャツ' : 'Tシャツ', 
                       'フーディ': 'フーディ',
-                      'キャップ' : 'キャップ' }
+                      'キャップ' : 'キャップ' 
+                      }
     toy_genre = {'力学' : '力学',
                  '光と電磁気' : '光と電磁気',
                  '熱力学' : '熱力学',
@@ -312,6 +313,7 @@ def GenreView(request, gens):
                  'タンブラー' : 'タンブラー',
                  'マグカップ' : 'マグカップ',
                  'インテリア' : 'インテリア',
+                 '文房具' : '文房具',
                   }                 
 
     paginator = Paginator(genre_posts, 9) # num per page
