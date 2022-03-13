@@ -36,8 +36,7 @@
               <li><a class="dropdown-item" href="{% url 'subject' 'maths' %}">数学</a></li> 
               <li><a class="dropdown-item" href="{% url 'subject' 'physics' %}">物理</a></li> 
               <li><a class="dropdown-item" href="{% url 'subject' 'chemistry' %}">化学</a></li>
-              <li><a class="dropdown-item" href="{% url 'subject' 'biology' %}">生物</a></li>
-              <li><a class="dropdown-item" href="{% url 'subject' 'information' %}">情報</a></li>                
+              <li><a class="dropdown-item" href="{% url 'subject' 'biology' %}">生物</a></li>           
             </ul>
           </li>
 

@@ -14,6 +14,7 @@
               bm: ["{\\boldsymbol{#1}}",1],
               sL: ["{\\mathcal{L}}"],
               sJ: ["{\\mathcal{J}}"],
+              sO: ["{\\mathcal{O}}"],
             }
     }     
     };
