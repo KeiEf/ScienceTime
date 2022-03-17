@@ -38,8 +38,9 @@
 }
 .thm p {margin: 0; padding: 0;  }
 .eq_border {padding: 0.5em 1em; border: solid 2px #191970;}
-.eq_border ul li{line-height:28px; font-size:18px; color: rgb(74, 74, 74);}
-.eq_border ol li{line-height:28px; font-size:18px; color: rgb(74, 74, 74);}
+.proof {padding: 0.2em 1em; border: solid 2px #191970;}
+.proof ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74); margin-bottom: 12px;}
+.proof ol li{line-height:25px; font-size:18px; color: rgb(74, 74, 74); margin-bottom: 12px;}
 
 @media(max-width:880px )
 {
@@ -48,8 +49,8 @@
  .note_body > p{font-size:14px;}
  .note_body ul li{font-size:14px;}
  .note_body ol li{font-size:14px;}
- .eq_border ul li{font-size:14px;}
- .eq_border ol li{font-size:14px;}
+ .proof ul li{font-size:14px;}
+ .proof ol li{font-size:14px;}
  .note_image > img{width:95%; height: auto; }
 
 
