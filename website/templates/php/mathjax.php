@@ -15,6 +15,7 @@
               sL: ["{\\mathcal{L}}"],
               sJ: ["{\\mathcal{J}}"],
               sO: ["{\\mathcal{O}}"],
+              sU: ["{\\mathcal{U}}"],
             }
     }     
     };
