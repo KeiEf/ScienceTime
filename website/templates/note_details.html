@@ -205,12 +205,10 @@
                   <a href="{% url 'update_content_note' note.pk %}">[edit content]</a>
                 {% endif %}
               {% endif %}
-              <div class="note_body">
+              <div class="note_ref">
                 <h4 id="index_ref">参考文献</h4>
                 <ul>
-                  <div class="note_ref">
                   {{ note.reference|safe}}
-                  </div>
                 </ul>
               </div>
                 <!--edit-->

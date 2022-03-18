@@ -37,6 +37,9 @@
 .note_ref ol {padding: 0px 5px 0px 20px;}
 .note_ref ul li{line-height:20px; color: rgb(74, 74, 74);margin-top: 0px;margin-bottom: 0px;} 
 .note_ref ol li{line-height:20px; color: rgb(74, 74, 74);margin-top: 0px;margin-bottom: 0px;} 
+.note_ref > h4, h5 {pointer-events: none;}
+.note_ref h4 a{color:#191970;}
+.note_ref h5 a{color:#191970;}
 
 .note_body > img{max-width:90%; height: auto; text-align: center; margin: auto; display: block;}
 .caption{font-size: small; text-align: center;  display: block;}
