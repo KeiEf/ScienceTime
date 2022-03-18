@@ -35,8 +35,8 @@
 
 .note_ref ul {padding: 1px 5px 1px 20px;}
 .note_ref ol {padding: 1px 5px 1px 20px;}
-.note_ref ul li{line-height:22px; color: rgb(74, 74, 74);margin-top: 2px;margin-bottom: 2px;} 
-.note_ref ol li{line-height:22px; color: rgb(74, 74, 74);margin-top: 2px;margin-bottom: 2px;} 
+.note_ref ul li{line-height:22px; color: rgb(74, 74, 74);margin-top: 0px;margin-bottom: 2px;} 
+.note_ref ol li{line-height:22px; color: rgb(74, 74, 74);margin-top: 0px;margin-bottom: 2px;} 
 
 .note_body > img{max-width:90%; height: auto; text-align: center; margin: auto; display: block;}
 .caption{font-size: small; text-align: center;  display: block;}
