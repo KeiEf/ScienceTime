@@ -10,7 +10,7 @@
     {% elif product.name %}
       <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-via="sciencetime_jp" data-related="ST_phys_bot" class="twitter-share-button" data-show-count="false" data-hashtags="ScienceTime{% for tag in product.tags.all %},{{ tag.name|blank_remove }}{% endfor %}" data-lang="ja">Tweet</a>
     {% elif field.field %}
-      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-via="sciencetime_jp" data-related="ST_phys_bot" class="twitter-share-button" data-show-count="false" data-hashtags="ScienceTime,field.slug" data-lang="ja">Tweet</a>
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-via="sciencetime_jp" data-related="ST_phys_bot" class="twitter-share-button" data-show-count="false" data-hashtags="ScienceTime,{{field.slug}}" data-lang="ja">Tweet</a>
     {% endif %}
 </span>
 
