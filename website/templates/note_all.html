@@ -134,8 +134,9 @@
     </div>
 
   {% if user.is_authenticated %}
-     <small><a type="button" href="{% url 'add_note'  %}">[add note]</a></small>
-     <small><a type="button" href="{% url 'add_field'  %}">[add subject]</a></small>
+  <button type=“button” onclick="location.href='{% url 'add_note'  %}'">add post</button>
+  <button type=“button” onclick="location.href='{% url 'add_field' %}'">add subject</button>
+
   {% endif %}  
   </section>
 </div>
