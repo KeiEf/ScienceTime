@@ -61,6 +61,9 @@
  .note_body > p{font-size:14px;}
  .note_body ul li{font-size:14px;}
  .note_body ol li{font-size:14px;}
+ .note_ref > p{font-size:14px;}
+ .note_ref ul li{font-size:14px;}
+ .note_ref ol li{font-size:14px;}
  .note_image > img{width:95%; height: auto; }
  #toc { font-size:14px;}
 }
