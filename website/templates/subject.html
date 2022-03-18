@@ -50,7 +50,8 @@
             <li></li>
           </ul>
           <figcaption>
-            <h1>{{ item.field }}</h1>
+            <a href="{% url  'field_detail' item.slug %}">
+            <h1>{{ item.field }}</h1></a>
             <span>{{ item.field_eng }}</span>
             <p>{{ item.abstract}}</p>
             <p><a href="#{{ item.id }}" class="modal-button">
