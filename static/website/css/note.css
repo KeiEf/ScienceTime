@@ -31,8 +31,8 @@
  ol.list_parentheses > li{list-style-type:none; counter-increment: cnt; text-indent: -1em; padding-left: 1em; display: block; }
  ol.list_parentheses > li:before{content: "(" counter(cnt) ") ";}
 
-.note_index ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);} 
-.note_index ol li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);} 
+.note_index ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);margin-top: 5px;margin-bottom: 5px;} 
+.note_index ol li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);margin-top: 5px;margin-bottom: 5px;} 
 
 .note_body > img{max-width:90%; height: auto; text-align: center; margin: auto; display: block;}
 .caption{font-size: small; text-align: center;  display: block;}
