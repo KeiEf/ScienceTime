@@ -31,8 +31,9 @@
         {% include 'php/post_sort_btn.php' %} 
 
         {% if user.is_authenticated %}
-          <button type="button" class="btn btn-primary" onclick="location.href='{% url 'add_note'  %}'">add post</button>
-          <button type="button" class="btn btn-primary" onclick="location.href='{% url 'add_field' %}'">add subject</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'add_note'  %}'">add post</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'add_field' %}'">add subject</button>
+          <br>
         {% endif %}  
 
           <ul class="allpost_nav">
@@ -139,8 +140,8 @@
     </div>
 
   {% if user.is_authenticated %}
-    <button type="button" class="btn btn-primary" onclick="location.href='{% url 'add_note'  %}'">add post</button>
-    <button type="button" class="btn btn-primary" onclick="location.href='{% url 'add_field' %}'">add subject</button>
+    <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'add_note'  %}'">add post</button>
+    <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'add_field' %}'">add subject</button>
   {% endif %}  
 
   </section>
