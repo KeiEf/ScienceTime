@@ -20,8 +20,7 @@
  #toc { font-size:18px; color: #1e366a; border-top: solid #1e366a 1px;/*上のボーダー*/ border-bottom: solid #1e366a 1px;/*下のボーダー*/ padding: 0.5em 0 0.5em 0.5em; margin: 15px 0px 15px 0px;}
  .content_table {color: #1e366a; border-top: solid #1e366a 1px;/*上のボーダー*/ border-bottom: solid #1e366a 1px;/*下のボーダー*/ padding: 0.5em 0 0.5em 1.5em;   margin: 15px 0px 15px 0px;}
 
- #toc > ul > li{line-height:25px; color: rgb(74, 74, 74); margin-top: 5px;margin-bottom: 5px;} 
- #toc > ol > li{line-height:25px; color: rgb(74, 74, 74); margin-top: 5px;margin-bottom: 5px; } 
+
 
 .note_body ul {padding: 2px 10px 2px 30px;}
 .note_body ol {padding: 2px 10px 2px 30px;}
@@ -31,6 +30,8 @@
  ol.list_parentheses > li{list-style-type:none; counter-increment: cnt; text-indent: -1em; padding-left: 1em; display: block; }
  ol.list_parentheses > li:before{content: "(" counter(cnt) ") ";}
 
+.note_index ul {padding: 2px 5px 2px 20px;}
+.note_index ol {padding: 2px 5px 2px 20px;}
 .note_index ul li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);margin-top: 5px;margin-bottom: 5px;} 
 .note_index ol li{line-height:25px; font-size:18px; color: rgb(74, 74, 74);margin-top: 5px;margin-bottom: 5px;} 
 
