@@ -11,6 +11,14 @@
               <span class="sr-only">(current)</span>
             </a>
           </li> 
+
+          {% if user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'management' %}">Staff Only              <span class="sr-only">(current)</span>
+            </a>
+          </li> 
+          {% endif %}
+
           <li class="nav-item">
             <a class="nav-link" href="{% url 'posts' %}">ニュース & コラム</a>
           </li>

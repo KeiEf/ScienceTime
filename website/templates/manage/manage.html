@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Staff Only{% endblock %}
+
+{% block social %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <section id="noteSection">
+    <div class="row">
+
+
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="single_post_content">
+        <h2><span>Notes</span></h2>
+
+        {% include 'php/post_sort_btn.php' %} 
+
+        {% if user.is_authenticated %}
+          <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'add_note'  %}'">add note</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'add_field' %}'">add subject</button>
+          <br>
+          <br>
+        {% endif %}  
+
+          <ul class="allpost_nav">
+            {% for post in pages %}
+            <li>
+              <div class="media wow fadeInDown">
+                <a href="{% url 'note_detail' post.pk %}" class="media-left">
+                  {% if post.main_image%}
+                    <img src="{{ post.main_image.url }}" alt="">
+                  {% else %}
+                    <img src="{{ post.field1.cover_image.url}}" alt="">
+                  {% endif %} 
+                </a>
+                <div class="media-body">
+                  【 <a href="{% url  'subject' post.subj_eng %}">{{ post.subject }}</a> | 
+                  <a href="{% url  'field_detail' post.field1.slug %}">{{ post.field1 }}</a> 】
+                  <a href="{% url 'note_detail' post.pk %}" class="catg_title"> {{ post.title }}</a>
+                  <p><small><i class="fa fa-calendar"></i> {{ post.post_date|date:"Y/m/d"  }} <i class="fas fa-eye"></i> {{ post.views }}</small></p>
+
+                  {% if user.is_authenticated %}
+                  {% if user.id == post.author.id %}
+                    <small><a href="{% url 'update_note' post.pk %}">[edit]</a></small>
+                  {% endif %}
+                {% endif %}  
+                </div>
+              </div>
+            </li>
+            {% if forloop.counter|divisibleby:10 %}
+            <li>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        {% include 'paginating.php' %}  
+      </div>
+
+    <!-- popular posts-->
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <aside class="right_content">
+
+        <div class="single_sidebar">
+          <h2><span>人気の記事</span></h2>
+          <ul class="spost_nav">
+            {% for post in popular_list|slice:":5" %}
+            <li>
+              <div class="media wow fadeInDown">             
+                <a href="{% url 'post_detail' post.pk %}" class="media-left">              
+                {% if post.main_image%}
+                  <img src="{{ post.main_image.url }}" alt="">
+                {% else %}
+                  <img src="{{ post.image_url}}" alt="">
+                {% endif %}
+                </a>
+                <div class="media-body">
+                  <a href="{% url 'post_detail' post.pk %}" class="catg_title">
+                    {{ post.title }}
+                  </a>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      <!-- popular items-->
+      <div class="content_sidebar">
+        <h2><span>人気のアイテム</span></h2>
+        <ul class="spost_nav">
+          {% for post in popular_items|slice:":6" %}
+          <li>
+            <div class="media wow fadeInDown">             
+              <a href="{% url 'product_detail' post.pk %}" class="media-left">              
+                {% if post.main_image%}
+                  <img src="{{ post.main_image.url }}" alt="">
+                {% else %}
+                  <img src="{{ post.image_url}}" alt="">
+                {% endif %}
+              </a>
+              <div class="media-body">
+              <a href="{% url 'product_detail' post.pk %}" class="catg_title">
+                {{ post.name }}
+              </a>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>            
+
+    </div>
+
+  {% if user.is_authenticated %}
+    <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'add_note'  %}'">add note</button>
+    <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'add_field' %}'">add subject</button>
+  {% endif %}  
+
+  </section>
+</div>
+
+
+
+{% endblock %}

@@ -31,6 +31,60 @@ class HomeView(ListView):
 #   get_latest_entries(self):
  #     latest_news = Post.object.filer
 
+
+class ManageView(ListView):
+   model = Post
+   template_name = './manage/manage.html'
+
+
+   def get_context_data(self, *args, **kwargs):
+       context = {}
+
+       q_word = self.request.GET.get('query')
+       sort = self.request.GET.get('sort')
+       if sort == "view":
+          object_list =  Note.objects.filter(state="published").order_by('-views')
+       elif sort == "inv_view":
+          object_list =  Note.objects.filter(state="published").order_by('views')
+       elif sort == "date":
+          object_list =  Note.objects.filter(state="published").order_by('-post_date')
+       elif sort == "inv_date":
+          object_list =  Note.objects.filter(state="published").order_by('post_date')
+       elif sort == "all":
+          object_list =  Note.objects.all.order_by('post_date') 
+       elif sort == "private":
+          object_list =  Note.objects.filter(state="private").order_by('post_date')         
+
+       elif q_word:
+          object_list = Note.objects.filter(
+                Q(title__icontains=q_word) 
+                | Q(note_tags__name__icontains=q_word)  | Q(content1__icontains=q_word) 
+                | Q(content2__icontains=q_word) 
+                | Q(quotes__icontains=q_word) | Q(reference__icontains=q_word) 
+                | Q(subject__icontains=q_word) | Q(intro__icontains=q_word)
+                | Q(abstract__icontains=q_word) | Q(caption__icontains=q_word)
+                ).distinct()
+
+       else:        
+          object_list =  Note.objects.filter(state="private").order_by('-post_date')
+
+       paginator = Paginator(object_list, 10) # num per page
+       page = self.request.GET.get('page', 1)
+       try:
+           pages = paginator.page(page)
+       except PageNotAnInteger:
+    	     pages = paginator.page(1)
+       except EmptyPage:
+           pages = paginator.page(1)
+
+       popular_list = Post.objects.filter(state="published").order_by('-views')   
+       popular_items = Product.objects.all().order_by('-views') 
+       context["popular_items"] = popular_items        
+       context["pages"] = pages
+       context["popular_list"] = popular_list
+       context["sort"] = sort
+       return context
+
 class PostView(ListView):
    model = Post
    template_name = 'posts.html'

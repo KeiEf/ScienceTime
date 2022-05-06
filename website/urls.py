@@ -1,12 +1,13 @@
 from django.urls import path
 from . import views 
-from .views import TestView, HomeView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView, FieldView, AllNoteView, NoteTagView, AddNoteView, UpdateNoteView, UpdateNoteContentView, UpdateNoteReferenceView, AddFieldView, UpdateFieldView,FieldDetailView
+from .views import TestView, HomeView, ManageView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView, FieldView, AllNoteView, NoteTagView, AddNoteView, UpdateNoteView, UpdateNoteContentView, UpdateNoteReferenceView, AddFieldView, UpdateFieldView,FieldDetailView
 ##, TestProductDetailView
 from django.views.generic import TemplateView
 
 
 urlpatterns = [
 	path('', HomeView.as_view(), name="index"),
+	path('management', ManageView.as_view(), name="management"),	
 	path('test', TestView.as_view(), name="test"),	
     path('add_post/', AddPostView.as_view(), name="add_post"),
     path('news_and_columns/edit/<int:pk>', UpdatePostView.as_view(), name="update_post"),

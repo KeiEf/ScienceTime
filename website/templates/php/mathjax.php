@@ -12,10 +12,21 @@
               ep: "{\\epsilon}",
               varep: "{\\varepsilon}",
               bm: ["{\\boldsymbol{#1}}",1],
+              sD: ["{\\mathcal{D}}"],
+              sG: ["{\\mathcal{G}}"],
+              sJ: ["{\\mathcal{J}}"],             
               sL: ["{\\mathcal{L}}"],
-              sJ: ["{\\mathcal{J}}"],
+              sN: ["{\\mathcal{N}}"],
               sO: ["{\\mathcal{O}}"],
+              sS: ["{\\mathcal{S}}"],
+              sT: ["{\\mathcal{T}}"],
               sU: ["{\\mathcal{U}}"],
+              frg: ["{\\mathfrak{g}}"],
+              frh: ["{\\mathfrak{h}}"],
+              frgl: ["{\\mathfrak{gl}}"],  
+              frsu: ["{\\mathfrak{su}}"],
+              ad: ["{{\\rm ad}}"],
+              tr: ["{{\\rm tr}}"],
             }
     }     
     };
