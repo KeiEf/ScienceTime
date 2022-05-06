@@ -25,8 +25,8 @@
               frh: ["{\\mathfrak{h}}"],
               frgl: ["{\\mathfrak{gl}}"],  
               frsu: ["{\\mathfrak{su}}"],
-              ad: ["{\\text{\\rm ad}}"],
-              tr: ["{\\text{\\rm tr}}"],
+              ad: ["{\\text{ad}}"],
+              tr: ["{\\text{tr}}"],
             }
     }     
     };
