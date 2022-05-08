@@ -4,7 +4,7 @@ from django.urls import reverse
 from datetime import datetime, date
 from django.utils import timezone
 from taggit.managers import TaggableManager
-###from ckeditor.fields import RichTextField
+from ckeditor.fields import RichTextField
 import uuid
 
 def image_profile(instance, filename):
@@ -52,7 +52,8 @@ class Post(models.Model):
     caption = models.CharField(max_length=500, default='', null=True, blank=True, verbose_name='画像キャプション')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
-    content = models.TextField(default='' , verbose_name='内容')
+  #  content = models.TextField(default='' , verbose_name='内容')
+    content = RichTextField(blank=True, null=True,verbose_name='内容')
     category = models.CharField(max_length=255, default='others')
     post_date = models.DateTimeField(default=timezone.now)
     update_date = models.DateTimeField(verbose_name='更新日時', auto_now=True) 
@@ -73,8 +74,8 @@ class Product(models.Model):
     main_image = models.ImageField(null=True, blank=True, upload_to=image_product, verbose_name='画像')
     image_url = models.CharField(max_length=255, null=True, blank = True, verbose_name='画像url')
     video_url = models.TextField(null=True, blank = True, verbose_name='動画url')
-    description = models.TextField(max_length=500, blank=True, verbose_name='概略')          
-    body = models.TextField(default='' ,blank=True ,verbose_name='解説')
+    description = models.TextField(max_length=500, blank=True, verbose_name='概略')         
+    body = RichTextField(default='' ,blank=True ,verbose_name='解説')
     genre = models.CharField(max_length=50, blank=True, default='雑貨')
     sub_genre = models.CharField(max_length=255, blank=True, default='others')   
     post_date = models.DateTimeField(auto_now_add=True)
@@ -123,11 +124,11 @@ class Note(models.Model):
     video = models.TextField(null=True, blank=True, verbose_name='ビデオ')   
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     abstract = models.TextField(max_length=255, blank=True, verbose_name='概略')
-    intro = models.TextField(blank=True, verbose_name='導入')
+    intro = RichTextField(blank=True, verbose_name='導入')
     table = models.TextField(blank=True, verbose_name='目次', default='<li><a href="#index1"></a></li>\n<li><a href="#index2"></a></li>\n<li><a href="#index3"></a></li>\n<li><a href="#index_ref">参考文献</a></li>')
-    content1 = models.TextField(verbose_name='内容1', default='<h4 id="index1"></h4>\n<p>\n</p>')
-    content2 = models.TextField(verbose_name='内容2', blank=True, default='')
-    reference =  models.TextField(verbose_name='参考文献', blank=True, null=True, default='')
+    content1 = RichTextField(verbose_name='内容1', default='<h4 id="index1"></h4>\n<p>\n</p>')
+    content2 = RichTextField(verbose_name='内容2', blank=True, default='')
+    reference =  RichTextField(verbose_name='参考文献', blank=True, null=True, default='')
     subject = models.CharField(max_length=255, default='None')
     subj_eng = models.CharField(max_length=255, default='')
   #  field1 = models.CharField(max_length=255, default='None', blank=True)
