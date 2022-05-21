@@ -617,11 +617,11 @@ body {
 
 
   .product-item {border: 1px solid #eee;margin-bottom: 30px;height: 500px;}
-  .product-item .down-content {padding: 30px;position: relative;}
+  .product-item .down-content {padding: 20px;position: relative;}
   .product-item img {width: auto;max-width: 100%;height: 100%;}
   .product-item .down-content h4 { font-size: 17px;color: #1a6692; margin-bottom: 20px;}
   .product-item .down-content h6 {position: absolute;top: 30px;right: 30px;font-size: 18px;color: #121212;}
-  .product-item .down-content p  margin-bottom: 20px;}
+  .product-item .down-content p  margin-bottom: 10px;}
   .product-item .down-content ul li {display: inline-block;}
   .product-item .down-content ul li i {color: blue;font-size: 14px;}
   .product-item .down-content span {position: absolute;right: 30px;bottom: 30px;font-size: 13px;color: blue;font-weight: 500;}
