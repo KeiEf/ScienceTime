@@ -57,6 +57,7 @@
                </div>
 
           </div>
+          
           <div class="col-md-12">
             <div class="filters-content">
                 <div class="row grid">
@@ -83,7 +84,7 @@
                              {% endif %}
                           {% endfor %}
                         </p>-->
-                        <p class="description">{{ product.description |truncatechars:200}}</p>
+                        <p class="description" id="description">{{ product.description |truncatechars:200}}</p>
                         <div class="link_buttons">
                            {% if product.amazon_url %}
                               <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
@@ -114,7 +115,11 @@
       </section>
     </div>
       
-    
+    <script>
+       var str = document.getElementById("description").innerHTML;
+       var replaced = str.replace("<li>","")..replace("</li>","")
+       document.getElementById("desciption").innerHTML = replaced;
+    </script>
 
 
     
