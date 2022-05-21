@@ -43,9 +43,9 @@
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="product_left">
             {% if product.main_image %}
-            <img src="{{ product.main_image.url }}" alt="">
+            <a href="{{ product.main_url }}"><img src="{{ product.main_image.url }}" alt=""></a>
             {% else %}
-            <img src="{{ product.image_url}}" alt="">
+            <a href="{{ product.main_url }}"><img src="{{ product.image_url}}" alt=""></a>
             {% endif %}
             </div>
           </div>

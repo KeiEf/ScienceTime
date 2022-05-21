@@ -123,7 +123,7 @@
                       {% endif %}
                       <span class="overlay"></span> </a>
                     <figcaption> <a href="{% url 'product_detail' post.pk %}" >{{ post.name }}</a> </figcaption>
-                      <p>{{ post.description |truncatechars:50}}</p>
+                      <p>{{ post.description |truncatechars:50 |html_replace}}</p>
                     </figure>
                   </li>
                   {% endfor %}
