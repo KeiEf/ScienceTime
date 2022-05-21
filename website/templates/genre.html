@@ -85,7 +85,7 @@
                              {% endif %}
                           {% endfor %}
                         </p>-->
-                        <div class="description"><p>{{ product.description |truncatechars:200 |html_replace}}</p>
+                        <div class="description"><p>{{ product.description |truncatechars:150 |html_replace}}</p>
                         </div>
                         <div class="link_buttons">
                            {% if product.amazon_url %}
