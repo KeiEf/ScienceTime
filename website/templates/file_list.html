@@ -1,0 +1,36 @@
+{% extends 'iframe_base.html' %}
+{% load static %}
+
+{% block title %}File List{% endblock %}
+{% block content %}
+
+<button class="btn btn-primary" onclick="location.href='{% url 'image_upload' %}'">新規投稿</button>
+
+{% for file in pages %}
+    <div class="file_list">
+      <div class="row">
+          <div class="col_left">
+            <img src="{{ file.image.url }}" width="120px">
+          </div>
+
+          <div class="col_right">
+
+<textarea class="list_url" id="{{ file.id}}">
+  <div class='figure'>
+    <img src='{{ file.image.url }}'>
+    <p class='caption'>キャプション</p>
+  </div>
+</textarea>
+
+{% include 'php/text_copy.php' %}
+
+        </div>
+
+      </div>  
+    </div>
+{% endfor %}
+{% include 'php/paginating.php' %}  
+
+
+{% endblock %}
+

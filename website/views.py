@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from django.views.generic.edit import FormView
-from .models import Product, Post, Genre, Category, Note, Field, Book
-from .forms import PostForm, EditForm, EditProductForm, ContactForm,PostNoteForm, EditNoteForm, EditNoteContentForm,  EditNoteReferenceForm, AddFieldForm,EditFieldForm
+from .models import Product, Post, Genre, Category, Note, Field, Book, File
+from .forms import PostForm, EditForm, EditProductForm, ContactForm,PostNoteForm, EditNoteForm, EditNoteContentForm,  EditNoteReferenceForm, AddFieldForm,EditFieldForm, ImgUpForm
+
 from django.db.models import Max, Case, When, Sum, Count, Q, F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
@@ -693,7 +694,44 @@ def api_click(request, pk):
 
 
 
-        
+#############
 
+
+class ImgUploadView(CreateView):
+    model = File
+    template_name = 'image_upload.html'
+    form_class = ImgUpForm
+
+    def form_valid(self, form):
+        firma = form.save()
+        return redirect('file_uploaded', firma.pk)
+
+class FileUploadedView(DetailView):
+    model = File
+    template_name = 'file_uploaded.html'
+
+    def get(self, request, *args, **kwargs):
+       file = get_object_or_404(File, id=self.kwargs['pk'])
+       return super().get(request, *args, **kwargs)
+
+class FileListView(ListView):
+    model = File
+    template_name = 'file_list.html'
+    def get_context_data(self):
+        context={}
+        object_list = File.objects.filter(uploader=self.request.user).order_by('-post_date')
+        paginator = Paginator(object_list, 5) # num per page
+        page = self.request.GET.get('page', 1)
+
+        try:
+         	pages = paginator.page(page)
+        except PageNotAnInteger:
+    	    pages = paginator.page(1)
+        except EmptyPage:
+          	pages = paginator.page(1)
+
+        context["pages"] = pages
+        return context
+###
 
 

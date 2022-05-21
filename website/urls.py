@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views 
-from .views import TestView, HomeView, ManageView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView, FieldView, AllNoteView, NoteTagView, AddNoteView, UpdateNoteView, UpdateNoteContentView, UpdateNoteReferenceView, AddFieldView, UpdateFieldView,FieldDetailView
+from .views import TestView, HomeView, ManageView, ProductView, PostView, TagIndexView, ProductDetailView, PostDetailView, AddPostView, UpdatePostView, AllPostView, PostTagView, GenreView, CategoryView, ContactFormView, ContactResultView, UpdateProductView, NoteDetailView, FieldView, AllNoteView, NoteTagView, AddNoteView, UpdateNoteView, UpdateNoteContentView, UpdateNoteReferenceView, AddFieldView, UpdateFieldView,FieldDetailView,ImgUploadView, FileUploadedView,FileListView
 ##, TestProductDetailView
 from django.views.generic import TemplateView
 
@@ -36,6 +36,9 @@ urlpatterns = [
     path('contact/result/', ContactResultView.as_view(), name='contact_result'),
     path("api/book/<int:pk>/click/", views.api_click, name="api_click"),
     path('ads.txt', TemplateView.as_view(template_name='ads/ads.txt', content_type='text/plain')),
+    path('image_upload', ImgUploadView.as_view(), name="image_upload"),
+    path('file_uploaded/<int:pk>', FileUploadedView.as_view(), name="file_uploaded"),
+    path('file_list', FileListView.as_view(), name="file_list"),
 	##path('test_products/<int:pk>', TestProductDetailView.as_view(), name="test_product_detail"),
     ]
 

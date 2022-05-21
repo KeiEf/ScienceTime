@@ -14,9 +14,47 @@
       <form method="POST" enctype="multipart/form-data">
        {% csrf_token %}
        <!-- {{ form.as_table }} -->
+
+
+       {{ form.author }}
+       <p>タイトル：{{ form.title }}</p>
+       <p>quote：{{ form.quotes }}</p>
+       <p>トップ画像：{{ form.main_image }}</p>       
+
+
+       <div class="row">
+         <div class="col-sm"><p>{{ form.field1 }}</p></div>
+         <div class="col-sm"><p>タグ：{{ form.note_tags }}</p></div>
+       </div>
+       <br>
+       <p>概要：{{ form.abstract }}</p>
+       <p>導入：{{ form.intro }}</p>      
+       <p>内容：</p>
+       <div class="block_contents">
+         <div class="block_item1">
+           <label class="open" for="pop-up"><i class="fas fa-image"></i></label>
+         </div>
+       </div>
+       <div class="form_textbox">
+       {{ form.content1 }}
+       </div>
+       <div class="form_textbox">
+       {{ form.content2 }}
+       </div>
+       <p>参考文献：
+       {{ form.reference }}</p>
+
+       <div class="row">
+         <div class="col-sm"><p>公開状態：{{ form.state }}</p></div>
+         <div class="col-sm"><p>時間：<br>{{ form.post_date }}</p></div>
+       </div>
+
+
        {{ form.media }}
-       {{ form.as_p }}
+       {% include "php/popups.php" %} 
+      
       <button class="btn btn-secondary">Post</button>
+   </form>
    </div>
    
    <script>

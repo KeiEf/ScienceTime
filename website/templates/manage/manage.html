@@ -10,8 +10,8 @@
 
 <div class="container">
   <section id="noteSection">
+    {% if user.is_superuser %}
     <div class="row">
-
 
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="single_post_content">
@@ -121,7 +121,14 @@
     <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'add_field' %}'">add subject</button>
   {% endif %}  
 
+  {% else %}
+
+  you are not allowed here 
+
+  {% endif %}
+
   </section>
+
 </div>
 
 

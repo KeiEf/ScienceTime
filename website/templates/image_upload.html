@@ -1,0 +1,25 @@
+{% extends 'iframe_base.html' %}
+{% load static %}
+
+{% block title %}Image Upload{% endblock %}
+{% block content %}
+
+   <div class="form-group">
+      <form method="POST" enctype="multipart/form-data">
+       {% csrf_token %}
+       <!-- {{ form.as_table }} -->
+       {{ form.media }}
+       {{ form.as_p }}
+      <button class="btn btn-primary">投稿</button>
+   </div>
+
+   <p><a href="{% url 'file_list' %}">アップロード済みファイルを使用する</a></p>
+
+      <!--obtain name-->
+      <script>
+         var name = "{{ user.id }}";
+         document.getElementById("elder").value = name;
+      </script>
+   
+
+{% endblock %}

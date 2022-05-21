@@ -1,0 +1,22 @@
+{% extends 'iframe_base.html' %}
+{% load static %}
+
+{% block title %}Image Uploaded{% endblock %}
+{% block content %}
+
+<h1>アップロード完了</h1>
+
+<p>下のコードを挿入したい位置に貼り付けてください。</p>
+<textarea class="uploaded_url" id="{{ file.id}}">
+  <div class='figure'>
+    <img src='{{ file.image.url }}'>
+    <p class='caption'>キャプション</p>
+  </div>
+</textarea>
+
+{% include 'php/text_copy.php' %}
+
+<button class="btn btn-primary" onclick="location.href='{% url 'image_upload' %}'">新規投稿</button>
+
+{% endblock %}
+

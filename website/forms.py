@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Product, Genre, Category, Note, Field
+from .models import Post, Product, Genre, Category, Note, Field, File
 from django.conf import settings
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse
@@ -115,7 +115,7 @@ class EditProductForm(forms.ModelForm):
 class PostNoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('title', 'quotes','main_image', 'caption','video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','content1','content2', 'reference' , 'note_tags', 'post_date', 'state')
+        fields = ('title', 'quotes','main_image', 'caption','video', 'author','field1','abstract','intro','content1','content2', 'reference' , 'note_tags', 'post_date', 'state')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -138,7 +138,7 @@ class PostNoteForm(forms.ModelForm):
 class EditNoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('title', 'quotes', 'main_image', 'caption', 'video', 'author', 'subject', 'subj_eng' ,'field1','abstract','intro','content1','content2','reference' , 'note_tags', 'post_date', 'state')
+        fields = ('title', 'quotes', 'main_image', 'caption', 'video', 'author','field1','abstract','intro','content1','content2','reference' , 'note_tags', 'post_date', 'state')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -197,4 +197,13 @@ class EditFieldForm(forms.ModelForm):
         widgets = {    
             'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),    
             'index': forms.Textarea(attrs={'class': 'form-control', 'rows':30, 'style': 'font-size: small'}),
+        }
+
+class ImgUpForm(forms.ModelForm):
+    class Meta:
+        model = File
+        fields = ('uploader','image',)
+        widgets = {
+            'uploader': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),
+            'image' : forms.FileInput(attrs={'class': 'input-image-control'}),
         }

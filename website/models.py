@@ -19,6 +19,10 @@ def image_product(instance, filename):
 def image_note(instance, filename):
     return 'images/note/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 
+def image_file(instance, filename):
+    return 'images/file/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+
+
 class Tag(models.Model):
     tagname = models.CharField(max_length=50)
 #    slug = models.SlugField(blank=True)
@@ -143,6 +147,11 @@ class Note(models.Model):
     def __str__(self):
        return str(self.id) + ' | '  + self.title 
 
+    def save(self, *args, **kwargs): # new
+        self.subject = self.field1.subject
+        self.subj_eng = self.field1.subj_eng
+        return super().save(*args, **kwargs)     
+
 class Book(models.Model):
 
     title = models.CharField(max_length=50, verbose_name='製品名')
@@ -162,3 +171,9 @@ class Book(models.Model):
 
     def __str__(self):
        return '(' + str(self.views) + ') '  +self.title
+
+class File(models.Model):
+
+    uploader = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(null=True, blank=True, upload_to=image_file, verbose_name='画像')
+    post_date = models.DateTimeField(verbose_name='投稿日時', auto_now=True) 
