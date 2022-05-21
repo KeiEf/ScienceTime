@@ -2,6 +2,10 @@
 {% load static %}
 {% block title %}All Posts{% endblock %}
 
+{% block additional_static %}
+  {% include 'php/mathjax.php' %}
+{% endblock %}
+
 {% block social %}
   <meta property="og:title" content="ニュースとコラム一覧" />
   <meta property="og:description" content="科学とテクノロジーに関する最新のニュースから知られざる逸話まで。" />
