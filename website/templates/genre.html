@@ -84,7 +84,7 @@
                              {% endif %}
                           {% endfor %}
                         </p>-->
-                        <p class="description" id="description">{{ product.description |truncatechars:200}}</p>
+                        <p class="description" id="{{ product.id }}">{{ product.description |truncatechars:200}}</p>
                         <div class="link_buttons">
                            {% if product.amazon_url %}
                               <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
@@ -101,6 +101,12 @@
                       </div>
                     </div>
                   </div>
+
+                  <script>
+                    var str = documents.getElementById("{{ product.id }}").innerHTML;
+                    var replaced = str.replaceAll("<li>","").replace("</li>","").replace("<ul>","").replace("</ul>","")
+                    documents.getElementById("{{ product.id }}").innerHTML = replaced;
+                  </script>
                     
                   {% endfor %}
                   
@@ -115,11 +121,7 @@
       </section>
     </div>
       
-    <script>
-       var str = document.getElementById("description").innerHTML;
-       var replaced = str.replaceAll("<li>","").replace("</li>","").replace("<ul>","").replace("</ul>","")
-       document.getElementById("desciption").innerHTML = replaced;
-    </script>
+
 
 
     
