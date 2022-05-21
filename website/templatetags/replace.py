@@ -9,3 +9,7 @@ def blank_remove(value):
 @register.filter
 def math_scroll(value):
     return value.replace("\\begin{align}","<div class='eq'>\n\\begin{align}").replace("\\end{align}","\\end{align}</div>").replace("\\begin{equation}","<div class='eq'>\n\\begin{equation}").replace("\\end{equation}","\\end{equation}</div>")
+
+@register.filter
+def html_replace(value):
+    return value.replace("<li>","").replace("</li>","").replace("<ul>","").replace("</ul>","").replace("<ol>","").replace("</ol>","")
