@@ -637,7 +637,7 @@ body {
   .image-content{width: 100%; height: 200px; text-align: center; background-color: black;}
   .tag_list{font-size: small;
    width: 100%; overflow: hidden; white-space: nowrap;}
-  .link_buttons{align-items: left;width: 100%;height: 40px;}
+  .link_buttons{align-items: left;width: 100%;height: 40px;margin: 5px 0;}
   .btn_amazon {width: 90px; height: 30px; background-color:#FF9900; color:black; border: 1px solid #FF9900; border-radius: 5px;/*角の丸み*/ text-align: center;}
   .btn_rakuten {width: 90px; height: 30px; background-color:#bf0000; color:white ; border: 1px solid #bf0000; border-radius: 5px;/*角の丸み*/text-align: center;}
   .btn_suzuri {width: 90px; height: 30px;background-color:black; color:white; border: 1px solid black; border-radius: 5px;/*角の丸み*/text-align: center; } 
