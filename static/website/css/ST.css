@@ -413,33 +413,6 @@ body {
       color: blue;
   }
   
-  .product-item {border: 1px solid #eee;margin-bottom: 30px;height: 500px;}
-  .product-item .down-content {padding: 30px;position: relative;}
-  .product-item img {width: auto;max-width: 100%;height: 100%;}
-  .product-item .down-content h4 { font-size: 17px;color: #1a6692; margin-bottom: 20px;}
-  .product-item .down-content h6 {position: absolute;top: 30px;right: 30px;font-size: 18px;color: #121212;}
-  
-  .product-item .down-content p {
-      margin-bottom: 20px;
-  }
-  
-  .product-item .down-content ul li {
-      display: inline-block;
-  }
-  
-  .product-item .down-content ul li i {
-      color: blue;
-      font-size: 14px;
-  }
-  
-  .product-item .down-content span {
-      position: absolute;
-      right: 30px;
-      bottom: 30px;
-      font-size: 13px;
-      color: blue;
-      font-weight: 500;
-  }
    
   
   /* Best Features */
@@ -533,10 +506,6 @@ body {
   .product_right ul li{line-height:25px;list-style-type: disc; color:#4a4a4a;font-size: 14px;}
   .product_right ol{position:relative; padding-left:25px;}
   .product_right ol li{line-height:25px;color: #4a4a4a;font-size: 14px;}
-
-
-  
-
 
   .product_detail > p {font-size: 15px;}
   .product_detail h3 {padding: 0.5em 0; border-top: solid 3px #191970; border-bottom: solid 3px #191970;}
@@ -646,6 +615,17 @@ body {
     .right-image{ width: 100%;order: 1; margin-bottom: 10px;}  
 }
 
+
+  .product-item {border: 1px solid #eee;margin-bottom: 30px;height: 500px;}
+  .product-item .down-content {padding: 30px;position: relative;}
+  .product-item img {width: auto;max-width: 100%;height: 100%;}
+  .product-item .down-content h4 { font-size: 17px;color: #1a6692; margin-bottom: 20px;}
+  .product-item .down-content h6 {position: absolute;top: 30px;right: 30px;font-size: 18px;color: #121212;}
+  .product-item .down-content p  margin-bottom: 20px;}
+  .product-item .down-content ul li {display: inline-block;}
+  .product-item .down-content ul li i {color: blue;font-size: 14px;}
+  .product-item .down-content span {position: absolute;right: 30px;bottom: 30px;font-size: 13px;color: blue;font-weight: 500;}
+
   .products .filters ul li.active,
   .products .filters ul li:hover {color: blue;}
   
@@ -657,11 +637,11 @@ body {
   .image-content{width: 100%; height: 200px; text-align: center; background-color: black;}
   .tag_list{font-size: small;
    width: 100%; overflow: hidden; white-space: nowrap;}
-  .link_buttons{align-items: left;width: 100%;}
+  .link_buttons{align-items: left;width: 100%;height: 100px;}
   .btn_amazon {width: 90px; height: 30px; background-color:#FF9900; color:black; border: 1px solid #FF9900; border-radius: 5px;/*角の丸み*/ text-align: center;}
   .btn_rakuten {width: 90px; height: 30px; background-color:#bf0000; color:white ; border: 1px solid #bf0000; border-radius: 5px;/*角の丸み*/text-align: center;}
   .btn_suzuri {width: 90px; height: 30px;background-color:black; color:white; border: 1px solid black; border-radius: 5px;/*角の丸み*/text-align: center; } 
-  .description{height: 120px;overflow: hidden;}
+  .description{max-height: 400px;overflow: hidden;}
   .prod_frame {margin: 5px 15px; padding: 15px; width: 70%; border: 1px solid #191970; border-radius: 10px; margin-left: auto; margin-right: auto;}
   .prod_left{float: left; text-align: center;  width: 50%; margin-left: auto; margin-right: auto;}
   .prod_right{width: 50%; float:left; margin-left: 0px; margin-right: auto; 	position: relative; }
