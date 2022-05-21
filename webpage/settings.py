@@ -145,6 +145,8 @@ USE_TZ = True
 
 ALLOW_UNICODE_SLUGS = True
 
+X_FRAME_OPTIONS = 'ALLOW'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

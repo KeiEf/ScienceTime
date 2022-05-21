@@ -9,19 +9,71 @@
     {% if user.id == note.author.id %}
 
     <h1>Update Note</h1>
+    <a href="{% url  'all_notes'  %}">ノート一覧</a>
     <br/>
-    <br/>
+    <br>
     <div class="form-group">
       <form method="POST" enctype="multipart/form-data">
 
        {% csrf_token %}
-      <!-- {{ form.as_table }} -->
-       {{ form.media }}
-       {{ form.as_p }}
 
-       <button class="btn btn-secondary">Update</button>
-       </form>
+       {{ form.author }}
+       {% if form.title  %}
+       <p>タイトル：{{ form.title }}</p>
+       <p>quote：{{ form.quotes }}</p>
+       <p>トップ画像：{{ form.main_image }}</p>       
+       {% endif %}
+
+       {% if form.field1 %}
+       <div class="row">
+         <div class="col-sm"><p>{{ form.field1 }}</p></div>
+         <div class="col-sm"><p>タグ：{{ form.note_tags }}</p></div>
+       </div>
+       {% endif %}
+       <br>
+       {% if form.content1 %}
+       <p>概要：{{ form.abstract }}</p>
+       <p>導入：{{ form.intro }}</p>      
+       <p>内容：</p>
+       <div class="block_contents">
+         <div class="block_item1">
+           <label class="open" for="pop-up"><i class="fas fa-image"></i></label>
+         </div>
+       </div>
+       <div class="form_textbox">
+       {{ form.content1 }}
+       </div>
+       <div class="form_textbox">
+       {{ form.content2 }}
+       </div>
+       {% endif %}
+
+       {% if  form.reference  %}
+       <p>参考文献：{{ form.reference }}</p>
+       {% endif %}
+
+       <div class="row">
+         {% if form.state  %}
+         <div class="col-sm"><p>公開状態：{{ form.state }}</p></div>
+         {% endif %}
+         {% if  form.post_date  %}
+         <div class="col-sm"><p>時間：<br>{{ form.post_date }}</p></div>
+         {% endif %}
+       </div>
+
+
+       {{ form.media }}
+       {% include "php/popups.php" %} 
+      
+      <button class="btn btn-secondary">Post</button>
+    </form>
     </div>
+
+    <script>
+      var name = "{{ user.id }}";
+      document.getElementById("elder").value = name;
+   </script>
+
     {% else %}
    
        You're not allowed here.

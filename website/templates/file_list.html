@@ -16,9 +16,9 @@
           <div class="col_right">
 
 <textarea class="list_url" id="{{ file.id}}">
-  <div class='figure'>
+  <div class='note_figure'>
     <img src='{{ file.image.url }}'>
-    <p class='caption'>キャプション</p>
+    <p>キャプション</p>
   </div>
 </textarea>
 
@@ -29,8 +29,6 @@
       </div>  
     </div>
 {% endfor %}
-{% include 'php/paginating.php' %}  
-
 
 {% endblock %}
 

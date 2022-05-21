@@ -151,8 +151,8 @@ class EditNoteForm(forms.ModelForm):
             'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'intro': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
            # 'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
-            'content1': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
-            'content2': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),            
+            'content1': forms.Textarea(attrs={'class': 'form-control', 'rows':10, 'style': 'font-size: small'}),
+            'content2': forms.Textarea(attrs={'class': 'form-control', 'rows':10, 'style': 'font-size: small'}),            
             'reference': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
             'state': forms.Select(choices=state_list, attrs={'class': 'form-control'}),
         }
@@ -160,15 +160,15 @@ class EditNoteForm(forms.ModelForm):
 class EditNoteContentForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('quotes','abstract','intro','content1', 'content2')
+        fields = ('abstract','intro','content1', 'content2')
 
         widgets = { 
             'quotes': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'abstract': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
             'intro': forms.Textarea(attrs={'class': 'form-control', 'rows':3, 'style': 'font-size: small'}),
          #   'table': forms.Textarea(attrs={'class': 'form-control', 'rows':5, 'style': 'font-size: small'}),
-            'content1': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
-            'content2': forms.Textarea(attrs={'class': 'form-control', 'rows':50, 'style': 'font-size: small'}),
+            'content1': forms.Textarea(attrs={'class': 'form-control', 'rows':10, 'style': 'font-size: small'}),
+            'content2': forms.Textarea(attrs={'class': 'form-control', 'rows':10, 'style': 'font-size: small'}),
         }
 
 class EditNoteReferenceForm(forms.ModelForm):

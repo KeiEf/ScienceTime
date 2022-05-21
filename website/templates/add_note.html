@@ -7,8 +7,9 @@
   
   {% if user.is_authenticated %}
   <h1>Add Note</h1>
+  <a href="{% url  'all_notes'  %}">ノート一覧</a>
   <br/>
-  <br/>
+  <br>
 
    <div class="form-group">
       <form method="POST" enctype="multipart/form-data">
