@@ -2,6 +2,11 @@
 {% load static %}
 {% block title %}All Notes{% endblock %}
 
+
+{% block additional_static %}
+  {% include 'php/mathjax.php' %}
+{% endblock %}
+
 {% block social %}
   <meta property="og:title" content="レクチャーノート一覧" />
   <meta property="og:description" content="自然科学とテクノロジーの諸分野に関するレクチャーノー。" />
