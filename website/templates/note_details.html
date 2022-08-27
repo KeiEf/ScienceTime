@@ -146,7 +146,7 @@
               <div class="note_body">
                 <span class="note_heading">はじめに</span>
                 <div id="note_id-0">
-                <p>{{ note.intro|math_scroll|safe }}</p>
+                <p>{{ note.intro|math_scroll|safe|tex_additional }}</p>
                 </div>
                 <br>
                 <span><small>keywords: 
@@ -181,7 +181,7 @@
               {% endif %} 
               <!--post body-->
               <div class="note_body" id="note_id-1">
-                {{ note.content1|math_scroll|safe }}
+                {{ note.content1|math_scroll|tex_additional|safe }}
               </div>
               {% if note.content2 %}
               <hr>
@@ -190,7 +190,7 @@
               </div>
               <hr>
               <div class="note_body" id="note_id-2">
-                {{ note.content2|math_scroll|safe }}
+                {{ note.content2|math_scroll|tex_additional|safe }}
               </div>  
               {% endif %}
               
