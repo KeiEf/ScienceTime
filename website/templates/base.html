@@ -89,6 +89,9 @@
                   <li class="nav-item">
                       <a class="nav-link" href="{% url 'post_top' %}">News and Columns</a>
                   </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Members only</a>
+                  </li>                  
                   {% if request.user.is_staff %}
                   <li class="nav-item">
                       <a class="nav-link" href="{% url 'admin_dashboard' %}">Dashboard</a>
