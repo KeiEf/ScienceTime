@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_static %}
+  <link rel="stylesheet" href="{% static 'website/css/manage.css' %}">
+{% endblock %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1>Management panel</h1>
+    
+    <div class="dashboard-stats">
+        <div class="stat-box">
+            <h2>Total Notes</h2>
+            <p>{{ total_notes }}</p>
+        </div>
+        <div class="stat-box">
+            <h2>Total Users</h2>
+            <p>{{ total_users }}</p>
+        </div>
+        <div class="stat-box">
+            <h2>Draft Notes</h2>
+            <p>{{ drafts }}</p>
+        </div>
+    </div>
+
+    <div class="dashboard-buttons">
+        <h2>Article lists</h2>
+        <a href="{% url 'all_notes' %}" class="btn">Notes</a>
+        <a href="{% url 'all_posts' %}" class="btn">Posts</a>
+    </div>
+
+    <div class="dashboard-buttons">
+        <h2>Management</h2>
+        <a href="{% url 'add_note' %}" class="btn">Add new note</a>
+        <a href="{% url 'add_post' %}" class="btn">Add new post</a>
+        <a href="{% url 'admin:index' %}" class="btn">Django Admin</a>
+    </div>
+</div>
+{% endblock %}

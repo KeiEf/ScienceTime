@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Database Diagnostics</h1>
+
+<h2>website_field Schema</h2>
+<table>
+    <tr><th>Column</th><th>Type</th><th>Nullable</th></tr>
+    {% for col in schema %}
+    <tr><td>{{ col.0 }}</td><td>{{ col.1 }}</td><td>{{ col.2 }}</td></tr>
+    {% endfor %}
+</table>
+
+<h2>Problem Records</h2>
+<table>
+    <tr><th>ID</th><th>subject_id</th><th>Type</th></tr>
+    {% for rec in bad_records %}
+    <tr><td>{{ rec.0 }}</td><td>{{ rec.1 }}</td><td>{{ rec.2 }}</td></tr>
+    {% empty %}
+    <tr><td colspan="3">No bad records found</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

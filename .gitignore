@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+env/
+.venv/
+.env
+venv_ST/
+
+# Node.js
+node_modules/
+
+# Database
+*.sqlite3
+
+# Static files
+/staticfiles/
+/media/
+
+# IDE
+.vscode/
+.idea/
+
+# Heroku
+*.log
+.heroku/
+slug.tar.gz
+app/
+
+# キャッシュ
+__pycache__/
+*.pyc

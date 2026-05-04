@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block additional_static %}
+  <link rel="stylesheet" href="{% static 'website/css/book.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row gx-4">
+
+    <!-- Main Content -->
+    <main class="col-lg-9 px-2">
+      <article class="card border-0 shadow-sm mb-4 px-2">
+        <div class="card-header bg-white border-0">
+          <h1 class="display-5 fw-bold my-3">{{ subject }}</h1>
+        </div>
+
+        <div class="card-body">
+          <div class="component">
+            <ul class="align">
+              {% for item in fields %}
+              <li>
+                <figure class="book">          
+                  <!-- Front -->        
+                  <ul class='hardcover_front'>
+                    <li>
+                      <img src="{{ item.cover_image.url }}" alt="" width="100%" height="100%">
+                    </li>
+                    <li></li>
+                  </ul>        
+                  
+                  <!-- Pages -->        
+                  <ul class='page'>
+                    <li></li>
+                    <li>
+                      <a href="{% url 'field_detail' item.pk %}" class="btn btn-sm btn-outline-primary">
+                        詳細
+                      </a>    
+                    </li>
+                    <li></li>
+                    <li></li>
+                  </ul> 
+
+                  <!-- Back -->        
+                  <ul class='hardcover_back'>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <ul class='book_spine'>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <figcaption>
+                    <a href="{% url 'field_detail' item.pk %}">
+                    <h1>{{ item.field }}</h1></a>
+                    <span>{{ item.field_eng }}</span>
+                    <p>{{ item.abstract|truncatechars:80  }}</p>
+                    <p><a href="{% url 'field_detail' item.pk %}" class="modal-button">目次を開く</a></p> 
+                  </figcaption>
+                </figure>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+
+      </article>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="col-lg-3 ps-lg-2">
+      <div class="sticky-top" style="top: 20px;">
+        <!-- Related Notes -->
+        <div class="card border-0 shadow-sm mb-3">
+          <div class="card-header">
+            <h5 class="card-title mb-0">
+              <i class="bi bi-collection me-2"></i>Subject list
+            </h5>
+          </div>
+          <div class="card-body p-2">
+            <ul class="list-group list-group-flush">
+
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Search Filter -->
+        <div class="card border-0 shadow-sm">
+          <div class="card-header">
+            <h5 class="card-title mb-0">
+              <i class="bi bi-funnel me-2"></i>Filter
+            </h5>
+          </div>
+          <div class="card-body">
+            <form method="get">
+              <div class="mb-3">
+                <label for="search" class="form-label">Search</label>
+                <input type="text" class="form-control" id="search" name="q" value="{{ request.GET.q }}">
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Apply</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- Modal for Quick View -->
+<div class="modal fade" id="bookModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <!-- Modal content will be loaded via AJAX -->
+    </div>
+  </div>
+</div>
+
+<!-- Mobile TOC Button -->
+<button id="mobile-toc-toggle" class="btn btn-primary d-lg-none position-fixed" style="bottom: 20px; right: 20px; z-index: 1000;">
+  <i class="bi bi-list"></i> Contents
+</button>
+
+<script>
+// Mobile TOC toggle functionality
+document.getElementById('mobile-toc-toggle').addEventListener('click', function() {
+  document.querySelector('.col-lg-3').classList.toggle('mobile-toc-visible');
+});
+
+// Quick view modal
+document.querySelectorAll('.modal-button').forEach(button => {
+  button.addEventListener('click', function(e) {
+    e.preventDefault();
+    const url = this.getAttribute('href');
+    fetch(url)
+      .then(response => response.text())
+      .then(html => {
+        document.querySelector('#bookModal .modal-content').innerHTML = html;
+        const modal = new bootstrap.Modal(document.getElementById('bookModal'));
+        modal.show();
+      });
+  });
+});
+
+// Book hover effect enhancement
+document.querySelectorAll('.book').forEach(book => {
+  book.addEventListener('mouseenter', function() {
+    this.classList.add('animate__pulse');
+  });
+  book.addEventListener('mouseleave', function() {
+    this.classList.remove('animate__pulse');
+  });
+});
+</script>
+{% endblock %}

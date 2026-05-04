@@ -1,0 +1,301 @@
+/* Note Page Styles */
+
+/* Note Detail Page */
+.note-article {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  color: black;
+}
+
+.note-article img{
+  max-width: 100%;
+}
+
+.article-content {
+  line-height: 1.8;
+}
+
+.article-content h2 {
+  font-size: 1.4rem;
+  margin-top: 3rem;
+  border-left: solid 5px #191970;
+  padding: 0.25em 0.5em;
+}
+
+.article-content h3 {
+  font-size: 1.2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.2rem;
+}
+
+
+/* Fancy Quote Section */
+.quote-section {
+  position: relative;
+  margin: 3rem 0;
+}
+
+.quote-container {
+  position: relative;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  border-left: solid 5px #191970;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.quote-content {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+  position: relative;
+  z-index: 2;
+  font-style: italic;
+  margin: 0;
+}
+
+.quote-mark {
+  position: absolute;
+  font-size: 6rem;
+  color: rgba(0,123,255,0.1);
+  font-family: Georgia, serif;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.quote-mark.start {
+  top: 0.5rem;
+  left: 1rem;
+}
+
+.quote-mark.end {
+  bottom: -2rem;
+  right: 1rem;
+}
+
+
+/* Keyword Tags Styling */
+.keyword-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 50rem;
+  color: #495057;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.keyword-tag:hover {
+  background-color: #e9ecef;
+  color: #212529;
+  border-color: #adb5bd;
+  transform: translateY(-1px);
+}
+
+.keywords-section {
+  border-left: 3px solid #191970;
+  margin: 1.5rem 0;
+}
+
+.keywords-section .bg-light {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.note_figure {
+  display: block;
+  text-align: center;}
+
+.note_figure > img{
+  max-width:90%; 
+  height: auto; 
+  text-align: center; 
+  margin: auto; 
+  display: block;}
+
+.note_figure > p{
+  font-size: small; 
+  text-align: center;  
+  display: block;}
+
+.field-index ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.field-index li {
+  margin-bottom: 0.5rem;
+}
+
+.field-index h4 {
+  margin-top: 0.1rem;
+  font-size: 1.2rem;
+}
+
+.field-index h4:before {
+  content: "§. ";
+}
+
+.field-index ul li {
+  border-bottom:1px solid #333; 
+  display:block;
+}
+
+.field-index a {
+  text-decoration: none;
+}
+
+/* Collapsible Sidebar - Overlay Style */
+.sidebar-collapsible {
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 992px) {
+  .sidebar-collapsible {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1050;
+    width: 260px;
+    background: white;
+    padding: 1rem;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    transform: translateX(-100%);
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .sidebar-collapsible.active {
+    transform: translateX(0);
+  }
+  
+  /* Overlay when sidebar is open */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1040;
+    display: none;
+  }
+  
+  body.sidebar-open {
+    overflow: hidden;
+  }
+  
+  body.sidebar-open .sidebar-overlay {
+    display: block;
+  }
+  
+  /* No shift for main content */
+  main {
+    transition: none;
+    transform: none !important;
+  }
+}
+
+
+/* Table of Contents */
+#toc-list {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+#toc-list a {
+  color: var(--bs-body-color);
+  transition: all 0.2s;
+}
+
+#toc-list a:hover,
+#toc-list a.active {
+  color: var(--bs-primary);
+  transform: translateX(3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  
+  .sticky-top {
+    position: relative !important;
+    top: 0 !important;
+  }
+}
+
+/*--list--*/
+/* Sidebar spacing */
+.pe-lg-4 {
+  padding-right: 1.5rem !important;
+}
+.ps-lg-4 {
+  padding-left: 1.5rem !important;
+}
+.px-lg-4 {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+/* Card styling */
+.card {
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+/* Hover effects */
+.hover-bg:hover {
+  background-color: rgba(var(--bs-primary-rgb), 0.1);
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Stretched link for entire card clickable */
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .pe-lg-4, .ps-lg-4, .px-lg-4 {
+    padding: 0 !important;
+  }
+  
+  aside {
+    margin-bottom: 2rem;
+  }
+  
+  .order-lg-1 {
+    order: 1;
+  }
+  .order-lg-2 {
+    order: 2;
+  }
+  .order-lg-3 {
+    order: 3;
+  }
+
+}
+
+/* Badge adjustments */
+.badge {
+  font-weight: 500;
+  padding: 0.35em 0.65em;
+}
+
+/* Pagination active state */
+.page-item.active .page-link {
+  border-color: var(--bs-primary);
+}
+

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+
+{% block social %}
+  <meta property="og:title" content="{{ cats }}" />
+  <meta property="og:description" content="{{ cats }}に関するニュースとコラム一覧" />
+  {% for post in pages|slice:":1" %}
+    {% if post.main_image %}
+    <meta property="og:image" content="{{ post.main_image.url }}" />
+    {% else %}
+    <meta property="og:image" content="{{ post.image_url }}" />
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="container">
+  <section id="postSection">
+
+  {% if category_posts %}
+
+    <div class="row">
+
+      <div class="ads_top">
+        {% include 'ads/ads_vert.php' %}
+      </div>
+
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="single_post_content">
+        <h2><span>{{ cats }}</span></h2>
+
+        {% include 'php/post_sort_btn.php' %} 
+
+          <ul class="allpost_nav">
+            {% for post in pages %}
+            <li>
+              <div class="media wow fadeInDown">
+                <a href="{% url 'post_detail' post.pk %}" class="media-left">
+                  {% if post.main_image%}
+                    <img src="{{ post.main_image.url }}" alt="">
+                  {% else %}
+                    <img src="{{ post.image_url}}" alt="">
+                  {% endif %} 
+                </a>
+                <div class="media-body">
+                  <a href="{% url 'post_detail' post.pk %}" class="catg_title"> {{ post.title }}</a>
+                  <p><small><i class="fa fa-calendar"></i> {{ post.post_date|date:"Y/m/d"  }} <i class="fas fa-eye"></i> {{ post.views }}</small></p>
+              </div>
+            </div>
+            </li>
+            {% if forloop.counter|divisibleby:10 %}
+            <li>
+              <div class="ads_mid">
+                {% include 'ads/ads_vert.php' %}
+              </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+
+        </div>
+          {% include 'paginating.php' %}       
+      </div>
+
+
+
+        <!-- popular posts-->
+        {% include 'post_right.php' %}
+
+    </div>
+   
+
+  {% else %}
+
+  <h2>Sorry</h2>
+
+  {% endif %}
+
+ 
+  </section>
+</div>
+
+{% endblock %}

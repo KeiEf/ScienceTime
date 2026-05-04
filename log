@@ -1,0 +1,100 @@
+2025-03-16T11:32:01.646916+00:00 app[api]: Deploy 618c5a37 by user symphony_of_virtuosity@yahoo.co.jp
+2025-03-16T11:32:01.978819+00:00 heroku[web.1]: Restarting
+2025-03-16T11:32:02.028497+00:00 heroku[web.1]: State changed from up to starting
+2025-03-16T11:32:02.615357+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2025-03-16T11:32:02.635261+00:00 app[web.1]: [2025-03-16 20:32:02 +0900] [9] [INFO] Worker exiting (pid: 9)
+2025-03-16T11:32:02.635275+00:00 app[web.1]: [2025-03-16 20:32:02 +0900] [10] [INFO] Worker exiting (pid: 10)
+2025-03-16T11:32:02.635276+00:00 app[web.1]: [2025-03-16 11:32:02 +0000] [2] [INFO] Handling signal: term
+2025-03-16T11:32:02.935868+00:00 app[web.1]: [2025-03-16 11:32:02 +0000] [2] [INFO] Shutting down: Master
+2025-03-16T11:32:03.000184+00:00 heroku[web.1]: Process exited with status 0
+2025-03-16T11:32:07.864946+00:00 heroku[web.1]: Starting process with command `gunicorn webpage.wsgi`
+2025-03-16T11:32:08.418789+00:00 app[web.1]: Python buildpack: Detected 512 MB available memory and 8 CPU cores.
+2025-03-16T11:32:08.418803+00:00 app[web.1]: Python buildpack: Defaulting WEB_CONCURRENCY to 2 based on the available memory.
+2025-03-16T11:32:08.625877+00:00 app[web.1]: [2025-03-16 11:32:08 +0000] [2] [INFO] Starting gunicorn 23.0.0
+2025-03-16T11:32:08.626157+00:00 app[web.1]: [2025-03-16 11:32:08 +0000] [2] [INFO] Listening at: http://0.0.0.0:27870 (2)
+2025-03-16T11:32:08.626189+00:00 app[web.1]: [2025-03-16 11:32:08 +0000] [2] [INFO] Using worker: sync
+2025-03-16T11:32:08.627864+00:00 app[web.1]: [2025-03-16 11:32:08 +0000] [9] [INFO] Booting worker with pid: 9
+2025-03-16T11:32:08.699658+00:00 app[web.1]: [2025-03-16 11:32:08 +0000] [10] [INFO] Booting worker with pid: 10
+2025-03-16T11:32:09.076253+00:00 heroku[web.1]: State changed from starting to up
+2025-03-16T11:32:10.654761+00:00 app[web.1]: 10.1.57.242 - - [16/Mar/2025:20:32:10 +0900] "GET / HTTP/1.1" 200 1697 "https://www.sciencetime.jp/note/212" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:32:10.655023+00:00 heroku[router]: at=info method=GET path="/" host=www.sciencetime.jp request_id=8a4f2ddd-02d0-4024-8e5e-ebe6b14891e0 fwd="180.197.4.70" dyno=web.1 connect=0ms service=168ms status=200 bytes=1994 protocol=https
+2025-03-16T11:32:14.000000+00:00 app[api]: Build succeeded
+2025-03-16T11:32:14.081381+00:00 app[web.1]: 10.1.57.242 - - [16/Mar/2025:20:32:14 +0900] "GET /dashboard/ HTTP/1.1" 200 1999 "https://www.sciencetime.jp/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:32:14.081618+00:00 heroku[router]: at=info method=GET path="/dashboard/" host=www.sciencetime.jp request_id=31b70ff3-063e-49ef-8ead-c8c3150ca161 fwd="180.197.4.70" dyno=web.1 connect=0ms service=54ms status=200 bytes=2296 protocol=https
+2025-03-16T11:32:16.069880+00:00 app[web.1]: 10.1.52.253 - - [16/Mar/2025:20:32:16 +0900] "GET /note/all/ HTTP/1.1" 500 145 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:32:16.070251+00:00 heroku[router]: at=info method=GET path="/note/all/" host=www.sciencetime.jp request_id=e2b0a910-b3cd-4112-9754-865bb313792f fwd="180.197.4.70" dyno=web.1 connect=0ms service=178ms status=500 bytes=460 protocol=https
+2025-03-16T11:32:17.730241+00:00 app[web.1]: 10.1.52.253 - - [16/Mar/2025:20:32:17 +0900] "GET /note/all/ HTTP/1.1" 500 145 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:32:17.730887+00:00 heroku[router]: at=info method=GET path="/note/all/" host=www.sciencetime.jp request_id=11eca51d-9348-4fe2-b6d7-8ab6936932f3 fwd="180.197.4.70" dyno=web.1 connect=0ms service=100ms status=500 bytes=460 protocol=https
+2025-03-16T11:32:19.678258+00:00 app[web.1]: 10.1.52.253 - - [16/Mar/2025:20:32:19 +0900] "GET /note/all/ HTTP/1.1" 500 145 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:32:19.678633+00:00 heroku[router]: at=info method=GET path="/note/all/" host=www.sciencetime.jp request_id=373c5544-a112-49b5-bcf7-8a24a384f1a6 fwd="180.197.4.70" dyno=web.1 connect=0ms service=77ms status=500 bytes=460 protocol=https
+2025-03-16T11:32:19.880537+00:00 app[web.1]: 10.1.52.253 - - [16/Mar/2025:20:32:19 +0900] "GET /favicon.ico HTTP/1.1" 404 179 "https://www.sciencetime.jp/note/all/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:32:19.881192+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=www.sciencetime.jp request_id=20e3f72d-2c5b-4054-a997-e6f87f92f88e fwd="180.197.4.70" dyno=web.1 connect=0ms service=2ms status=404 bytes=468 protocol=https
+2025-03-16T11:32:21.638539+00:00 app[web.1]: 10.1.52.253 - - [16/Mar/2025:20:32:21 +0900] "GET /note/all/ HTTP/1.1" 500 145 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:32:21.638963+00:00 heroku[router]: at=info method=GET path="/note/all/" host=www.sciencetime.jp request_id=d04ecbf1-32e7-4076-8604-68d4dc0a4a90 fwd="180.197.4.70" dyno=web.1 connect=0ms service=68ms status=500 bytes=460 protocol=https
+2025-03-16T11:32:21.846714+00:00 app[web.1]: 10.1.52.253 - - [16/Mar/2025:20:32:21 +0900] "GET /favicon.ico HTTP/1.1" 404 179 "https://www.sciencetime.jp/note/all/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:32:21.847060+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=www.sciencetime.jp request_id=c7ba20fa-bd0c-43fa-905b-e11a08a95298 fwd="180.197.4.70" dyno=web.1 connect=0ms service=1ms status=404 bytes=468 protocol=https
+2025-03-16T11:32:25.555182+00:00 app[web.1]: 10.1.87.243 - - [16/Mar/2025:20:32:25 +0900] "GET /manage-notes/ HTTP/1.1" 200 63262 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:32:25.556552+00:00 heroku[router]: at=info method=GET path="/manage-notes/" host=www.sciencetime.jp request_id=2e86a16e-4627-440d-a9a0-c020c2369a8e fwd="180.197.4.70" dyno=web.1 connect=0ms service=311ms status=200 bytes=63695 protocol=https
+2025-03-16T11:33:42.219055+00:00 app[web.1]: 10.1.57.196 - - [16/Mar/2025:20:33:42 +0900] "GET /note/198 HTTP/1.1" 500 145 "https://www.sciencetime.jp/manage-notes/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:33:42.219363+00:00 heroku[router]: at=info method=GET path="/note/198" host=www.sciencetime.jp request_id=0132498e-ab5d-42e0-be9e-20dec98acba0 fwd="180.197.4.70" dyno=web.1 connect=0ms service=128ms status=500 bytes=460 protocol=https
+2025-03-16T11:33:49.482849+00:00 app[web.1]: 10.1.57.157 - - [16/Mar/2025:20:33:49 +0900] "GET /note/all/ HTTP/1.1" 500 145 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:33:49.483337+00:00 heroku[router]: at=info method=GET path="/note/all/" host=www.sciencetime.jp request_id=6d76624e-e66d-4307-83e8-681f0679ce70 fwd="180.197.4.70" dyno=web.1 connect=0ms service=88ms status=500 bytes=460 protocol=https
+2025-03-16T11:33:50.998688+00:00 app[web.1]: 10.1.57.157 - - [16/Mar/2025:20:33:50 +0900] "GET /admin/ HTTP/1.1" 200 12832 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:33:50.999185+00:00 heroku[router]: at=info method=GET path="/admin/" host=www.sciencetime.jp request_id=599436b1-1a23-4345-9886-c344bef5e09d fwd="180.197.4.70" dyno=web.1 connect=0ms service=43ms status=200 bytes=13377 protocol=https
+2025-03-16T11:33:51.336305+00:00 app[web.1]: 10.1.57.157 - - [16/Mar/2025:20:33:51 +0900] "GET /static/admin/css/dashboard.e90f2068217b.css HTTP/1.1" 200 0 "https://www.sciencetime.jp/admin/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:33:51.336507+00:00 heroku[router]: at=info method=GET path="/static/admin/css/dashboard.e90f2068217b.css" host=www.sciencetime.jp request_id=6e9cfa61-fac3-4fe7-a005-43e00ea8ed0b fwd="180.197.4.70" dyno=web.1 connect=0ms service=1ms status=200 bytes=622 protocol=https
+2025-03-16T11:33:53.646916+00:00 app[web.1]: 10.1.57.157 - - [16/Mar/2025:20:33:53 +0900] "GET /admin/website/note/ HTTP/1.1" 200 75198 "https://www.sciencetime.jp/admin/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:33:53.648099+00:00 heroku[router]: at=info method=GET path="/admin/website/note/" host=www.sciencetime.jp request_id=fde44484-ef3e-44ac-8a71-c905bf7cf40d fwd="180.197.4.70" dyno=web.1 connect=0ms service=184ms status=200 bytes=75743 protocol=https
+2025-03-16T11:33:53.884268+00:00 app[web.1]: 10.1.27.11 - - [16/Mar/2025:20:33:53 +0900] "GET /admin/jsi18n/ HTTP/1.1" 200 9739 "https://www.sciencetime.jp/admin/website/note/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:33:53.884397+00:00 heroku[router]: at=info method=GET path="/admin/jsi18n/" host=www.sciencetime.jp request_id=b50077b6-aae1-495f-b012-e76a532d30ec fwd="180.197.4.70" dyno=web.1 connect=0ms service=7ms status=200 bytes=10044 protocol=https
+2025-03-16T11:33:55.346922+00:00 app[web.1]: 10.1.60.12 - - [16/Mar/2025:20:33:55 +0900] "GET /admin/ HTTP/1.1" 200 12832 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:33:55.347266+00:00 heroku[router]: at=info method=GET path="/admin/" host=www.sciencetime.jp request_id=417f14ea-a544-4be4-871e-e83d440646a2 fwd="180.197.4.70" dyno=web.1 connect=0ms service=19ms status=200 bytes=13377 protocol=https
+2025-03-16T11:35:10.404409+00:00 app[web.1]: 10.1.34.96 - - [16/Mar/2025:20:35:10 +0900] "GET /post/30 HTTP/1.1" 404 179 "-" "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36"
+2025-03-16T11:35:10.404772+00:00 heroku[router]: at=info method=GET path="/post/30" host=www.sciencetime.jp request_id=9b240f1e-4d9d-4e0c-9600-8e79b801ef6c fwd="40.77.167.157" dyno=web.1 connect=0ms service=2ms status=404 bytes=468 protocol=https
+2025-03-16T11:35:52.488679+00:00 app[web.1]: 10.1.51.100 - - [16/Mar/2025:20:35:52 +0900] "GET /post/23 HTTP/1.1" 404 179 "-" "Twitterbot/1.0"
+2025-03-16T11:35:52.489046+00:00 heroku[router]: at=info method=GET path="/post/23" host=www.sciencetime.jp request_id=d8d7a08e-391d-42c0-9021-249a015dda5a fwd="192.133.77.18" dyno=web.1 connect=0ms service=1ms status=404 bytes=468 protocol=https
+2025-03-16T11:36:14.000000+00:00 app[api]: Build started by user symphony_of_virtuosity@yahoo.co.jp
+2025-03-16T11:36:32.125604+00:00 app[web.1]: 10.1.21.163 - - [16/Mar/2025:20:36:32 +0900] "GET /note/all/ HTTP/1.1" 500 145 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:36:32.125867+00:00 heroku[router]: at=info method=GET path="/note/all/" host=www.sciencetime.jp request_id=667a44b7-8158-47c4-a4c8-f6096b66e142 fwd="180.197.4.70" dyno=web.1 connect=0ms service=93ms status=500 bytes=460 protocol=https
+2025-03-16T11:36:42.331187+00:00 app[web.1]: 10.1.21.163 - - [16/Mar/2025:20:36:42 +0900] "GET /note/all/ HTTP/1.1" 500 145 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:36:42.331468+00:00 heroku[router]: at=info method=GET path="/note/all/" host=www.sciencetime.jp request_id=0bdf1d47-2c7a-496d-a405-d29af8f05f8a fwd="180.197.4.70" dyno=web.1 connect=0ms service=92ms status=500 bytes=460 protocol=https
+2025-03-16T11:36:50.692436+00:00 app[api]: Deploy 2251c282 by user symphony_of_virtuosity@yahoo.co.jp
+2025-03-16T11:36:50.692436+00:00 app[api]: Release v821 created by user symphony_of_virtuosity@yahoo.co.jp
+2025-03-16T11:36:51.256013+00:00 heroku[web.1]: Restarting
+2025-03-16T11:36:51.308782+00:00 heroku[web.1]: State changed from up to starting
+2025-03-16T11:36:51.967172+00:00 heroku[router]: at=info method=GET path="/post/27" host=www.sciencetime.jp request_id=c7730918-ade4-4a3c-a014-efc34ef3a1a1 fwd="40.77.167.157" dyno=web.1 connect=1ms service=3ms status=404 bytes=468 protocol=https
+2025-03-16T11:36:51.967311+00:00 app[web.1]: 10.1.21.163 - - [16/Mar/2025:20:36:51 +0900] "GET /post/27 HTTP/1.1" 404 179 "-" "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36"
+2025-03-16T11:36:52.045629+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2025-03-16T11:36:52.066157+00:00 app[web.1]: [2025-03-16 11:36:52 +0000] [2] [INFO] Handling signal: term
+2025-03-16T11:36:52.066225+00:00 app[web.1]: [2025-03-16 20:36:52 +0900] [9] [INFO] Worker exiting (pid: 9)
+2025-03-16T11:36:52.066574+00:00 app[web.1]: [2025-03-16 20:36:52 +0900] [10] [INFO] Worker exiting (pid: 10)
+2025-03-16T11:36:52.267555+00:00 app[web.1]: [2025-03-16 11:36:52 +0000] [2] [INFO] Shutting down: Master
+2025-03-16T11:36:52.349226+00:00 heroku[web.1]: Process exited with status 0
+2025-03-16T11:36:56.772522+00:00 heroku[web.1]: Starting process with command `gunicorn webpage.wsgi`
+2025-03-16T11:36:57.275124+00:00 app[web.1]: Python buildpack: Detected 512 MB available memory and 8 CPU cores.
+2025-03-16T11:36:57.275152+00:00 app[web.1]: Python buildpack: Defaulting WEB_CONCURRENCY to 2 based on the available memory.
+2025-03-16T11:36:57.475301+00:00 app[web.1]: [2025-03-16 11:36:57 +0000] [2] [INFO] Starting gunicorn 23.0.0
+2025-03-16T11:36:57.475536+00:00 app[web.1]: [2025-03-16 11:36:57 +0000] [2] [INFO] Listening at: http://0.0.0.0:20105 (2)
+2025-03-16T11:36:57.475566+00:00 app[web.1]: [2025-03-16 11:36:57 +0000] [2] [INFO] Using worker: sync
+2025-03-16T11:36:57.477459+00:00 app[web.1]: [2025-03-16 11:36:57 +0000] [9] [INFO] Booting worker with pid: 9
+2025-03-16T11:36:57.485185+00:00 app[web.1]: [2025-03-16 11:36:57 +0000] [10] [INFO] Booting worker with pid: 10
+2025-03-16T11:36:57.960171+00:00 heroku[web.1]: State changed from starting to up
+2025-03-16T11:36:58.981217+00:00 app[web.1]: 10.1.26.5 - - [16/Mar/2025:20:36:58 +0900] "GET /news_and_columns/all/ HTTP/1.1" 404 179 "-" "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36"
+2025-03-16T11:36:58.981484+00:00 heroku[router]: at=info method=GET path="/news_and_columns/all/" host=www.sciencetime.jp request_id=423d1551-68b7-4a2f-8302-00e1126134a5 fwd="52.167.144.22" dyno=web.1 connect=0ms service=38ms status=404 bytes=468 protocol=https
+2025-03-16T11:36:59.804468+00:00 app[web.1]: 10.1.21.163 - - [16/Mar/2025:20:36:59 +0900] "GET /note/all/ HTTP/1.1" 500 145 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:36:59.804559+00:00 heroku[router]: at=info method=GET path="/note/all/" host=www.sciencetime.jp request_id=7a44b7a2-9d52-4ba2-ae45-b0daca59356e fwd="180.197.4.70" dyno=web.1 connect=1ms service=125ms status=500 bytes=460 protocol=https
+2025-03-16T11:37:00.000000+00:00 app[api]: Build succeeded
+2025-03-16T11:37:00.887146+00:00 app[web.1]: 10.1.21.163 - - [16/Mar/2025:20:37:00 +0900] "GET /note/all/ HTTP/1.1" 500 145 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:37:00.887285+00:00 heroku[router]: at=info method=GET path="/note/all/" host=www.sciencetime.jp request_id=b1298b5d-1545-4499-b3e3-6caae1dc5994 fwd="180.197.4.70" dyno=web.1 connect=0ms service=112ms status=500 bytes=460 protocol=https
+2025-03-16T11:37:02.313598+00:00 app[web.1]: 10.1.21.163 - - [16/Mar/2025:20:37:02 +0900] "GET /note/all/ HTTP/1.1" 500 145 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:37:02.313944+00:00 heroku[router]: at=info method=GET path="/note/all/" host=www.sciencetime.jp request_id=86abff9e-42a0-4619-aa4b-780b73a24af6 fwd="180.197.4.70" dyno=web.1 connect=0ms service=70ms status=500 bytes=460 protocol=https
+2025-03-16T11:37:04.272572+00:00 app[web.1]: 10.1.21.163 - - [16/Mar/2025:20:37:04 +0900] "GET /note/all/ HTTP/1.1" 500 145 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:37:04.272828+00:00 heroku[router]: at=info method=GET path="/note/all/" host=www.sciencetime.jp request_id=c13dbe1c-ec77-4ab4-9ef8-32194cec1504 fwd="180.197.4.70" dyno=web.1 connect=2ms service=73ms status=500 bytes=460 protocol=https
+2025-03-16T11:37:04.494074+00:00 app[web.1]: 10.1.21.163 - - [16/Mar/2025:20:37:04 +0900] "GET /favicon.ico HTTP/1.1" 404 179 "https://www.sciencetime.jp/note/all/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:37:04.494246+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=www.sciencetime.jp request_id=25102037-5bcd-4132-ba2d-f7fb10dc2876 fwd="180.197.4.70" dyno=web.1 connect=0ms service=2ms status=404 bytes=468 protocol=https
+2025-03-16T11:37:09.689824+00:00 app[web.1]: 10.1.88.153 - - [16/Mar/2025:20:37:09 +0900] "GET /manage-notes/ HTTP/1.1" 200 63262 "https://www.sciencetime.jp/dashboard/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:37:09.691085+00:00 heroku[router]: at=info method=GET path="/manage-notes/" host=www.sciencetime.jp request_id=831bc62b-ec0c-4be0-a797-df99a03d89b4 fwd="180.197.4.70" dyno=web.1 connect=0ms service=535ms status=200 bytes=63695 protocol=https
+2025-03-16T11:37:11.135024+00:00 app[web.1]: 10.1.88.153 - - [16/Mar/2025:20:37:11 +0900] "GET /note/223 HTTP/1.1" 500 145 "https://www.sciencetime.jp/manage-notes/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:37:11.135476+00:00 heroku[router]: at=info method=GET path="/note/223" host=www.sciencetime.jp request_id=9842f4dd-3326-4c36-837c-ff28710fabed fwd="180.197.4.70" dyno=web.1 connect=0ms service=107ms status=500 bytes=460 protocol=https
+2025-03-16T11:37:13.334392+00:00 app[web.1]: 10.1.88.153 - - [16/Mar/2025:20:37:13 +0900] "GET /note/223 HTTP/1.1" 500 145 "https://www.sciencetime.jp/manage-notes/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-16T11:37:13.334714+00:00 heroku[router]: at=info method=GET path="/note/223" host=www.sciencetime.jp request_id=3800f35f-3fda-4d4f-92f3-a97fb0689bf8 fwd="180.197.4.70" dyno=web.1 connect=0ms service=89ms status=500 bytes=460 protocol=https

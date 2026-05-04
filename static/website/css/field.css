@@ -1,0 +1,60 @@
+/* Field Detail Page */
+.abstract-section {
+    background-color: #f8f9fa;
+    border-left: solid 5px #191970;
+  }
+ 
+
+  .content-section li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .content-section li:last-child {
+    border-bottom: none;
+  }
+  
+  .content-section a {
+    text-decoration: none;
+    color: var(--bs-body-color);
+    transition: all 0.2s;
+  }
+  
+  .content-section a:hover {
+    color: var(--bs-primary);
+    padding-left: 5px;
+  }
+  
+  .references {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  /* Social Share Buttons */
+  .social-share {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Content */
+  .field-index {
+    overflow-x: auto;
+    padding: 1rem 0;
+  }
+
+  .field-index h4:before {
+    content: "§. ";
+  }
+
+  
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .abstract-section {
+      padding: 1.5rem !important;
+    }
+    
+    .content-section ul {
+      padding-left: 1rem;
+    }
+  }

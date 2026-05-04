@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_static %}
+  <link rel="stylesheet" href="{% static 'website/css/field.css' %}">
+  {% include 'php/mathjax.php' %}
+  {% load replace %}
+{% endblock %}
+
+{% block social %}
+  <meta property="og:title" content="{{ field.field }}" />
+  <meta property="og:description" content="{{ field.abstract }}" />
+  {% if field.cover_image %}
+    <meta property="og:image" content="{{ field.cover_image.url }}" />
+  {% endif %}
+{% endblock %}
+
+{% block title %}{{ field.field }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row gx-4">
+    <!-- Left Sidebar -->
+    <aside class="col-lg pe-lg-2">
+      <div class="sticky-top" style="top: 20px;">
+        
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-3">
+            <h5 class="card-title mb-3">Sponser</h5>
+
+          </div>
+        </div>
+        
+        <!-- Back Button -->
+        <a href="{% url 'subject' field.subject.pk %}" class="btn btn-outline-secondary w-100 mb-3">
+          <i class="bi bi-arrow-left me-1"></i> Field list
+        </a>
+
+        {% if user.is_staff %}
+        <a href="{% url 'update_field' field.pk %}" class="btn btn-primary w-100">
+          <i class="bi bi-pencil me-1"></i> Edit
+        </a>
+        {% endif %}
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="col-lg-7 px-2">
+
+      <article class="card border-0 shadow-sm mb-4 px-2">
+
+        <div class="card-body">
+          <figure class="figure mt-4 mb-2">
+            {% if field.cover_image %}
+            <img src="{{ field.cover_image.url }}" class="figure-img img-fluid rounded mx-auto d-block" alt="{{ field.field }}">
+            {% endif %}
+          </figure>
+                  
+          <h1 class="display-5 fw-bold my-3">{{ field.field }}</h1>
+          
+          <div class="social-share mb-4">
+            {% include 'php/share_btn_list.php' %}
+          </div>
+
+          <section class="abstract-section bg-light p-4 rounded-3 mb-4">
+            <h2 class="text-center mb-3">
+              <i class="bi bi-file-text"></i> Overview
+            </h2>
+              {{ field.abstract|math_scroll|tex_additional|safe }}
+          </section>
+
+          <section class="content-section">
+            <h2 class="text-center mb-3">
+              <i class="bi bi-list-ul"></i> Table of Contents
+            </h2>
+            <div class="field-index">
+              {{ field.index|math_scroll|tex_additional|safe }}
+            </div>
+          </section>
+        </div>
+      </article>
+
+      {% if field.reference %}
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+          <h2 class="mb-3">
+            <i class="bi bi-book"></i> References
+          </h2>
+          <div class="references">
+            {{ field.reference|safe }}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <div class="social-share">
+            {% include 'php/share_btn_list.php' %}
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="col-lg ps-lg-2">
+      <div class="sticky-top" style="top: 20px;">
+       
+        <!-- Related Notes -->
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-3">
+            <h5 class="card-title mb-3">
+              <i class="bi bi-collection me-2"></i>Subject list
+            </h5>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- Mobile TOC Button -->
+<button id="mobile-toc-toggle" class="btn btn-primary d-lg-none position-fixed" style="bottom: 20px; right: 20px; z-index: 1000;">
+  <i class="bi bi-list"></i> Contents
+</button>
+
+<script>
+// Mobile TOC toggle functionality
+document.getElementById('mobile-toc-toggle').addEventListener('click', function() {
+  // Implement your mobile TOC drawer logic here
+  alert('Mobile TOC would open here in implementation');
+});
+
+// Ad click tracking
+function trackAdClick(adId) {
+  fetch(`/ad_click/${adId}/`, { method: "GET" })
+    .then(response => response.json())
+    .then(data => console.log(data.message))
+    .catch(error => console.error("Error:", error));
+}
+</script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block additional_static %}
+<link rel="stylesheet" href="{% static 'website/css/editor.css' %}">
+{% include 'php/mathjax.php' %}
+  {% load replace %}
+{% endblock %}
+
+{% block title %}Edit field{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>Edit field: {{ field.field }}</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div class="form-group">
+      <label for="id_title">Field</label>
+      {{ form.field }}
+    </div>
+    <div class="form-group">
+      <label for="id_title">English name</label>
+      {{ form.field_eng }}
+    </div>
+
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      {{ form.subject }}
+    </div>
+
+    <div class="form-group">
+      <label for="id_main_image">Main Image</label>
+      {{ form.cover_image }}
+    </div>
+
+    <div class="form-group">
+      <label for="id_abstract">Abstract</label>
+      {{ form.abstract }}
+    </div>
+
+    <div class="form-group">
+      <label for="id_content">Index</label>
+      {{ form.index }}
+    </div>
+
+
+    <div class="form-group">
+      <label for="id_ordering">Ordering</label>
+      {{ form.ordering }}
+    </div>
+
+    <div class="form-group">
+      <label for="id_reference">References</label>
+      {{ form.reference }}
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+    </div>
+  </form>
+  
+</div>
+{% endblock %}

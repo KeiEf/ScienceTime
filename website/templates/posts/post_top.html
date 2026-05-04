@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_static %}
+  <link rel="stylesheet" href="{% static 'website/css/post.css' %}">
+  {% include 'php/mathjax.php' %}
+  {% load replace %}
+{% endblock %}
+
+{% block title %}Science News & Articles{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <!-- Hero Featured Post -->
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="card border-0 shadow-sm overflow-hidden">
+        {% if featured_post.main_image or featured_post.image_url %}
+        <div class="featured-post-image" style="background-image: url('{% if featured_post.main_image %}{{ featured_post.main_image.url }}{% else %}{{ featured_post.image_url }}{% endif %}')"></div>
+        {% endif %}
+        <div class="card-body p-4 p-lg-5">
+          <span class="badge bg-primary mb-2">{{ featured_post.get_category_display }}</span>
+          <h1 class="display-5 fw-bold mb-3">{{ featured_post.title }}</h1>
+          <p class="lead">{{ featured_post.abstract }}</p>
+          <a href="{{ featured_post.get_absolute_url }}" class="btn btn-primary px-4 py-2">
+            Read More <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- Main Content -->
+    <div class="col-lg-8">
+      <!-- Trending Articles -->
+      <section class="mb-5">
+        <h2 class="mb-4 d-flex align-items-center">
+          <i class="bi bi-fire text-danger me-2"></i>
+          Trending Now
+        </h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          {% for post in trending_posts %}
+          <div class="col">
+            <div class="card h-100 border-0 shadow-sm hover-lift">
+              {% if post.main_image or post.image_url %}
+              <img src="{% if post.main_image %}{{ post.main_image.url }}{% else %}{{ post.image_url }}{% endif %}" 
+                   class="card-img-top" alt="{{ post.title }}" style="height: 180px; object-fit: cover;">
+              {% endif %}
+              <div class="card-body">
+                <span class="badge bg-secondary mb-2">{{ post.get_category_display }}</span>
+                <h3 class="h5">
+                  <a href="{{ post.get_absolute_url }}" class="text-decoration-none stretched-link">{{ post.title }}</a>
+                </h3>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- Latest Articles -->
+      <section class="mb-5">
+        <h2 class="mb-4 d-flex align-items-center">
+          <i class="bi bi-clock-history text-primary me-2"></i>
+          Latest Articles
+        </h2>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+          {% for post in latest_posts %}
+          <div class="col">
+            <div class="card h-100 border-0 shadow-sm hover-lift">
+              {% if post.main_image or post.image_url %}
+              <img src="{% if post.main_image %}{{ post.main_image.url }}{% else %}{{ post.image_url }}{% endif %}" 
+                   class="card-img-top" alt="{{ post.title }}" style="height: 120px; object-fit: cover;">
+              {% endif %}
+              <div class="card-body p-3">
+                <span class="badge bg-light text-dark mb-2 small">{{ post.get_category_display }}</span>
+                <h3 class="h6 mb-0">
+                  <a href="{{ post.get_absolute_url }}" class="text-decoration-none stretched-link">{{ post.title|truncatechars:50 }}</a>
+                </h3>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-lg-4">
+
+      <!-- Popular Items -->
+      <div class="card mb-4 border-0 shadow-sm">
+        <div class="card-body">
+          <h3 class="h5 d-flex align-items-center mb-3">
+            <i class="bi bi-star text-info me-2"></i>
+            Popular items
+          </h3>
+          <div class="d-flex flex-wrap gap-2">
+            {% for item in popular_items %}
+            <div class="col-md-4">
+              {% if item.main_image or item.image_url %}
+              <img src="{% if item.main_image %}{{ item.main_image.url }}{% else %}{{ item.image_url }}{% endif %}" 
+                   class="img-fluid rounded-start h-100" alt="{{ item.title }}" style="object-fit: cover;">
+              {% endif %}
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <h3 class="h5">
+                  <a href="{{ item.get_absolute_url }}" class="text-decoration-none stretched-link">{{ item.title }}</a>
+                </h3>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsletter Signup -->
+      <div class="card mb-4 border-0 shadow-sm bg-primary text-white">
+        <div class="card-body">
+          {% comment %}
+          <h3 class="h5 mb-3">Stay Updated</h3>
+          <p class="small">Get the latest science news delivered to your inbox</p>
+          <form class="mt-3">
+            <div class="input-group mb-2">
+              <input type="email" class="form-control" placeholder="Your email">
+              <button class="btn btn-light" type="submit">
+                <i class="bi bi-envelope"></i>
+              </button>
+            </div>
+            <small>We'll never share your email</small>
+          </form>
+          {% endcomment %}
+        </div>
+      </div>
+
+      <!-- Additional Resources -->
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <h3 class="h5 d-flex align-items-center mb-3">
+            <i class="bi bi-collection text-success me-2"></i>
+            In preparation
+          </h3>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a href="#" class="text-decoration-none d-flex align-items-center p-2 rounded hover-bg">
+                <i class="bi bi-journal-text me-2"></i> In preparation...
+              </a>
+            </li>
+            <!-- More resources... -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- More Articles List -->
+  <section class="mt-5">
+    <h2 class="mb-4 d-flex align-items-center">
+      <i class="bi bi-newspaper text-warning me-2"></i>
+      More Articles
+    </h2>
+    <div class="row g-4">
+      {% for post in remaining_posts %}
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="row g-0">
+            <div class="col-md-4">
+              {% if post.main_image or post.image_url %}
+              <img src="{% if post.main_image %}{{ post.main_image.url }}{% else %}{{ post.image_url }}{% endif %}" 
+                   class="img-fluid rounded-start h-100" alt="{{ post.title }}" style="object-fit: cover;">
+              {% endif %}
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <span class="badge bg-secondary mb-2">{{ post.get_category_display }}</span>
+                <h3 class="h5">
+                  <a href="{{ post.get_absolute_url }}" class="text-decoration-none stretched-link">{{ post.title }}</a>
+                </h3>
+                <p class="card-text small text-muted mt-2">{{ post.abstract|truncatechars:100 }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- View All Button -->
+  <div class="text-center mt-5">
+    <a href="{% url 'all_posts' %}" class="btn btn-outline-primary px-4 py-2">
+      View All Articles <i class="bi bi-arrow-right ms-2"></i>
+    </a>
+  </div>
+</div>
+{% endblock %}

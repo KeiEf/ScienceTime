@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load replace %}
+
+{% block social %}
+  <meta property="og:title" content="科学グッズ > {{ gens }}" />
+  <meta property="og:description" content="科学好きにはたまらない科学グッズを紹介。" />
+  {% for product in pages|slice:":1" %}
+    {% if product.main_image %}
+    <meta property="og:image" content="{{ product.main_image.url }}" />
+    {% else %}
+    <meta property="og:image" content="{{ product.image_url }}" />
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block title %}{{ gens }}{% endblock %}
+{% block content %}
+
+
+    <!-- Page Content -->
+    
+    <div class="container">
+      <section id="ProductSection">
+        <div class="row">
+
+          <div class="ads_top">
+            {% include 'ads/ads_free.php' %}
+          </div>
+          
+          <div class="col-md-12">
+
+            <ol class="breadcrumb">
+              <li><a href="{% url 'products' %}">サイエンスグッズ</a></li>
+              <li><a href="#" >{{ gens }}</a></li>
+            </ol>
+
+            <div class="prod_select_area">
+              <form method="GET" action="">
+                 <select class="catgArchive" name="sort" method="GET" onChange="submit(this.form)">
+                   <option>絞り込み</option>
+                   <option value="all">全アイテム</option>
+                   {% if gens == "ファッション" %}
+                     {% for item in fashion_genre %}
+                       <option  value="{{ item }}">{{item}}</option>
+                     {% endfor %}
+                   {% elif gens == "おもちゃ" %}
+                     {% for item in toy_genre %}
+                     <option  value="{{ item }}">{{item}}</option>
+                     {% endfor %}
+                   {% elif gens == "雑貨" %}
+                     {% for item in merch_genre %}
+                     <option  value="{{ item }}">{{item}}</option>
+                     {% endfor %}
+                   {% endif %}
+                 </select>
+                 </form>
+               </div>
+
+          </div>
+
+          <div class="col-md-12">
+            <div class="filters-content">
+                <div class="row grid">
+
+                  {% for product in pages %}
+
+                    <div class="col-lg-4 col-md-4 all">
+                    <div class="product-item">
+                      <div class="image-content"> 
+                      {% if product.main_image %}
+                      <a href="{% url 'product_detail' product.pk %}"><img src="{{ product.main_image.url }}" alt=""></a>
+                      {% else %}
+                      <a href="{% url 'product_detail' product.pk %}"><img src="{{ product.image_url}}" alt=""></a>
+                      {% endif %}
+                      </div>
+                      <div class="down-content">
+                        <a href="{% url 'product_detail' product.pk %}"><h4>{{ product.name }}</h4></a>
+                        <!--<p class="tag_list">
+                          {% for tag in product.tags.all %}
+                             {% if tag.slug  %}
+                             <a href="{% url 'product_by_tag' tag.slug %}">{{ tag.name }}</a>
+                             {% else  %}
+                                {{ tag.name }}
+                             {% endif %}
+                          {% endfor %}
+                        </p>-->
+                        <div class="description"><p>{{ product.description |truncatechars:100 |html_replace}}</p>
+                        </div>
+                        <div class="link_buttons">
+                           {% if product.amazon_url %}
+                              <a href="{{ product.amazon_url }}"  target="_blank"type="button" class="btn_amazon">amazon</a>
+                           {% endif %}
+                           {% if product.rakuten_url %}
+                              <a href="{{ product.rakuten_url }}"  target="_blank"type="button" class="btn_rakuten">楽天</a>
+                           {% endif %}
+                           {% if product.suzuri_url %}
+                              <a href="{{ product.suzuri_url }}"  target="_blank"type="button" class="btn_suzuri">SP</a>
+                           {% endif %}                       
+                           
+                        </div>
+                        <span><a href="{% url 'product_detail' product.pk %}">詳細</a></span>
+                      </div>
+                    </div>
+                  </div>
+                    
+                  {% endfor %}
+                  
+                
+                    
+                </div>
+            </div>
+          </div>
+
+          {% include 'paginating.php' %}   
+        </div>
+      </section>
+    </div>
+      
+
+
+
+    
+
+    {% endblock %}

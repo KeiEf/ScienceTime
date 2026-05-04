@@ -1,0 +1,72 @@
+
+/*add note*/
+
+/* editor.css */
+.editor-container {
+    display: flex;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .editor-main {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .editor-content {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+  }
+  
+  .editor-sidebar {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .sidebar-section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 15px;
+  }
+  
+  .sidebar-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+  
+  /* Form element styling */
+  #id_title {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  #id_content {
+    width: 100%;
+    min-height: 500px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 992px) {
+    .editor-container {
+        flex-direction: column;
+    }
+    
+    .editor-sidebar {
+        width: 100%;
+    }
+  }

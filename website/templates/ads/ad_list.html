@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block additional_static %}
+  {% include 'php/mathjax.php' %}
+{% endblock %}
+
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+  <!-- Page Content -->
+
+  <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+<br><br><br>
+<h1>Ad List</h1>
+<a href="{% url 'ad_create' %}">Create a New Ad</a>
+<ul>
+    {% for ad in ads %}
+        <li><a href="{% url 'ad_detail' ad.id %}">{{ ad.name }}</a></li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

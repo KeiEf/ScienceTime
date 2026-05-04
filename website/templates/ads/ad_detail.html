@@ -1,0 +1,6 @@
+<h1>{{ ad.name }}</h1>
+<p>{{ ad.description }}</p>
+
+<p>Tags: {{ ad.tags.all|join:", " }}</p>
+<a href="{% url 'ad_update' ad.id %}">Edit</a>
+<a href="{% url 'ad_delete' ad.id %}">Delete</a>

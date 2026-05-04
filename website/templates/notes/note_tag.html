@@ -1,0 +1,354 @@
+
+
+note all backup
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_static %}
+  <link rel="stylesheet" href="{% static 'website/css/note.css' %}">
+  {% include 'php/mathjax.php' %}
+  {% load replace %}
+{% endblock %}
+
+
+{% block title %}Lecture Notes{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row">
+    <!-- Left Sidebar - Filters -->
+    <aside class="col-lg-3 order-lg-1 pe-lg-4">
+      <div class="sticky-top" style="top: 20px;">
+        <!-- Search Card -->
+        <div class="card mb-4 border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-3">
+              <i class="bi bi-search me-2"></i>
+              Search Notes
+            </h5>
+            <form method="GET" action="{% url 'all_notes' %}">
+              <div class="input-group mb-3">
+                <input type="text" name="q" class="form-control" 
+                       placeholder="Keywords..." value="{{ search_query }}">
+                <button class="btn btn-primary" type="submit">
+                  <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Advanced Filters -->
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="bi bi-funnel-fill me-2 text-info"></i>
+              Filters
+            </h5>
+            <form method="GET" action="">
+              <div class="mt-3">
+                <label class="form-label">Sort By</label>
+                <select name="order_by" class="form-select mb-3">
+                  <option value="date_desc" {% if request.GET.order_by == "date_desc" %}selected{% endif %}>Newest First</option>
+                  <option value="date_asc" {% if request.GET.order_by == "date_asc" %}selected{% endif %}>Oldest First</option>
+                  <option value="views_desc" {% if request.GET.order_by == "views_desc" %}selected{% endif %}>Most Viewed</option>
+                  <option value="title_asc" {% if request.GET.order_by == "title_asc" %}selected{% endif %}>Title (A-Z)</option>
+                </select>
+
+                <label class="form-label">Items Per Page</label>
+                <select name="per_page" class="form-select mb-3">
+                  <option value="10" {% if per_page == 10 %}selected{% endif %}>10</option>
+                  <option value="20" {% if per_page == 20 %}selected{% endif %}>20</option>
+                  <option value="50" {% if per_page == 50 %}selected{% endif %}>50</option>
+                </select>
+
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" name="featured" id="featuredFilter" {% if request.GET.featured %}checked{% endif %}>
+                  <label class="form-check-label" for="featuredFilter">
+                    Featured Only
+                  </label>
+                </div>
+
+                <input type="hidden" name="q" value="{{ search_query }}">
+                <button type="submit" class="btn btn-primary w-100 mt-2">
+                  Apply Filters
+                </button>
+                <a href="{% url 'all_notes' %}" class="btn btn-outline-secondary w-100 mt-2">
+                  Reset All
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="col-lg-6 order-lg-2 px-lg-4">
+      <!-- Page Header -->
+      <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold my-3">Lecture Notes</h1>
+        <p class="lead text-muted">
+          {% if search_query %}
+            Search results for "{{ search_query }}"
+          {% else %}
+            Browse our collection of scientific knowledge
+          {% endif %}
+        </p>
+        <div class="d-flex justify-content-center gap-2">
+          {% if active_field %}
+          <span class="badge bg-primary">
+            {{ active_field|title }}
+            <a href="?field=all" class="text-white ms-2">
+              <i class="bi bi-x"></i>
+            </a>
+          </span>
+          {% endif %}
+          {% if notes.paginator.count %}
+          <span class="badge bg-secondary">
+            {{ notes.paginator.count }} notes found
+          </span>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Notes List -->
+      <div class="notes-list">
+        {% for note in notes %}
+        <div class="card mb-4 border-0 shadow-sm hover-lift">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-primary me-2">{{ note.field.subject }}</span>
+              <small class="text-muted">
+                <i class="bi bi-calendar me-1"></i>
+                {{ note.post_date|date:"M d, Y" }}
+              </small>
+            </div>
+            
+            <h3 class="h5">
+              <a href="{{ note.get_absolute_url }}" class="text-decoration-none stretched-link">
+                {{ note.title }}
+              </a>
+            </h3>
+            
+            <p class="card-text mt-2 text-muted">
+              {{ note.excerpt|truncatechars:150 }}
+            </p>
+            
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <div>
+                <span class="text-muted small">
+                  <i class="bi bi-person me-1"></i>
+                  {% if note.author.first_name or note.author.last_name %}
+                    {{ note.author.first_name }} {{ note.author.last_name }}
+                  {% else %}
+                    {{ note.author }}
+                  {% endif %}
+                </span>
+              </div>
+              <div class="text-muted small">
+                <i class="bi bi-eye me-1"></i> {{ note.total_views|default:0 }}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="text-center py-5">
+          <i class="bi bi-journal-text display-4 text-muted mb-3"></i>
+          <h4>No notes found</h4>
+          <p class="text-muted">
+            {% if search_query %}
+              Try different search terms
+            {% else %}
+              No notes available in this category
+            {% endif %}
+          </p>
+          <a href="{% url 'all_notes' %}" class="btn btn-primary">
+            View All Notes
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Pagination -->
+      {% if notes.paginator.num_pages > 1 %}
+      <nav class="mt-5">
+        <ul class="pagination justify-content-center">
+          {% if notes.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page=1&per_page={{ per_page }}&order_by={{ request.GET.order_by }}&q={{ search_query }}&field={{ request.GET.field }}">
+              <i class="bi bi-chevron-double-left"></i>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ notes.previous_page_number }}&per_page={{ per_page }}&order_by={{ request.GET.order_by }}&q={{ search_query }}&field={{ request.GET.field }}">
+              <i class="bi bi-chevron-left"></i>
+            </a>
+          </li>
+          {% endif %}
+          
+          {% for num in notes.paginator.page_range %}
+            {% if num > notes.number|add:'-3' and num < notes.number|add:'3' %}
+            <li class="page-item {% if notes.number == num %}active{% endif %}">
+              <a class="page-link" href="?page={{ num }}&per_page={{ per_page }}&order_by={{ request.GET.order_by }}&q={{ search_query }}&field={{ request.GET.field }}">
+                {{ num }}
+              </a>
+            </li>
+            {% endif %}
+          {% endfor %}
+          
+          {% if notes.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ notes.next_page_number }}&per_page={{ per_page }}&order_by={{ request.GET.order_by }}&q={{ search_query }}&field={{ request.GET.field }}">
+              <i class="bi bi-chevron-right"></i>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ notes.paginator.num_pages }}&per_page={{ per_page }}&order_by={{ request.GET.order_by }}&q={{ search_query }}&field={{ request.GET.field }}">
+              <i class="bi bi-chevron-double-right"></i>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+    </main>
+
+    <!-- Right Sidebar - Supplementary Content -->
+    <aside class="col-lg-3 order-lg-3 ps-lg-4">
+      <div class="sticky-top" style="top: 20px;">
+        <!-- Popular Notes -->
+        <div class="card mb-4 border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="bi bi-star-fill me-2 text-warning"></i>
+              Trending Now
+            </h5>
+            <ul class="list-unstyled mt-3">
+              {% for popular_note in popular_notes %}
+              <li class="mb-3">
+                <a href="{{ popular_note.get_absolute_url }}" class="text-decoration-none">
+                  <div class="d-flex align-items-start">
+                    <span class="badge bg-primary me-2 mt-1">{{ popular_note.field.subject }}</span>
+                    <div>
+                      <div>{{ popular_note.title|truncatechars:30 }}</div>
+                      <small class="text-muted">
+                        {{ popular_note.total_views }} views
+                      </small>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+
+        <!-- Categories -->
+        <div class="card mb-4 border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="bi bi-tag-fill me-2 text-primary"></i>
+              Categories
+            </h5>
+            <ul class="list-unstyled mt-3">
+              <li class="mb-2">
+                <a href="?field=physics" class="text-decoration-none d-block p-2 rounded hover-bg">
+                  <i class="bi bi-chevron-right me-2"></i> Physics
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="?field=biology" class="text-decoration-none d-block p-2 rounded hover-bg">
+                  <i class="bi bi-chevron-right me-2"></i> Biology
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="?field=chemistry" class="text-decoration-none d-block p-2 rounded hover-bg">
+                  <i class="bi bi-chevron-right me-2"></i> Chemistry
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="?field=mathematics" class="text-decoration-none d-block p-2 rounded hover-bg">
+                  <i class="bi bi-chevron-right me-2"></i> Mathematics
+                </a>
+              </li>
+              <li>
+                <a href="?field=all" class="text-decoration-none d-block p-2 rounded hover-bg">
+                  <i class="bi bi-collection me-2"></i> View All
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {% comment %}
+        <!-- Recent Contributors -->
+        <div class="card mb-4 border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="bi bi-people-fill me-2 text-success"></i>
+              Top Contributors
+            </h5>
+            <ul class="list-unstyled mt-3">
+              {% for contributor in top_contributors %}
+              <li class="mb-3">
+                <a href="#" class="text-decoration-none d-flex align-items-center">
+                  <img src="{% static 'website/images/default-avatar.png' %}" 
+                       class="rounded-circle me-2" width="36" height="36" 
+                       alt="{{ contributor.username }}">
+                  <div>
+                    <div>
+                      {% if contributor.first_name %}
+                        {{ contributor.first_name }} {{ contributor.last_name }}
+                      {% else %}
+                        {{ contributor.username }}
+                      {% endif %}
+                    </div>
+                    <small class="text-muted">
+                      {{ contributor.note_count }} notes
+                    </small>
+                  </div>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="bi bi-bookmark-fill me-2 text-danger"></i>
+              Quick Links
+            </h5>
+            <ul class="list-unstyled mt-3">
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none d-flex align-items-center p-2 rounded hover-bg">
+                  <i class="bi bi-upload me-2"></i> Submit Your Notes
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none d-flex align-items-center p-2 rounded hover-bg">
+                  <i class="bi bi-pencil-square me-2"></i> Style Guide
+                </a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none d-flex align-items-center p-2 rounded hover-bg">
+                  <i class="bi bi-question-circle me-2"></i> FAQ
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {% endcomment %}
+
+
+
+      </div>
+    </aside>
+  </div>
+</div>
+{% endblock %}

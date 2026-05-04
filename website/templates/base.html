@@ -1,0 +1,150 @@
+{% load static %}
+{% comment %} base.html - Django base template {% endcomment %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="sciencetime_jp" />
+    <meta property="og:site_name" content="ScienceTime" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:url" content="https://www.sciencetime.jp" />
+
+    {% block social %}
+      <link rel="canonical" href="https://www.sciencetime.jp">
+      <meta name="twitter:title" content="ScienceTime" />
+      <meta name="description" content="自然科学" />  
+      <meta property="og:title" content="ScienceTime" /> 
+      <meta property="og:description" content="自然科学" />
+      <meta property="og:image" content="{% static 'website/images/fav.png' %}" />
+    {% endblock %}
+    
+    <title>{% block title %}ScienceTime{% endblock %}</title>
+
+    <!--adsense-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7524603691208984" crossorigin="anonymous"></script>    
+    <meta name="google-site-verification" content="ol2iD_PIT80nxpj5J4WoF6AUv57zGxsrnwjrCcbWN2E" />
+
+    <!--A8-->
+    <script src="//statics.a8.net/a8link/a8linkmgr.js"></script>
+    <script>
+      a8linkmgr({
+        "config_id": "nwPU7KlerZGXqtmomStt"
+      });
+    </script>
+
+     <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'website/css/common.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'website/css/ads.css' %}?v=1">
+
+    {% load subject_tags %}
+
+    {% block additional_static %}
+    <!--here additonal css or script like MathJax goes -->
+    {% endblock %}
+
+</head>
+<body class="bg-dark text-white">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container">
+          <a class="navbar-brand fst-italic fw-bold" href="{% url 'index' %}">ScienceTime</a>
+          <span class="text-danger d-lg-block">※本ウェブサイトは現在大幅な改修中です</span>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'index' %}">Home</a>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="subjectsDropdown" role="button" data-bs-toggle="dropdown">
+                      Lecture note
+                    </a>
+                    <ul class="dropdown-menu">
+                      {% get_subjects_with_fields as subjects %}
+                      {% for subject in subjects %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'subject' subject.pk %}">
+                          {{ subject.name }}
+                        </a>
+                      </li>
+                      {% endfor %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_notes' %}" class="text-decoration-none text-dark">ノート一覧</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'post_top' %}">News and Columns</a>
+                  </li>
+                  {% if request.user.is_staff %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'admin_dashboard' %}">Dashboard</a>
+                  </li>
+                  {% endif %}
+              </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-light text-dark py-4">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4 mb-4 mb-md-0">
+                  <h5>Navigation</h5>
+                  <ul class="list-unstyled">
+                      <li class="mb-2"><a href="{% url 'index' %}" class="text-decoration-none text-dark">Home</a></li>
+                      <li class="mb-2"><a href="{% url 'all_notes' %}" class="text-decoration-none text-dark">Lecture notes</a></li>
+                      <li class="mb-2"><a href="{% url 'post_top' %}" class="text-decoration-none text-dark">News and Columns</a></li>
+                      {% if request.user.is_staff %}
+                      <li class="mb-2"><a href="{% url 'admin_dashboard' %}" class="text-decoration-none text-dark">Dashboard</a></li>
+                      {% endif %}
+                  </ul>
+              </div>
+              
+              <div class="col-md-4 mb-4 mb-md-0">
+                  <h5>Links</h5>
+                  <ul class="list-unstyled">
+                      <li class="mb-2"><a href="https://twitter.com/sciencetime_jp" class="text-decoration-none text-dark"><i class="bi bi-twitter"></i> Twitter ScienceTime</a></li>
+                      <li class="mb-2"><a href="https://twitter.com/ST_phys_bot" class="text-decoration-none text-dark"><i class="bi bi-twitter"></i> Twitter 美しき物理学</a></li>
+                      <li class="mb-2"><a href="https://www.instagram.com/sciencetime_jp/" class="text-decoration-none text-dark"><i class="bi bi-instagram"></i> Instagram</a></li>
+                  </ul>
+              </div>
+              
+              <div class="col-md-4">
+                  <h5>Contact</h5>
+              </div>
+          </div>
+          
+          <hr class="my-4">
+          
+          <div class="text-center text-muted small">
+              <p>&copy; ScienceTime. All Rights Reserved.</p>
+          </div>
+      </div>
+    </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+
