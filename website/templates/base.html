@@ -88,10 +88,7 @@
 
                   <li class="nav-item">
                       <a class="nav-link" href="{% url 'post_top' %}">News and Columns</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Members only</a>
-                  </li>                  
+                  </li>               
                   {% if request.user.is_staff %}
                   <li class="nav-item">
                       <a class="nav-link" href="{% url 'admin_dashboard' %}">Dashboard</a>
@@ -119,6 +116,8 @@
                       {% if request.user.is_staff %}
                       <li class="mb-2"><a href="{% url 'admin_dashboard' %}" class="text-decoration-none text-dark">Dashboard</a></li>
                       {% endif %}
+                      <li class="mb-2"><a href="#" class="text-decoration-none text-dark">Members only</a></li>
+
                   </ul>
               </div>
               
