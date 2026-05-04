@@ -1,0 +1,42 @@
+{% extends 'members/base.html' %}
+
+{% block title %}{{ category.name }} - ScienceTime{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'members:dashboard' %}">Home</a></li>
+                <li class="breadcrumb-item active">{{ category.name }}</li>
+            </ol>
+        </nav>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h2 text-dark">{{ category.name }}</h1>
+            <a href="{% url 'members:create_thread' category.id %}" class="btn btn-success">
+                <i class="bi bi-plus-lg"></i> ＋ 新規スレッド作成
+            </a>
+        </div>
+
+        <div class="list-group shadow-sm">
+            {% for thread in threads %}
+            <a href="{% url 'members:thread_detail' thread.id %}" class="list-group-item list-group-item-action p-3">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1 fw-bold text-dark">{{ thread.title }}</h5>
+                    <small class="text-muted">{{ thread.created_at|date:"Y/m/d" }}</small>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <small class="text-muted">作成者: {{ thread.created_by.username }}</small>
+                    <span class="badge bg-secondary rounded-pill">{{ thread.messages.count }} 返信</span>
+                </div>
+            </a>
+            {% empty %}
+            <div class="list-group-item text-center p-5 text-muted">
+                まだスレッドがありません。最初の話題を投稿してみましょう！
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'members/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">新規スレッド作成</h4>
+            </div>
+            <div class="card-body p-4">
+                <p class="text-muted small">「{{ category.name }}」に新しい話題を投稿します。</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">スレッドのタイトル</label>
+                        {{ form.title }}
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success">スレッドを作成する</button>
+                        <a href="{% url 'members:category_detail' category.id %}" class="btn btn-outline-secondary">キャンセル</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    input[type="text"] { width: 100%; border: 1px solid #ced4da; border-radius: 4px; padding: 10px; }
+</style>
+{% endblock %}

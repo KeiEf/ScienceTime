@@ -1,0 +1,81 @@
+{% extends 'members/base.html' %}
+
+{% block title %}{{ thread.title }} - ScienceTime{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'members:dashboard' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'members:category_detail' thread.category.id %}">{{ thread.category.name }}</a></li>
+                <li class="breadcrumb-item active">{{ thread.title }}</li>
+            </ol>
+        </nav>
+
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h2 class="card-title">{{ thread.title }}</h2>
+                <p class="text-muted small">作成者: {{ thread.created_by.username }} | {{ thread.created_at|date:"Y/m/d H:i" }}</p>
+            </div>
+        </div>
+
+        {% for message in page_obj %}
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                    <span class="fw-bold text-success">{{ message.posted_by.username }} さん</span>
+                    <span class="text-muted small">{{ message.posted_at|date:"Y/m/d H:i" }}</span>
+                </div>
+                <p class="card-text" style="white-space: pre-wrap;">{{ message.content }}</p>
+                
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <a href="{% url 'members:toggle_like' message.id %}" class="btn btn-sm {% if user in message.likes.all %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                            👍 {{ message.total_likes }}
+                        </a>
+
+                        {% if message.posted_by == request.user %}
+                        <a href="{% url 'members:edit_message' message.id %}" class="btn btn-sm btn-link text-decoration-none">編集</a>
+                        <a href="{% url 'members:delete_message' message.id %}" class="btn btn-sm btn-link text-danger text-decoration-none">削除</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <nav aria-label="Page navigation" class="my-4">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">&laquo; 最初</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">前へ</a></li>
+                {% endif %}
+                <li class="page-item disabled"><span class="page-link">Page {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span></li>
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">次へ</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">最後 &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        <div class="card bg-light mt-4">
+            <div class="card-body">
+                <h5>メッセージを投稿する</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        {{ form.content }}
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">投稿する</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* フォームのテキストエリアをBootstrap風に調整 */
+    textarea { width: 100%; border: 1px solid #ced4da; border-radius: 4px; padding: 10px; }
+</style>
+{% endblock %}

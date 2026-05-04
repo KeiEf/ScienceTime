@@ -1,9 +1,186 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from .models import Category, Thread, Message, Notification
+from .forms import ThreadForm, MessageForm 
+from django.http import HttpResponseForbidden
+from django.core.paginator import Paginator
 
-class UserRegisterView(generic.CreateView):
-    form_class = UserCreationForm
-    template_name = 'registration/register.html'
-    success_url = reverse_lazy('login')
+
+@login_required
+def dashboard(request):
+    categories = Category.objects.all()
+    # ログイン中のユーザーへの通知を最新5件だけ取得
+    notifications = request.user.notifications.all()[:5]
+    
+    context = {
+        'categories': categories,
+        'notifications': notifications,
+    }
+    return render(request, 'members/dashboard.html', context)
+
+# ↓ここから下を追加します
+@login_required
+def category_detail(request, category_id):
+    # 1. URLから渡されたIDを使って、カテゴリーを探し出す（なければ404エラーにする）
+    category = get_object_or_404(Category, id=category_id)
+    
+    # 2. そのカテゴリーに属するスレッドをすべて取得する
+    # （models.pyで related_name='threads' と設定したので、この書き方で一発で取れます！）
+    threads = category.threads.all().order_by('-created_at') # 新しい順に並び替え
+    
+    context = {
+        'category': category,
+        'threads': threads,
+    }
+    return render(request, 'members/category_detail.html', context)
+
+
+
+# --- dashboard と category_detail はそのまま ---
+
+# ↓ ここから下を追加します
+@login_required
+def create_thread(request, category_id):
+    # どの部にスレッドを立てるのかを取得
+    category = get_object_or_404(Category, id=category_id)
+
+    if request.method == 'POST':
+        # 送信ボタンが押されたときの処理
+        form = ThreadForm(request.POST)
+        if form.is_valid():
+            # commit=False は「まだデータベースには保存しないで！」という合図です
+            thread = form.save(commit=False)
+            # 裏側で、現在のユーザーとカテゴリーを紐付けます
+            thread.category = category
+            thread.created_by = request.user
+            thread.save() # ここで初めてデータベースに保存！
+            
+            # 保存が終わったら、元のスレッド一覧画面に戻します
+            return redirect('members:category_detail', category_id=category.id)
+    else:
+        # 普通にページを開いたときは、空の入力欄を表示
+        form = ThreadForm()
+
+    context = {
+        'form': form,
+        'category': category,
+    }
+    return render(request, 'members/create_thread.html', context)
+
+
+# --- dashboard, category_detail, create_thread はそのまま残します ---
+
+# ↓ ここから下を追加します
+@login_required
+def thread_detail(request, thread_id):
+
+    thread = get_object_or_404(Thread, id=thread_id)
+
+    message_list = thread.messages.all().order_by('posted_at')      
+
+    paginator = Paginator(message_list, 20)
+    
+    page_number = request.GET.get('page')
+    
+    page_obj = paginator.get_page(page_number)
+
+    Notification.objects.filter(user=request.user, thread=thread, is_read=False).update(is_read=True)
+
+    if request.method == 'POST':
+        # 送信ボタン（書き込み）が押されたときの処理
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.thread = thread # どのスレッドへの書き込みか紐付け
+            message.posted_by = request.user # 誰が書き込んだか紐付け
+            message.save()
+
+            if message.posted_by != thread.created_by: # 自分のスレッドへの自分での書き込みは通知しない
+                Notification.objects.create(
+                    user=thread.created_by,
+                    sender=request.user,
+                    notification_type='message',
+                    thread=thread
+                )
+            # 書き込みが終わったら、同じページを再読み込みする
+            return redirect('members:thread_detail', thread_id=thread.id)
+    else:
+        # 普通に開いたときは空のフォームを表示
+        form = MessageForm()
+
+    context = {
+        'thread': thread,
+        'page_obj': page_obj,
+        'form': form,
+    }
+    return render(request, 'members/thread_detail.html', context)
+
+@login_required
+def delete_message(request, message_id):
+    # 削除したいメッセージを取得
+    message = get_object_or_404(Message, id=message_id)
+    
+    # 【重要】本人確認：ログインしているユーザーと、書き込んだユーザーが違う場合は弾く
+    if message.posted_by != request.user:
+        return HttpResponseForbidden("他の人のメッセージは削除できません。")
+
+    if request.method == 'POST':
+        # 削除ボタンが押されたら、データベースから削除
+        thread_id = message.thread.id # 戻る場所（スレッドのID）を覚えておく
+        message.delete()
+        # 削除後は、元のスレッド画面に自動で戻る
+        return redirect('members:thread_detail', thread_id=thread_id)
+        
+    # 普通にURLにアクセスした場合は「本当に削除しますか？」という確認画面を出す
+    return render(request, 'members/delete_message.html', {'message': message})
+
+# ↓ 一番下に追加します
+@login_required
+def edit_message(request, message_id):
+    # 編集したいメッセージを取得
+    message = get_object_or_404(Message, id=message_id)
+    
+    # 【重要】本人確認：他の人のメッセージは編集できないように弾く
+    if message.posted_by != request.user:
+        return HttpResponseForbidden("他の人のメッセージは編集できません。")
+
+    if request.method == 'POST':
+        # 送信されたデータで「上書き」するための魔法が instance=message です
+        form = MessageForm(request.POST, instance=message)
+        if form.is_valid():
+            form.save() # 上書き保存！
+            # 編集が終わったら、元のスレッド画面に戻る
+            return redirect('members:thread_detail', thread_id=message.thread.id)
+    else:
+        # 普通に画面を開いたときは、元々のメッセージが入った状態の入力欄を表示する
+        form = MessageForm(instance=message)
+
+    context = {
+        'form': form,
+        'message': message,
+    }
+    return render(request, 'members/edit_message.html', context)
+
+@login_required
+def toggle_like(request, message_id):
+    message = get_object_or_404(Message, id=message_id)
+    
+    # すでにいいねしていたら消す、していなければ追加する（トグル処理）
+    if message.likes.filter(id=request.user.id).exists():
+        message.likes.remove(request.user)
+    else:
+        message.likes.add(request.user)
+    
+    if request.user != message.posted_by:
+        Notification.objects.create(
+            user=message.posted_by,
+            sender=request.user,
+            notification_type='like',
+            thread=message.thread
+        )
+
+    # 元のスレッド画面に戻る
+    return redirect('members:thread_detail', thread_id=message.thread.id)
