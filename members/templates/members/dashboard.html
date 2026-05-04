@@ -40,7 +40,7 @@
                 <div class="card h-100 shadow-sm border-success">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold text-success">{{ category.name }}</h5>
-                        <p class="card-text text-muted small">メンバー同士の議論や進捗共有はこちら。</p>
+                        <p class="card-text text-muted small">{{ category.description }}</p>
                         <p class="mt-auto small text-secondary">スレッド数: {{ category.threads.count }}</p>
                         <a href="{% url 'members:category_detail' category.id %}" class="btn btn-outline-success mt-2">部室に入る</a>
                     </div>

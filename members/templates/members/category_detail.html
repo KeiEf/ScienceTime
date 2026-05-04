@@ -24,6 +24,7 @@
             <a href="{% url 'members:thread_detail' thread.id %}" class="list-group-item list-group-item-action p-3">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1 fw-bold text-dark">{{ thread.title }}</h5>
+                    <p class="card-text text-muted small">{{ category.description }}</p>
                     <small class="text-muted">{{ thread.created_at|date:"Y/m/d" }}</small>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-2">
