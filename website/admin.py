@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, PostView, Genre, Category, Note, NoteView, Field, File, Ad, Subject, Product
+from .models import Post, PostView, Genre, Category, Note, NoteView, Field, File, Ad, Subject
 from django.utils.html import format_html
 from django.db import connection
 from django.urls import path
@@ -7,7 +7,6 @@ from django.shortcuts import render
 from django.contrib.admin.views.decorators import staff_member_required
 from taggit.models import Tag, TaggedItem
 
-admin.site.register(Product)
 #admin.site.register(Post)
 admin.site.register(Category)
 admin.site.register(Genre)
@@ -16,8 +15,6 @@ admin.site.register(Genre)
 #admin.site.register(Subject)
 admin.site.register(File)
 #admin.site.register(Ad)
-
-
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):

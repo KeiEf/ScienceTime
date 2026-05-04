@@ -1,11 +1,10 @@
 from django.urls import path
 from . import views 
 from django.views.generic import TemplateView
-from .views import HomeView, admin_dashboard, ad_click, \
+from .views import HomeView, admin_dashboard, \
                    add_note, NoteDetailView, add_post, AllNoteView, TagNoteView, \
                    PostDetailView, AllPostView, \
                    SubjectDetailView, FieldDetailView
-                    #, #, FieldView, 
 
 urlpatterns = [
 	path('', HomeView.as_view(), name="index"),
@@ -16,7 +15,6 @@ urlpatterns = [
     path('note/add/', add_note, name='add_note'),
     path('note/edit/<int:pk>', views.edit_note, name="update_note"),
     path('dashboard/', admin_dashboard, name='admin_dashboard'),
-    path("ad_click/<int:ad_id>/", ad_click, name="ad_click"),
 	path('post/<int:pk>', PostDetailView.as_view(), name="post_detail"),
     path('post/add/', add_post, name='add_post'),
     path('post/edit/<int:pk>', views.edit_post, name="update_post"),
