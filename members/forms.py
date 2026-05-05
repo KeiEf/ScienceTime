@@ -30,7 +30,7 @@ class MessageForm(forms.ModelForm):
 class SecretSignUpForm(UserCreationForm):
     # 合言葉の入力欄を追加
     secret_word = forms.CharField(
-        label='秘密の合言葉', 
+        label='合言葉', 
         max_length=50, 
         help_text='管理者から教えられた合言葉を入力してください。'
     )
