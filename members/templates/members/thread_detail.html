@@ -24,15 +24,20 @@
         <div class="card mb-3 shadow-sm">
             <div class="card-body">
                 <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
-                    <span class="fw-bold text-success">{{ message.posted_by.username }} さん</span>
+                    <span class="fw-bold text-dark">{{ message.posted_by.username }} さん</span>
                     <span class="text-muted small">{{ message.posted_at|date:"Y/m/d H:i" }}</span>
                 </div>
                 <p class="card-text" style="white-space: pre-wrap;">{{ message.content|urlize }}</p>
                 
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <a href="{% url 'members:toggle_like' message.id %}" class="btn btn-sm {% if user in message.likes.all %}btn-primary{% else %}btn-outline-primary{% endif %}">
-                            👍 {{ message.total_likes }}
+                        <a href="{% url 'members:toggle_like' message.id %}" class="text-decoration-none {% if request.user in message.likes.all %}text-danger{% else %}text-muted{% endif %}">
+                            {% if request.user in message.likes.all %}
+                                <i class="bi bi-heart-fill"></i>
+                            {% else %}
+                                <i class="bi bi-heart"></i>
+                            {% endif %}
+                            <span class="ms-1">{{ message.likes.count }}</span>
                         </a>
 
                         {% if message.posted_by == request.user %}
@@ -67,7 +72,7 @@
                     <div class="mb-3">
                         {{ form.content }}
                     </div>
-                    <button type="submit" class="btn btn-success w-100">投稿する</button>
+                    <button type="submit" class="btn btn-dark w-100">投稿する</button>
                 </form>
             </div>
         </div>

@@ -7,11 +7,10 @@
     <div class="col-12">
         <div class="p-5 mb-4 bg-light rounded-3 border">
             <div class="container-fluid py-3">
-                <h1 class="display-5 fw-bold">Members Dashboard</h1>
+                <h1 class="display-5 fw-bold">AFS Members Dashboard</h1>
                 <p class="col-md-8 fs-4 text-muted">ようこそ。</p>
             </div>
         </div>
-
 
         {% if user.notifications.all %}
         <div class="card mb-4 shadow-sm">
@@ -34,21 +33,23 @@
 
         <h2 class="mb-4 border-bottom pb-2">掲示板（部屋）一覧</h2>
         
-        <div class="row">
+        <div class="list-group shadow-sm mb-5">
             {% for category in categories %}
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100 shadow-sm border-success">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold text-success">{{ category.name }}</h5>
-                        <p class="card-text text-muted small">{{ category.description }}</p>
-                        <p class="mt-auto small text-secondary">スレッド数: {{ category.threads.count }}</p>
-                        <a href="{% url 'members:category_detail' category.id %}" class="btn btn-outline-success mt-2">部屋に入る</a>
+            <a href="{% url 'members:category_detail' category.id %}" class="list-group-item list-group-item-action p-4">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <div>
+                        <h5 class="mb-1 fw-bold text-dark">{{ category.name }}</h5>
+                        <p class="mb-0 text-muted small">{{ category.description }}</p>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-dark rounded-pill">{{ category.threads.count }} スレッド</span>
+                        <i class="bi bi-chevron-right text-muted ms-2"></i>
                     </div>
                 </div>
-            </div>
+            </a>
             {% empty %}
-            <div class="col-12">
-                <div class="alert alert-info">現在、登録されている部屋はありません。</div>
+            <div class="list-group-item text-center p-5 text-muted">
+                現在、登録されている部はありません。
             </div>
             {% endfor %}
         </div>

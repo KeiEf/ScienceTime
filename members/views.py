@@ -9,6 +9,8 @@ from .models import Category, Thread, Message, Notification
 from .forms import ThreadForm, MessageForm, SecretSignUpForm
 from django.http import HttpResponseForbidden
 from django.core.paginator import Paginator
+from django.db.models import Max
+from django.db.models.functions import Coalesce
 
 @login_required
 def dashboard(request):
@@ -28,17 +30,16 @@ def category_detail(request, category_id):
     # 1. URLから渡されたIDを使って、カテゴリーを探し出す（なければ404エラーにする）
     category = get_object_or_404(Category, id=category_id)
     
-    # 2. そのカテゴリーに属するスレッドをすべて取得する
     # （models.pyで related_name='threads' と設定したので、この書き方で一発で取れます！）
-    threads = category.threads.all().order_by('-created_at') # 新しい順に並び替え
-    
+    threads = category.threads.annotate(
+            last_updated=Coalesce(Max('messages__posted_at'), 'created_at')
+        ).order_by('-last_updated') # 降順（新しい順）に並び替え
+
     context = {
         'category': category,
         'threads': threads,
     }
     return render(request, 'members/category_detail.html', context)
-
-
 
 # --- dashboard と category_detail はそのまま ---
 
