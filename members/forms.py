@@ -1,3 +1,5 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django import forms
 from .models import Thread, Message
 
@@ -24,3 +26,23 @@ class MessageForm(forms.ModelForm):
         widgets = {
             'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'メッセージを入力...'})
         }
+
+class SecretSignUpForm(UserCreationForm):
+    # 合言葉の入力欄を追加
+    secret_word = forms.CharField(
+        label='秘密の合言葉', 
+        max_length=50, 
+        help_text='管理者から教えられた合言葉を入力してください。'
+    )
+
+    class Meta:
+        model = User
+        fields = ("username",) # メールアドレスも必須にする場合は ("username", "email")
+
+    # 入力された合言葉が正しいかチェックする仕組み
+    def clean_secret_word(self):
+        secret = self.cleaned_data.get('secret_word')
+        # ↓ ここの 'efilism2026' を好きな合言葉に変更してください
+        if secret != 'chocolate': 
+            raise forms.ValidationError("正しい合言葉を入力してください。")
+        return secret

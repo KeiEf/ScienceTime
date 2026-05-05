@@ -1,13 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
-from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Category, Thread, Message, Notification
-from .forms import ThreadForm, MessageForm 
+from .forms import ThreadForm, MessageForm, SecretSignUpForm
 from django.http import HttpResponseForbidden
 from django.core.paginator import Paginator
-
 
 @login_required
 def dashboard(request):
@@ -184,3 +185,27 @@ def toggle_like(request, message_id):
 
     # 元のスレッド画面に戻る
     return redirect('members:thread_detail', thread_id=message.thread.id)
+
+class SignUpView(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login') # 登録成功したらログイン画面へ
+    template_name = 'registration/signup.html'
+
+
+@login_required
+def profile_edit(request):
+    if request.method == 'POST':
+        # ユーザー情報を更新する処理
+        user = request.user
+        user.username = request.POST.get('username')
+        user.email = request.POST.get('email')
+        user.save()
+        messages.success(request, 'プロフィールを更新しました！')
+        return redirect('members:dashboard')
+    
+    return render(request, 'members/profile_edit.html')
+
+class SignUpView(generic.CreateView):
+    form_class = SecretSignUpForm # ← ここを書き換えるだけ！
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'

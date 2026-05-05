@@ -22,10 +22,28 @@
                 </span>
                 {% endif %}
             </a>
-            <span class="navbar-text text-light ms-3">こんにちは、{{ user.username }}さん</span>
         </div>
+
+        <div class="dropdown ms-3">
+            <a class="nav-link dropdown-toggle text-light" href="#" role="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ user.username }} さん
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                <li><a class="dropdown-item" href="{% url 'members:profile_edit' %}">プロフィール編集</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="dropdown-item text-danger">ログアウト</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        
     </nav>
 
+
+    
     <div class="container">
         {% block content %}{% endblock %}
     </div>
