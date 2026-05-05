@@ -9,8 +9,9 @@ from .models import Category, Thread, Message, Notification
 from .forms import ThreadForm, MessageForm, SecretSignUpForm
 from django.http import HttpResponseForbidden
 from django.core.paginator import Paginator
-from django.db.models import Max
+from django.db.models import Max, F
 from django.db.models.functions import Coalesce
+
 
 @login_required
 def dashboard(request):
@@ -18,6 +19,13 @@ def dashboard(request):
     # ログイン中のユーザーへの通知を最新5件だけ取得
     notifications = request.user.notifications.all()[:5]
     
+    categories = Category.objects.annotate(
+            last_updated=Coalesce(
+                Max('threads__messages__posted_at'), # 1. まずメッセージの最新日時を探す
+                Max('threads__created_at')           # 2. なければスレッドの作成日時を探す
+            )
+        ).order_by(F('last_updated').desc(nulls_last=True)) # 降順（新しい順）＋ まだ投稿がない部は一番下に
+
     context = {
         'categories': categories,
         'notifications': notifications,
