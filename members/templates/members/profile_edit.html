@@ -3,22 +3,35 @@
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <div class="card shadow">
-            <div class="card-header bg-dark text-white">プロフィールの編集</div>
-            <div class="card-body">
+        <div class="card shadow border-0">
+            <div class="card-header bg-dark text-white py-3">
+                <h5 class="mb-0">プロフィールの編集</h5>
+            </div>
+            <div class="card-body p-4">
                 <form method="post">
                     {% csrf_token %}
+                    
                     <div class="mb-3">
-                        <label class="form-label">ユーザー名</label>
-                        <input type="text" name="username" class="form-control" value="{{ user.username }}">
+                        <label class="form-label fw-bold">ユーザー名</label>
+                        <input type="text" name="username" class="form-control" value="{{ user.username }}" required>
                     </div>
+
+                    {% comment %}
                     <div class="mb-3">
-                        <label class="form-label">メールアドレス</label>
+                        <label class="form-label fw-bold">メールアドレス</label>
                         <input type="email" name="email" class="form-control" value="{{ user.email }}">
                     </div>
+                    {% endcomment %}
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">自己紹介</label>
+                        <textarea name="bio" class="form-control" rows="5" placeholder="関心や取り組みなど，自由に書いてください。">{{ profile.bio }}</textarea>
+                        <div class="form-text text-muted small">最大500文字まで入力できます。</div>
+                    </div>
+
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary">更新を保存</button>
-                        <a href="{% url 'members:dashboard' %}" class="btn btn-outline-secondary">キャンセル</a>
+                        <button type="submit" class="btn btn-dark">変更を保存する</button>
+                        <a href="{% url 'members:user_profile' user.username %}" class="btn btn-outline-secondary">キャンセル</a>
                     </div>
                 </form>
             </div>
@@ -26,3 +39,4 @@
     </div>
 </div>
 {% endblock %}
+

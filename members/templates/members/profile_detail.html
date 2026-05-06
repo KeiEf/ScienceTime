@@ -1,0 +1,64 @@
+{% extends 'members/base.html' %}
+
+{% block title %}{{ target_user.username }}さんのプロフィール{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white p-4">
+                <div class="d-flex align-items-center">
+                    <div class="bg-white text-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" 
+                         style="width: 80px; height: 80px; font-size: 2rem; font-weight: bold;">
+                        {{ target_user.username|slice:":1"|upper }}
+                    </div>
+                    <div class="ms-4">
+                        <h2 class="mb-0 fw-bold">{{ target_user.username }}</h2>
+                        <small class="opacity-75">参加日: {{ target_user.date_joined|date:"Y年m月d日" }}</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body p-4">
+                <h5 class="fw-bold border-bottom pb-2 mb-3">自己紹介</h5>
+                <div class="p-3 bg-light rounded" style="min-height: 150px; white-space: pre-wrap;">
+                    {% if profile.bio %}
+                        {{ profile.bio }}
+                    {% else %}
+                        <span class="text-muted small">自己紹介はまだ登録されていません。</span>
+                    {% endif %}
+                </div>
+
+                <div class="mt-4 d-flex justify-content-between">
+                    <a href="{% url 'members:dashboard' %}" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left"></i> ダッシュボードに戻る
+                    </a>
+                    
+                    {% if user == target_user %}
+                    <a href="{% url 'members:profile_edit' %}" class="btn btn-success">
+                        <i class="bi bi-pencil"></i> プロフィールを編集する
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <h5 class="fw-bold mb-3">最近の投稿（{{ target_user.messages.count }}件）</h5>
+            <div class="list-group">
+                {% for message in target_user.messages.all|dictsortreversed:"posted_at"|slice:":5" %}
+                <a href="{% url 'members:thread_detail' message.thread.id %}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1 text-truncate" style="max-width: 80%;">{{ message.content|truncatechars:50 }}</h6>
+                        <small class="text-muted">{{ message.posted_at|date:"m/d" }}</small>
+                    </div>
+                    <small class="text-success">スレッド: {{ message.thread.title }}</small>
+                </a>
+                {% empty %}
+                <p class="text-muted small ps-2">まだ投稿はありません。</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

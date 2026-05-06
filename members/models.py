@@ -1,6 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User # ユーザー情報を紐付けるために必要
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    bio = models.TextField('自己紹介', blank=True, max_length=500)
+    
+    def __str__(self):
+        return f"{self.user.username}のプロフィール"
+    
 # 1階層目：カテゴリー（部）
 class Category(models.Model):
     name = models.CharField('カテゴリー名', max_length=100)

@@ -5,13 +5,13 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Category, Thread, Message, Notification
+from .models import Category, Thread, Message, Notification, UserProfile
 from .forms import ThreadForm, MessageForm, SecretSignUpForm
 from django.http import HttpResponseForbidden
 from django.core.paginator import Paginator
 from django.db.models import Max, F
 from django.db.models.functions import Coalesce
-
+from django.shortcuts import render, get_object_or_404, redirect
 
 @login_required
 def dashboard(request):
@@ -39,7 +39,36 @@ def delete_notification(request, notification_id):
     notification.delete()
     return redirect('members:dashboard') # 削除したらダッシュボードに戻る
 
-# ↓ここから下を追加します
+def user_profile(request, username):
+    # ユーザーを探す。いなければ404エラー
+    target_user = get_object_or_404(User, username=username)
+    # プロフィールがまだ無い場合は、この場で自動作成する（エラー防止）
+    profile, created = UserProfile.objects.get_or_create(user=target_user)
+    
+    context = {'target_user': target_user, 'profile': profile}
+    return render(request, 'members/profile_detail.html', context)
+
+@login_required
+def profile_edit(request):
+    # ログイン中のユーザーのプロフィールを取得（なければ作成）
+    profile, created = UserProfile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        # 1. ユーザー名とメールアドレスの更新 (Userモデル)
+        request.user.username = request.POST.get('username')
+        request.user.email = request.POST.get('email')
+        request.user.save()
+
+        # 2. 自己紹介の更新 (UserProfileモデル)
+        profile.bio = request.POST.get('bio')
+        profile.save()
+
+        messages.success(request, 'プロフィールを更新しました！')
+        # 自分のプロフィール詳細ページへ戻る
+        return redirect('members:user_profile', username=request.user.username)
+    
+    return render(request, 'members/profile_edit.html', {'profile': profile})
+
 @login_required
 def category_detail(request, category_id):
     # 1. URLから渡されたIDを使って、カテゴリーを探し出す（なければ404エラーにする）
