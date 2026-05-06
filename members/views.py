@@ -32,6 +32,13 @@ def dashboard(request):
     }
     return render(request, 'members/dashboard.html', context)
 
+@login_required
+def delete_notification(request, notification_id):
+    # 自分の通知だけを削除できるようにする
+    notification = get_object_or_404(Notification, id=notification_id, user=request.user)
+    notification.delete()
+    return redirect('members:dashboard') # 削除したらダッシュボードに戻る
+
 # ↓ここから下を追加します
 @login_required
 def category_detail(request, category_id):

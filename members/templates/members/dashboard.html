@@ -16,7 +16,12 @@
         <div class="card mb-4 shadow-sm">
             <div class="card-header bg-white fw-bold">お知らせ</div>
             <div class="list-group list-group-flush">
-                {% for notification in user.notifications.all|slice:":5" %} <a href="{% url 'members:thread_detail' notification.thread.id %}" 
+                {% for notification in user.notifications.all|slice:":5" %} 
+                <form action="{% url 'members:delete_notification' notification.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-outline-danger py-0 px-1">✖</button>
+                </form>
+                <a href="{% url 'members:thread_detail' notification.thread.id %}" 
                 class="list-group-item list-group-item-action {% if not notification.is_read %}bg-light{% endif %}">
                     <small class="text-muted">{{ notification.created_at|date:"m/d H:i" }}</small><br>
                     {{ notification.sender.username }}さんが

@@ -14,4 +14,5 @@ urlpatterns = [
     path('message/<int:message_id>/like/', views.toggle_like, name='toggle_like'),
     path('signup/efilism/', views.SignUpView.as_view(), name='signup'),
     path('profile/edit/', views.profile_edit, name='profile_edit'),
+    path('notification/<int:notification_id>/delete/', views.delete_notification, name='delete_notification'),
 ]
