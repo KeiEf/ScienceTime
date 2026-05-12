@@ -39,6 +39,21 @@ def delete_notification(request, notification_id):
     notification.delete()
     return redirect('members:dashboard') # 削除したらダッシュボードに戻る
 
+@login_required
+def read_notification(request, notification_id):
+    # 自分宛の通知を取得
+    notification = get_object_or_404(Notification, id=notification_id, user=request.user)
+    
+    # 飛ぶべきスレッドのIDを保存しておく（Notificationモデルにthreadが紐づいている前提）
+    # ※もしモデルの設定が違う場合は教えてください！
+    target_thread_id = notification.thread.id 
+    
+    # 通知をデータベースから削除（既読として処理）
+    notification.delete()
+    
+    # 保存しておいたスレッドへリダイレクト
+    return redirect('members:thread_detail', thread_id=target_thread_id)
+
 def user_profile(request, username):
     # ユーザーを探す。いなければ404エラー
     target_user = get_object_or_404(User, username=username)
@@ -61,6 +76,12 @@ def profile_edit(request):
 
         # 2. 自己紹介の更新 (UserProfileモデル)
         profile.bio = request.POST.get('bio')
+
+        if request.POST.get('receive_notifications') == 'on':
+            profile.receive_notifications = True
+        else:
+            profile.receive_notifications = False
+
         profile.save()
 
         messages.success(request, 'プロフィールを更新しました！')
@@ -124,8 +145,7 @@ def create_thread(request, category_id):
 def thread_detail(request, thread_id):
 
     thread = get_object_or_404(Thread, id=thread_id)
-
-    message_list = thread.messages.all().order_by('posted_at')      
+    message_list = thread.messages.all().order_by('-is_pinned', 'posted_at')
 
     paginator = Paginator(message_list, 20)
     
@@ -145,12 +165,15 @@ def thread_detail(request, thread_id):
             message.save()
 
             if message.posted_by != thread.created_by: # 自分のスレッドへの自分での書き込みは通知しない
-                Notification.objects.create(
-                    user=thread.created_by,
-                    sender=request.user,
-                    notification_type='message',
-                    thread=thread
-                )
+
+                if hasattr(target_user, 'profile') and target_user.profile.receive_notifications:
+
+                    Notification.objects.create(
+                        user=thread.created_by,
+                        sender=request.user,
+                        notification_type='message',
+                        thread=thread
+                    )
             # 書き込みが終わったら、同じページを再読み込みする
             return redirect('members:thread_detail', thread_id=thread.id)
     else:
@@ -221,14 +244,32 @@ def toggle_like(request, message_id):
         message.likes.add(request.user)
     
     if request.user != message.posted_by:
-        Notification.objects.create(
-            user=message.posted_by,
-            sender=request.user,
-            notification_type='like',
-            thread=message.thread
-        )
+
+        if hasattr(target_user, 'profile') and target_user.profile.receive_notifications:
+            Notification.objects.create(
+                user=message.posted_by,
+                sender=request.user,
+                notification_type='like',
+                thread=message.thread
+            )
 
     # 元のスレッド画面に戻る
+    return redirect('members:thread_detail', thread_id=message.thread.id)
+
+
+@login_required
+def toggle_message_pin(request, message_id):
+    message = get_object_or_404(Message, id=message_id)
+    
+    # 権限チェック：スレッドの作成者、またはスタッフ（管理者）のみ許可
+    if message.thread.created_by == request.user or request.user.is_staff:
+        # 他のメッセージの固定を解除したい場合はここに処理を書く（今回は複数固定可の仕様）
+        message.is_pinned = not message.is_pinned
+        message.save()
+        messages.success(request, 'メッセージの固定状態を更新しました。')
+    else:
+        messages.error(request, '権限がありません。')
+        
     return redirect('members:thread_detail', thread_id=message.thread.id)
 
 class SignUpView(generic.CreateView):

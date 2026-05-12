@@ -29,6 +29,14 @@
                         <div class="form-text text-muted small">最大500文字まで入力できます。</div>
                     </div>
 
+                    <div class="mb-4 form-check">
+                        <input type="checkbox" name="receive_notifications" class="form-check-input" id="notifCheck" 
+                            {% if profile.receive_notifications %}checked{% endif %}>
+                        <label class="form-check-label fw-bold" for="notifCheck">
+                            新しい返信などの通知を受け取る
+                        </label>
+                    </div>
+
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-dark">変更を保存する</button>
                         <a href="{% url 'members:user_profile' user.username %}" class="btn btn-outline-secondary">キャンセル</a>

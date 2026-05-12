@@ -27,6 +27,13 @@
         {% for message in page_obj %}
         <div class="card mb-3 shadow-sm">
             <div class="card-body">
+
+                 {% if message.is_pinned %}
+                <div class="badge bg-danger mb-2">
+                    <i class="bi bi-pin-angle-fill"></i> 固定されたメッセージ
+                </div>
+                {% endif %}
+
                 <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
                     <small class="text-muted">
                     投稿者: 
@@ -53,6 +60,16 @@
                         <a href="{% url 'members:edit_message' message.id %}" class="btn btn-sm btn-link text-decoration-none">編集</a>
                         <a href="{% url 'members:delete_message' message.id %}" class="btn btn-sm btn-link text-danger text-decoration-none">削除</a>
                         {% endif %}
+
+                        {% if thread.created_by == user or user.is_staff %}
+                        <form action="{% url 'members:toggle_message_pin' message.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm {% if message.is_pinned %}btn-danger{% else %}btn-outline-secondary{% endif %}">
+                                <i class="bi bi-pin-angle"></i> {% if message.is_pinned %}固定解除{% else %}トップに固定{% endif %}
+                            </button>
+                        </form>
+                        {% endif %}
+
                     </div>
                 </div>
             </div>
