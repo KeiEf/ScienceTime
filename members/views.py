@@ -71,13 +71,13 @@ def profile_edit(request):
     if request.method == 'POST':
         # 1. ユーザー名とメールアドレスの更新 (Userモデル)
         request.user.username = request.POST.get('username')
-        request.user.email = request.POST.get('email')
+        request.user.email = request.POST.get('email', '') 
         request.user.save()
 
         # 2. 自己紹介の更新 (UserProfileモデル)
-        profile.bio = request.POST.get('bio')
+        profile.bio = request.POST.get('bio','')
 
-        if request.POST.get('receive_notifications') == 'on':
+        if 'receive_notifications' in request.POST:
             profile.receive_notifications = True
         else:
             profile.receive_notifications = False

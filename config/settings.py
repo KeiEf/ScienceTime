@@ -9,7 +9,7 @@ import sys
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = env_config('SECRET_KEY')
-DEBUG = env_config('ST_DEBUG', default=False, cast=bool)
+DEBUG = True #env_config('ST_DEBUG', default=False, cast=bool)
 MAINTENANCE_MODE = env_config('ST_MAINTENANCE', default=False, cast=bool)
 
 #----- HTTPS ----- 

@@ -16,12 +16,10 @@
                         <input type="text" name="username" class="form-control" value="{{ user.username }}" required>
                     </div>
 
-                    {% comment %}
                     <div class="mb-3">
-                        <label class="form-label fw-bold">メールアドレス</label>
+                        <label class="form-label fw-bold">メールアドレス（不要）</label>
                         <input type="email" name="email" class="form-control" value="{{ user.email }}">
                     </div>
-                    {% endcomment %}
 
                     <div class="mb-4">
                         <label class="form-label fw-bold">自己紹介</label>
@@ -30,7 +28,7 @@
                     </div>
 
                     <div class="mb-4 form-check">
-                        <input type="checkbox" name="receive_notifications" class="form-check-input" id="notifCheck" 
+                        <input type="checkbox" name="receive_notifications" value="True" class="form-check-input" id="notifCheck" 
                             {% if profile.receive_notifications %}checked{% endif %}>
                         <label class="form-check-label fw-bold" for="notifCheck">
                             新しい返信などの通知を受け取る
