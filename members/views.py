@@ -164,6 +164,7 @@ def thread_detail(request, thread_id):
             message.posted_by = request.user # 誰が書き込んだか紐付け
             message.save()
 
+            target_user = message.posted_by
             if message.posted_by != thread.created_by: # 自分のスレッドへの自分での書き込みは通知しない
 
                 if hasattr(target_user, 'profile') and target_user.profile.receive_notifications:
@@ -236,26 +237,25 @@ def edit_message(request, message_id):
 @login_required
 def toggle_like(request, message_id):
     message = get_object_or_404(Message, id=message_id)
-    
-    # すでにいいねしていたら消す、していなければ追加する（トグル処理）
+    target_user = message.posted_by
+
+    # すでにいいねしていたら消す、していなければ追加する
     if message.likes.filter(id=request.user.id).exists():
         message.likes.remove(request.user)
     else:
         message.likes.add(request.user)
-    
-    if request.user != message.posted_by:
+        
+        # いいねを追加した時だけ、以下の通知処理を行う
+        if request.user != target_user:
+            if hasattr(target_user, 'profile') and target_user.profile.receive_notifications:
+                Notification.objects.create(
+                    user=target_user,
+                    sender=request.user,
+                    notification_type='like',
+                    thread=message.thread
+                )
 
-        if hasattr(target_user, 'profile') and target_user.profile.receive_notifications:
-            Notification.objects.create(
-                user=message.posted_by,
-                sender=request.user,
-                notification_type='like',
-                thread=message.thread
-            )
-
-    # 元のスレッド画面に戻る
     return redirect('members:thread_detail', thread_id=message.thread.id)
-
 
 @login_required
 def toggle_message_pin(request, message_id):

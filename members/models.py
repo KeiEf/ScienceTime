@@ -37,7 +37,7 @@ class Message(models.Model):
     # 誰が書き込んだかを記録します
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE)
     posted_at = models.DateTimeField('投稿日時', auto_now_add=True)
-    likes = models.ManyToManyField(User, related_name='liked_messages', blank=True),
+    likes = models.ManyToManyField(User, related_name='liked_messages', blank=True)
     is_pinned = models.BooleanField('メッセージを固定', default=False)
     def __str__(self):
         return f"{self.posted_by.username} - {self.thread.title}"
