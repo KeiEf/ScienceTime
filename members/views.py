@@ -156,26 +156,26 @@ def thread_detail(request, thread_id):
     Notification.objects.filter(user=request.user, thread=thread, is_read=False).update(is_read=True)
 
     if request.method == 'POST':
-        # 送信ボタン（書き込み）が押されたときの処理
         form = MessageForm(request.POST, request.FILES)
         if form.is_valid():
             message = form.save(commit=False)
-            message.thread = thread # どのスレッドへの書き込みか紐付け
-            message.posted_by = request.user # 誰が書き込んだか紐付け
+            message.thread = thread
+            message.posted_by = request.user
             message.save()
 
-            target_user = message.posted_by
-            if message.posted_by != thread.created_by: # 自分のスレッドへの自分での書き込みは通知しない
+            # 💡 修正：通知を送るべき相手（スレッド作成者）を target_user にする
+            target_user = thread.created_by 
 
+            if message.posted_by != target_user: # 自分自身のスレッドへの書き込みは通知しない
+                # 💡 修正：通知を受け取る側（スレッド作成者）の設定をチェックする
                 if hasattr(target_user, 'profile') and target_user.profile.receive_notifications:
-
                     Notification.objects.create(
-                        user=thread.created_by,
+                        user=target_user, # 通知の宛先
                         sender=request.user,
                         notification_type='message',
                         thread=thread
                     )
-            # 書き込みが終わったら、同じページを再読み込みする
+            
             return redirect('members:thread_detail', thread_id=thread.id)
     else:
         # 普通に開いたときは空のフォームを表示
