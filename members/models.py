@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User # ユーザー情報を紐付けるために必要
+from cloudinary.models import CloudinaryField # 💡 これを一番上にインポート
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
@@ -39,6 +40,19 @@ class Message(models.Model):
     posted_at = models.DateTimeField('投稿日時', auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='liked_messages', blank=True)
     is_pinned = models.BooleanField('メッセージを固定', default=False)
+
+    image = CloudinaryField(
+            'image',
+            blank=True,
+            null=True,
+            folder='sciencetime_board', # Cloudinary内でフォルダ分けして整理
+            format='jpg',               # どんな画像が来ても強制的に軽量なJPGに変換して保存！
+            transformation=[
+                {'width': 1200, 'crop': 'limit'}, # 横幅1200pxを超えていたら縮小する
+                {'quality': 'auto:eco'}           # 見た目を損なわない限界まで自動圧縮（エコ設定）
+            ]
+        )
+
     def __str__(self):
         return f"{self.posted_by.username} - {self.thread.title}"
     

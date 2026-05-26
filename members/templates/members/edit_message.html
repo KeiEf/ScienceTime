@@ -15,11 +15,16 @@
     <div class="container">
         <h2>メッセージの編集</h2>
         
-        <form method="post">
-            {% csrf_token %}
+        <form method="post" enctype="multipart/form-data"> {% csrf_token %}
             <p>
                 {{ form.content }}
             </p>
+            
+            <p>
+                <label style="font-size: 0.9em; color: #666;">画像の変更・追加（任意）</label><br>
+                {{ form.image }}
+            </p>
+
             <button type="submit" class="submit-btn">更新する</button>
             <a href="{% url 'members:thread_detail' message.thread.id %}" class="cancel-btn">キャンセル</a>
         </form>

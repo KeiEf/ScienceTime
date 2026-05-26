@@ -3,6 +3,7 @@
 {% block title %}{{ thread.title }} - ScienceTime{% endblock %}
 
 {% block content %}
+{% load cloudinary %}
 <div class="row justify-content-center">
     <div class="col-md-8">
         <nav aria-label="breadcrumb">
@@ -45,6 +46,14 @@
                 </div>
                 <p class="card-text" style="white-space: pre-wrap;">{{ message.content|urlize }}</p>
                 
+                {% if message.image %}
+                <div class="mt-2 mb-3">
+                    <a href="{{ message.image.url }}" target="_blank">
+                        {% cloudinary message.image quality='auto' fetch_format='auto' max_width=600 class="img-fluid rounded border" style="max-height: 400px; object-fit: cover;" %}
+                    </a>
+                </div>
+                {% endif %}
+
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <a href="{% url 'members:toggle_like' message.id %}" class="text-decoration-none {% if request.user in message.likes.all %}text-danger{% else %}text-muted{% endif %}">
@@ -93,11 +102,17 @@
         <div class="card bg-light mt-4">
             <div class="card-body">
                 <h5>メッセージを投稿する</h5>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
                         {{ form.content }}
                     </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small text-muted">画像を添付（任意）</label>
+                        {{ form.image }}
+                    </div>
+
                     <button type="submit" class="btn btn-dark w-100">投稿する</button>
                 </form>
             </div>

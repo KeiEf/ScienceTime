@@ -20,11 +20,12 @@ class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
         # ユーザーに入力させるのは「メッセージ内容」だけ
-        fields = ['content']
+        fields = ['content', 'image']
         
-        # 見た目の設定（テキストエリアにして入力しやすくします）
         widgets = {
-            'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'メッセージを入力...'})
+            'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'メッセージを入力...'}),
+            # 💡 画像選択ボタンの見た目を綺麗にするBootstrapのクラスを適用
+            'image': forms.FileInput(attrs={'class': 'form-control'})
         }
 
 class SecretSignUpForm(UserCreationForm):

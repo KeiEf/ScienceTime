@@ -157,7 +157,7 @@ def thread_detail(request, thread_id):
 
     if request.method == 'POST':
         # 送信ボタン（書き込み）が押されたときの処理
-        form = MessageForm(request.POST)
+        form = MessageForm(request.POST, request.FILES)
         if form.is_valid():
             message = form.save(commit=False)
             message.thread = thread # どのスレッドへの書き込みか紐付け
@@ -219,7 +219,7 @@ def edit_message(request, message_id):
 
     if request.method == 'POST':
         # 送信されたデータで「上書き」するための魔法が instance=message です
-        form = MessageForm(request.POST, instance=message)
+        form = MessageForm(request.POST, request.FILES, instance=message)
         if form.is_valid():
             form.save() # 上書き保存！
             # 編集が終わったら、元のスレッド画面に戻る
@@ -272,24 +272,6 @@ def toggle_message_pin(request, message_id):
         
     return redirect('members:thread_detail', thread_id=message.thread.id)
 
-class SignUpView(generic.CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login') # 登録成功したらログイン画面へ
-    template_name = 'registration/signup.html'
-
-
-@login_required
-def profile_edit(request):
-    if request.method == 'POST':
-        # ユーザー情報を更新する処理
-        user = request.user
-        user.username = request.POST.get('username')
-        user.email = request.POST.get('email')
-        user.save()
-        messages.success(request, 'プロフィールを更新しました！')
-        return redirect('members:dashboard')
-    
-    return render(request, 'members/profile_edit.html')
 
 class SignUpView(generic.CreateView):
     form_class = SecretSignUpForm # ← ここを書き換えるだけ！
