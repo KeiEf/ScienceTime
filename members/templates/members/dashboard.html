@@ -38,11 +38,26 @@
 
         <h2 class="mb-4 border-bottom pb-2">掲示板（部屋）一覧</h2>
         
+        {% if request.user.profile.is_board_admin %}
+            <div class="text-end mb-3">
+                <a href="{% url 'members:create_category' %}" class="btn btn-dark">
+                    <i class="bi bi-plus-circle"></i> 新しいカテゴリを作る
+                </a>
+            </div>
+        {% endif %}
+
         <div class="list-group shadow-sm mb-5">
             {% for category in categories %}
             <a href="{% url 'members:category_detail' category.id %}" class="list-group-item list-group-item-action p-4">
                 <div class="d-flex w-100 justify-content-between align-items-center">
                     <div>
+
+                        {% if category.is_admin_only %}
+                            <span class="badge bg-danger me-2">
+                                <i class="bi bi-lock-fill"></i> Admin Only
+                            </span>
+                        {% endif %}
+
                         <h5 class="mb-1 fw-bold text-dark">{{ category.name }}</h5>
                         <p class="mb-1 text-muted small">{{ category.description }}</p>
                         

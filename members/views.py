@@ -12,10 +12,12 @@ from django.core.paginator import Paginator
 from django.db.models import Max, F
 from django.db.models.functions import Coalesce
 from django.shortcuts import render, get_object_or_404, redirect
-
+from .forms import CategoryForm  
 @login_required
 def dashboard(request):
-    categories = Category.objects.all()
+
+    profile, _ = UserProfile.objects.get_or_create(user=request.user)
+
     # ログイン中のユーザーへの通知を最新5件だけ取得
     notifications = request.user.notifications.all()[:5]
     
@@ -25,6 +27,9 @@ def dashboard(request):
                 Max('threads__created_at')           # 2. なければスレッドの作成日時を探す
             )
         ).order_by(F('last_updated').desc(nulls_last=True)) # 降順（新しい順）＋ まだ投稿がない部は一番下に
+
+    if not profile.is_board_admin:
+        categories = categories.filter(is_admin_only=False)
 
     context = {
         'categories': categories,
@@ -91,11 +96,53 @@ def profile_edit(request):
     return render(request, 'members/profile_edit.html', {'profile': profile})
 
 @login_required
-def category_detail(request, category_id):
-    # 1. URLから渡されたIDを使って、カテゴリーを探し出す（なければ404エラーにする）
-    category = get_object_or_404(Category, id=category_id)
+def create_category(request):
+    profile, _ = UserProfile.objects.get_or_create(user=request.user)
     
-    # （models.pyで related_name='threads' と設定したので、この書き方で一発で取れます！）
+    # 💡 掲示板管理者でなければ即座に弾く
+    if not profile.is_board_admin:
+        return HttpResponseForbidden("カテゴリを作成する権限がありません。")
+
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, '新しいカテゴリを作成しました！')
+            return redirect('members:dashboard')
+    else:
+        form = CategoryForm()
+
+    return render(request, 'members/create_category.html', {'form': form})
+
+@login_required
+def edit_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    profile, _ = UserProfile.objects.get_or_create(user=request.user)
+    
+    # 💡 編集も同様にガード
+    if not profile.is_board_admin:
+        return HttpResponseForbidden("カテゴリを編集する権限がありません。")
+
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'カテゴリを更新しました。')
+            return redirect('members:dashboard')
+    else:
+        form = CategoryForm(instance=category)
+
+    return render(request, 'members/edit_category.html', {'form': form, 'category': category})
+
+@login_required
+def category_detail(request, category_id):
+ 
+    category = get_object_or_404(Category, id=category_id)
+    profile, _ = UserProfile.objects.get_or_create(user=request.user) 
+
+    if category.is_admin_only and not profile.is_board_admin:
+        return HttpResponseForb
+
     threads = category.threads.annotate(
             last_updated=Coalesce(Max('messages__posted_at'), 'created_at')
         ).order_by('-last_updated') # 降順（新しい順）に並び替え

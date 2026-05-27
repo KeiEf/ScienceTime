@@ -6,6 +6,8 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField('自己紹介', blank=True, max_length=500)
     receive_notifications = models.BooleanField('通知を受け取る', default=True)
+    is_board_admin = models.BooleanField('掲示板管理者', default=False)
+
     def __str__(self):
         return f"{self.user.username}のプロフィール"
     
@@ -13,8 +15,10 @@ class UserProfile(models.Model):
 class Category(models.Model):
     name = models.CharField('カテゴリー名', max_length=100)
     created_at = models.DateTimeField('作成日時', auto_now_add=True)
-    description = models.TextField('説明文', blank=True, default='メンバー同士の議論や進捗共有はこちら。')
+    description = models.TextField('説明文', blank=True, default='部屋の説明')
     
+    is_admin_only = models.BooleanField('管理者専用カテゴリ', default=False)
+
     def __str__(self):
         return self.name
 
