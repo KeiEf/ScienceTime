@@ -230,9 +230,9 @@ def thread_detail(request, thread_id):
             # 💡 修正：通知を送るべき相手（スレッド作成者）を target_user にする
             target_user = thread.created_by 
 
-            if message.posted_by != target_user: # 自分自身のスレッドへの書き込みは通知しない
-                # 💡 修正：通知を受け取る側（スレッド作成者）の設定をチェックする
+            if target_user and message.posted_by != target_user:
                 if hasattr(target_user, 'profile') and target_user.profile.receive_notifications:
+
                     Notification.objects.create(
                         user=target_user, # 通知の宛先
                         sender=request.user,

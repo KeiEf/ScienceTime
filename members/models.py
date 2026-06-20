@@ -28,7 +28,7 @@ class Thread(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='threads')
     title = models.CharField('スレッドのタイトル', max_length=200)
     # 誰が作ったスレッドかを記録します
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='threads')
     created_at = models.DateTimeField('作成日時', auto_now_add=True)
 
     def __str__(self):
@@ -40,7 +40,7 @@ class Message(models.Model):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE, related_name='messages')
     content = models.TextField('メッセージ内容')
     # 誰が書き込んだかを記録します
-    posted_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    posted_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='messages')
     posted_at = models.DateTimeField('投稿日時', auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='liked_messages', blank=True)
     is_pinned = models.BooleanField('メッセージを固定', default=False)
