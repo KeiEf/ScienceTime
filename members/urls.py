@@ -10,6 +10,7 @@ urlpatterns = [
     path('notification/<int:notification_id>/read/', views.read_notification, name='read_notification'),
     path('user/<str:username>/', views.user_profile, name='user_profile'),
     path('profile/edit/', views.profile_edit, name='profile_edit'),
+    path('account/delete/', views.delete_account, name='delete_account'),
     path('category/create/', views.create_category, name='create_category'),
     path('category/<int:category_id>/edit/', views.edit_category, name='edit_category'),
     path('category/<int:category_id>/', views.category_detail, name='category_detail'),

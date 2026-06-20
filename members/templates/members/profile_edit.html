@@ -35,11 +35,20 @@
                         </label>
                     </div>
 
+
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-dark">変更を保存する</button>
                         <a href="{% url 'members:user_profile' user.username %}" class="btn btn-outline-secondary">キャンセル</a>
                     </div>
                 </form>
+
+                <div class="mt-5 pt-4 border-top text-end">
+                    <p class="text-muted small mb-1">掲示板の利用をやめる場合</p>
+                    <a href="{% url 'members:delete_account' %}" class="text-danger small text-decoration-none">
+                        <i class="bi bi-person-x"></i> アカウントを削除（退会）する
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>

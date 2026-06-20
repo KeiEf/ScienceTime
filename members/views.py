@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -13,6 +14,7 @@ from django.db.models import Max, F
 from django.db.models.functions import Coalesce
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CategoryForm  
+
 @login_required
 def dashboard(request):
 
@@ -94,6 +96,21 @@ def profile_edit(request):
         return redirect('members:user_profile', username=request.user.username)
     
     return render(request, 'members/profile_edit.html', {'profile': profile})
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        
+        # 💡 データの整合性を保つため、先にログアウト処理をしてからユーザーを削除します
+        logout(request)
+        user.delete()
+        
+        messages.success(request, 'アカウントを削除しました。ご利用ありがとうございました。')
+        return redirect('login') # 削除後はログイン画面（またはトップ画面）に戻す
+        
+    # GETアクセスの場合は、確認画面を表示する
+    return render(request, 'members/delete_account.html')
 
 @login_required
 def create_category(request):
