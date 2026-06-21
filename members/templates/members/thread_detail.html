@@ -43,7 +43,6 @@
                 <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
                     <small class="text-muted">
                     投稿者: 
-                <span class="fw-bold">{{ message.posted_by.username }}</span>
                 {% if message.posted_by %}
                     <a href="{% url 'members:user_profile' message.posted_by.username %}" class="fw-bold text-decoration-none text-dark">
                         {{ message.posted_by.username }}
